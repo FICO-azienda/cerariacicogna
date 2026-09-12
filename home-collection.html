@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Collection — Cereria Cicogna</title>
+  <meta name="description" content="Candele in bicchiere e private label per ristoranti, hotel ed eventi. Eleganza personalizzata per ogni allestimento.">
+  <!-- anteprime social e indirizzo canonico -->
+  <link rel="canonical" href="https://www.cerariacicogna.com/home-collection.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cereria Cicogna">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:url" content="https://www.cerariacicogna.com/home-collection.html">
+  <meta property="og:title" content="Home Collection — Cereria Cicogna">
+  <meta property="og:description" content="Candele in bicchiere e private label per ristoranti, hotel ed eventi. Eleganza personalizzata per ogni allestimento.">
+  <meta property="og:image" content="https://www.cerariacicogna.com/images/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Home Collection — Cereria Cicogna">
+  <meta name="twitter:description" content="Candele in bicchiere e private label per ristoranti, hotel ed eventi. Eleganza personalizzata per ogni allestimento.">
+  <meta name="twitter:image" content="https://www.cerariacicogna.com/images/og-cover.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/main.css?v=13">
+  <style>
+    body {
+      background: var(--c-bg-light);
+      color: var(--c-text-dark);
+    }
+
+    /* ── CATEGORY HERO ──────────────────────── */
+    .cat-hero {
+      padding: 160px var(--gutter) 80px;
+      background: var(--c-bg-light);
+      border-bottom: 1px solid rgba(26,22,18,0.09);
+    }
+
+    .cat-hero-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+    }
+
+    .cat-eyebrow {
+      display: inline-block;
+      font-family: var(--ff-sans);
+      font-size: .52rem;
+      font-weight: 300;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--c-text-mid);
+      margin-bottom: 20px;
+    }
+
+    .cat-title-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .cat-title {
+      font-family: var(--ff-display);
+      font-size: clamp(3.4rem, 9vw, 7.5rem);
+      font-weight: 300;
+      letter-spacing: .06em;
+      color: var(--c-text-dark);
+      line-height: .95;
+      position: relative;
+    }
+
+    .cat-title sup {
+      font-family: var(--ff-sans);
+      font-size: .52rem;
+      font-weight: 300;
+      letter-spacing: .12em;
+      color: var(--c-text-mid);
+      vertical-align: super;
+      margin-left: 6px;
+    }
+
+    .cat-desc {
+      max-width: 380px;
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--c-text-mid);
+      padding-bottom: 6px;
+    }
+
+    /* ── FILTER BAR ─────────────────────────── */
+    .filter-bar {
+      background: var(--c-bg-light);
+      border-bottom: 1px solid rgba(26,22,18,0.08);
+      padding: 0 var(--gutter);
+      position: sticky;
+      top: 70px;
+      z-index: 50;
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    .filter-label {
+      font-family: var(--ff-sans);
+      font-size: .48rem;
+      font-weight: 400;
+      letter-spacing: .28em;
+      color: var(--c-text-mid);
+      display: flex;
+      align-items: center;
+      padding: 18px 20px 18px 0;
+      border-right: 1px solid rgba(26,22,18,0.08);
+      margin-right: 8px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .filter-btn {
+      font-family: var(--ff-sans);
+      font-size: .5rem;
+      font-weight: 300;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--c-text-mid);
+      padding: 18px 14px;
+      border: none;
+      border-bottom: 2px solid transparent;
+      background: none;
+      cursor: pointer;
+      transition: color .3s, border-color .3s;
+      white-space: nowrap;
+    }
+    .filter-btn.active,
+    .filter-btn:hover {
+      color: var(--c-text-dark);
+      border-bottom-color: var(--c-text-dark);
+    }
+
+    .filter-sort {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      padding: 0 0 0 20px;
+      border-left: 1px solid rgba(26,22,18,0.08);
+    }
+
+    .filter-sort select {
+      font-family: var(--ff-sans);
+      font-size: .5rem;
+      font-weight: 300;
+      letter-spacing: .12em;
+      color: var(--c-text-mid);
+      background: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      padding-right: 18px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235A4A38'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0 center;
+    }
+
+    /* ── PRODUCT GRID ───────────────────────── */
+    .product-grid-wrap {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 56px var(--gutter) 100px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 44px 28px;
+    }
+
+    /* ── Breather editoriali (stile Loewe) tra i gruppi ── */
+    body { overflow-x: clip; }               /* evita scroll orizzontale col full-bleed */
+    .hc-breather {
+      grid-column: 1 / -1;
+      width: 100vw;                          /* full-bleed: arriva ai bordi dello schermo */
+      margin: 10px 0 34px;
+      margin-left: calc(50% - 50vw);
+      overflow: hidden;
+    }
+    .hc-breather img,
+    .hc-breather video {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+      background: var(--c-bg-cream);
+      transition: opacity 1.1s ease, transform 1.5s cubic-bezier(.22,.61,.36,1);
+    }
+    .hc-breather.reveal-ready img,
+    .hc-breather.reveal-ready video { opacity: 0; transform: scale(1.05); }
+    .hc-breather.in img,
+    .hc-breather.in video { opacity: 1; transform: scale(1); }
+    @media (prefers-reduced-motion: reduce) {
+      .hc-breather.reveal-ready img,
+      .hc-breather.reveal-ready video { opacity: 1; transform: none; }
+      .hc-breather img,
+      .hc-breather video { transition: none; }
+    }
+    .hc-breather.single img,
+    .hc-breather.single video {
+      height: clamp(340px, 56vh, 600px);
+      object-position: center 45%;
+    }
+    .hc-breather.split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .hc-breather.split img,
+    .hc-breather.split video {
+      height: clamp(400px, 60vh, 640px);
+      object-position: center 50%;
+    }
+    @media (max-width: 900px) {
+      .hc-breather.split { grid-template-columns: 1fr; gap: 16px; }
+      .hc-breather.single img, .hc-breather.single video { height: clamp(220px, 42vh, 340px); }
+      .hc-breather.split img,  .hc-breather.split video  { height: clamp(300px, 48vh, 440px); }
+    }
+
+    /* Intestazione di gruppo: occupa tutta la riga, manda a capo la famiglia successiva */
+    .hc-group-heading {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 24px 0 4px;
+    }
+    .hc-group-heading:first-child { margin-top: 0; }
+    .hc-group-heading h2 {
+      font-family: var(--ff-display);
+      font-size: 1.5rem;
+      font-weight: 300;
+      letter-spacing: .1em;
+      color: var(--c-text-dark);
+      white-space: nowrap;
+    }
+    .hc-group-heading .hc-group-rule {
+      flex: 1;
+      height: 1px;
+      background: rgba(26,22,18,.12);
+    }
+
+    .product-card {
+      cursor: pointer;
+    }
+
+    .product-card-visual {
+      position: relative;
+      overflow: hidden;
+      background: var(--c-bg-cream);
+      aspect-ratio: 3 / 4;
+      margin-bottom: 18px;
+    }
+
+    .product-card-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 1s cubic-bezier(.25,.46,.45,.94);
+    }
+    .product-card:hover .product-card-visual img { transform: scale(1.07); }
+
+    .product-card-tag {
+      position: absolute;
+      bottom: 0; left: 0;
+      font-family: var(--ff-sans);
+      font-size: .44rem;
+      font-weight: 400;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      background: var(--c-text-dark);
+      color: var(--c-bg-light);
+      padding: 6px 12px;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity .35s, transform .35s;
+    }
+    .product-card:hover .product-card-tag { opacity: 1; transform: translateY(0); }
+
+    .product-card-name {
+      font-family: var(--ff-display);
+      font-size: 1.05rem;
+      font-weight: 300;
+      letter-spacing: .07em;
+      color: var(--c-text-dark);
+      line-height: 1.3;
+      margin-bottom: 5px;
+    }
+
+    .product-card-type {
+      font-family: var(--ff-sans);
+      font-size: .5rem;
+      font-weight: 300;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--c-text-mid);
+      margin-bottom: 12px;
+    }
+
+    .product-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--ff-sans);
+      font-size: .5rem;
+      font-weight: 300;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--c-text-dark);
+      text-decoration: none;
+      padding-bottom: 2px;
+      border-bottom: 1px solid rgba(26,22,18,.25);
+      transition: border-color .3s, gap .3s;
+      opacity: 0;
+      transition: opacity .3s, border-color .3s, gap .3s;
+    }
+    .product-card:hover .product-card-cta { opacity: 1; }
+
+    /* ── PRIVATE LABEL BANNER ───────────────── */
+    .private-label-banner {
+      background: var(--c-text-dark);
+      color: var(--c-vellum);
+      padding: 72px var(--gutter);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+      max-width: 100%;
+    }
+
+    .pl-banner-left {}
+
+    .pl-banner-eyebrow {
+      display: inline-block;
+      font-family: var(--ff-sans);
+      font-size: .5rem;
+      font-weight: 300;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      border: 1px solid rgba(196,146,42,.3);
+      padding: 5px 14px;
+      margin-bottom: 24px;
+    }
+
+    .pl-banner-title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.6rem, 4vw, 3rem);
+      font-weight: 300;
+      letter-spacing: .12em;
+      color: var(--c-vellum);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .pl-banner-body {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--c-stone);
+      max-width: 540px;
+    }
+
+    .pl-banner-cta {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--ff-sans);
+      font-size: .58rem;
+      font-weight: 300;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--c-vellum);
+      padding: 16px 36px;
+      border: 1px solid rgba(242,232,208,.3);
+      text-decoration: none;
+      transition: background .4s, border-color .4s;
+      white-space: nowrap;
+    }
+    .pl-banner-cta:hover { background: rgba(242,232,208,.08); border-color: rgba(242,232,208,.6); }
+
+    @media (max-width: 900px) {
+      .private-label-banner { grid-template-columns: 1fr; }
+    }
+
+    /* Responsive grid — 3 per riga, poi 2, poi 1 */
+    @media (max-width: 900px)  { .product-grid { grid-template-columns: repeat(2, 1fr); gap: 28px 16px; } }
+    @media (max-width: 480px)  { .product-grid { grid-template-columns: 1fr; } }
+
+    /* ── Enhanced preview effects ─────────────── */
+    .product-card { transition: transform .35s cubic-bezier(.25,.46,.45,.94); }
+    .product-card:hover { transform: translateY(-3px); }
+    .product-card-name { position: relative; }
+    .product-card-name::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px; background: var(--c-gold, #C89830);
+      transition: width .45s cubic-bezier(.25,.46,.45,.94);
+    }
+    .product-card:hover .product-card-name::after { width: 28px; }
+    .product-card-visual::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(200,152,48,.1) 0%, transparent 55%);
+      opacity: 0; transition: opacity .45s; pointer-events: none;
+    }
+    .product-card:hover .product-card-visual::after { opacity: 1; }
+    .product-card:hover .product-card-cta { gap: 14px; }
+    .filter-bar { overflow-x: auto; scrollbar-width: none; }
+    .filter-bar::-webkit-scrollbar { display: none; }
+
+    /* Nav / footer override for light page */
+    nav:not(.scrolled) .nav-logo { color: var(--c-text-dark); }
+    nav:not(.scrolled) .nav-logo span { color: var(--c-text-mid); }
+    nav:not(.scrolled) .nav-links > li > a { color: var(--c-text-mid); }
+    nav:not(.scrolled) .nav-links > li > a:hover { color: var(--c-text-dark); }
+    nav:not(.scrolled) .nav-cta {
+      color: var(--c-text-dark);
+      border-color: rgba(26,22,18,0.25);
+    }
+    nav:not(.scrolled) .nav-cta:hover { background: rgba(26,22,18,0.07); border-color: var(--c-text-dark); }
+    nav:not(.scrolled) .hamburger-line { background: var(--c-text-dark); }
+    nav:not(.scrolled) .nav-stork path { fill: var(--c-text-dark) !important; }
+    nav:not(.scrolled) .nav-stork circle { stroke: var(--c-text-dark) !important; }
+    nav.scrolled { background: rgba(250,250,248,0.95); }
+    nav.scrolled .nav-logo { color: var(--c-text-dark); }
+    nav.scrolled .nav-logo span { color: var(--c-text-mid); }
+    nav.scrolled .nav-links > li > a { color: var(--c-text-mid); }
+    nav.scrolled .nav-cta { color: var(--c-text-dark); border-color: rgba(26,22,18,0.25); }
+    nav.scrolled .hamburger-line { background: var(--c-text-dark); }
+
+    /* ── HOVER-SWAP (frontale ⇆ vista dall'alto) ─── */
+    .product-card-visual .img-hover {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+    .product-card:hover .product-card-visual .img-hover { opacity: 1; }
+    /* cancel scale on the overlay image */
+    .product-card:hover .product-card-visual .img-hover { transform: none; }
+    .product-card-visual .img-base { transition: opacity .3s ease; }
+    .product-card:hover .product-card-visual .img-base { opacity: 0; }
+    /* touch: niente hover — la frontale si alterna alla vista dall'alto col tap */
+    @media (hover: none) {
+      .product-card-visual .img-hover { display: none; }
+      .product-card-visual.show-alt .img-hover { display: block; opacity: 1; }
+      .product-card-visual.show-alt .img-base { opacity: 0; }
+      .product-card-cta { opacity: 1; }
+    }
+
+    /* ── SCHEDA PRODOTTO: modal carosello ─────────── */
+    .hcm { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+    .hcm.open { opacity: 1; pointer-events: all; }
+    .hcm-backdrop { position: absolute; inset: 0; background: rgba(10,8,5,.65); backdrop-filter: blur(4px); }
+    .hcm-panel { position: relative; background: var(--c-bg-light); max-width: 980px; width: 100%; max-height: 92vh; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; box-shadow: 0 30px 80px rgba(10,8,5,.45); }
+    @media (max-width: 820px) { .hcm-panel { grid-template-columns: 1fr; max-height: 90vh; } }
+    .hcm-close { position: absolute; top: 12px; right: 12px; z-index: 5; width: 38px; height: 38px; border: none; background: rgba(26,22,18,.06); color: var(--c-text-dark); font-size: 1rem; line-height: 1; cursor: pointer; border-radius: 50%; transition: background .25s; }
+    .hcm-close:hover { background: rgba(26,22,18,.14); }
+    .hcm-img-wrap { position: relative; background: var(--c-bg-cream); aspect-ratio: 3/4; overflow: hidden; touch-action: pan-y; }
+    /* colonna singola: l'immagine non deve occupare tutto lo schermo,
+       così descrizione e scelta profumo restano subito visibili sotto */
+    @media (max-width: 820px) { .hcm-img-wrap { aspect-ratio: auto; height: 44vh; } }
+    .hcm-img { width: 100%; height: 100%; object-fit: contain; display: block; transition: opacity .25s ease; }
+    .hcm-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 4; width: 40px; height: 40px; border: none; border-radius: 50%; background: rgba(250,250,248,.82); color: var(--c-text-dark); font-size: .9rem; cursor: pointer; transition: background .25s; display: flex; align-items: center; justify-content: center; }
+    .hcm-arrow:hover { background: rgba(250,250,248,1); }
+    .hcm-arrow.prev { left: 12px; }
+    .hcm-arrow.next { right: 12px; }
+    .hcm-count { position: absolute; bottom: 12px; right: 14px; z-index: 4; font-family: var(--ff-sans); font-size: .48rem; letter-spacing: .18em; color: var(--c-text-mid); background: rgba(250,250,248,.82); padding: 4px 10px; border-radius: 10px; }
+    .hcm-info { padding: 44px 40px 36px; display: flex; flex-direction: column; }
+    @media (max-width: 820px) { .hcm-info { padding: 28px 22px 26px; } }
+    .hcm-line { font-family: var(--ff-sans); font-size: .46rem; font-weight: 300; letter-spacing: .3em; text-transform: uppercase; color: var(--c-gold, #C89830); margin-bottom: 12px; }
+    .hcm-name { font-family: var(--ff-display); font-size: 1.7rem; font-weight: 300; letter-spacing: .05em; color: var(--c-text-dark); line-height: 1.15; margin-bottom: 16px; }
+    .hcm-desc { font-family: var(--ff-serif); font-style: italic; font-size: .9rem; line-height: 1.8; color: var(--c-text-mid); margin-bottom: 24px; }
+    .hcm-desc:empty { display: none; }
+    .hcm-feats { list-style: none; padding: 0; margin: 0 0 24px; }
+    .hcm-feats:empty { display: none; }
+    .hcm-feats li { font-family: var(--ff-sans); font-size: .55rem; font-weight: 300; letter-spacing: .12em; text-transform: uppercase; color: var(--c-text-mid); padding: 8px 0; border-bottom: 1px solid rgba(26,22,18,.08); }
+    .hcm-group-label { font-family: var(--ff-sans); font-size: .42rem; font-weight: 300; letter-spacing: .25em; text-transform: uppercase; color: var(--c-text-mid); margin: 0 0 10px; }
+    .hcm-groups { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 24px; }
+    .hcm-groups:empty { display: none; }
+    .hcm-group-pill { font-family: var(--ff-sans); font-size: .48rem; letter-spacing: .1em; text-transform: uppercase; padding: 7px 16px; border: 1px solid rgba(26,22,18,.22); border-radius: 2px; background: none; cursor: pointer; color: var(--c-text-mid); transition: background .2s, color .2s, border-color .2s; }
+    .hcm-group-pill.active { background: var(--c-text-dark); color: var(--c-bg-light); border-color: var(--c-text-dark); cursor: default; }
+    .hcm-group-pill:not(.active):hover { border-color: var(--c-text-dark); color: var(--c-text-dark); }
+    .hcm-swatch { width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid rgba(26,22,18,.15); padding: 0; cursor: pointer; transition: transform .15s, box-shadow .2s; }
+    .hcm-swatch:hover { transform: scale(1.12); }
+    .hcm-swatch.active { box-shadow: 0 0 0 2px var(--c-bg-light), 0 0 0 3.5px rgba(26,22,18,.55); cursor: default; }
+    .hcm-scent { margin-bottom: 24px; }
+    .hcm-scent-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--ff-sans); font-size: .5rem; font-weight: 300;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--c-text-dark); text-decoration: none;
+      padding: 12px 22px; border: 1px solid var(--c-gold, #C89830);
+      transition: background .25s, gap .25s;
+    }
+    .hcm-scent-link:hover { background: rgba(200,152,48,.12); gap: 16px; }
+
+    /* ── stoppino: cotone / wood wick ── */
+    .hcm-wick { margin-bottom: 26px; }
+    .hcm-wick-opts { display: flex; gap: 10px; flex-wrap: wrap; }
+    .hcm-wick-btn {
+      font-family: var(--ff-sans); font-size: .48rem; font-weight: 300;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--c-text-mid); background: none;
+      border: 1px solid rgba(26,22,18,.22); padding: 11px 20px; cursor: pointer;
+      transition: color .25s, border-color .25s, background .25s;
+    }
+    .hcm-wick-btn:hover { color: var(--c-text-dark); border-color: rgba(26,22,18,.5); }
+    .hcm-wick-btn.is-on {
+      color: var(--c-bg-light); background: var(--c-text-dark); border-color: var(--c-text-dark);
+    }
+
+    /* ── aggiungi alla richiesta ── */
+    .hcm-add {
+      display: block; width: 100%; margin-top: 26px; padding: 17px 30px;
+      font-family: var(--ff-sans); font-size: .52rem; font-weight: 300;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--c-bg-light); background: var(--c-text-dark);
+      border: none; cursor: pointer; transition: background .3s;
+    }
+    .hcm-add:hover { background: #000; }
+    .hcm-add-note {
+      margin-top: 11px; text-align: center;
+      font-family: var(--ff-serif); font-style: italic; font-size: .92rem;
+      line-height: 1.6; color: var(--c-text-mid);
+    }
+    .hcm-add-note a { color: var(--c-text-dark); }
+
+    .hcm-thumbs-label { font-family: var(--ff-sans); font-size: .42rem; font-weight: 300; letter-spacing: .28em; text-transform: uppercase; color: var(--c-text-mid); margin: auto 0 14px; }
+    .hcm-thumbs { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 6px; scrollbar-width: none; }
+    .hcm-thumbs::-webkit-scrollbar { display: none; }
+    .hcm-thumb { flex: 0 0 auto; width: 56px; height: 70px; padding: 0; border: none; background: var(--c-bg-cream); cursor: pointer; overflow: hidden; border-radius: 2px; opacity: .48; position: relative; transition: opacity .3s ease, transform .3s cubic-bezier(.25,.46,.45,.94); }
+    .hcm-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hcm-thumb::after { content: ''; position: absolute; left: 50%; right: 50%; bottom: 0; height: 2px; background: var(--c-text-dark); transition: left .32s ease, right .32s ease; }
+    .hcm-thumb:hover { opacity: .82; }
+    .hcm-thumb.active { opacity: 1; transform: translateY(-2px); }
+    .hcm-thumb.active::after { left: 0; right: 0; }
+    body.hcm-lock { overflow: hidden; }
+
+    /* ── FEATURE PHOTO ─────────────────────────── */
+    .page-feature-photo { position:relative; width:100%; aspect-ratio: 1672 / 941; overflow:hidden; }
+    .page-feature-photo .ff { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; opacity:0; transition:opacity .7s ease; }
+    .page-feature-photo .ff.active { opacity:1; }
+    /* wordmark nei font del sito (il testo era prima dentro le immagini) */
+    .ff-brand { position:absolute; top:6.5%; left:0; right:0; z-index:2; text-align:center; font-family:var(--ff-display); font-weight:300; font-size:clamp(1.6rem,4.4vw,3.6rem); letter-spacing:.14em; color:#3a2d1c; pointer-events:none; }
+
+
+    /* ── CARD COLOR PILLS ───────────────────────── */
+    .card-pills {
+      position: absolute; bottom: 12px; left: 12px;
+      display: flex; align-items: center; gap: 5px; z-index: 5;
+    }
+    .card-pill {
+      display: block; width: 20px; height: 20px; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,.8);
+    }
+    button.card-pill { padding: 0; cursor: pointer; transition: transform .15s, box-shadow .2s; }
+    button.card-pill:hover { transform: scale(1.15); }
+    button.card-pill.selected { box-shadow: 0 0 0 2px var(--c-bg-light), 0 0 0 3.5px rgba(26,22,18,.55); }
+    button.card-pill-more { border: none; cursor: pointer; transition: transform .15s; }
+    button.card-pill-more:hover { transform: scale(1.08); }
+    .card-pill-more {
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 8px; height: 20px; border-radius: 10px;
+      background: rgba(255,255,255,.9);
+      font-family: var(--ff-sans); font-size: .42rem; font-weight: 500;
+      letter-spacing: .05em; color: var(--c-text-dark);
+      white-space: nowrap;
+    }
+
+    /* ── CARD DESCRIPTION ───────────────────────── */
+    .product-card-desc {
+      font-family: var(--ff-serif); font-style: italic;
+      font-size: .88rem; line-height: 1.65;
+      color: var(--c-text-mid); margin-bottom: 14px;
+      max-height: 0; overflow: hidden;
+      transition: max-height .4s ease, opacity .4s ease;
+      opacity: 0;
+    }
+    .product-card:hover .product-card-desc { max-height: 120px; opacity: 1; }
+  </style>
+</head>
+<body class="cimg-page">
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a href="index.html" class="nav-brand">
+      <img class="nav-stork" src="logo-stork.png" alt="Logo Cereria Cicogna" width="32" height="32" loading="eager">
+      <div class="nav-logo">
+        Cereria Cicogna
+        <span>Industria F.lli Cicogna · Novate Milanese</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li class="nav-has-drop">
+        <a href="home-collection.html" aria-current="page" aria-haspopup="true" aria-expanded="false">Home Collection</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Home Collection">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="home-collection.html" class="mega-feat-title">Home Collection</a>
+            <p class="mega-feat-desc">Candele profumate per arredare e impreziosire ogni ambiente della casa.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul>
+              <li><a href="home-collection.html?c=sand">Sand</a></li>
+              <li><a href="home-collection.html?c=rock">Rock</a></li>
+              <li><a href="home-collection.html?c=glass">Glass</a></li>
+              <li><a href="home-collection.html?c=metallic">Metallic</a></li>
+              <li><a href="home-collection.html?c=ceri">Ceri</a></li>
+            </ul>
+            <a href="home-collection.html" class="mega-all">Vedi tutti</a>
+          </div><div class="mega-img-col"><a href="home-collection.html"><img src="images/hero-home-collection.webp?v=2" alt="Home Collection — Cereria Cicogna"></a></div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="nav-has-drop">
+        <a href="garden.html" aria-haspopup="true" aria-expanded="false">Garden</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Linea Garden">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="garden.html" class="mega-feat-title">Linea Garden</a>
+            <p class="mega-feat-desc">Candele per esterni e interni, pensate per ogni stagione all'aperto.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul>
+              <li><a href="garden.html?c=citronelle">Citronelle</a></li>
+              <li><a href="garden.html?c=cerabianca">Cera Bianca</a></li>
+              <li><a href="garden.html?c=ricariche">Ricariche</a></li>
+            </ul>
+            <a href="garden.html" class="mega-all">Vedi tutti</a>
+          </div><div class="mega-img-col"><a href="garden.html"><img src="images/hero-garden.webp" alt="Linea Garden — Cereria Cicogna"></a></div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="nav-has-drop">
+        <a href="liturgico.html" aria-haspopup="true" aria-expanded="false">Liturgico</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Articoli Liturgici">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="liturgico.html" class="mega-feat-title">Articoli Liturgici</a>
+            <p class="mega-feat-desc">Ceri, lumini e arredi sacri per chiese, santuari e cerimonie religiose.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul>
+              <li><a href="liturgico.html?c=lumini">Lumini da chiesa</a></li>
+              <li><a href="liturgico.html?c=accessori">Accessori</a></li>
+              <li><a href="liturgico.html?c=forniture">Forniture</a></li>
+            </ul>
+            <a href="liturgico.html" class="mega-all">Vedi tutti</a>
+          </div><div class="mega-img-col"><a href="liturgico.html"><img src="images/hero-liturgico.webp" alt="Articoli Liturgici — Cereria Cicogna"></a></div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="nav-sep" aria-hidden="true"></li>
+      <li>
+        <a href="private-label.html">Private Label</a>
+      </li>
+      <li><a href="fragrance-library.html">Fragrance Library</a></li><li><a href="personalizzazione.html">Collaborazioni</a></li>
+      <li><a href="chi-siamo.html">Chi Siamo</a></li>
+    </ul>
+    <a href="contatti.html" class="nav-cta">Contattaci</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Apri menu" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true">
+    <ul class="mobile-menu-links" role="list">
+      <li class="mm-has-sub">
+        <div class="mm-top">
+          <a href="liturgico.html" class="mm-link">Liturgico</a>
+          <button class="mm-expand" aria-expanded="false" aria-label="Espandi Liturgico">+</button>
+        </div>
+        <ul class="mm-sub" hidden>
+          <li><a href="liturgico.html?c=lumini">Lumini da chiesa</a></li>
+          <li><a href="liturgico.html?c=accessori">Accessori</a></li>
+              <li><a href="liturgico.html?c=forniture">Forniture</a></li>
+        </ul>
+      </li>
+      <li class="mm-has-sub"><div class="mm-top"><a href="garden.html" class="mm-link">Garden</a><button class="mm-expand" aria-expanded="false" aria-label="Espandi Garden">+</button></div><ul class="mm-sub" hidden><li><a href="garden.html?c=citronelle">Citronelle</a></li><li><a href="garden.html?c=cerabianca">Cera Bianca</a></li><li><a href="garden.html?c=ricariche">Ricariche</a></li></ul></li>
+      <li class="mm-has-sub"><div class="mm-top"><a href="home-collection.html" class="mm-link">Home Collection</a><button class="mm-expand" aria-expanded="false" aria-label="Espandi Home Collection">+</button></div><ul class="mm-sub" hidden><li><a href="home-collection.html?c=sand">Sand</a></li><li><a href="home-collection.html?c=rock">Rock</a></li><li><a href="home-collection.html?c=glass">Glass</a></li><li><a href="home-collection.html?c=metallic">Metallic</a></li><li><a href="home-collection.html?c=ceri">Ceri</a></li></ul></li>
+      <li><a href="chi-siamo.html">Chi Siamo</a></li>
+      <li><a href="contatti.html">Contatti</a></li>
+      <li class="mobile-menu-sep" aria-hidden="true"></li>
+      <li><a href="private-label.html">Private Label</a></li>
+      <li><a href="fragrance-library.html">Fragrance Library</a></li><li><a href="personalizzazione.html">Collaborazioni</a></li>
+    </ul>
+    <div class="mobile-menu-rule" aria-hidden="true"></div>
+    <address class="mobile-menu-contact">
+      <a href="tel:+39023543707">02.35.43.707</a>&ensp;·&ensp;<a href="mailto:info@cerariacicogna.com">info@cerariacicogna.com</a>
+    </address>
+  </div>
+
+  <!-- CATEGORY HERO -->
+  <!-- HERO immagine (apertura categoria) -->
+  <header class="cimg-hero">
+    <img src="images/hero-home-collection.webp?v=2" alt="Home Collection — Cereria Cicogna" loading="eager">
+    <div class="cimg-hero-veil" aria-hidden="true"></div>
+    <div class="cimg-hero-text">
+      <span class="cimg-hero-eyebrow">Cereria Cicogna · Linea 01</span>
+      <h1 class="cimg-hero-title">Home Collection</h1>
+    </div>
+  </header>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar" role="search" aria-label="Filtra prodotti">
+    <span class="filter-label">Filtra</span>
+    <button class="filter-btn active" data-filter="all">Tutti</button>
+    <button class="filter-btn" data-filter="sand">Sand</button>
+    <button class="filter-btn" data-filter="rock">Rock</button>
+    <button class="filter-btn" data-filter="glass">Glass</button>
+    <button class="filter-btn" data-filter="metallic">Metallic</button>
+    <button class="filter-btn" data-filter="ceri">Ceri</button>
+    <div class="filter-sort">
+      <select aria-label="Ordina prodotti">
+        <option value="az">Ordina: A–Z</option>
+        <option value="za">Ordina: Z–A</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- PRODUCT GRID -->
+  <main class="product-grid-wrap" id="main-content">
+    <div class="product-grid reveal-stagger">
+
+    </div>
+  </main>
+
+  <!-- PRIVATE LABEL BANNER -->
+  <section class="private-label-banner" aria-label="Servizio private label">
+    <div class="pl-banner-left">
+      <span class="pl-banner-eyebrow">Servizio esclusivo</span>
+      <h2 class="pl-banner-title">
+        Private Label:<br>
+        la tua identità<br>
+        in ogni candela
+      </h2>
+      <p class="pl-banner-body">
+        Progettiamo candele con il tuo logo, la tua fragranza e il tuo design.
+        Dal bistrot di quartiere al grand hotel: ogni locale merita
+        una luce che sia davvero sua.
+      </p>
+    </div>
+    <a href="contatti.html" class="pl-banner-cta">Parliamo del tuo progetto →</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-row">
+          <img class="footer-stork" src="logo-stork.png" alt="" width="40" height="40" aria-hidden="true">
+          <span class="footer-wordmark">Cereria Cicogna</span>
+        </div>
+        <p class="footer-tagline">Industria ceraria artigianale.<br>Dal sacro al quotidiano.</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Linee</p>
+        <ul>
+          <li><a href="liturgico.html">Articoli Liturgici</a></li>
+          <li><a href="garden.html">Linea Garden</a></li>
+          <li><a href="home-collection.html">Home Collection</a></li>
+          <li class="mobile-menu-sep" aria-hidden="true"></li>
+      <li><a href="private-label.html">Private Label</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Azienda</p>
+        <ul>
+          <li><a href="chi-siamo.html">Chi Siamo</a></li>
+          <li><a href="contatti.html">Contatti</a></li>
+          <li><a href="contatti.html#b2b">Per professionisti</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Contatti</p>
+        <address>
+          Via Damiano Chiesa, 84<br>
+          20026 Novate Milanese (MI)<br><br>
+          <a href="tel:+39023543707">02.35.43.707</a><br>
+          <a href="mailto:info@cerariacicogna.com">info@cerariacicogna.com</a>
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2025 Industria Ceraria F.lli Cicogna srl</span>
+      <span class="footer-legal">P.IVA 11980500158 &nbsp;&middot;&nbsp; <a href="privacy.html">Privacy</a></span>
+    </div>
+  </footer>
+
+  <!-- GSAP -->
+  <!-- ── SCHEDA PRODOTTO (modal carosello) ── -->
+  <div class="hcm" id="hcm" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Scheda prodotto">
+    <div class="hcm-backdrop" id="hcm-backdrop"></div>
+    <div class="hcm-panel">
+      <button class="hcm-close" id="hcm-close" aria-label="Chiudi scheda">✕</button>
+      <div class="hcm-img-wrap" id="hcm-img-wrap">
+        <img class="hcm-img" id="hcm-img" src="" alt="">
+        <button class="hcm-arrow prev" id="hcm-prev" aria-label="Foto precedente">←</button>
+        <button class="hcm-arrow next" id="hcm-next" aria-label="Foto successiva">→</button>
+        <span class="hcm-count" id="hcm-count" aria-hidden="true"></span>
+      </div>
+      <div class="hcm-info">
+        <p class="hcm-line">Home Collection</p>
+        <h2 class="hcm-name" id="hcm-name"></h2>
+        <p class="hcm-desc" id="hcm-desc"></p>
+        <p class="hcm-group-label" id="hcm-group-label" hidden></p>
+        <div class="hcm-groups" id="hcm-groups"></div>
+        <div class="hcm-scent" id="hcm-scent" hidden>
+          <p class="hcm-group-label">Profumazione</p>
+          <a class="hcm-scent-link" id="hcm-scent-link" href="fragrance-library.html">Scegli il tuo profumo →</a>
+        </div>
+        <div class="hcm-wick" id="hcm-wick" hidden>
+          <p class="hcm-group-label">Stoppino</p>
+          <div class="hcm-wick-opts" role="group" aria-label="Tipo di stoppino">
+            <button type="button" class="hcm-wick-btn is-on" data-wick="cotone" aria-pressed="true">Cotone</button>
+            <button type="button" class="hcm-wick-btn" data-wick="wood wick" aria-pressed="false">Wood wick</button>
+          </div>
+        </div>
+        <ul class="hcm-feats" id="hcm-feats"></ul>
+        <p class="hcm-thumbs-label">Immagini</p>
+        <div class="hcm-thumbs" id="hcm-thumbs"></div>
+        <button type="button" class="hcm-add" id="hcm-add">Aggiungi alla richiesta</button>
+        <p class="hcm-add-note" id="hcm-add-note"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="js/main.js?v=8"></script>
+  <script src="js/selection.js?v=7"></script>
+  <script>
+  /* ═══════════════════════════════════════════════════
+     HOME COLLECTION — catalogo a card distinte
+     Una card per ogni colore e misura (stile lookbook).
+     La misura numerica (8/10/12) sta nelle specifiche;
+     il cliente legge piccolo / medio / grande.
+     Nella scheda: descrizione a destra, cambio colore,
+     scelta profumo (tranne ceri/steariche/ricaricabili).
+  ═══════════════════════════════════════════════════ */
+  (function () {
+    const DIR = 'images/hc/';
+    const slug = s => s.replace(/\s+/g, '-');
+    const CARDS = [];
+
+    /* ── SAND — 3 colori × 3 misure ── */
+    const sandCols = [
+      { label: 'bianco',  hex: '#efe9dd', border: true },
+      { label: 'grigio',  hex: '#a8a29a' },
+      { label: 'marrone', hex: '#8a6a4f' },
+    ];
+    sandCols.forEach(col => ['piccolo', 'medio', 'grande'].forEach(sz => CARDS.push({
+      id: 'sand-' + col.label + '-' + sz,
+      name: 'sand ' + sz, type: col.label, cat: 'sand',
+      desc: 'Candela in bicchiere effetto sabbia. Disponibile in tutte le nostre profumazioni e abbinabile al coperchio in legno.',
+      feats: [],
+      imgs: [
+        { file: 'sand ' + col.label + '/sand ' + col.label + ' ' + sz + '.webp',  alt: 'sand ' + col.label + ' ' + sz + ' — vista frontale' },
+        { file: 'sand ' + col.label + '/sand ' + col.label + ' ' + sz + '2.webp', alt: 'sand ' + col.label + ' ' + sz + ' — vista dall\'alto' },
+      ],
+      swatches: sandCols.map(k => ({ label: k.label, hex: k.hex, border: k.border, cardId: 'sand-' + k.label + '-' + sz })),
+      scent: true,
+    })));
+
+    /* ── ROCK — 2 misure ── */
+    ['piccolo', 'grande'].forEach(sz => CARDS.push({
+      id: 'rock-' + sz,
+      name: 'rock ' + sz, type: '', cat: 'rock',
+      desc: 'Candela in bicchiere effetto roccia. Disponibile in tutte le nostre profumazioni e abbinabile al coperchio in legno.',
+      feats: [],
+      imgs: [
+        { file: 'roccia/roccia ' + sz + '.webp',  alt: 'rock ' + sz + ' — vista frontale' },
+        { file: 'roccia/roccia ' + sz + '2.webp', alt: 'rock ' + sz + ' — vista dall\'alto' },
+      ],
+      scent: true,
+    }));
+
+    /* ── NILLA — 3 misure (8/10/12) × 6 colori ── */
+    const nillaCols = [
+      { label: 'bianco',      hex: '#f0ede6', border: true },
+      { label: 'coffee',      hex: '#6f4e37' },
+      { label: 'grigio',      hex: '#9a9a94' },
+      { label: 'kiwi',        hex: '#9ab933' },
+      { label: 'rosso scuro', hex: '#7a1f1f' },
+      { label: 'viola',       hex: '#7a5a8c' },
+    ];
+    /* I file sono stati rinominati in modo uniforme: niente piu' spazi doppi,
+       spazi finali, "verde kiwi" o nomi UUID. Le tre misure seguono lo stesso schema. */
+    const nillaSizes = ['8', '10', '12'].map((num, i) => ({
+      sz: ['piccolo', 'medio', 'grande'][i],
+      num,
+      front: c => 'nilla ' + num + '/nilla frontale/nilla frontale ' + c + '.webp',
+      top:   c => 'nilla ' + num + '/nilla alto/nilla alto ' + c + '.webp',
+    }));
+    nillaCols.forEach(col => nillaSizes.forEach(s => CARDS.push({
+      id: 'nilla-' + s.num + '-' + slug(col.label),
+      name: 'nilla ' + s.sz, type: col.label, cat: 'glass',
+      desc: 'Candela in bicchiere di vetro colorato dalla finitura materica. Disponibile in tutte le nostre profumazioni e abbinabile al coperchio in legno.',
+      feats: ['Misura ' + s.num],
+      imgs: [
+        { file: s.front(col.label), alt: 'nilla ' + s.sz + ' ' + col.label + ' — vista frontale' },
+        { file: s.top(col.label),   alt: 'nilla ' + s.sz + ' ' + col.label + ' — vista dall\'alto' },
+      ],
+      swatches: nillaCols.map(k => ({ label: k.label, hex: k.hex, border: k.border, cardId: 'nilla-' + s.num + '-' + slug(k.label) })),
+      scent: true,
+    })));
+
+    /* ── VETRO — 9 colori ── */
+    /* g = id colore sulla pagina Glass Candles (per foto scent + scheda completa) */
+    const vetroCols = [
+      { label: 'rosso',               hex: '#c01818', g: 'red',       f: 'vetro frontale rossa.webp',                t: 'vetro visuale alto rosso.webp' },
+      { label: 'arancio',             hex: '#d97a2e', g: 'orange',    f: 'vetro frontale arancio.webp',              t: 'vetro visuale alto arancio.webp' },
+      { label: 'azzurro',             hex: '#7ab8d9', g: 'lightblue', f: 'vetro frontale azzurra.webp',              t: 'vetro visuale alto azzurro.webp' },
+      { label: 'blu',                 hex: '#1a3a7a', g: 'blue',      f: 'vetro frontale blu.webp',                  t: 'vetro visuale alto blu.webp' },
+      { label: 'giallo',              hex: '#e8c832', g: 'yellow',    f: 'vetro frontale giallo.webp',               t: 'vetro visuale alto giallo.webp' },
+      { label: 'marrone trasparente', hex: '#a8795a', g: 'amber',     f: 'vetro frontale marronne trasparente.webp', t: 'vetro visuale alto marrone trasparente.webp' },
+      { label: 'nero',                hex: '#1a1a1a', g: 'black',      f: 'vetro frontale nera.webp',                 t: 'vetro visuale alto nero.webp' },
+      { label: 'rosso trasparente',   hex: '#d96a6a', g: 'darkred',   f: 'vetro frontale rossa trasparente.webp',    t: 'vetro visuale alto rosso trasparente.webp' },
+      { label: 'verde',               hex: '#5c8030', g: 'green',     f: 'vetro frontale verde.webp',                t: 'vetro visuale alto verde.webp' },
+    ];
+    /* profumi associati per colore (identici alla pagina Glass Candles) */
+    const GLASS_ASSOC = {
+      red:['profumoir-3','bessa','oasi'], orange:['via-italia','profumoir-4','basilico'],
+      lightblue:['profumoir-2','coconut','menta'], blue:['winter-tree','frankincense'],
+      yellow:['mimosa','melange','gelsomino','oasi'], amber:['baraggia','oud-sandalo','tabacco'],
+      black:['winter-incense','incenso-indiano','frankincense','bessa'], darkred:['uva-rara','bessa','tabacco'],
+      green:['profumoir-1','fico','menta','basilico'],
+    };
+    const PERF_FILE = {
+      melange:'../perfume-melange.webp', baraggia:'../perfume-baraggia.webp', 'via-italia':'../perfume-via-italia.webp',
+      'uva-rara':'../perfume-uva-rara.webp', oasi:'../perfume-oasi.webp', bessa:'../perfume-bessa.webp',
+      'winter-tree':'../perfume-winter-tree.webp', 'profumoir-1':'../perfume-profumoir-1.webp', 'profumoir-2':'../perfume-profumoir-2.webp',
+      'profumoir-3':'../perfume-profumoir-3.webp', 'profumoir-4':'../perfume-profumoir-4.webp',
+      gelsomino:'../scentlib-gelsomino.webp', mimosa:'../scentlib-mimosa.webp', basilico:'../scentlib-basilico.webp',
+      coconut:'../scentlib-cocco.webp', menta:'../scentlib-menta.webp', fico:'../scentlib-fico.webp',
+      'oud-sandalo':'../scentlib-sandalo.webp', tabacco:'../scentlib-tabacco.webp', 'winter-incense':'../scentlib-winter-incense.webp',
+      frankincense:'../scentlib-frankincense.webp', 'incenso-indiano':'../scentlib-incenso-indiano.webp',
+    };
+    const PERF_NAME = { melange:'Melange', baraggia:'Baraggia', 'via-italia':'Via Italia', 'uva-rara':'Uva Rara', oasi:'Oasi', bessa:'Bessa', 'winter-tree':'Winter Tree', 'profumoir-1':'Profumoir 1', 'profumoir-2':'Profumoir 2', 'profumoir-3':'Profumoir 3', 'profumoir-4':'Profumoir 4', gelsomino:'Gelsomino', mimosa:'Mimosa', basilico:'Basilico', coconut:'Coconut', menta:'Menta', fico:'Fico', 'oud-sandalo':'Oud & Sandalo', tabacco:'Tabacco', 'winter-incense':'Winter Incense', frankincense:'Frankincense', 'incenso-indiano':'Incenso Indiano' };
+    vetroCols.forEach(col => CARDS.push({
+      id: 'vetro-' + slug(col.label),
+      name: 'Scent Glass', type: col.label, cat: 'glass',
+      desc: 'Candela in bicchiere di vetro colorato, lucido e brillante. Disponibile in tutte le nostre profumazioni e abbinabile al coperchio in legno.',
+      feats: [],
+      /* gallery: frontale → foto dei profumi associati (nuovi asset) → vista dall'alto */
+      imgs: [
+        { file: 'vetro/frontale/' + col.f, alt: 'vetro ' + col.label + ' — vista frontale' },
+        ...(GLASS_ASSOC[col.g] || []).map(pid => ({ file: PERF_FILE[pid], alt: 'vetro ' + col.label + ' · profumo ' + PERF_NAME[pid] })),
+        { file: 'vetro/alto/' + col.t, alt: 'vetro ' + col.label + ' — vista dall\'alto' },
+      ],
+      /* click → scheda Glass completa (descrizione, note, scelta profumi) */
+      link: 'glass-candles.html?c=' + col.g,
+      swatches: vetroCols.map(k => ({ label: k.label, hex: k.hex, cardId: 'vetro-' + slug(k.label), href: 'glass-candles.html?c=' + k.g })),
+      scent: true,
+    }));
+
+    /* ── GLASS LEOPARD ── */
+    CARDS.push({
+      id: 'glass-leopard',
+      name: 'Scent Glass', type: 'leopard', cat: 'glass',
+      desc: 'Candela in bicchiere di vetro con texture leopard. Disponibile in tutte le nostre profumazioni e abbinabile al coperchio in legno.',
+      feats: [],
+      imgs: [
+        { file: 'glass leopard/leo-front.webp',  alt: 'Scent Glass leopard — vista frontale' },
+        { file: 'glass leopard/leo-angolo.webp', alt: 'Scent Glass leopard — dettaglio' },
+        { file: 'glass leopard/leo-accesa.webp', alt: 'Scent Glass leopard — accesa' },
+      ],
+      scent: true,
+    });
+
+    /* ── METALLIC — 2 colori ── */
+    const metCols = [
+      { label: 'canna di fucile', hex: '#3f3f42', f: 'metallic.webp',       t: 'metallic2.webp' },
+      { label: 'viola',           hex: '#b06ab8', f: 'metallic viola.webp', t: 'metallic viola2.webp' },
+    ];
+    metCols.forEach(col => CARDS.push({
+      id: 'metallic-' + slug(col.label),
+      name: 'metallic', type: col.label, cat: 'metallic',
+      desc: 'Candela in bicchiere dalla finitura metallica. Disponibile in tutte le nostre profumazioni e abbinabile al coperchio in legno.',
+      feats: [],
+      imgs: [
+        { file: 'metallic/' + col.f, alt: 'metallic ' + col.label + ' — vista frontale' },
+        { file: 'metallic/' + col.t, alt: 'metallic ' + col.label + ' — vista dall\'alto' },
+      ],
+      swatches: metCols.map(k => ({ label: k.label, hex: k.hex, cardId: 'metallic-' + slug(k.label) })),
+      scent: true,
+    }));
+
+    /* ── CERI — in coda al catalogo ── */
+    CARDS.push({
+      id: 'candele-steariche',
+      name: 'candele steariche', type: '', cat: 'ceri',
+      desc: 'Candele classiche in stearina, essenziali e senza tempo.',
+      feats: [],
+      imgs: [
+        { file: 'candele steariche/candele steariche.webp',  alt: 'candele steariche — vista frontale' },
+        { file: 'candele steariche/candele steariche2.webp', alt: 'candele steariche — vista dall\'alto' },
+        { file: 'candele steariche/candele steariche3.webp', alt: 'candele steariche — dettaglio' },
+      ],
+      scent: false,
+    });
+
+    CARDS.push({
+      id: 'cero-avvento',
+      name: "cero dell'avvento", type: '', cat: 'ceri',
+      desc: 'Il cero della tradizione dell\'Avvento, disponibile in cinque colori: bianco, azzurro, rosso, rosa e viola.',
+      feats: [],
+      imgs: [
+        { file: "cero dell'avvento/cero dell'avvento bianco.webp",   alt: "cero dell'avvento bianco — vista frontale" },
+        { file: "cero dell'avvento/cero dell'avvento bianco2.webp",  alt: "cero dell'avvento bianco — vista dall'alto" },
+        { file: "cero dell'avvento/cero dell'avvento azzurro.webp",  alt: "cero dell'avvento azzurro — vista frontale" },
+        { file: "cero dell'avvento/cero dell'avvento azzurro2.webp", alt: "cero dell'avvento azzurro — vista dall'alto" },
+        { file: "cero dell'avvento/cero dell'avvento  rosso.webp",   alt: "cero dell'avvento rosso — vista frontale" },
+        { file: "cero dell'avvento/cero dell'avvento rosso2.webp",   alt: "cero dell'avvento rosso — vista dall'alto" },
+        { file: "cero dell'avvento/cero dell'avvento rosa.webp",     alt: "cero dell'avvento rosa — vista frontale" },
+        { file: "cero dell'avvento/cero dell'avvento rosa2.webp",    alt: "cero dell'avvento rosa — vista dall'alto" },
+        { file: "cero dell'avvento/cero dell'avvento viola.webp",    alt: "cero dell'avvento viola — vista frontale" },
+        { file: "cero dell'avvento/cero dell'avvento viola2.webp",   alt: "cero dell'avvento viola — vista dall'alto" },
+      ],
+      dots: [
+        { label: 'bianco',  hex: '#f0ede6', border: true, start: 0 },
+        { label: 'azzurro', hex: '#8ab8d9', start: 2 },
+        { label: 'rosso',   hex: '#b51212', start: 4 },
+        { label: 'rosa',    hex: '#d98a9e', start: 6 },
+        { label: 'viola',   hex: '#7a5a8c', start: 8 },
+      ],
+      scent: false,
+    });
+
+    /* cero ricaricabile: tre formati, tutti visibili in griglia e scambiabili nella scheda */
+    const ricShapes = [
+      { label: 'cubo',     f: 'cero ricaricabile cubo.webp',  t: 'cero ricaricabile cubo2.webp' },
+      { label: 'lungo',    f: 'cero ricaricabile lungo.webp', t: 'cero ricaricabile lungo2.webp' },
+      { label: 'classico', f: 'cero ricaricabile.webp',       t: 'cero ricaricabile2.webp' },
+    ];
+    ricShapes.forEach(sh => CARDS.push({
+      id: 'cero-ricaricabile-' + sh.label,
+      name: 'cero ricaricabile', type: sh.label, cat: 'ceri',
+      desc: 'Cero con ricarica sostituibile, pensato per durare nel tempo.',
+      feats: [],
+      imgs: [
+        { file: 'cero ricaricabile/' + sh.f, alt: 'cero ricaricabile ' + sh.label + ' — vista frontale' },
+        { file: 'cero ricaricabile/' + sh.t, alt: 'cero ricaricabile ' + sh.label + ' — vista dall\'alto' },
+      ],
+      variants: ricShapes.map(k => ({ label: k.label, cardId: 'cero-ricaricabile-' + k.label })),
+      scent: false,
+    }));
+
+    /* normalizza: percorso completo + codifica URL (v=4: kiwi/grigio ricolorati) */
+    CARDS.forEach(c => { c.imgs = c.imgs.map(im => ({ src: encodeURI(DIR + im.file) + '?v=4', alt: im.alt })); });
+
+    /* ── CARD nella griglia (ordine curato = ordine di definizione) ── */
+    const grid = document.querySelector('.product-grid');
+    const isTouch = window.matchMedia('(hover: none)').matches;
+
+    /* famiglia macro (per titoli di gruppo) dedotta dall'id */
+    const familyOf = id =>
+      id.startsWith('sand') ? 'sand' :
+      id.startsWith('rock') ? 'rock' :
+      id.startsWith('nilla') ? 'nilla' :
+      id.startsWith('vetro') ? 'vetro' :
+      id.startsWith('glass-leopard') ? 'glass-leopard' :
+      id.startsWith('metallic') ? 'metallic' : 'ceri';
+    const FAMILY_LABEL = {
+      'sand': 'Sand', 'rock': 'Rock', 'nilla': 'Nilla', 'vetro': 'Scent Glass',
+      'glass-leopard': 'Scent Glass · Leopard', 'metallic': 'Metallic', 'ceri': 'Ceri',
+    };
+    const FAMILY_ORDER = ['sand', 'rock', 'nilla', 'vetro', 'glass-leopard', 'metallic', 'ceri'];
+
+    /* intestazioni di gruppo (una per famiglia) */
+    FAMILY_ORDER.forEach(fam => {
+      const h = document.createElement('div');
+      h.className = 'hc-group-heading';
+      h.dataset.family = fam;
+      h.innerHTML = `<h2>${FAMILY_LABEL[fam]}</h2><span class="hc-group-rule"></span>`;
+      grid.appendChild(h);
+    });
+
+    /* ── breather editoriali (stile Loewe): grandi immagini d'atmosfera tra i gruppi ── */
+    const BREATHERS = [
+      { after: 'sand',  cls: 'single', imgs: [
+        { src: 'images/hc-breather-diptych.webp?v=1', alt: 'Cereria Cicogna — still life di atmosfera' } ] },
+      { after: 'nilla', cls: 'split', imgs: [
+        { src: 'images/hc-breather-red.webp?v=1',  alt: 'Candela rossa in luce radente' },
+        { src: 'images/hc-breather-tris.webp?v=1', alt: 'Tris di candele colorate su pietra' } ] },
+      { after: 'vetro', cls: 'single', imgs: [
+        { src: 'images/hc-breather-leopard.webp?v=1', alt: 'Scent Glass leopard — vista dall\'alto' } ] },
+    ];
+    BREATHERS.forEach(b => {
+      const d = document.createElement('div');
+      d.className = 'hc-breather ' + b.cls;
+      d.dataset.after = b.after;
+      d.setAttribute('aria-hidden', 'true');
+      d.innerHTML = b.imgs.map(im => `<img src="${im.src}" alt="${im.alt}" loading="lazy">`).join('');
+      grid.appendChild(d);
+    });
+    /* reveal morbido delle breather all'ingresso in viewport */
+    (function () {
+      const bands = Array.from(document.querySelectorAll('.hc-breather'));
+      if (!bands.length) return;
+      if (!('IntersectionObserver' in window)) { bands.forEach(b => b.classList.add('in')); return; }
+      const io = new IntersectionObserver((ents) => {
+        ents.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      bands.forEach(b => { b.classList.add('reveal-ready'); io.observe(b); });
+    })();
+
+    const MAX_DOTS = 3;
+    CARDS.forEach((c, rank) => {
+      const front = c.imgs[0], top = c.imgs[1] || c.imgs[0];
+      /* pallini: massimo 3 + chip "+N" che apre la scheda con tutti i colori */
+      let dotsHtml = '';
+      if (c.swatches?.length > 1) {
+        const own    = c.swatches.filter(sw => sw.cardId === c.id);
+        const others = c.swatches.filter(sw => sw.cardId !== c.id);
+        const shown  = [...own, ...others].slice(0, MAX_DOTS);
+        const extra  = c.swatches.length - shown.length;
+        dotsHtml = '<div class="card-pills">' + shown.map(sw =>
+            `<button class="card-pill${sw.cardId === c.id ? ' selected' : ''}"
+              style="background:${sw.hex}${sw.border ? ';border-color:rgba(26,22,18,.3)' : ''}"
+              data-target="${sw.cardId}"${sw.href ? ` data-href="${sw.href}"` : ''} title="${sw.label}" aria-label="Colore ${sw.label}"></button>`
+          ).join('')
+          + (extra > 0 ? `<button class="card-pill-more" data-more title="Tutti i colori" aria-label="Vedi tutti i colori">+${extra}</button>` : '')
+          + '</div>';
+      } else if (c.dots?.length) {
+        const shown = c.dots.slice(0, MAX_DOTS);
+        const extra = c.dots.length - shown.length;
+        dotsHtml = '<div class="card-pills">' + shown.map((d, i) =>
+            `<button class="card-pill${i === 0 ? ' selected' : ''}"
+              style="background:${d.hex}${d.border ? ';border-color:rgba(26,22,18,.3)' : ''}"
+              data-start="${d.start}" title="${d.label}" aria-label="Colore ${d.label}"></button>`
+          ).join('')
+          + (extra > 0 ? `<button class="card-pill-more" data-more title="Tutti i colori" aria-label="Vedi tutti i colori">+${extra}</button>` : '')
+          + '</div>';
+      }
+      const art = document.createElement('article');
+      art.className = 'product-card';
+      art.dataset.category = c.cat;
+      art.dataset.hcProd = c.id;
+      art.dataset.rank = rank;
+      art.dataset.family = familyOf(c.id);
+      art.dataset.gallery = JSON.stringify(c.imgs.map(im => im.src));
+      if (c.link) art.dataset.href = c.link;
+      art.innerHTML = `
+        <div class="product-card-visual" tabindex="0" role="button" aria-label="Apri scheda ${c.name}${c.type ? ' ' + c.type : ''}">
+          <img class="img-base" src="${front.src}" alt="${front.alt}" loading="lazy">
+          <img class="img-hover" src="${top.src}" alt="${top.alt}" loading="lazy" aria-hidden="true">
+          <span class="product-card-tag">Home Collection</span>
+          ${dotsHtml}
+        </div>
+        ${c.type ? `<p class="product-card-type">${c.type}</p>` : ''}
+        <h2 class="product-card-name">${c.name}</h2>
+        <button class="product-card-cta" aria-label="Scopri ${c.name}${c.type ? ' ' + c.type : ''}">Scopri il prodotto →</button>`;
+      grid.appendChild(art);
+    });
+
+    /* frecce ‹ › per sfogliare le foto direttamente sulla card */
+    if (window.initCardArrows) window.initCardArrows(grid);
+
+    /* ── precarica frontali + viste dall'alto ── */
+    const preload = srcs => srcs.forEach(s => { const i = new Image(); i.src = s; });
+    window.addEventListener('load', () => {
+      setTimeout(() => preload([...new Set(CARDS.flatMap(c => [c.imgs[0]?.src, c.imgs[1]?.src]).filter(Boolean))]), 400);
+    });
+
+    /* ── MODAL scheda prodotto ── */
+    const modal   = document.getElementById('hcm');
+    const imgEl   = document.getElementById('hcm-img');
+    const nameEl  = document.getElementById('hcm-name');
+    const descEl  = document.getElementById('hcm-desc');
+    const featsEl = document.getElementById('hcm-feats');
+    const thumbsEl= document.getElementById('hcm-thumbs');
+    const countEl = document.getElementById('hcm-count');
+    let gallery = [], idx = 0, lastFocus = null;
+
+    function show(i) {
+      idx = (i + gallery.length) % gallery.length;
+      imgEl.style.opacity = '0';
+      setTimeout(() => {
+        imgEl.src = gallery[idx].src;
+        imgEl.alt = gallery[idx].alt;
+        imgEl.style.opacity = '1';
+      }, 120);
+      countEl.textContent = (idx + 1) + ' / ' + gallery.length;
+      thumbsEl.querySelectorAll('.hcm-thumb').forEach((t, j) => t.classList.toggle('active', j === idx));
+    }
+
+    function setGallery(c, startIdx) {
+      gallery = c.imgs;
+      preload(gallery.map(g => g.src));
+      idx = Math.max(0, Math.min(startIdx || 0, gallery.length - 1));
+      thumbsEl.innerHTML = '';
+      gallery.forEach((g, j) => {
+        const b = document.createElement('button');
+        b.className = 'hcm-thumb' + (j === idx ? ' active' : '');
+        b.setAttribute('aria-label', g.alt);
+        b.innerHTML = `<img src="${g.src}" alt="" loading="lazy">`;
+        b.addEventListener('click', () => show(j));
+        thumbsEl.appendChild(b);
+      });
+      imgEl.src = gallery[idx].src;
+      imgEl.alt = gallery[idx].alt;
+      imgEl.style.opacity = '1';
+      countEl.textContent = (idx + 1) + ' / ' + gallery.length;
+    }
+
+    /* opzioni nella scheda: swatch colore, oppure pill di formato (cero ricaricabile) */
+    function buildSwatches(c) {
+      const lbl  = document.getElementById('hcm-group-label');
+      const wrap = document.getElementById('hcm-groups');
+      wrap.innerHTML = '';
+      if (c.swatches?.length) {
+        lbl.hidden = false;
+        lbl.textContent = 'Colore';
+        c.swatches.forEach(sw => {
+          const b = document.createElement('button');
+          b.className = 'hcm-swatch' + (sw.cardId === c.id ? ' active' : '');
+          b.style.background = sw.hex;
+          if (sw.border) b.style.borderColor = 'rgba(26,22,18,.35)';
+          b.title = sw.label;
+          b.setAttribute('aria-label', 'Colore ' + sw.label);
+          if (sw.cardId !== c.id) b.addEventListener('click', () => openModal(sw.cardId));
+          wrap.appendChild(b);
+        });
+        return;
+      }
+      if (c.variants?.length) {
+        lbl.hidden = false;
+        lbl.textContent = 'Formato';
+        c.variants.forEach(v => {
+          const b = document.createElement('button');
+          b.className = 'hcm-group-pill' + (v.cardId === c.id ? ' active' : '');
+          b.textContent = v.label;
+          b.setAttribute('aria-label', 'Formato ' + v.label);
+          if (v.cardId !== c.id) b.addEventListener('click', () => openModal(v.cardId));
+          wrap.appendChild(b);
+        });
+        return;
+      }
+      lbl.hidden = true;
+    }
+
+    /* scheda aperta e stoppino scelto */
+    let hcScelta = null, hcWick = 'cotone';
+
+    function hcVoce() {
+      if (!hcScelta) return null;
+      const stoppino = hcScelta.scent ? ' \u00b7 stoppino ' + hcWick : '';
+      return {
+        name: hcScelta.name + (hcScelta.type ? ' \u00b7 ' + hcScelta.type : '') + stoppino,
+        ref:  hcScelta.id + (hcScelta.scent ? '/' + hcWick.replace(' ', '-') : ''),
+        img:  hcScelta.imgs[0] && hcScelta.imgs[0].src,
+        cat:  'home-collection',
+        url:  location.pathname + '?prodotto=' + encodeURIComponent(hcScelta.id)
+      };
+    }
+
+    document.addEventListener('click', e => {
+      const w = e.target.closest('.hcm-wick-btn');
+      if (w) {
+        hcWick = w.dataset.wick;
+        document.querySelectorAll('.hcm-wick-btn').forEach(b => {
+          const on = b === w;
+          b.classList.toggle('is-on', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        return;
+      }
+      const scent = e.target.closest('#hcm-scent-link');
+      if (scent) {
+        /* la candela viaggia a parte: l'abbinamento deve funzionare
+           anche se non è ancora stata aggiunta alla richiesta */
+        if (window.CCSel && hcVoce()) CCSel.setCandelaInCorso(hcVoce());
+        return;
+      }
+      if (e.target.id === 'hcm-add') {
+        const v = hcVoce();
+        if (!v || !window.CCSel) return;
+        CCSel.aggiungiProdotto(v);
+        const btn = document.getElementById('hcm-add');
+        btn.textContent = 'Aggiunto \u2713';
+        document.getElementById('hcm-add-note').innerHTML =
+          'Nella richiesta: ' + CCSel.count() + (CCSel.count() === 1 ? ' prodotto' : ' prodotti') +
+          ' \u00b7 <a href="contatti.html">vai ai contatti \u2192</a>';
+        setTimeout(() => { btn.textContent = 'Aggiungi alla richiesta'; }, 2200);
+      }
+    });
+
+    function openModal(cardId, startIdx) {
+      const c = CARDS.find(x => x.id === cardId);
+      if (!c) return;
+      nameEl.textContent = c.name + (c.type ? ' — ' + c.type : '');
+      descEl.textContent = c.desc || '';
+      featsEl.innerHTML = (c.feats || []).map(f => `<li>${f}</li>`).join('');
+      document.getElementById('hcm-scent').hidden = !c.scent;
+      buildSwatches(c);
+      setGallery(c, startIdx);
+      /* prodotto mostrato: l'utente lo aggiunge esplicitamente alla richiesta */
+      hcScelta = c;
+      hcWick = 'cotone';
+      document.querySelectorAll('.hcm-wick-btn').forEach(b => {
+        const on = b.dataset.wick === hcWick;
+        b.classList.toggle('is-on', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      /* lo stoppino si sceglie sulle candele profumate */
+      document.getElementById('hcm-wick').hidden = !c.scent;
+      document.getElementById('hcm-add-note').textContent = '';
+      document.getElementById('hcm-add').textContent = 'Aggiungi alla richiesta';
+      const sl = document.getElementById('hcm-scent-link');
+      if (sl) sl.href = 'fragrance-library.html?candela=' + encodeURIComponent(c.id);
+      /* lo stoppino può cambiare dopo: l'href resta sull'id base, i dettagli
+         completi viaggiano con setCandelaInCorso() al momento del click */
+      if (!modal.classList.contains('open')) lastFocus = document.activeElement;
+      modal.classList.add('open');
+      modal.removeAttribute('aria-hidden');
+      document.body.classList.add('hcm-lock');
+      document.getElementById('hcm-close').focus();
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('hcm-lock');
+      if (lastFocus) lastFocus.focus();
+    }
+
+    document.getElementById('hcm-close').addEventListener('click', closeModal);
+    document.getElementById('hcm-backdrop').addEventListener('click', closeModal);
+    document.getElementById('hcm-prev').addEventListener('click', () => show(idx - 1));
+    document.getElementById('hcm-next').addEventListener('click', () => show(idx + 1));
+
+    /* tastiera: Esc chiude, frecce navigano */
+    document.addEventListener('keydown', e => {
+      if (!modal.classList.contains('open')) return;
+      if (e.key === 'Escape') closeModal();
+      else if (e.key === 'ArrowLeft')  show(idx - 1);
+      else if (e.key === 'ArrowRight') show(idx + 1);
+    });
+
+    /* swipe sul carosello */
+    let swipeX = null;
+    const wrap = document.getElementById('hcm-img-wrap');
+    wrap.addEventListener('touchstart', e => { swipeX = e.touches[0].clientX; }, { passive: true });
+    wrap.addEventListener('touchend', e => {
+      if (swipeX === null) return;
+      const dx = e.changedTouches[0].clientX - swipeX;
+      if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1));
+      swipeX = null;
+    }, { passive: true });
+
+    /* ── interazione card ── */
+    grid.addEventListener('click', e => {
+      /* pallino con link diretto (vetro → scheda Glass di quel colore) */
+      const linkPill = e.target.closest('button.card-pill[data-href]');
+      if (linkPill) { e.preventDefault(); e.stopPropagation(); window.location.href = linkPill.dataset.href; return; }
+
+      /* pallino variante colore (bicchieri): anteprima + scheda della variante */
+      const swPill = e.target.closest('button.card-pill[data-target]');
+      if (swPill) {
+        e.stopPropagation();
+        const card = swPill.closest('[data-hc-prod]');
+        const t = CARDS.find(x => x.id === swPill.dataset.target);
+        if (!t) return;
+        const base = card.querySelector('.img-base');
+        const hov  = card.querySelector('.img-hover');
+        base.src = t.imgs[0].src; base.alt = t.imgs[0].alt;
+        if (hov && t.imgs[1]) { hov.src = t.imgs[1].src; hov.alt = t.imgs[1].alt; }
+        const typeEl = card.querySelector('.product-card-type');
+        if (typeEl) typeEl.textContent = t.type || '';
+        card.querySelectorAll('button.card-pill').forEach(b => b.classList.remove('selected'));
+        swPill.classList.add('selected');
+        card.dataset.hcRedirect = t.id;
+        return;
+      }
+      /* chip "+N": apre la scheda con tutte le varianti */
+      const more = e.target.closest('button.card-pill-more[data-more]');
+      if (more) {
+        e.stopPropagation();
+        const card = more.closest('[data-hc-prod]');
+        if (card.dataset.href) { window.location.href = card.dataset.href; return; }
+        openModal(card.dataset.hcRedirect || card.dataset.hcProd, card.dataset.hcStart != null ? +card.dataset.hcStart : 0);
+        return;
+      }
+      /* pallino colore (solo cero dell'avvento): anteprima del colore scelto */
+      const pill = e.target.closest('button.card-pill[data-start]');
+      if (pill) {
+        e.stopPropagation();
+        const card = pill.closest('[data-hc-prod]');
+        const c = CARDS.find(x => x.id === card.dataset.hcProd);
+        const s = +pill.dataset.start;
+        const base = card.querySelector('.img-base');
+        const hov  = card.querySelector('.img-hover');
+        if (c.imgs[s])            { base.src = c.imgs[s].src;     base.alt = c.imgs[s].alt; }
+        if (hov && c.imgs[s + 1]) { hov.src = c.imgs[s + 1].src;  hov.alt = c.imgs[s + 1].alt; }
+        card.querySelectorAll('button.card-pill').forEach(b => b.classList.remove('selected'));
+        pill.classList.add('selected');
+        card.dataset.hcStart = s;
+        return;
+      }
+      const card = e.target.closest('[data-hc-prod]');
+      if (!card) return;
+      /* card con link (vetro): apre la scheda Glass completa */
+      if (card.dataset.href) { window.location.href = card.dataset.href; return; }
+      const onVisual = e.target.closest('.product-card-visual');
+      if (isTouch && onVisual) {
+        /* mobile: il tap sull'immagine alterna frontale/vista dall'alto */
+        onVisual.classList.toggle('show-alt');
+        return;
+      }
+      openModal(card.dataset.hcRedirect || card.dataset.hcProd, card.dataset.hcStart != null ? +card.dataset.hcStart : 0);
+    });
+
+    grid.addEventListener('keydown', e => {
+      if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('[data-hc-prod] .product-card-visual')) {
+        e.preventDefault();
+        const card = e.target.closest('[data-hc-prod]');
+        if (card.dataset.href) { window.location.href = card.dataset.href; return; }
+        openModal(card.dataset.hcRedirect || card.dataset.hcProd, card.dataset.hcStart != null ? +card.dataset.hcStart : 0);
+      }
+    });
+  })();
+  </script>
+  <script>
+    (function () {
+      const grid       = document.querySelector('.product-grid');
+      const allCards   = Array.from(document.querySelectorAll('.product-card'));
+      const headings   = Array.from(document.querySelectorAll('.hc-group-heading'));
+      const breathers  = Array.from(document.querySelectorAll('.hc-breather'));
+      const sortSel    = document.querySelector('select[aria-label="Ordina prodotti"]');
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const countEl    = document.querySelector('.cat-title sup');
+      let activeFilter = 'all';
+      let activeSort   = 'az';
+
+      const FAMILY_ORDER = ['sand', 'rock', 'nilla', 'vetro', 'glass-leopard', 'metallic', 'ceri'];
+
+      function getName(c) {
+        return (c.querySelector('.product-card-name')?.textContent || '').replace(/\s+/g, ' ').trim();
+      }
+      const getRank = c => c.dataset.rank != null ? +c.dataset.rank : 999;
+
+      function apply() {
+        /* le breather si mostrano solo nella vista "Tutti" (non nei filtri di famiglia) */
+        breathers.forEach(b => { b.style.display = 'none'; });
+        /* card visibili per il filtro attivo */
+        const visible = allCards.filter(c =>
+          activeFilter === 'all' || (c.dataset.category || '').includes(activeFilter));
+        const hidden = allCards.filter(c => !visible.includes(c));
+        hidden.forEach(c => { c.style.display = 'none'; });
+
+        /* raggruppa per famiglia, così ogni gruppo va a capo sotto il suo titolo */
+        let ord = 0, shownCount = 0;
+        FAMILY_ORDER.forEach(fam => {
+          const group = visible.filter(c => c.dataset.family === fam);
+          const heading = headings.find(h => h.dataset.family === fam);
+          if (!group.length) {
+            if (heading) { heading.style.display = 'none'; }
+            return;
+          }
+          /* ordinamento interno al gruppo: curato oppure A–Z / Z–A */
+          group.sort((a, b) => activeSort === 'az' ? getRank(a) - getRank(b)
+                             : activeSort === 'za' ? getRank(b) - getRank(a)
+                             : getRank(a) - getRank(b));
+          if (heading) { heading.style.display = 'flex'; heading.style.opacity = '1'; heading.style.order = ord++; }
+          group.forEach(c => {
+            const wasHidden = c.style.display === 'none';
+            c.style.display = '';
+            c.style.order = ord++;
+            if (wasHidden) gsap.fromTo(c,
+              { opacity: 0, y: 10 },
+              { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' });
+          });
+          /* banda editoriale dopo questa famiglia (solo in vista "Tutti") */
+          if (activeFilter === 'all') {
+            const br = breathers.find(x => x.dataset.after === fam);
+            if (br) { br.style.display = ''; br.style.order = ord++; }
+          }
+          shownCount += group.length;
+        });
+        if (countEl) countEl.textContent = shownCount;
+      }
+
+      filterBtns.forEach(btn => btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilter = btn.dataset.filter;
+        apply();
+      }));
+
+      if (sortSel) sortSel.addEventListener('change', () => {
+        activeSort = sortSel.value;
+        apply();
+      });
+
+      const urlC = new URLSearchParams(window.location.search).get('c');
+      if (urlC) {
+        const match = Array.from(filterBtns).find(b => b.dataset.filter === urlC);
+        if (match) {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          match.classList.add('active');
+          activeFilter = urlC;
+        }
+      }
+      apply();
+    })();
+
+    document.querySelectorAll('.product-card').forEach(card => {
+      const visual = card.querySelector('.product-card-visual');
+      const cta    = card.querySelector('.product-card-cta');
+      if (!visual || !cta) return;
+      const href = cta.getAttribute('href');
+      if (!href || href === '#') return;
+      visual.style.cursor = 'pointer';
+      visual.addEventListener('click', () => { window.location.href = href; });
+    });
+
+    /* ── LINES NAV POSITIONING ───────────────────── */
+  </script>
+
+  <script>
+  /* ── FEATURE PHOTO: 3 banner in dissolvenza ogni 1.5s ── */
+  (function () {
+    const imgs = document.querySelectorAll('.page-feature-photo .ff');
+    if (imgs.length < 2) return;
+    let i = 0;
+    setInterval(() => {
+      imgs[i].classList.remove('active');
+      i = (i + 1) % imgs.length;
+      imgs[i].classList.add('active');
+    }, 1500);
+  })();
+
+  </script>
+  <script src="js/i18n-pages.js?v=3"></script>
+  <script src="js/i18n.js?v=7"></script>
+  <script src="js/link-personale.js?v=6" defer></script>
+  <script src="assistant/widget/cc-assistant.js?v=12" data-endpoint="http://localhost:8787/api/chat" data-privacy="privacy.html" defer></script>
+</body>
+</html>

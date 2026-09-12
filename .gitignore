@@ -1,0 +1,14 @@
+.env
+node_modules/
+conversazioni.jsonl
+assistant/data/richieste.jsonl
+assistant/data/clienti.json
+assistant/data/chat.log
+
+# anteprime e prospetti di lavoro: non vanno pubblicati
+_*.html
+/tmp-*
+
+# configurazione locale della macchina, non va nel repo pubblico
+.claude/settings.local.json
+.DS_Store

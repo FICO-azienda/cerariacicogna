@@ -1,0 +1,1837 @@
+{
+ "generato": "2026-08-30",
+ "azienda": {
+  "nome": "Cereria Cicogna",
+  "ragione_sociale": "Industria Ceraria F.lli Cicogna srl",
+  "sede": "Via Damiano Chiesa 84, 20026 Novate Milanese (MI)",
+  "telefono": "02.35.43.707",
+  "email": "info@cerariacicogna.com",
+  "sito": "www.cerariacicogna.com",
+  "modello": "Vetrina B2B e B2C su richiesta: il sito non ha carrello ne' prezzi online. Ogni richiesta si chiude con un preventivo scritto dall'azienda.",
+  "linee": [
+   "Home Collection — candele profumate in bicchiere per la casa, catering, eventi e ristorazione",
+   "Linea Garden — citronelle, cera bianca e accessori per esterni",
+   "Articoli Liturgici — lumini, ceri, incensi, accessori e forniture per chiese e cimiteri",
+   "Private Label — candele con etichetta e fragranza del cliente",
+   "Personalizzazione — stampi dedicati e forme esclusive su progetto"
+  ]
+ },
+ "prodotti": [
+  {
+   "nome": "Lamp Oil 1 litro",
+   "linea": "Linea Garden",
+   "categoria": "ricariche",
+   "famiglia": "Ricarica",
+   "descrizione": "Accessorio",
+   "pagina": "product-olio-fiaccole.html",
+   "immagine": "images/acc-3-1.webp"
+  },
+  {
+   "nome": "Citronella 10h",
+   "linea": "Linea Garden",
+   "categoria": "citronelle",
+   "famiglia": "Citronella",
+   "descrizione": "Antizanzare · Uso esterno",
+   "pagina": "product-garden-candele-viewer.html#0",
+   "immagine": "images/cit-10bcit-1.webp"
+  },
+  {
+   "nome": "Citronella 30h",
+   "linea": "Linea Garden",
+   "categoria": "citronelle",
+   "famiglia": "Citronella",
+   "descrizione": "Antizanzare · Uso esterno",
+   "pagina": "product-garden-candele-viewer.html#1",
+   "immagine": "images/cit-30bcit-1.webp"
+  },
+  {
+   "nome": "Citronella in Alluminio",
+   "linea": "Linea Garden",
+   "categoria": "citronelle",
+   "famiglia": "Citronella",
+   "descrizione": "Contenitore in alluminio",
+   "pagina": "product-garden-candele-viewer.html#2",
+   "immagine": "images/cit-all190-1.webp"
+  },
+  {
+   "nome": "Citronella in Bicchiere",
+   "linea": "Linea Garden",
+   "categoria": "citronelle",
+   "famiglia": "Citronella",
+   "descrizione": "Contenitore in bicchiere",
+   "pagina": "product-garden-candele-viewer.html#3",
+   "immagine": "images/cit-bp80-1.webp"
+  },
+  {
+   "nome": "Coppa Citronella Grande",
+   "linea": "Linea Garden",
+   "categoria": "citronelle",
+   "famiglia": "Citronella",
+   "descrizione": "Coppa grande",
+   "pagina": "product-garden-candele-viewer.html#4",
+   "immagine": "images/cit-co190-1.webp"
+  },
+  {
+   "nome": "Coppa Citronella",
+   "linea": "Linea Garden",
+   "categoria": "citronelle",
+   "famiglia": "Citronella",
+   "descrizione": "Coppa",
+   "pagina": "product-garden-candele-viewer.html#5",
+   "immagine": "images/cit-co70-1.webp"
+  },
+  {
+   "nome": "Tealight Citronella",
+   "linea": "Linea Garden",
+   "categoria": "citronelle",
+   "famiglia": "Citronella",
+   "descrizione": "Formato tealight · Antizanzare",
+   "pagina": "product-garden-candele-viewer.html#6",
+   "immagine": "images/cit-tealight-1.webp"
+  },
+  {
+   "nome": "Twin Pack Maxi Citronella",
+   "linea": "Linea Garden",
+   "categoria": "citronelle",
+   "famiglia": "Citronella",
+   "descrizione": "Confezione doppia · All Maxi",
+   "pagina": "product-garden-candele-viewer.html#7",
+   "immagine": "images/cit-twinpack-1.webp"
+  },
+  {
+   "nome": "Luminara",
+   "linea": "Linea Garden",
+   "categoria": "cerabianca",
+   "famiglia": "Cera Bianca",
+   "descrizione": "Candela in cera bianca · Uso esterno",
+   "pagina": "product-garden-candele-viewer.html#8",
+   "immagine": "images/cerab-luminara-1.webp"
+  },
+  {
+   "nome": "Tlight",
+   "linea": "Linea Garden",
+   "categoria": "cerabianca",
+   "famiglia": "Cera Bianca",
+   "descrizione": "Cera bianca · Tealight",
+   "pagina": "product-garden-candele-viewer.html#9",
+   "immagine": "images/cerab-tlight-1.webp"
+  },
+  {
+   "nome": "Tlight Policarbonato",
+   "linea": "Linea Garden",
+   "categoria": "cerabianca",
+   "famiglia": "Cera Bianca",
+   "descrizione": "Cera bianca · Contenitore policarbonato",
+   "pagina": "product-garden-candele-viewer.html#10",
+   "immagine": "images/cerab-tlight-poli-1.webp"
+  },
+  {
+   "nome": "Baba",
+   "linea": "Linea Garden",
+   "categoria": "cerabianca",
+   "famiglia": "Cera Bianca",
+   "descrizione": "Cera bianca · Uso esterno",
+   "pagina": "product-garden-candele-viewer.html#11",
+   "immagine": "images/cerab-baba-1.webp"
+  },
+  {
+   "nome": "BVR",
+   "linea": "Linea Garden",
+   "categoria": "cerabianca",
+   "famiglia": "Cera Bianca",
+   "descrizione": "Cera bianca · Uso esterno",
+   "pagina": "product-garden-candele-viewer.html#12",
+   "immagine": "images/cerab-bvr-1.webp"
+  },
+  {
+   "nome": "Maxi Tlights",
+   "linea": "Linea Garden",
+   "categoria": "cerabianca",
+   "famiglia": "Cera Bianca",
+   "descrizione": "Cera bianca · Tealight grande",
+   "pagina": "product-garden-candele-viewer.html#13",
+   "immagine": "images/cerab-maxi-tlight-1.webp"
+  },
+  {
+   "nome": "Padelle Romane",
+   "linea": "Linea Garden",
+   "categoria": "cerabianca",
+   "famiglia": "Cera Bianca",
+   "descrizione": "Cera bianca · Misure 12 · 16 · 19 cm",
+   "pagina": "product-garden-candele-viewer.html#14",
+   "immagine": "images/cerab-padella-romana-12.webp"
+  },
+  {
+   "nome": "Padella Romana Alluminio",
+   "linea": "Linea Garden",
+   "categoria": "cerabianca",
+   "famiglia": "Cera Bianca",
+   "descrizione": "Cera bianca · Contenitore in alluminio",
+   "pagina": "product-garden-candele-viewer.html#15",
+   "immagine": "images/cerab-padella-alluminio-1.webp"
+  },
+  {
+   "nome": "10 Trasparente",
+   "linea": "Linea Garden",
+   "categoria": "cerabianca",
+   "famiglia": "Cera Bianca",
+   "descrizione": "Cera bianca · Bicchiere trasparente",
+   "pagina": "product-garden-candele-viewer.html#16",
+   "immagine": "images/cerab-trasparente-1.webp"
+  },
+  {
+   "nome": "Lumino Giubileo",
+   "linea": "Articoli Liturgici",
+   "categoria": "lumini",
+   "famiglia": "Lumini",
+   "descrizione": "Edizione speciale Anno Santo",
+   "pagina": "product-lit-lumini.html#0",
+   "immagine": "images/lit-lum-giubileo-front.webp"
+  },
+  {
+   "nome": "Fiamma Policarbonato",
+   "linea": "Articoli Liturgici",
+   "categoria": "lumini",
+   "famiglia": "Lumini",
+   "descrizione": "Contenitore in policarbonato trasparente",
+   "pagina": "product-lit-lumini.html#1",
+   "immagine": "images/lit-lum-fiamma-pc-front.webp"
+  },
+  {
+   "nome": "Fiamma Moplen",
+   "linea": "Articoli Liturgici",
+   "categoria": "lumini",
+   "famiglia": "Lumini",
+   "descrizione": "Contenitore in moplen opalino",
+   "pagina": "product-lit-lumini.html#2",
+   "immagine": "images/lit-lum-fiamma-mp-front.webp"
+  },
+  {
+   "nome": "Rubino",
+   "linea": "Articoli Liturgici",
+   "categoria": "lumini",
+   "famiglia": "Lumini",
+   "descrizione": "Calice decorativo · capacità standard",
+   "pagina": "product-lit-lumini.html#3",
+   "immagine": "images/lit-lum-rubino-front.webp"
+  },
+  {
+   "nome": "Rubino 2",
+   "linea": "Articoli Liturgici",
+   "categoria": "lumini",
+   "famiglia": "Lumini",
+   "descrizione": "Calice decorativo · formato ridotto",
+   "pagina": "product-lit-lumini.html#4",
+   "immagine": "images/lit-lum-rub2-front.webp"
+  },
+  {
+   "nome": "Rubino 1000",
+   "linea": "Articoli Liturgici",
+   "categoria": "lumini",
+   "famiglia": "Lumini",
+   "descrizione": "Calice decorativo · grande capacità",
+   "pagina": "product-lit-lumini.html#5",
+   "immagine": "images/lit-lum-rub1000-front.webp"
+  },
+  {
+   "nome": "Lumino ART 5",
+   "linea": "Articoli Liturgici",
+   "categoria": "lumini",
+   "famiglia": "Lumini",
+   "descrizione": "",
+   "pagina": "product-lit-lumini.html#6",
+   "immagine": "images/lit-lum-art5-front.webp"
+  },
+  {
+   "nome": "Lumino ART 7",
+   "linea": "Articoli Liturgici",
+   "categoria": "lumini",
+   "famiglia": "Lumini",
+   "descrizione": "",
+   "pagina": "product-lit-lumini.html#7",
+   "immagine": "images/lit-lum-art7-front.webp"
+  },
+  {
+   "nome": "Lumino ART 10",
+   "linea": "Articoli Liturgici",
+   "categoria": "lumini",
+   "famiglia": "Lumini",
+   "descrizione": "",
+   "pagina": "product-lit-lumini.html#8",
+   "immagine": "images/lit-lum-art10-front.webp"
+  },
+  {
+   "nome": "Lumino ART 15",
+   "linea": "Articoli Liturgici",
+   "categoria": "lumini",
+   "famiglia": "Lumini",
+   "descrizione": "",
+   "pagina": "product-lit-lumini.html#9",
+   "immagine": "images/lit-lum-art15-front.webp"
+  },
+  {
+   "nome": "Lumino ART 20",
+   "linea": "Articoli Liturgici",
+   "categoria": "lumini",
+   "famiglia": "Lumini",
+   "descrizione": "",
+   "pagina": "product-lit-lumini.html#10",
+   "immagine": "images/lit-lum-art20-front.webp"
+  },
+  {
+   "nome": "Lumino ART 30",
+   "linea": "Articoli Liturgici",
+   "categoria": "lumini",
+   "famiglia": "Lumini",
+   "descrizione": "",
+   "pagina": "product-lit-lumini.html#11",
+   "immagine": "images/lit-lum-art30-front.webp"
+  },
+  {
+   "nome": "Lumino ART 50",
+   "linea": "Articoli Liturgici",
+   "categoria": "lumini",
+   "famiglia": "Lumini",
+   "descrizione": "",
+   "pagina": "product-lit-lumini.html#12",
+   "immagine": "images/lit-lum-art50-front.webp"
+  },
+  {
+   "nome": "Lumino ART 60",
+   "linea": "Articoli Liturgici",
+   "categoria": "lumini",
+   "famiglia": "Lumini",
+   "descrizione": "Bianca & Gialla",
+   "pagina": "product-lit-lumini.html#13",
+   "immagine": "images/lit-lum-art60-front.webp"
+  },
+  {
+   "nome": "Lumino ART 30 Bianca & Gialla",
+   "linea": "Articoli Liturgici",
+   "categoria": "lumini",
+   "famiglia": "Lumini",
+   "descrizione": "Bianca & Gialla",
+   "pagina": "product-lit-lumini.html#14",
+   "immagine": "images/lit-lum-art30bg-front.webp"
+  },
+  {
+   "nome": "Accendilumini e Streghe",
+   "linea": "Articoli Liturgici",
+   "categoria": "accessori-candele",
+   "famiglia": "Accessori",
+   "descrizione": "Accensione sicura di lumini e ceri",
+   "pagina": "product-lit-accessori.html#0",
+   "immagine": "images/acc-0-1.webp"
+  },
+  {
+   "nome": "Accendini Ricaricabili",
+   "linea": "Articoli Liturgici",
+   "categoria": "accessori-candele",
+   "famiglia": "Accessori",
+   "descrizione": "Ricaricabili · Uso professionale",
+   "pagina": "product-lit-accessori.html#1",
+   "immagine": "images/acc-1-1.webp"
+  },
+  {
+   "nome": "Flambeaux da Processione",
+   "linea": "Articoli Liturgici",
+   "categoria": "accessori-candele",
+   "famiglia": "Accessori",
+   "descrizione": "Carta e plastica · Vari colori",
+   "pagina": "product-lit-accessori.html#2",
+   "immagine": "images/acc-2-2.webp"
+  },
+  {
+   "nome": "Lamp Oil",
+   "linea": "Articoli Liturgici",
+   "categoria": "accessori-candele",
+   "famiglia": "Accessori",
+   "descrizione": "Olio ad alta purezza per lucerne",
+   "pagina": "product-lit-accessori.html#3",
+   "immagine": "images/acc-3-1.webp"
+  },
+  {
+   "nome": "Portacandele",
+   "linea": "Articoli Liturgici",
+   "categoria": "accessori-candele",
+   "famiglia": "Accessori",
+   "descrizione": "Avorio e marrone · Per lumini standard",
+   "pagina": "product-lit-accessori.html#4",
+   "immagine": "images/acc-4-1.webp"
+  },
+  {
+   "nome": "Ricariche per Lucerne",
+   "linea": "Articoli Liturgici",
+   "categoria": "accessori-candele",
+   "famiglia": "Accessori",
+   "descrizione": "Piccola, media e grande",
+   "pagina": "product-lit-accessori.html#5",
+   "immagine": "images/acc-5-1.webp"
+  },
+  {
+   "nome": "Bicchiere del Santissimo",
+   "linea": "Articoli Liturgici",
+   "categoria": "accessori-candele",
+   "famiglia": "Accessori",
+   "descrizione": "Kit completo per il Tabernacolo",
+   "pagina": "product-lit-accessori.html#6",
+   "immagine": "images/acc-6-1.webp"
+  },
+  {
+   "nome": "Carboncini per Incensiere",
+   "linea": "Articoli Liturgici",
+   "categoria": "accessori-altri",
+   "famiglia": "Accessori",
+   "descrizione": "Per incensiere · Accensione rapida",
+   "pagina": "product-lit-accessori.html#7",
+   "immagine": "images/acc-7-1.webp"
+  },
+  {
+   "nome": "Boccette Acqua Santa",
+   "linea": "Articoli Liturgici",
+   "categoria": "accessori-altri",
+   "famiglia": "Accessori",
+   "descrizione": "Per fedeli e celebrazioni",
+   "pagina": "product-lit-accessori.html#8",
+   "immagine": "images/acc-8-1.webp"
+  },
+  {
+   "nome": "Incensi Liturgici",
+   "linea": "Articoli Liturgici",
+   "categoria": "accessori-altri",
+   "famiglia": "Accessori",
+   "descrizione": "Grani e polvere · Vari profumi",
+   "pagina": "product-lit-accessori.html#9",
+   "immagine": "images/acc-9-1.webp"
+  },
+  {
+   "nome": "Ostie e Particole",
+   "linea": "Articoli Liturgici",
+   "categoria": "accessori-altri",
+   "famiglia": "Accessori",
+   "descrizione": "Standard e per celiaci",
+   "pagina": "product-lit-accessori.html#10",
+   "immagine": "images/acc-10-1.webp"
+  },
+  {
+   "nome": "Vini da Messa",
+   "linea": "Articoli Liturgici",
+   "categoria": "accessori-altri",
+   "famiglia": "Accessori",
+   "descrizione": "Pellegrino e Vinci",
+   "pagina": "product-lit-accessori.html#11",
+   "immagine": "images/acc-11-1.webp"
+  },
+  {
+   "nome": "Lumino Carta",
+   "linea": "Articoli Liturgici",
+   "categoria": "lumini",
+   "famiglia": "Novità · Interamente in carta",
+   "descrizione": "Il primo lumino votivo con contenitore interamente in carta ignifuga e rifinitura in rafia naturale: niente plastica né metallo, solo materiali di origine vegetale e interamente compostabili. Una risposta innovativa e sostenibile alla devozione di ogni giorno. · Contenitore in carta ignifuga, senza plastica · Interamente compostabile · Bordo in rafia naturale · Cera vegetale",
+   "pagina": "liturgico.html",
+   "immagine": "images/lit-lumino-carta-1.webp"
+  },
+  {
+   "nome": "5 Angelo",
+   "linea": "Articoli Liturgici",
+   "categoria": "angelo",
+   "famiglia": "Linea Angelo",
+   "descrizione": "Candela liturgica · altezza 5 cm",
+   "varianti": [
+    "Bianco",
+    "Rosso",
+    "Blu",
+    "Trasparente"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-ang-5-bianco.webp"
+  },
+  {
+   "nome": "7 Angelo",
+   "linea": "Articoli Liturgici",
+   "categoria": "angelo",
+   "famiglia": "Linea Angelo",
+   "descrizione": "Candela liturgica · altezza 7 cm",
+   "varianti": [
+    "Bianco",
+    "Rosso",
+    "Blu",
+    "Trasparente"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-ang-7-bianco.webp"
+  },
+  {
+   "nome": "10 Angelo",
+   "linea": "Articoli Liturgici",
+   "categoria": "angelo",
+   "famiglia": "Linea Angelo",
+   "descrizione": "Candela liturgica · altezza 10 cm",
+   "varianti": [
+    "Frontale"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-ang-10-frontale.webp"
+  },
+  {
+   "nome": "20 Angelo",
+   "linea": "Articoli Liturgici",
+   "categoria": "angelo",
+   "famiglia": "Linea Angelo",
+   "descrizione": "Candela liturgica · altezza 20 cm",
+   "varianti": [
+    "Bianco",
+    "Rosso",
+    "Blu",
+    "Trasparente"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-ang-20-bianco.webp"
+  },
+  {
+   "nome": "20 Coperchio Pioggia Angelo",
+   "linea": "Articoli Liturgici",
+   "categoria": "angelo",
+   "famiglia": "Linea Angelo",
+   "descrizione": "Candela con coperchio a pioggia · altezza 20 cm",
+   "varianti": [
+    "Bianco",
+    "Rosso",
+    "Blu",
+    "Trasparente"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-ang-20cp-bianco.webp"
+  },
+  {
+   "nome": "30 Angelo",
+   "linea": "Articoli Liturgici",
+   "categoria": "angelo",
+   "famiglia": "Linea Angelo",
+   "descrizione": "Candela liturgica · altezza 30 cm · Ø 65 mm",
+   "varianti": [
+    "Bianco",
+    "Rosso",
+    "Blu",
+    "Trasparente"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-ang-30-bianco.webp"
+  },
+  {
+   "nome": "40 Angelo",
+   "linea": "Articoli Liturgici",
+   "categoria": "angelo",
+   "famiglia": "Linea Angelo",
+   "descrizione": "Candela liturgica · altezza 40 cm · Ø 65 mm",
+   "varianti": [
+    "Bianco",
+    "Rosso",
+    "Blu",
+    "Trasparente"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-ang-40-bianco.webp"
+  },
+  {
+   "nome": "40 Moplen",
+   "linea": "Articoli Liturgici",
+   "categoria": "angelo",
+   "famiglia": "Linea Angelo",
+   "descrizione": "Candela in moplen · altezza 40 cm",
+   "varianti": [
+    "Papa",
+    "Arcangelo"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-ang-40m-papa.webp"
+  },
+  {
+   "nome": "50 Angelo",
+   "linea": "Articoli Liturgici",
+   "categoria": "angelo",
+   "famiglia": "Linea Angelo",
+   "descrizione": "Candela liturgica · altezza 50 cm · Ø 65 mm",
+   "varianti": [
+    "Bianco",
+    "Rosso",
+    "Blu",
+    "Trasparente"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-ang-50-bianco.webp"
+  },
+  {
+   "nome": "60 L Angelo",
+   "linea": "Articoli Liturgici",
+   "categoria": "angelo",
+   "famiglia": "Linea Angelo",
+   "descrizione": "Candela liturgica · altezza 60 cm · Ø 68 mm",
+   "varianti": [
+    "Bianco",
+    "Rossa",
+    "Gialla",
+    "Blu",
+    "Trasparente"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-ang-60l-bianco.webp"
+  },
+  {
+   "nome": "30/5 Aure",
+   "linea": "Articoli Liturgici",
+   "categoria": "aure",
+   "famiglia": "Linea Aure",
+   "descrizione": "Candela aure · altezza 30 cm · Ø 65 mm",
+   "varianti": [
+    "Trasparente",
+    "Rossa"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-aur-30x5-trasparente.webp"
+  },
+  {
+   "nome": "40/5 Aure",
+   "linea": "Articoli Liturgici",
+   "categoria": "aure",
+   "famiglia": "Linea Aure",
+   "descrizione": "Candela aure · altezza 40 cm · Ø 65 mm",
+   "varianti": [
+    "Trasparente",
+    "Rossa"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-aur-40x5-trasparente.webp"
+  },
+  {
+   "nome": "50/5 Aure",
+   "linea": "Articoli Liturgici",
+   "categoria": "aure",
+   "famiglia": "Linea Aure",
+   "descrizione": "Candela aure · altezza 50 cm · Ø 65 mm",
+   "varianti": [
+    "Trasparente",
+    "Rossa"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-aur-50x5-trasparente.webp"
+  },
+  {
+   "nome": "60/5",
+   "linea": "Articoli Liturgici",
+   "categoria": "aure",
+   "famiglia": "Linea Aure",
+   "descrizione": "Candela aure · altezza 60 cm · Ø 65 mm",
+   "varianti": [
+    "Bianco",
+    "Rosso"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-aur-60x5-bianco.webp"
+  },
+  {
+   "nome": "60/8",
+   "linea": "Articoli Liturgici",
+   "categoria": "aure",
+   "famiglia": "Linea Aure",
+   "descrizione": "Candela aure · altezza 60 cm · Ø 68 mm",
+   "varianti": [
+    "Trasparente",
+    "Rossa"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-aur-60x8-trasparente.webp"
+  },
+  {
+   "nome": "Lampada Tirolese",
+   "linea": "Articoli Liturgici",
+   "categoria": "aure",
+   "famiglia": "Linea Aure",
+   "descrizione": "Lampada in stile tirolese",
+   "varianti": [
+    "Modello unico"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-aur-lampada.webp"
+  },
+  {
+   "nome": "20 P",
+   "linea": "Articoli Liturgici",
+   "categoria": "papa",
+   "famiglia": "Linea Papa",
+   "descrizione": "Candela Papa · altezza 20 cm · Ø 58 mm",
+   "varianti": [
+    "Bianco",
+    "Rosso",
+    "Blu",
+    "Trasparente"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-pap-20-bianco.webp"
+  },
+  {
+   "nome": "30 P",
+   "linea": "Articoli Liturgici",
+   "categoria": "papa",
+   "famiglia": "Linea Papa",
+   "descrizione": "Candela Papa · altezza 30 cm · Ø 58 mm",
+   "varianti": [
+    "Bianco",
+    "Rosso",
+    "Blu",
+    "Trasparente"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-pap-30-bianco.webp"
+  },
+  {
+   "nome": "30 P Stretto",
+   "linea": "Articoli Liturgici",
+   "categoria": "papa",
+   "famiglia": "Linea Papa",
+   "descrizione": "Candela Papa · altezza 30 cm · Ø 54,5 mm",
+   "varianti": [
+    "Bianco"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-pap-30-stretto.webp"
+  },
+  {
+   "nome": "50 P",
+   "linea": "Articoli Liturgici",
+   "categoria": "papa",
+   "famiglia": "Linea Papa",
+   "descrizione": "Candela Papa · altezza 50 cm · Ø 58 mm",
+   "varianti": [
+    "Bianco",
+    "Rossa",
+    "Blu",
+    "Trasparente"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-pap-50-bianco.webp"
+  },
+  {
+   "nome": "50 P Stretto",
+   "linea": "Articoli Liturgici",
+   "categoria": "papa",
+   "famiglia": "Linea Papa",
+   "descrizione": "Candela Papa · altezza 50 cm · Ø 54,5 mm",
+   "varianti": [
+    "Bianco"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-pap-50-stretto.webp"
+  },
+  {
+   "nome": "60/8 P",
+   "linea": "Articoli Liturgici",
+   "categoria": "papa",
+   "famiglia": "Linea Papa",
+   "descrizione": "Candela Papa · altezza 60 cm · Ø 68 mm",
+   "varianti": [
+    "Bianco",
+    "Rosso",
+    "Blu",
+    "Trasparente"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-pap-60x8-bianco.webp"
+  },
+  {
+   "nome": "70 T",
+   "linea": "Articoli Liturgici",
+   "categoria": "papa",
+   "famiglia": "Linea Papa",
+   "descrizione": "Candela Papa · altezza 70 cm · Ø 68 mm",
+   "varianti": [
+    "Bianco"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-pap-70t-bianco.webp"
+  },
+  {
+   "nome": "80 P",
+   "linea": "Articoli Liturgici",
+   "categoria": "papa",
+   "famiglia": "Linea Papa",
+   "descrizione": "Candela Papa · altezza 80 cm · Ø 80 mm",
+   "varianti": [
+    "Bianco",
+    "Rosso",
+    "Blu",
+    "Trasparente"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-pap-80-bianco.webp"
+  },
+  {
+   "nome": "100 P",
+   "linea": "Articoli Liturgici",
+   "categoria": "papa",
+   "famiglia": "Linea Papa",
+   "descrizione": "Candela Papa · altezza 100 cm · Ø 80 mm",
+   "varianti": [
+    "Bianco",
+    "Rosso",
+    "Blu",
+    "Trasparente"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-pap-100-bianco.webp"
+  },
+  {
+   "nome": "Lumino Cilindrico",
+   "linea": "Articoli Liturgici",
+   "categoria": "elettriche",
+   "famiglia": "Candele Elettriche",
+   "descrizione": "Lumino elettrico a batteria · forma cilindrica · fiamma LED",
+   "varianti": [
+    "Rosso"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-ele-cilindrico-rosso.webp"
+  },
+  {
+   "nome": "San Giovanni Paolo II",
+   "linea": "Articoli Liturgici",
+   "categoria": "elettriche",
+   "famiglia": "Candele Elettriche",
+   "descrizione": "Lumino elettrico a batteria · forma cilindrica · fiamma LED",
+   "varianti": [
+    "Bianco"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-ele-cilindrico-papa.webp"
+  },
+  {
+   "nome": "Rubino Elettrico",
+   "linea": "Articoli Liturgici",
+   "categoria": "elettriche",
+   "famiglia": "Candele Elettriche",
+   "descrizione": "Lumino elettrico a batteria · forma a botte · fiamma LED",
+   "varianti": [
+    "Modello unico"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-ele-botte.webp"
+  },
+  {
+   "nome": "Lumino Annuale Elettrico",
+   "linea": "Articoli Liturgici",
+   "categoria": "elettriche",
+   "famiglia": "Candele Elettriche",
+   "descrizione": "Candela elettrica a batteria · forma classica · fiamma LED",
+   "varianti": [
+    "Modello unico"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-ele-classica.webp"
+  },
+  {
+   "nome": "Sand",
+   "linea": "Home Collection",
+   "categoria": "sand",
+   "famiglia": "Bicchiere effetto sabbia",
+   "descrizione": "Candela in bicchiere effetto sabbia. Disponibile in tutte le nostre profumazioni e abbinabile al coperchio in legno.",
+   "varianti": [
+    "bianco",
+    "grigio",
+    "marrone"
+   ],
+   "misure": [
+    "piccolo",
+    "medio",
+    "grande"
+   ],
+   "pagina": "home-collection.html",
+   "immagine": "images/hc/sand bianco/sand bianco medio.webp",
+   "varianti_immagini": [
+    {
+     "file": "images/hc/sand bianco/sand bianco grande.webp",
+     "parole": [
+      "sand",
+      "bianco",
+      "grande"
+     ]
+    },
+    {
+     "file": "images/hc/sand bianco/sand bianco medio.webp",
+     "parole": [
+      "sand",
+      "bianco",
+      "medio"
+     ]
+    },
+    {
+     "file": "images/hc/sand bianco/sand bianco piccolo.webp",
+     "parole": [
+      "sand",
+      "bianco",
+      "piccolo"
+     ]
+    },
+    {
+     "file": "images/hc/sand grigio/sand grigio grande.webp",
+     "parole": [
+      "sand",
+      "grigio",
+      "grande"
+     ]
+    },
+    {
+     "file": "images/hc/sand grigio/sand grigio medio.webp",
+     "parole": [
+      "sand",
+      "grigio",
+      "medio"
+     ]
+    },
+    {
+     "file": "images/hc/sand grigio/sand grigio piccolo.webp",
+     "parole": [
+      "sand",
+      "grigio",
+      "piccolo"
+     ]
+    },
+    {
+     "file": "images/hc/sand marrone/sand marrone grande.webp",
+     "parole": [
+      "sand",
+      "marrone",
+      "grande"
+     ]
+    },
+    {
+     "file": "images/hc/sand marrone/sand marrone medio.webp",
+     "parole": [
+      "sand",
+      "marrone",
+      "medio"
+     ]
+    },
+    {
+     "file": "images/hc/sand marrone/sand marrone piccolo.webp",
+     "parole": [
+      "sand",
+      "marrone",
+      "piccolo"
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Rock",
+   "linea": "Home Collection",
+   "categoria": "rock",
+   "famiglia": "Bicchiere effetto roccia",
+   "descrizione": "Candela in bicchiere effetto roccia. Disponibile in tutte le nostre profumazioni e abbinabile al coperchio in legno.",
+   "misure": [
+    "piccolo",
+    "grande"
+   ],
+   "pagina": "home-collection.html",
+   "immagine": "images/hc/roccia/roccia grande.webp",
+   "varianti_immagini": [
+    {
+     "file": "images/hc/roccia/roccia grande.webp",
+     "parole": [
+      "roccia",
+      "grande"
+     ]
+    },
+    {
+     "file": "images/hc/roccia/roccia piccolo.webp",
+     "parole": [
+      "roccia",
+      "piccolo"
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Nilla",
+   "linea": "Home Collection",
+   "categoria": "glass",
+   "famiglia": "Vetro colorato, finitura materica",
+   "descrizione": "Candela in bicchiere di vetro colorato dalla finitura materica. Disponibile in tutte le nostre profumazioni e abbinabile al coperchio in legno.",
+   "varianti": [
+    "bianco",
+    "coffee",
+    "grigio",
+    "kiwi",
+    "rosso scuro",
+    "viola"
+   ],
+   "misure": [
+    "piccolo (8)",
+    "medio (10)",
+    "grande (12)"
+   ],
+   "pagina": "product-hc-nilla.html",
+   "immagine": "images/hc/nilla 10/nilla frontale/nilla frontale coffee.webp",
+   "varianti_immagini": [
+    {
+     "file": "images/hc/nilla 8/nilla frontale/nilla frontale bianco.webp",
+     "parole": [
+      "nilla",
+      "8",
+      "frontale",
+      "bianco"
+     ]
+    },
+    {
+     "file": "images/hc/nilla 8/nilla frontale/nilla frontale coffee.webp",
+     "parole": [
+      "nilla",
+      "8",
+      "frontale",
+      "coffee"
+     ]
+    },
+    {
+     "file": "images/hc/nilla 8/nilla frontale/nilla frontale grigio.webp",
+     "parole": [
+      "nilla",
+      "8",
+      "frontale",
+      "grigio"
+     ]
+    },
+    {
+     "file": "images/hc/nilla 8/nilla frontale/nilla frontale kiwi.webp",
+     "parole": [
+      "nilla",
+      "8",
+      "frontale",
+      "kiwi"
+     ]
+    },
+    {
+     "file": "images/hc/nilla 8/nilla frontale/nilla frontale rosso scuro.webp",
+     "parole": [
+      "nilla",
+      "8",
+      "frontale",
+      "rosso",
+      "scuro"
+     ]
+    },
+    {
+     "file": "images/hc/nilla 8/nilla frontale/nilla frontale viola.webp",
+     "parole": [
+      "nilla",
+      "8",
+      "frontale",
+      "viola"
+     ]
+    },
+    {
+     "file": "images/hc/nilla 10/nilla frontale/nilla frontale bianco.webp",
+     "parole": [
+      "nilla",
+      "10",
+      "frontale",
+      "bianco"
+     ]
+    },
+    {
+     "file": "images/hc/nilla 10/nilla frontale/nilla frontale coffee.webp",
+     "parole": [
+      "nilla",
+      "10",
+      "frontale",
+      "coffee"
+     ]
+    },
+    {
+     "file": "images/hc/nilla 10/nilla frontale/nilla frontale grigio.webp",
+     "parole": [
+      "nilla",
+      "10",
+      "frontale",
+      "grigio"
+     ]
+    },
+    {
+     "file": "images/hc/nilla 10/nilla frontale/nilla frontale kiwi.webp",
+     "parole": [
+      "nilla",
+      "10",
+      "frontale",
+      "kiwi"
+     ]
+    },
+    {
+     "file": "images/hc/nilla 10/nilla frontale/nilla frontale rosso scuro.webp",
+     "parole": [
+      "nilla",
+      "10",
+      "frontale",
+      "rosso",
+      "scuro"
+     ]
+    },
+    {
+     "file": "images/hc/nilla 10/nilla frontale/nilla frontale viola.webp",
+     "parole": [
+      "nilla",
+      "10",
+      "frontale",
+      "viola"
+     ]
+    },
+    {
+     "file": "images/hc/nilla 12/nilla frontale/nilla frontale bianco.webp",
+     "parole": [
+      "nilla",
+      "12",
+      "frontale",
+      "bianco"
+     ]
+    },
+    {
+     "file": "images/hc/nilla 12/nilla frontale/nilla frontale coffee.webp",
+     "parole": [
+      "nilla",
+      "12",
+      "frontale",
+      "coffee"
+     ]
+    },
+    {
+     "file": "images/hc/nilla 12/nilla frontale/nilla frontale grigio.webp",
+     "parole": [
+      "nilla",
+      "12",
+      "frontale",
+      "grigio"
+     ]
+    },
+    {
+     "file": "images/hc/nilla 12/nilla frontale/nilla frontale kiwi.webp",
+     "parole": [
+      "nilla",
+      "12",
+      "frontale",
+      "kiwi"
+     ]
+    },
+    {
+     "file": "images/hc/nilla 12/nilla frontale/nilla frontale rosso scuro.webp",
+     "parole": [
+      "nilla",
+      "12",
+      "frontale",
+      "rosso",
+      "scuro"
+     ]
+    },
+    {
+     "file": "images/hc/nilla 12/nilla frontale/nilla frontale viola.webp",
+     "parole": [
+      "nilla",
+      "12",
+      "frontale",
+      "viola"
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Scent Glass",
+   "linea": "Home Collection",
+   "categoria": "glass",
+   "famiglia": "Vetro colorato lucido, stoppino in legno",
+   "descrizione": "Candela in bicchiere di vetro colorato, lucido e brillante, con stoppino in legno. Ogni colore arriva con una profumazione d'autore di serie, sostituibile con un'altra delle nostre famiglie olfattive. Abbinabile al coperchio in legno.",
+   "varianti": [
+    "rosso",
+    "arancio",
+    "azzurro",
+    "blu",
+    "giallo",
+    "marrone trasparente",
+    "nero",
+    "rosso trasparente",
+    "verde",
+    "leopard"
+   ],
+   "pagina": "glass-candles.html",
+   "immagine": "images/glass-green-front.webp"
+  },
+  {
+   "nome": "Metallic",
+   "linea": "Home Collection",
+   "categoria": "metallic",
+   "famiglia": "Bicchiere finitura metallica",
+   "descrizione": "Candela in bicchiere dalla finitura metallica. Disponibile in tutte le nostre profumazioni e abbinabile al coperchio in legno.",
+   "varianti": [
+    "canna di fucile",
+    "viola"
+   ],
+   "pagina": "home-collection.html",
+   "immagine": "images/hc/metallic/metallic.webp",
+   "varianti_immagini": [
+    {
+     "file": "images/hc/metallic/metallic viola.webp",
+     "parole": [
+      "metallic",
+      "viola"
+     ]
+    },
+    {
+     "file": "images/hc/metallic/metallic.webp",
+     "parole": [
+      "metallic"
+     ]
+    }
+   ]
+  },
+  {
+   "nome": "Candele steariche",
+   "linea": "Home Collection",
+   "categoria": "ceri",
+   "famiglia": "Ceri",
+   "descrizione": "Candele classiche in stearina, essenziali e senza tempo.",
+   "pagina": "home-collection.html",
+   "immagine": "images/hc/candele steariche/candele steariche.webp"
+  },
+  {
+   "nome": "Cero dell'Avvento",
+   "linea": "Home Collection",
+   "categoria": "ceri",
+   "famiglia": "Ceri",
+   "descrizione": "Il cero della tradizione dell'Avvento, disponibile in cinque colori: bianco, azzurro, rosso, rosa e viola.",
+   "varianti": [
+    "bianco",
+    "azzurro",
+    "rosso",
+    "rosa",
+    "viola"
+   ],
+   "pagina": "home-collection.html",
+   "immagine": "images/hc/cero dell'avvento/cero dell'avvento azzurro.webp"
+  },
+  {
+   "nome": "Cero ricaricabile",
+   "linea": "Home Collection",
+   "categoria": "ceri",
+   "famiglia": "Ceri",
+   "descrizione": "Cero con ricarica sostituibile, pensato per durare nel tempo.",
+   "varianti": [
+    "cubo",
+    "lungo",
+    "classico"
+   ],
+   "pagina": "home-collection.html",
+   "immagine": "images/hc/cero ricaricabile/cero ricaricabile cubo.webp"
+  }
+ ],
+ "profumi": [
+  {
+   "nome": "Melange",
+   "famiglia_olfattiva": "powdery floral woody",
+   "note": [
+    "Cipria",
+    "Magnolia",
+    "Cedro",
+    "Cannella"
+   ],
+   "descrizione": "Profumo delicato, cipriato, morbido e raffinato, con una parte floreale luminosa e un fondo caldo-legnoso.",
+   "immagine": "images/perfume-melange.webp",
+   "pagina": "fragrance-library.html"
+  },
+  {
+   "nome": "Baraggia",
+   "famiglia_olfattiva": "gourmand spicy",
+   "note": [
+    "Rhum",
+    "Caffè tostato",
+    "Garofano",
+    "Cannella"
+   ],
+   "descrizione": "Profumo caldo, liquoroso, intenso e speziato, costruito su caffè tostato, rhum e spezie profonde.",
+   "immagine": "images/perfume-baraggia.webp",
+   "pagina": "fragrance-library.html"
+  },
+  {
+   "nome": "Via Italia",
+   "famiglia_olfattiva": "citrus floral green",
+   "note": [
+    "Vetiver",
+    "Fiori",
+    "Agrumi"
+   ],
+   "descrizione": "Profumo fresco, elegante e mediterraneo, con agrumi luminosi, fiori delicati e una base verde di vetiver.",
+   "immagine": "images/perfume-via-italia.webp",
+   "pagina": "fragrance-library.html"
+  },
+  {
+   "nome": "Uva Rara",
+   "famiglia_olfattiva": "fruity citrus",
+   "note": [
+    "Uva americana",
+    "Rabarbaro",
+    "Cassis",
+    "Bergamotto"
+   ],
+   "descrizione": "Profumo fruttato, intenso ma raffinato, con uva scura, cassis e rabarbaro bilanciati dalla freschezza del bergamotto.",
+   "immagine": "images/perfume-uva-rara.webp",
+   "pagina": "fragrance-library.html"
+  },
+  {
+   "nome": "Oasi",
+   "famiglia_olfattiva": "floral",
+   "note": [
+    "Fiori"
+   ],
+   "descrizione": "Profumo floreale, luminoso, morbido e arioso, pensato come un bouquet pulito ed elegante.",
+   "immagine": "images/perfume-oasi.webp",
+   "pagina": "fragrance-library.html"
+  },
+  {
+   "nome": "Bessa",
+   "famiglia_olfattiva": "woody oriental",
+   "note": [
+    "Oud",
+    "Sandalo",
+    "Cannella",
+    "Vaniglia",
+    "Liquirizia"
+   ],
+   "descrizione": "Profumo caldo, orientale, avvolgente e profondo, con legni preziosi, spezie dolci e accenti scuri.",
+   "immagine": "images/perfume-bessa.webp",
+   "pagina": "fragrance-library.html"
+  },
+  {
+   "nome": "Winter Tree",
+   "famiglia_olfattiva": "woody green balsamic",
+   "note": [
+    "Ginepro",
+    "Aghi di pino",
+    "Zenzero",
+    "Muschio",
+    "Eucalipto",
+    "Cedro"
+   ],
+   "descrizione": "Profumo boschivo, fresco e balsamico, ispirato a un paesaggio invernale di conifere, muschio ed eucalipto.",
+   "immagine": "images/perfume-winter-tree.webp",
+   "pagina": "fragrance-library.html"
+  },
+  {
+   "nome": "Profumoir 1",
+   "famiglia_olfattiva": "green aromatic",
+   "note": [
+    "Fico",
+    "Menta",
+    "Pepe bianco"
+   ],
+   "descrizione": "Profumo verde, fresco e contemporaneo, dominato dal fico con accenti aromatici di menta e una nota pulita di pepe bianco.",
+   "immagine": "images/perfume-profumoir-1.webp",
+   "pagina": "fragrance-library.html"
+  },
+  {
+   "nome": "Profumoir 2",
+   "famiglia_olfattiva": "marine citrus",
+   "note": [
+    "Bergamotto",
+    "Sale",
+    "Cassis",
+    "Alga marina"
+   ],
+   "descrizione": "Profumo marino, minerale e luminoso, con bergamotto, sale, alga marina e una sfumatura fruttata di cassis.",
+   "immagine": "images/perfume-profumoir-2.webp",
+   "pagina": "fragrance-library.html"
+  },
+  {
+   "nome": "Profumoir 3",
+   "famiglia_olfattiva": "floral amber",
+   "note": [
+    "Gardenia",
+    "Rosa",
+    "Gelsomino",
+    "Ambra"
+   ],
+   "descrizione": "Profumo floreale, cremoso ed elegante, con fiori bianchi, rosa e una base calda ambrata.",
+   "immagine": "images/perfume-profumoir-3.webp",
+   "pagina": "fragrance-library.html"
+  },
+  {
+   "nome": "Profumoir 4",
+   "famiglia_olfattiva": "citrus woody",
+   "note": [
+    "Arancia amara",
+    "Zenzero",
+    "Cedro",
+    "Betulla",
+    "Ebano"
+   ],
+   "descrizione": "Profumo agrumato-legnoso, deciso e sofisticato, con arancia amara, zenzero e legni scuri.",
+   "immagine": "images/perfume-profumoir-4.webp",
+   "pagina": "fragrance-library.html"
+  },
+  {
+   "nome": "Gelsomino",
+   "famiglia_olfattiva": "floral",
+   "note": [
+    "Gelsomino"
+   ],
+   "descrizione": "Profumo floreale bianco, puro, luminoso e delicato.",
+   "immagine": "images/scentlib-gelsomino.webp",
+   "pagina": "fragrance-library.html"
+  },
+  {
+   "nome": "Mimosa",
+   "famiglia_olfattiva": "floral powdery",
+   "note": [
+    "Mimosa"
+   ],
+   "descrizione": "Profumo solare, morbido, cipriato e primaverile.",
+   "immagine": "images/scentlib-mimosa.webp",
+   "pagina": "fragrance-library.html"
+  },
+  {
+   "nome": "Basilico",
+   "famiglia_olfattiva": "green aromatic",
+   "note": [
+    "Basilico"
+   ],
+   "descrizione": "Profumo verde, fresco, aromatico e mediterraneo.",
+   "immagine": "images/scentlib-basilico.webp",
+   "pagina": "fragrance-library.html"
+  },
+  {
+   "nome": "Coconut",
+   "famiglia_olfattiva": "creamy tropical",
+   "note": [
+    "Cocco"
+   ],
+   "descrizione": "Profumo morbido, cremoso, pulito e leggermente tropicale.",
+   "immagine": "images/scentlib-cocco.webp",
+   "pagina": "fragrance-library.html"
+  },
+  {
+   "nome": "Menta",
+   "famiglia_olfattiva": "green fresh",
+   "note": [
+    "Menta"
+   ],
+   "descrizione": "Profumo fresco, brillante, verde e aromatico.",
+   "immagine": "images/scentlib-menta.webp",
+   "pagina": "fragrance-library.html"
+  },
+  {
+   "nome": "Fico",
+   "famiglia_olfattiva": "green fruity",
+   "note": [
+    "Fico"
+   ],
+   "descrizione": "Profumo verde, lattiginoso, mediterraneo e naturale.",
+   "immagine": "images/scentlib-fico.webp",
+   "pagina": "fragrance-library.html"
+  },
+  {
+   "nome": "Oud & Sandalo",
+   "famiglia_olfattiva": "woody",
+   "note": [
+    "Oud",
+    "Sandalo"
+   ],
+   "descrizione": "Profumo legnoso, caldo, profondo e sofisticato.",
+   "immagine": "images/scentlib-sandalo.webp",
+   "pagina": "fragrance-library.html"
+  },
+  {
+   "nome": "Tabacco",
+   "famiglia_olfattiva": "tobacco woody",
+   "note": [
+    "Tabacco"
+   ],
+   "descrizione": "Profumo caldo, secco, avvolgente e materico.",
+   "immagine": "images/scentlib-tabacco.webp",
+   "pagina": "fragrance-library.html"
+  },
+  {
+   "nome": "Winter Incense",
+   "famiglia_olfattiva": "resin incense",
+   "note": [
+    "Winter Incense"
+   ],
+   "descrizione": "Profumo fumoso, invernale, resinoso e meditativo.",
+   "immagine": "images/scentlib-winter-incense.webp",
+   "pagina": "fragrance-library.html"
+  },
+  {
+   "nome": "Frankincense",
+   "famiglia_olfattiva": "resin",
+   "note": [
+    "Frankincense"
+   ],
+   "descrizione": "Profumo sacro, resinoso, minerale e pulito.",
+   "immagine": "images/scentlib-frankincense.webp",
+   "pagina": "fragrance-library.html"
+  },
+  {
+   "nome": "Incenso Indiano",
+   "famiglia_olfattiva": "incense spicy",
+   "note": [
+    "Incenso indiano"
+   ],
+   "descrizione": "Profumo speziato, mistico, caldo e profondo.",
+   "immagine": "images/scentlib-incenso-indiano.webp",
+   "pagina": "fragrance-library.html"
+  }
+ ],
+ "note_olfattive": [
+  {
+   "nome": "Cipria",
+   "famiglia": "powdery",
+   "descrizione": "Nota morbida, pulita, vellutata e cipriata."
+  },
+  {
+   "nome": "Magnolia",
+   "famiglia": "floral",
+   "descrizione": "Fiore elegante, chiaro, morbido e raffinato."
+  },
+  {
+   "nome": "Cedro",
+   "famiglia": "woody citrus",
+   "descrizione": "Nota legnosa, secca, pulita e luminosa."
+  },
+  {
+   "nome": "Cannella",
+   "famiglia": "spicy",
+   "descrizione": "Spezia calda, avvolgente e dolcemente intensa."
+  },
+  {
+   "nome": "Rhum",
+   "famiglia": "gourmand liquor",
+   "descrizione": "Nota liquorosa, ambrata, calda e profonda."
+  },
+  {
+   "nome": "Caffè tostato",
+   "famiglia": "gourmand",
+   "descrizione": "Nota scura, tostata, intensa e materica."
+  },
+  {
+   "nome": "Garofano",
+   "famiglia": "spicy floral",
+   "descrizione": "Nota speziata, calda e leggermente floreale."
+  },
+  {
+   "nome": "Vetiver",
+   "famiglia": "green woody",
+   "descrizione": "Nota verde, secca, terrosa ed elegante."
+  },
+  {
+   "nome": "Fiori",
+   "famiglia": "floral",
+   "descrizione": "Accordo floreale morbido, luminoso e arioso."
+  },
+  {
+   "nome": "Agrumi",
+   "famiglia": "citrus",
+   "descrizione": "Nota fresca, brillante, mediterranea e pulita."
+  },
+  {
+   "nome": "Uva americana",
+   "famiglia": "fruity",
+   "descrizione": "Nota fruttata, intensa, dolce-acidula e riconoscibile."
+  },
+  {
+   "nome": "Rabarbaro",
+   "famiglia": "fruity green",
+   "descrizione": "Nota acidula, verde, croccante e moderna."
+  },
+  {
+   "nome": "Cassis",
+   "famiglia": "fruity dark berry",
+   "descrizione": "Nota di bacca scura, intensa, fruttata e sofisticata."
+  },
+  {
+   "nome": "Bergamotto",
+   "famiglia": "citrus",
+   "descrizione": "Agrume elegante, fresco, luminoso e raffinato."
+  },
+  {
+   "nome": "Oud",
+   "famiglia": "woody oriental",
+   "descrizione": "Legno profondo, prezioso, scuro e avvolgente."
+  },
+  {
+   "nome": "Sandalo",
+   "famiglia": "woody creamy",
+   "descrizione": "Legno morbido, cremoso, caldo e vellutato."
+  },
+  {
+   "nome": "Vaniglia",
+   "famiglia": "gourmand",
+   "descrizione": "Nota dolce, morbida, calda e rotonda."
+  },
+  {
+   "nome": "Liquirizia",
+   "famiglia": "dark gourmand",
+   "descrizione": "Nota scura, dolce-amara, intensa e originale."
+  },
+  {
+   "nome": "Ginepro",
+   "famiglia": "balsamic green",
+   "descrizione": "Nota fresca, resinosa, verde e boschiva."
+  },
+  {
+   "nome": "Aghi di pino",
+   "famiglia": "balsamic green",
+   "descrizione": "Nota verde, resinosa, fredda e naturale."
+  },
+  {
+   "nome": "Zenzero",
+   "famiglia": "spicy fresh",
+   "descrizione": "Nota speziata, fresca, luminosa e vibrante."
+  },
+  {
+   "nome": "Muschio",
+   "famiglia": "green earthy",
+   "descrizione": "Nota umida, verde, terrosa e naturale."
+  },
+  {
+   "nome": "Eucalipto",
+   "famiglia": "aromatic balsamic",
+   "descrizione": "Nota fresca, balsamica, pulita e respirante."
+  },
+  {
+   "nome": "Fico",
+   "famiglia": "green fruity",
+   "descrizione": "Nota verde, lattiginosa, fruttata e mediterranea."
+  },
+  {
+   "nome": "Menta",
+   "famiglia": "green fresh",
+   "descrizione": "Nota fresca, brillante, pulita e aromatica."
+  },
+  {
+   "nome": "Pepe bianco",
+   "famiglia": "spicy",
+   "descrizione": "Nota speziata, pulita, secca e moderna."
+  },
+  {
+   "nome": "Sale",
+   "famiglia": "marine mineral",
+   "descrizione": "Nota minerale, marina, secca e luminosa."
+  },
+  {
+   "nome": "Alga marina",
+   "famiglia": "marine",
+   "descrizione": "Nota acquatica, salina, naturale e minerale."
+  },
+  {
+   "nome": "Gardenia",
+   "famiglia": "floral white",
+   "descrizione": "Fiore bianco cremoso, elegante e luminoso."
+  },
+  {
+   "nome": "Rosa",
+   "famiglia": "floral",
+   "descrizione": "Nota floreale elegante, romantica e vellutata."
+  },
+  {
+   "nome": "Gelsomino",
+   "famiglia": "floral white",
+   "descrizione": "Fiore bianco luminoso, sensuale e raffinato."
+  },
+  {
+   "nome": "Ambra",
+   "famiglia": "amber resin",
+   "descrizione": "Nota calda, resinosa, morbida e avvolgente."
+  },
+  {
+   "nome": "Arancia amara",
+   "famiglia": "citrus bitter",
+   "descrizione": "Agrume amaro, brillante, elegante e deciso."
+  },
+  {
+   "nome": "Betulla",
+   "famiglia": "woody",
+   "descrizione": "Legno chiaro, secco, naturale e pulito."
+  },
+  {
+   "nome": "Ebano",
+   "famiglia": "dark woody",
+   "descrizione": "Legno scuro, profondo, elegante e intenso."
+  },
+  {
+   "nome": "Mimosa",
+   "famiglia": "floral powdery",
+   "descrizione": "Fiore solare, morbido, cipriato e luminoso."
+  },
+  {
+   "nome": "Basilico",
+   "famiglia": "green aromatic",
+   "descrizione": "Nota aromatica, verde, fresca e mediterranea."
+  },
+  {
+   "nome": "Cocco",
+   "famiglia": "creamy tropical",
+   "descrizione": "Nota cremosa, pulita, morbida e solare."
+  },
+  {
+   "nome": "Tabacco",
+   "famiglia": "tobacco",
+   "descrizione": "Nota secca, calda, elegante e avvolgente."
+  },
+  {
+   "nome": "Winter Incense",
+   "famiglia": "incense",
+   "descrizione": "Incenso freddo, fumoso, resinoso e meditativo."
+  },
+  {
+   "nome": "Frankincense",
+   "famiglia": "resin",
+   "descrizione": "Resina sacra, luminosa, minerale e spirituale."
+  },
+  {
+   "nome": "Incenso indiano",
+   "famiglia": "incense spicy",
+   "descrizione": "Incenso caldo, speziato, profondo e mistico."
+  }
+ ],
+ "scent_glass": [
+  {
+   "nome": "Scent Glass Orange",
+   "colore": "Orange",
+   "profumo_di_serie": "Citrus Spice",
+   "famiglia_olfattiva": "Agrumata speziata",
+   "note": "Arancia amara · Zenzero · Cedro · Betulla · Ebano",
+   "descrizione": "Un agrume vibrante che si scalda tra le spezie: l’arancia amara incontra lo zenzero, poi cedro, betulla ed ebano per un finale caldo e avvolgente.",
+   "profumi_alternativi": [
+    "Via Italia",
+    "Profumoir 4",
+    "Basilico"
+   ],
+   "pagina": "glass-candles.html#orange",
+   "immagine": "images/glass-orange-front.webp"
+  },
+  {
+   "nome": "Scent Glass Light Blue",
+   "colore": "Light Blue",
+   "profumo_di_serie": "Sea Salt",
+   "famiglia_olfattiva": "Marina · acquatica",
+   "note": "Bergamotto · Sale · Cassis · Alga marina",
+   "descrizione": "La brezza salmastra dell’onda: bergamotto e sale marino si aprono sul cassis e sull’alga, per una freschezza pulita e ariosa.",
+   "profumi_alternativi": [
+    "Profumoir 2",
+    "Coconut",
+    "Menta"
+   ],
+   "pagina": "glass-candles.html#lightblue",
+   "immagine": "images/glass-lightblue-front.webp"
+  },
+  {
+   "nome": "Scent Glass Blue",
+   "colore": "Blue",
+   "profumo_di_serie": "Winter Tree",
+   "famiglia_olfattiva": "Legnosa balsamica",
+   "note": "Ginepro · Pino · Aghi · Muschio · Eucalipto · Cedro",
+   "descrizione": "Il respiro del bosco d’inverno: ginepro e pino tra aghi resinosi, muschio ed eucalipto, chiusi da un cedro netto e profondo.",
+   "profumi_alternativi": [
+    "Winter Tree",
+    "Frankincense"
+   ],
+   "pagina": "glass-candles.html#blue",
+   "immagine": "images/glass-blue-front.webp"
+  },
+  {
+   "nome": "Scent Glass Yellow",
+   "colore": "Yellow",
+   "profumo_di_serie": "Mimosa Sun",
+   "famiglia_olfattiva": "Floreale",
+   "note": "Mimosa",
+   "descrizione": "Un soliflore luminoso: la mimosa in piena fioritura, dolce e cipriata, come un raggio di sole di primavera.",
+   "profumi_alternativi": [
+    "Mimosa",
+    "Melange",
+    "Gelsomino",
+    "Oasi"
+   ],
+   "pagina": "glass-candles.html#yellow",
+   "immagine": "images/glass-yellow-front.webp"
+  },
+  {
+   "nome": "Scent Glass Amber",
+   "colore": "Amber",
+   "profumo_di_serie": "Baraggia",
+   "famiglia_olfattiva": "Gourmand speziata",
+   "note": "Rhum · Caffè tostato · Garofano · Cannella",
+   "descrizione": "Un abbraccio goloso: rhum e caffè tostato speziati da garofano e cannella, densi, caldi e confortevoli.",
+   "profumi_alternativi": [
+    "Baraggia",
+    "Oud & Sandalo",
+    "Tabacco"
+   ],
+   "pagina": "glass-candles.html#amber",
+   "immagine": "images/glass-amber-front.webp"
+  },
+  {
+   "nome": "Scent Glass Black",
+   "colore": "Black",
+   "profumo_di_serie": "Incense",
+   "famiglia_olfattiva": "Ambrata · incenso",
+   "note": "Incenso · Frankincense · Incenso indiano · Tabacco",
+   "descrizione": "Sacro e meditativo: incenso e frankincense si fondono all’incenso indiano su un fondo di tabacco, fumoso e avvolgente.",
+   "profumi_alternativi": [
+    "Winter Incense",
+    "Incenso Indiano",
+    "Frankincense",
+    "Bessa"
+   ],
+   "pagina": "glass-candles.html#black",
+   "immagine": "images/glass-black-front.webp"
+  },
+  {
+   "nome": "Scent Glass Dark Red",
+   "colore": "Dark Red",
+   "profumo_di_serie": "Uva Rara",
+   "famiglia_olfattiva": "Fruttata",
+   "note": "Uva americana · Rabarbaro · Cassis · Bergamotto",
+   "descrizione": "Succosa e inaspettata: uva americana e cassis con un guizzo di rabarbaro e bergamotto, come una vendemmia matura.",
+   "profumi_alternativi": [
+    "Uva Rara",
+    "Bessa",
+    "Tabacco"
+   ],
+   "pagina": "glass-candles.html#darkred",
+   "immagine": "images/glass-darkred-front.webp"
+  },
+  {
+   "nome": "Scent Glass Red",
+   "colore": "Red",
+   "profumo_di_serie": "Bessa",
+   "famiglia_olfattiva": "Legnosa orientale",
+   "note": "Oud · Sandalo · Cannella · Vaniglia · Liquirizia",
+   "descrizione": "Intenso e prezioso: oud e sandalo avvolti da cannella, vaniglia e liquirizia, per un carattere orientale e sensuale.",
+   "profumi_alternativi": [
+    "Profumoir 3",
+    "Bessa",
+    "Oasi"
+   ],
+   "pagina": "glass-candles.html#red",
+   "immagine": "images/glass-red-front.webp"
+  },
+  {
+   "nome": "Scent Glass Green",
+   "colore": "Green",
+   "profumo_di_serie": "Fig Leaf",
+   "famiglia_olfattiva": "Verde · fresca",
+   "note": "Fico · Menta · Pepe bianco",
+   "descrizione": "La freschezza dell’orto mediterraneo: fico verde e menta con un tocco di pepe bianco, nitido e vivo.",
+   "profumi_alternativi": [
+    "Profumoir 1",
+    "Fico",
+    "Menta",
+    "Basilico"
+   ],
+   "pagina": "glass-candles.html#green",
+   "immagine": "images/glass-green-front.webp"
+  }
+ ]
+}

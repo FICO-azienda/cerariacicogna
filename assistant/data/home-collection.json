@@ -1,0 +1,129 @@
+[
+ {
+  "nome": "Sand",
+  "linea": "Home Collection",
+  "categoria": "sand",
+  "famiglia": "Bicchiere effetto sabbia",
+  "descrizione": "Candela in bicchiere effetto sabbia. Disponibile in tutte le nostre profumazioni e abbinabile al coperchio in legno.",
+  "varianti": [
+   "bianco",
+   "grigio",
+   "marrone"
+  ],
+  "misure": [
+   "piccolo",
+   "medio",
+   "grande"
+  ],
+  "pagina": "home-collection.html",
+  "immagine": "images/hc/sand bianco/sand bianco medio.webp"
+ },
+ {
+  "nome": "Rock",
+  "linea": "Home Collection",
+  "categoria": "rock",
+  "famiglia": "Bicchiere effetto roccia",
+  "descrizione": "Candela in bicchiere effetto roccia. Disponibile in tutte le nostre profumazioni e abbinabile al coperchio in legno.",
+  "misure": [
+   "piccolo",
+   "grande"
+  ],
+  "pagina": "home-collection.html",
+  "immagine": "images/hc/roccia/roccia grande.webp"
+ },
+ {
+  "nome": "Nilla",
+  "linea": "Home Collection",
+  "categoria": "glass",
+  "famiglia": "Vetro colorato, finitura materica",
+  "descrizione": "Candela in bicchiere di vetro colorato dalla finitura materica. Disponibile in tutte le nostre profumazioni e abbinabile al coperchio in legno.",
+  "varianti": [
+   "bianco",
+   "coffee",
+   "grigio",
+   "kiwi",
+   "rosso scuro",
+   "viola"
+  ],
+  "misure": [
+   "piccolo (8)",
+   "medio (10)",
+   "grande (12)"
+  ],
+  "pagina": "product-hc-nilla.html",
+  "immagine": "images/hc/nilla 10/nilla frontale/nilla frontale coffee.webp"
+ },
+ {
+  "nome": "Scent Glass",
+  "linea": "Home Collection",
+  "categoria": "glass",
+  "famiglia": "Vetro colorato lucido, stoppino in legno",
+  "descrizione": "Candela in bicchiere di vetro colorato, lucido e brillante, con stoppino in legno. Ogni colore arriva con una profumazione d'autore di serie, sostituibile con un'altra delle nostre famiglie olfattive. Abbinabile al coperchio in legno.",
+  "varianti": [
+   "rosso",
+   "arancio",
+   "azzurro",
+   "blu",
+   "giallo",
+   "marrone trasparente",
+   "nero",
+   "rosso trasparente",
+   "verde",
+   "leopard"
+  ],
+  "pagina": "glass-candles.html",
+  "immagine": "images/glass-green-front.webp"
+ },
+ {
+  "nome": "Metallic",
+  "linea": "Home Collection",
+  "categoria": "metallic",
+  "famiglia": "Bicchiere finitura metallica",
+  "descrizione": "Candela in bicchiere dalla finitura metallica. Disponibile in tutte le nostre profumazioni e abbinabile al coperchio in legno.",
+  "varianti": [
+   "canna di fucile",
+   "viola"
+  ],
+  "pagina": "home-collection.html",
+  "immagine": "images/hc/metallic/metallic.webp"
+ },
+ {
+  "nome": "Candele steariche",
+  "linea": "Home Collection",
+  "categoria": "ceri",
+  "famiglia": "Ceri",
+  "descrizione": "Candele classiche in stearina, essenziali e senza tempo.",
+  "pagina": "home-collection.html",
+  "immagine": "images/hc/candele steariche/candele steariche.webp"
+ },
+ {
+  "nome": "Cero dell'Avvento",
+  "linea": "Home Collection",
+  "categoria": "ceri",
+  "famiglia": "Ceri",
+  "descrizione": "Il cero della tradizione dell'Avvento, disponibile in cinque colori: bianco, azzurro, rosso, rosa e viola.",
+  "varianti": [
+   "bianco",
+   "azzurro",
+   "rosso",
+   "rosa",
+   "viola"
+  ],
+  "pagina": "home-collection.html",
+  "immagine": "images/hc/cero dell'avvento/cero dell'avvento azzurro.webp"
+ },
+ {
+  "nome": "Cero ricaricabile",
+  "linea": "Home Collection",
+  "categoria": "ceri",
+  "famiglia": "Ceri",
+  "descrizione": "Cero con ricarica sostituibile, pensato per durare nel tempo.",
+  "varianti": [
+   "cubo",
+   "lungo",
+   "classico"
+  ],
+  "pagina": "home-collection.html",
+  "immagine": "images/hc/cero ricaricabile/cero ricaricabile cubo.webp"
+ }
+]

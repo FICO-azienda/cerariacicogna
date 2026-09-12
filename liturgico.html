@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articoli Liturgici — Cereria Cicogna</title>
+  <meta name="description" content="Ceri, lumini da chiesa e da cimitero, incensi, carboncini, particole e accessori liturgici. Artigianalità al servizio del sacro.">
+  <!-- anteprime social e indirizzo canonico -->
+  <link rel="canonical" href="https://www.cerariacicogna.com/liturgico.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cereria Cicogna">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:url" content="https://www.cerariacicogna.com/liturgico.html">
+  <meta property="og:title" content="Articoli Liturgici — Cereria Cicogna">
+  <meta property="og:description" content="Ceri, lumini da chiesa e da cimitero, incensi, carboncini, particole e accessori liturgici. Artigianalità al servizio del sacro.">
+  <meta property="og:image" content="https://www.cerariacicogna.com/images/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Articoli Liturgici — Cereria Cicogna">
+  <meta name="twitter:description" content="Ceri, lumini da chiesa e da cimitero, incensi, carboncini, particole e accessori liturgici. Artigianalità al servizio del sacro.">
+  <meta name="twitter:image" content="https://www.cerariacicogna.com/images/og-cover.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/main.css?v=13">
+  <style>
+    body { background: var(--c-bg-light); color: var(--c-text-dark); }
+
+    /* Light nav overrides */
+    nav:not(.scrolled) .nav-logo { color: var(--c-text-dark); }
+    nav:not(.scrolled) .nav-logo span { color: var(--c-text-mid); }
+    nav:not(.scrolled) .nav-links > li > a { color: var(--c-text-mid); }
+    nav:not(.scrolled) .nav-cta { color: var(--c-text-dark); border-color: rgba(26,22,18,.25); }
+    nav:not(.scrolled) .hamburger-line { background: var(--c-text-dark); }
+    nav:not(.scrolled) .nav-stork path { fill: var(--c-text-dark) !important; }
+    nav:not(.scrolled) .nav-stork circle { stroke: var(--c-text-dark) !important; }
+    nav.scrolled { background: rgba(250,250,248,.95); }
+    nav.scrolled .nav-logo { color: var(--c-text-dark); }
+    nav.scrolled .nav-links > li > a { color: var(--c-text-mid); }
+    nav.scrolled .nav-cta { color: var(--c-text-dark); border-color: rgba(26,22,18,.25); }
+
+    /* ── HERO ───────────────────────────────── */
+    .cat-hero {
+      padding: 160px var(--gutter) 80px;
+      background: var(--c-bg-light);
+      border-bottom: 1px solid rgba(26,22,18,.09);
+    }
+    .cat-hero-inner { max-width: 1380px; margin: 0 auto; }
+    .cat-eyebrow {
+      display: inline-block;
+      font-family: var(--ff-sans);
+      font-size: .52rem; font-weight: 300;
+      letter-spacing: .32em; text-transform: uppercase;
+      color: var(--c-text-mid); margin-bottom: 20px;
+    }
+    .cat-title-row {
+      display: flex; align-items: flex-end;
+      justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .cat-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2.4rem, 8vw, 6.5rem);
+      font-weight: 300; letter-spacing: .06em;
+      color: var(--c-text-dark); line-height: .95;
+      position: relative;
+    }
+    .cat-title sup {
+      font-family: var(--ff-sans); font-size: .5rem;
+      font-weight: 300; letter-spacing: .12em;
+      color: var(--c-text-mid); vertical-align: super; margin-left: 6px;
+    }
+    .cat-desc {
+      max-width: 380px;
+      font-family: var(--ff-serif); font-style: italic;
+      font-size: 1.05rem; line-height: 1.8;
+      color: var(--c-text-mid); padding-bottom: 6px;
+    }
+
+    /* Filter bar */
+    .filter-bar {
+      background: var(--c-bg-light);
+      border-bottom: 1px solid rgba(26,22,18,.08);
+      padding: 0 var(--gutter); position: sticky; top: 70px; z-index: 50;
+      display: flex; align-items: stretch; gap: 0;
+    }
+    .filter-label {
+      font-family: var(--ff-sans); font-size: .48rem; font-weight: 400;
+      letter-spacing: .28em; color: var(--c-text-mid);
+      display: flex; align-items: center;
+      padding: 18px 20px 18px 0;
+      border-right: 1px solid rgba(26,22,18,.08); margin-right: 8px;
+      text-transform: uppercase; flex-shrink: 0;
+    }
+    .filter-btn {
+      font-family: var(--ff-sans); font-size: .5rem; font-weight: 300;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--c-text-mid); padding: 18px 14px;
+      border: none; border-bottom: 2px solid transparent;
+      background: none; cursor: pointer; white-space: nowrap;
+      transition: color .3s, border-color .3s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      color: var(--c-text-dark); border-bottom-color: var(--c-text-dark);
+    }
+    .filter-sort {
+      margin-left: auto; display: flex; align-items: center;
+      padding: 0 0 0 20px; border-left: 1px solid rgba(26,22,18,.08);
+    }
+    .filter-sort select {
+      font-family: var(--ff-sans); font-size: .5rem; font-weight: 300;
+      letter-spacing: .12em; color: var(--c-text-mid);
+      background: none; border: none; outline: none; cursor: pointer;
+      appearance: none; padding-right: 18px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235A4A38'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 0 center;
+    }
+
+    /* Grid */
+    .product-grid-wrap { max-width: 1480px; margin: 0 auto; padding: 56px var(--gutter) 100px; }
+    .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px 24px; }
+    .product-card { cursor: pointer; }
+    .product-card-visual {
+      position: relative; overflow: hidden;
+      background: var(--c-bg-cream); aspect-ratio: 3/4; margin-bottom: 18px;
+    }
+    .product-card-visual img {
+      width: 100%; height: 100%; object-fit: contain; display: block;
+      transition: transform 1s cubic-bezier(.25,.46,.45,.94);
+    }
+    .product-card:hover .product-card-visual img { transform: scale(1.07); }
+    .product-card-tag {
+      position: absolute; bottom: 0; left: 0;
+      font-family: var(--ff-sans); font-size: .44rem; font-weight: 400;
+      letter-spacing: .2em; text-transform: uppercase;
+      background: var(--c-text-dark); color: var(--c-bg-light); padding: 6px 12px;
+      opacity: 0; transform: translateY(4px);
+      transition: opacity .35s, transform .35s;
+    }
+    .product-card:hover .product-card-tag { opacity: 1; transform: translateY(0); }
+    .product-card-name {
+      font-family: var(--ff-display); font-size: 1.05rem; font-weight: 300;
+      letter-spacing: .07em; color: var(--c-text-dark); line-height: 1.3; margin-bottom: 5px;
+    }
+    .product-card-type {
+      font-family: var(--ff-sans); font-size: .5rem; font-weight: 300;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--c-text-mid); margin-bottom: 12px;
+    }
+    .product-card-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--ff-sans); font-size: .5rem; font-weight: 300;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--c-text-dark); text-decoration: none;
+      padding-bottom: 2px; border-bottom: 1px solid rgba(26,22,18,.25);
+      opacity: 0; transition: opacity .3s, gap .3s;
+    }
+    .product-card:hover .product-card-cta { opacity: 1; }
+
+    @media (max-width: 1200px) { .product-grid { grid-template-columns: repeat(3,1fr); } }
+    @media (max-width: 768px)  { .product-grid { grid-template-columns: repeat(2,1fr); gap: 28px 16px; } }
+    @media (max-width: 480px)  { .product-grid { grid-template-columns: 1fr; } }
+
+    /* ── Enhanced preview effects ─────────────── */
+    .product-card { transition: transform .35s cubic-bezier(.25,.46,.45,.94); }
+    .product-card:hover { transform: translateY(-3px); }
+    .product-card-name { position: relative; }
+    .product-card-name::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px; background: var(--c-gold, #C89830);
+      transition: width .45s cubic-bezier(.25,.46,.45,.94);
+    }
+    .product-card:hover .product-card-name::after { width: 28px; }
+    .product-card-visual::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(200,152,48,.1) 0%, transparent 55%);
+      opacity: 0; transition: opacity .45s; pointer-events: none;
+    }
+    .product-card:hover .product-card-visual::after { opacity: 1; }
+    .product-card:hover .product-card-cta { gap: 14px; }
+    .filter-bar { overflow-x: auto; scrollbar-width: none; }
+    .filter-bar::-webkit-scrollbar { display: none; }
+    .sub-filter-bar {
+      display: none; align-items: stretch; gap: 0;
+      padding: 0 var(--gutter);
+      background: #f5f2ed;
+      border-bottom: 1px solid rgba(26,22,18,.06);
+      position: sticky; top: 124px; z-index: 49;
+      overflow-x: auto; scrollbar-width: none;
+    }
+    .sub-filter-bar::-webkit-scrollbar { display: none; }
+    .sub-filter-bar.visible { display: flex; }
+    .sub-filter-btn {
+      font-family: var(--ff-sans); font-size: .46rem; font-weight: 300;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--c-text-mid); padding: 11px 13px;
+      border: none; border-bottom: 2px solid transparent;
+      background: none; cursor: pointer; white-space: nowrap;
+      transition: color .25s, border-color .25s;
+    }
+    .sub-filter-btn.active, .sub-filter-btn:hover {
+      color: var(--c-text-dark); border-bottom-color: var(--c-text-dark);
+    }
+
+    /* Dual-image hover */
+    .product-card-visual .img-hover {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: contain;
+      opacity: 0; transition: opacity .5s ease;
+    }
+    .product-card-visual .img-base { transition: opacity .5s ease; }
+    .product-card:has(.img-hover):hover .product-card-visual .img-base { opacity: 0; }
+    .product-card:hover .product-card-visual .img-hover { opacity: 1; }
+
+    /* ── PAGE GALLERY ─────────────────────────── */
+    .page-gallery { position:relative; width:100%; height:70vh; overflow:hidden; background:#0d0a05; user-select:none; }
+    .page-gallery-video { width:100%; height:100%; object-fit:cover; display:block; }
+    @media (max-width:768px) { .page-gallery { height:52vh; } }
+
+    /* ── Section headings inside grid ────────── */
+    .grid-section-heading {
+      grid-column: 1 / -1; display: none;
+      align-items: center; gap: 20px;
+      padding: 48px 0 18px; margin-top: 16px;
+      border-top: 1px solid rgba(26,22,18,.09);
+    }
+    .grid-section-label {
+      font-family: var(--ff-sans); font-size: .46rem; font-weight: 300;
+      letter-spacing: .3em; text-transform: uppercase;
+      color: var(--c-text-mid); white-space: nowrap;
+    }
+    .grid-section-rule { flex: 1; height: 1px; background: rgba(26,22,18,.08); }
+
+    /* ── FORNITURE: color dots ────────────────────────── */
+    .card-colors { display: flex; gap: 5px; margin-top: 10px; flex-wrap: wrap; }
+    .card-color-dot { width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid rgba(26,22,18,.18); cursor: pointer; flex-shrink: 0; transition: box-shadow .2s, transform .15s; padding: 0; }
+    .card-color-dot:hover { transform: scale(1.2); }
+    .card-color-dot.selected { box-shadow: 0 0 0 2px var(--c-bg-light), 0 0 0 3.5px rgba(26,22,18,.5); }
+    .card-color-dot.trasparente { background: transparent !important; border: 1.5px dashed #aaa !important; }
+    /* Pallini colore per i lumini, come per le forniture. Il colore non e'
+       scritto a mano: lo misura genera-colori-liturgico.py dalla foto del
+       pezzo, perche' nei dati la variante ha solo l'immagine e nessuna
+       etichetta. Cosi' il pallino mostra davvero il vetro che si aprira'
+       cliccando, invece di una tinta decisa a occhio. */
+    .card-photos { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+    .card-photo {
+      width: 18px; height: 18px; border-radius: 50%; padding: 0; cursor: pointer;
+      flex-shrink: 0; border: 1.5px solid rgba(26,22,18,.18);
+      transition: box-shadow .2s, transform .15s;
+    }
+    .card-photo:hover { transform: scale(1.18); }
+    .card-photo.selected { box-shadow: 0 0 0 2px var(--c-bg-light), 0 0 0 3.5px rgba(26,22,18,.55); }
+    /* bianchi e trasparenti: senza un bordo piu' marcato sparirebbero sul fondo avorio */
+    .card-photo.neutro { border-color: rgba(26,22,18,.42); }
+    .card-photo.trasparente { background: transparent; border: 1.5px dashed #aaa; }
+    [data-category="forniture"] .product-card-visual { cursor: pointer; }
+    /* pacchi/lumini spesso in formato orizzontale: mostra l'intera foto senza tagliarla */
+    [data-category="forniture"] .product-card-visual img { object-fit: contain; }
+
+    /* ── FORNITURE: size pills ────────────────────────── */
+    .card-sizes { display: flex; gap: 5px; margin-top: 8px; flex-wrap: wrap; }
+    .card-size-pill { font-family: var(--ff-sans); font-size: .38rem; letter-spacing: .08em; text-transform: uppercase; padding: 3px 9px; border: 1px solid rgba(26,22,18,.22); border-radius: 2px; background: none; cursor: pointer; color: var(--c-text-mid); transition: background .2s, color .2s, border-color .2s; }
+    .card-size-pill.active { background: var(--c-text-dark); color: var(--c-bg-light); border-color: var(--c-text-dark); cursor: default; }
+    .card-size-pill:not(.active):hover { border-color: var(--c-text-dark); color: var(--c-text-dark); }
+    .modal-size-pill { font-family: var(--ff-sans); font-size: .48rem; letter-spacing: .1em; text-transform: uppercase; padding: 7px 16px; border: 1px solid rgba(26,22,18,.22); border-radius: 2px; background: none; cursor: pointer; color: var(--c-text-mid); transition: background .2s, color .2s, border-color .2s; }
+    .modal-size-pill.active { background: var(--c-text-dark); color: var(--c-bg-light); border-color: var(--c-text-dark); cursor: default; }
+    .modal-size-pill:not(.active):hover { border-color: var(--c-text-dark); color: var(--c-text-dark); }
+
+    /* ── FORNITURE: modal ──────────────────────────────── */
+    .for-modal { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+    .for-modal.open { opacity: 1; pointer-events: all; }
+    .for-modal-backdrop { position: absolute; inset: 0; background: rgba(10,8,5,.65); backdrop-filter: blur(4px); }
+    .for-modal-panel { position: relative; z-index: 1; background: var(--c-bg-light); max-width: 960px; width: 100%; max-height: 90vh; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(26,22,18,.1); transform: translateY(20px); transition: transform .35s cubic-bezier(.25,.46,.45,.94); }
+    .for-modal.open .for-modal-panel { transform: translateY(0); }
+    .for-modal-close { position: absolute; top: 16px; right: 16px; z-index: 2; background: none; border: none; cursor: pointer; font-size: 1rem; color: var(--c-text-mid); padding: 8px 10px; transition: color .2s; line-height: 1; }
+    .for-modal-close:hover { color: var(--c-text-dark); }
+    .for-modal-img-wrap { position: relative; background: var(--c-bg-cream); overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 340px; }
+    .for-modal-img { width: 100%; height: 100%; object-fit: contain; display: block; transition: opacity .18s ease; }
+    .for-modal-prev, .for-modal-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,.85); border: 1px solid rgba(26,22,18,.15); cursor: pointer; font-size: 1.3rem; color: var(--c-text-dark); width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; transition: background .2s; padding: 0; }
+    .for-modal-prev:hover, .for-modal-next:hover { background: #fff; }
+    .for-modal-prev { left: 10px; }
+    .for-modal-next { right: 10px; }
+    .for-modal-prev[hidden], .for-modal-next[hidden] { display: none; }
+    .for-modal-info { padding: 48px 36px 36px; display: flex; flex-direction: column; }
+    .for-modal-line { font-family: var(--ff-sans); font-size: .44rem; font-weight: 300; letter-spacing: .3em; text-transform: uppercase; color: var(--c-text-mid); margin-bottom: 10px; }
+    .for-modal-name { font-family: var(--ff-display); font-size: clamp(1.4rem,3.5vw,2rem); font-weight: 300; letter-spacing: .07em; color: var(--c-text-dark); line-height: 1.2; margin-bottom: 16px; }
+    .for-modal-desc { font-family: var(--ff-serif); font-style: italic; font-size: .9rem; line-height: 1.8; color: var(--c-text-mid); margin-bottom: 28px; }
+    .for-modal-swatch-label { font-family: var(--ff-sans); font-size: .42rem; font-weight: 300; letter-spacing: .25em; text-transform: uppercase; color: var(--c-text-mid); margin-bottom: 10px; }
+    /* CTA: sceglie il prodotto (col colore attivo) e lo porta in contatti */
+    .for-modal-pick { display: block; margin-top: 30px; padding: 17px 30px; text-align: center; text-decoration: none;
+      font-family: var(--ff-sans); font-size: .52rem; font-weight: 300; letter-spacing: .22em; text-transform: uppercase;
+      background: var(--c-text-dark); color: var(--c-bg-light); transition: background .3s; }
+    .for-modal-pick:hover { background: #000; }
+    .for-modal-pick-note { margin-top: 11px; font-family: var(--ff-serif); font-style: italic; font-size: .92rem;
+      line-height: 1.6; color: var(--c-text-mid); text-align: center; }
+    .for-modal-swatches { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+    .modal-swatch { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid rgba(26,22,18,.18); cursor: pointer; transition: box-shadow .2s, transform .15s; padding: 0; position: relative; }
+    .modal-swatch:hover { transform: scale(1.15); }
+    .modal-swatch.active { box-shadow: 0 0 0 3px var(--c-bg-light), 0 0 0 5px rgba(26,22,18,.5); }
+    .modal-swatch.trasparente { background: transparent !important; border: 1.5px dashed #aaa !important; }
+    .modal-swatch-tip { position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); font-family: var(--ff-sans); font-size: .38rem; white-space: nowrap; background: var(--c-text-dark); color: #fff; padding: 3px 6px; pointer-events: none; opacity: 0; transition: opacity .15s; letter-spacing: .12em; }
+    .modal-swatch:hover .modal-swatch-tip { opacity: 1; }
+    .for-modal-thumbs-label { font-family: var(--ff-sans); font-size: .42rem; font-weight: 300; letter-spacing: .25em; text-transform: uppercase; color: var(--c-text-mid); margin-bottom: 10px; margin-top: auto; }
+    .for-modal-thumbs { display: flex; gap: 8px; flex-wrap: wrap; }
+    .modal-thumb { width: 52px; height: 52px; background: var(--c-bg-cream); border: 1.5px solid rgba(26,22,18,.12); cursor: pointer; overflow: hidden; transition: border-color .2s; padding: 0; flex-shrink: 0; }
+    .modal-thumb.active { border-color: var(--c-text-dark); }
+    .modal-thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    @media (max-width:768px) {
+      .for-modal-panel { grid-template-columns: 1fr; }
+      .for-modal-img-wrap { min-height: 260px; max-height: 50vw; }
+      .for-modal-info { padding: 24px 20px 28px; }
+    }
+    @media (max-width:480px) {
+      .for-modal { padding: 0; align-items: flex-end; }
+      .for-modal-panel { max-height: 92vh; border-bottom: none; }
+    }
+
+    /* ── LUMINO CARTA — prodotto in evidenza ── */
+    .lumino-spot { background: var(--c-bg-cream); border-bottom: 1px solid rgba(26,22,18,.09); }
+    .lumino-spot-inner { max-width: 1380px; margin: 0 auto; padding: clamp(48px,6vw,88px) var(--gutter);
+      display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(28px,4vw,64px); align-items: center; }
+    .lumino-spot-media { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .lumino-spot-media figure { margin: 0; overflow: hidden; background: #efeae0; aspect-ratio: 3/4; }
+    .lumino-spot-media img { width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 1.2s cubic-bezier(.25,.46,.45,.94); }
+    .lumino-spot-media figure:hover img { transform: scale(1.05); }
+    .lumino-spot-eyebrow { display: inline-flex; align-items: center; gap: 9px;
+      font-family: var(--ff-sans); font-size: .5rem; font-weight: 300; letter-spacing: .3em;
+      text-transform: uppercase; color: var(--c-gold); margin-bottom: 22px; }
+    .lumino-spot-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--c-gold); }
+    .lumino-spot-title { font-family: var(--ff-display); font-weight: 300; letter-spacing: .03em;
+      font-size: clamp(2.2rem,4.5vw,3.4rem); line-height: 1.04; color: var(--c-text-dark); margin-bottom: 20px; }
+    .lumino-spot-body { font-family: var(--ff-serif); font-size: 1.06rem; line-height: 1.85;
+      color: var(--c-text-mid); max-width: 460px; margin-bottom: 22px; }
+    .lumino-spot-points { list-style: none; padding: 0; margin: 0 0 34px; display: flex; flex-direction: column; gap: 12px; }
+    .lumino-spot-points li { display: flex; align-items: baseline; gap: 12px;
+      font-family: var(--ff-sans); font-size: .58rem; font-weight: 300; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--c-text-dark); }
+    .lumino-spot-points li::before { content: ''; width: 5px; height: 5px; flex: 0 0 auto;
+      background: var(--c-gold); border-radius: 50%; transform: translateY(-2px); }
+    .lumino-spot-cta { display: inline-flex; align-items: center; gap: 12px; cursor: pointer;
+      font-family: var(--ff-sans); font-size: .54rem; font-weight: 300; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--c-bg-light); background: var(--c-text-dark); border: none; padding: 17px 34px; transition: gap .3s, background .3s; }
+    .lumino-spot-cta:hover { gap: 18px; background: #000; }
+    .lumino-spot-note { margin-top: 12px; font-family: var(--ff-serif); font-style: italic;
+      font-size: .92rem; color: var(--c-text-mid); }
+    @media (max-width: 860px) {
+      .lumino-spot-inner { grid-template-columns: 1fr; gap: 30px; }
+      .lumino-spot-media { order: -1; max-width: 460px; }
+    }
+  </style>
+</head>
+<body class="cimg-page">
+
+  <nav id="main-nav">
+    <a href="index.html" class="nav-brand">
+      <img class="nav-stork" src="logo-stork.png" alt="Logo Cereria Cicogna" width="32" height="32" loading="eager">
+      <div class="nav-logo">Cereria Cicogna<span>Industria F.lli Cicogna · Novate Milanese</span></div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li class="nav-has-drop">
+        <a href="home-collection.html" aria-haspopup="true" aria-expanded="false">Home Collection</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Home Collection">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="home-collection.html" class="mega-feat-title">Home Collection</a>
+            <p class="mega-feat-desc">Candele profumate per arredare e impreziosire ogni ambiente della casa.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul>
+              <li><a href="home-collection.html?c=sand">Sand</a></li>
+              <li><a href="home-collection.html?c=rock">Rock</a></li>
+              <li><a href="home-collection.html?c=glass">Glass</a></li>
+              <li><a href="home-collection.html?c=metallic">Metallic</a></li>
+              <li><a href="home-collection.html?c=ceri">Ceri</a></li>
+            </ul>
+            <a href="home-collection.html" class="mega-all">Vedi tutti</a>
+          </div><div class="mega-img-col"><a href="home-collection.html"><img src="images/hero-home-collection.webp" alt="Home Collection — Cereria Cicogna"></a></div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="nav-has-drop">
+        <a href="garden.html" aria-haspopup="true" aria-expanded="false">Garden</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Linea Garden">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="garden.html" class="mega-feat-title">Linea Garden</a>
+            <p class="mega-feat-desc">Candele per esterni e interni, pensate per ogni stagione all'aperto.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul>
+              <li><a href="garden.html?c=citronelle">Citronelle</a></li>
+              <li><a href="garden.html?c=cerabianca">Cera Bianca</a></li>
+              <li><a href="garden.html?c=ricariche">Ricariche</a></li>
+            </ul>
+            <a href="garden.html" class="mega-all">Vedi tutti</a>
+          </div><div class="mega-img-col"><a href="garden.html"><img src="images/hero-garden.webp" alt="Linea Garden — Cereria Cicogna"></a></div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="nav-has-drop">
+        <a href="liturgico.html" aria-current="page" aria-haspopup="true" aria-expanded="false">Liturgico</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Articoli Liturgici">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="liturgico.html" class="mega-feat-title">Articoli Liturgici</a>
+            <p class="mega-feat-desc">Ceri, lumini e arredi sacri per chiese, santuari e cerimonie religiose.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul>
+              <li><a href="liturgico.html?c=lumini">Lumini da chiesa</a></li>
+              <li><a href="liturgico.html?c=accessori">Accessori</a></li>
+              <li><a href="liturgico.html?c=forniture">Forniture</a></li>
+            </ul>
+            <a href="liturgico.html" class="mega-all">Vedi tutti</a>
+          </div><div class="mega-img-col"><a href="liturgico.html"><img src="images/hero-liturgico.webp" alt="Articoli Liturgici — Cereria Cicogna"></a></div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="nav-sep" aria-hidden="true"></li>
+      <li>
+        <a href="private-label.html">Private Label</a>
+      </li>
+      <li><a href="fragrance-library.html">Fragrance Library</a></li><li><a href="personalizzazione.html">Collaborazioni</a></li>
+      <li><a href="chi-siamo.html">Chi Siamo</a></li>
+    </ul>
+    <a href="contatti.html" class="nav-cta">Contattaci</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Apri menu" aria-expanded="false">
+      <span class="hamburger-line"></span><span class="hamburger-line"></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true">
+    <ul class="mobile-menu-links" role="list">
+      <li class="mm-has-sub">
+        <div class="mm-top">
+          <a href="liturgico.html" class="mm-link">Liturgico</a>
+          <button class="mm-expand" aria-expanded="false" aria-label="Espandi Liturgico">+</button>
+        </div>
+        <ul class="mm-sub" hidden>
+          <li><a href="liturgico.html?c=lumini">Lumini da chiesa</a></li>
+          <li><a href="liturgico.html?c=accessori">Accessori</a></li>
+              <li><a href="liturgico.html?c=forniture">Forniture</a></li>
+        </ul>
+      </li>
+      <li class="mm-has-sub"><div class="mm-top"><a href="garden.html" class="mm-link">Garden</a><button class="mm-expand" aria-expanded="false" aria-label="Espandi Garden">+</button></div><ul class="mm-sub" hidden><li><a href="garden.html?c=citronelle">Citronelle</a></li><li><a href="garden.html?c=cerabianca">Cera Bianca</a></li><li><a href="garden.html?c=ricariche">Ricariche</a></li></ul></li>
+      <li class="mm-has-sub"><div class="mm-top"><a href="home-collection.html" class="mm-link">Home Collection</a><button class="mm-expand" aria-expanded="false" aria-label="Espandi Home Collection">+</button></div><ul class="mm-sub" hidden><li><a href="home-collection.html?c=sand">Sand</a></li><li><a href="home-collection.html?c=rock">Rock</a></li><li><a href="home-collection.html?c=glass">Glass</a></li><li><a href="home-collection.html?c=metallic">Metallic</a></li><li><a href="home-collection.html?c=ceri">Ceri</a></li></ul></li>
+      <li><a href="chi-siamo.html">Chi Siamo</a></li>
+      <li><a href="contatti.html">Contatti</a></li>
+      <li class="mobile-menu-sep" aria-hidden="true"></li>
+      <li><a href="private-label.html">Private Label</a></li>
+      <li><a href="fragrance-library.html">Fragrance Library</a></li><li><a href="personalizzazione.html">Collaborazioni</a></li>
+    </ul>
+    <div class="mobile-menu-rule" aria-hidden="true"></div>
+    <address class="mobile-menu-contact">
+      <a href="tel:+39023543707">02.35.43.707</a>&ensp;·&ensp;<a href="mailto:info@cerariacicogna.com">info@cerariacicogna.com</a>
+    </address>
+  </div>
+
+
+  <!-- HERO immagine (apertura categoria) -->
+  <header class="cimg-hero">
+    <img src="images/hero-liturgico.webp" alt="Ceri d'avorio di varie altezze — Cereria Cicogna" loading="eager">
+    <div class="cimg-hero-veil" aria-hidden="true"></div>
+    <div class="cimg-hero-text">
+      <span class="cimg-hero-eyebrow">Cereria Cicogna · Linea 03</span>
+      <h1 class="cimg-hero-title">Articoli Liturgici</h1>
+    </div>
+  </header>
+
+  <div class="filter-bar" role="search" aria-label="Filtra prodotti">
+    <span class="filter-label">Filtra</span>
+    <button class="filter-btn active" data-filter="all">Tutti</button>
+    <button class="filter-btn" data-filter="lumini">Lumini da chiesa</button>
+    <button class="filter-btn" data-filter="accessori">Accessori</button>
+    <button class="filter-btn" data-filter="forniture">Forniture</button>
+    <div class="filter-sort">
+      <select aria-label="Ordina prodotti">
+        <option value="az">Ordina: A–Z</option>
+        <option value="za">Ordina: Z–A</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="sub-filter-bar" id="forniture-sub-filter" aria-hidden="true">
+    <button class="sub-filter-btn active" data-subfilter="all">Tutti</button>
+    <button class="sub-filter-btn" data-subfilter="angelo">Linea Angelo</button>
+    <button class="sub-filter-btn" data-subfilter="aure">Linea Aure</button>
+    <button class="sub-filter-btn" data-subfilter="papa">Linea Papa</button>
+    <button class="sub-filter-btn" data-subfilter="elettriche">Candele Elettriche</button>
+  </div>
+
+  <!-- ── LUMINO CARTA — novità in evidenza ── -->
+  <section class="lumino-spot" aria-label="Lumino Carta — novità">
+    <div class="lumino-spot-inner">
+      <div class="lumino-spot-text">
+        <span class="lumino-spot-eyebrow">Novità · Interamente in carta</span>
+        <h2 class="lumino-spot-title">Lumino Carta</h2>
+        <p class="lumino-spot-body">Il primo lumino votivo con contenitore interamente in carta ignifuga e rifinitura in rafia naturale: niente plastica né metallo, solo materiali di origine vegetale e interamente compostabili. Una risposta innovativa e sostenibile alla devozione di ogni giorno.</p>
+        <ul class="lumino-spot-points">
+          <li>Contenitore in carta ignifuga, senza plastica</li>
+          <li>Interamente compostabile</li>
+          <li>Bordo in rafia naturale</li>
+          <li>Cera vegetale</li>
+        </ul>
+        <button type="button" class="lumino-spot-cta" id="lumino-pick">Scegli questo prodotto e parla con noi →</button>
+        <p class="lumino-spot-note" id="lumino-note"></p>
+      </div>
+      <div class="lumino-spot-media">
+        <figure><img src="images/lit-lumino-carta-1.webp" alt="Lumino Carta — contenitore in carta e rafia" loading="lazy"></figure>
+        <figure><img src="images/lit-lumino-carta-2.webp" alt="Lumino Carta — vista laterale" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <main class="product-grid-wrap" id="main-content">
+    <div class="product-grid reveal-stagger">
+
+      <article class="product-card" data-category="lumini">
+        <a href="product-lit-lumini.html#0" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/lit-lum-giubileo-front.webp" alt="Lumino Giubileo variante 1" loading="lazy">
+            <img class="img-hover" src="images/lit-lum-giubileo-c2.webp" alt="Lumino Giubileo variante 2" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Lumini</span>
+          </div>
+        </a>
+        <p class="product-card-type">Edizione speciale Anno Santo</p>
+        <h2 class="product-card-name">Lumino Giubileo</h2>
+        <a href="product-lit-lumini.html#0" class="product-card-cta">Scopri →</a>
+      </article>
+
+<article class="product-card" data-category="lumini">
+        <a href="product-lit-lumini.html#1" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/lit-lum-fiamma-pc-front.webp" alt="Lumino Fiamma policarbonato su sfondo neutro" loading="lazy">
+            <img class="img-hover" src="images/lit-lum-fiamma-pc-neutra.webp" alt="Lumino Fiamma policarbonato acceso" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Lumini</span>
+          </div>
+        </a>
+        <p class="product-card-type">Contenitore in policarbonato trasparente</p>
+        <h2 class="product-card-name">Fiamma<br>Policarbonato</h2>
+        <a href="product-lit-lumini.html#1" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="lumini">
+        <a href="product-lit-lumini.html#2" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/lit-lum-fiamma-mp-front.webp" alt="Lumino Fiamma moplen su sfondo neutro" loading="lazy">
+            <img class="img-hover" src="images/lit-lum-fiamma-mp-neutra.webp" alt="Lumino Fiamma moplen acceso" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Lumini</span>
+          </div>
+        </a>
+        <p class="product-card-type">Contenitore in moplen opalino</p>
+        <h2 class="product-card-name">Fiamma<br>Moplen</h2>
+        <a href="product-lit-lumini.html#2" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="lumini">
+        <a href="product-lit-lumini.html#3" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/lit-lum-rubino-front.webp" alt="Lumino Rubino su sfondo neutro" loading="lazy">
+            <img class="img-hover" src="images/lit-lum-rubino-neutra.webp" alt="Lumino Rubino acceso" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Lumini</span>
+          </div>
+        </a>
+        <p class="product-card-type">Calice decorativo · capacità standard</p>
+        <h2 class="product-card-name">Rubino</h2>
+        <a href="product-lit-lumini.html#3" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="lumini">
+        <a href="product-lit-lumini.html#4" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/lit-lum-rub2-front.webp" alt="Lumino Rubino 2 su sfondo neutro" loading="lazy">
+            <img class="img-hover" src="images/lit-lum-rub2-neutra.webp" alt="Lumino Rubino 2 acceso" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Lumini</span>
+          </div>
+        </a>
+        <p class="product-card-type">Calice decorativo · formato ridotto</p>
+        <h2 class="product-card-name">Rubino 2</h2>
+        <a href="product-lit-lumini.html#4" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="lumini">
+        <a href="product-lit-lumini.html#5" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/lit-lum-rub1000-front.webp" alt="Lumino Rubino 1000 su sfondo neutro" loading="lazy">
+            <img class="img-hover" src="images/lit-lum-rub1000-neutra.webp" alt="Lumino Rubino 1000 acceso" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Lumini</span>
+          </div>
+        </a>
+        <p class="product-card-type">Calice decorativo · grande capacità</p>
+        <h2 class="product-card-name">Rubino 1000</h2>
+        <a href="product-lit-lumini.html#5" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="lumini">
+        <a href="product-lit-lumini.html#6" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/lit-lum-art5-front.webp" alt="Lumino ART 5 su sfondo neutro" loading="lazy">
+            <img class="img-hover" src="images/lit-lum-art5-neutra.webp" alt="Lumino ART 5 acceso" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Lumini</span>
+          </div>
+        </a>
+        <h2 class="product-card-name">Lumino ART 5</h2>
+        <a href="product-lit-lumini.html#6" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="lumini">
+        <a href="product-lit-lumini.html#7" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/lit-lum-art7-front.webp?v=3" alt="Lumino ART 7 su sfondo neutro" loading="lazy">
+            <img class="img-hover" src="images/lit-lum-art7-neutra.webp" alt="Lumino ART 7 acceso" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Lumini</span>
+          </div>
+        </a>
+        <h2 class="product-card-name">Lumino ART 7</h2>
+        <a href="product-lit-lumini.html#7" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="lumini">
+        <a href="product-lit-lumini.html#8" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/lit-lum-art10-front.webp" alt="Lumino ART 10 su sfondo neutro" loading="lazy">
+            <img class="img-hover" src="images/lit-lum-art10-neutra.webp" alt="Lumino ART 10 acceso" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Lumini</span>
+          </div>
+        </a>
+        <h2 class="product-card-name">Lumino ART 10</h2>
+        <a href="product-lit-lumini.html#8" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="lumini">
+        <a href="product-lit-lumini.html#9" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/lit-lum-art15-front.webp" alt="Lumino ART 15 su sfondo neutro" loading="lazy">
+            <img class="img-hover" src="images/lit-lum-art15-neutra.webp" alt="Lumino ART 15 acceso" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Lumini</span>
+          </div>
+        </a>
+        <h2 class="product-card-name">Lumino ART 15</h2>
+        <a href="product-lit-lumini.html#9" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="lumini">
+        <a href="product-lit-lumini.html#10" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/lit-lum-art20-front.webp" alt="Lumino ART 20 su sfondo neutro" loading="lazy">
+            <img class="img-hover" src="images/lit-lum-art20-neutra.webp" alt="Lumino ART 20 acceso" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Lumini</span>
+          </div>
+        </a>
+        <h2 class="product-card-name">Lumino ART 20</h2>
+        <a href="product-lit-lumini.html#10" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="lumini">
+        <a href="product-lit-lumini.html#11" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/lit-lum-art30-front.webp?v=2" alt="Lumino ART 30" loading="lazy">
+            <img class="img-hover" src="images/lit-lum-art30-front.webp?v=2" alt="Lumino ART 30" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Lumini</span>
+          </div>
+        </a>
+        <h2 class="product-card-name">Lumino ART 30</h2>
+        <a href="product-lit-lumini.html#11" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="lumini">
+        <a href="product-lit-lumini.html#12" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/lit-lum-art50-front.webp?v=2" alt="Lumino ART 50" loading="lazy">
+            <img class="img-hover" src="images/lit-lum-art50-front.webp?v=2" alt="Lumino ART 50" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Lumini</span>
+          </div>
+        </a>
+        <h2 class="product-card-name">Lumino ART 50</h2>
+        <a href="product-lit-lumini.html#12" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="lumini">
+        <a href="product-lit-lumini.html#13" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/lit-lum-art60-front.webp?v=2" alt="Lumino ART 60" loading="lazy">
+            <img class="img-hover" src="images/lit-lum-art60-front.webp?v=2" alt="Lumino ART 60" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Lumini</span>
+          </div>
+        </a>
+        <p class="product-card-type">Bianca &amp; Gialla</p>
+        <h2 class="product-card-name">Lumino ART 60</h2>
+        <a href="product-lit-lumini.html#13" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="lumini">
+        <a href="product-lit-lumini.html#14" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/lit-lum-art30bg-front.webp?v=2" alt="Lumino ART 30 Bianca & Gialla" loading="lazy">
+            <img class="img-hover" src="images/lit-lum-art30bg-front.webp?v=2" alt="Lumino ART 30 Bianca & Gialla" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Lumini</span>
+          </div>
+        </a>
+        <p class="product-card-type">Bianca &amp; Gialla</p>
+        <h2 class="product-card-name">Lumino ART 30<br>Bianca &amp; Gialla</h2>
+        <a href="product-lit-lumini.html#14" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <!-- ── Accessori per candele ── -->
+      <div class="grid-section-heading" data-section="accessori-candele" aria-hidden="true">
+        <h2 class="grid-section-label">Accessori per candele</h2>
+        <span class="grid-section-rule"></span>
+      </div>
+
+      <article class="product-card" data-category="accessori-candele"
+        data-gallery='["images/acc-0-1.webp","images/acc-0-2.webp","images/acc-0-3.webp","images/acc-0-4.webp"]'>
+        <a href="product-lit-accessori.html#0" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/acc-0-1.webp" alt="Accendilumini e streghe" loading="lazy">
+            <img class="img-hover" src="images/acc-0-2.webp" alt="Accendilumini assortiti" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Accessori</span>
+          </div>
+        </a>
+        <p class="product-card-type">Accensione sicura di lumini e ceri</p>
+        <h2 class="product-card-name">Accendilumini e Streghe</h2>
+        <a href="product-lit-accessori.html#0" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="accessori-candele">
+        <a href="product-lit-accessori.html#1" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/acc-1-1.webp" alt="Accendini ad olio" loading="lazy">
+            <img class="img-hover" src="images/acc-1-2.webp" alt="Cartucce di ricarica" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Accessori</span>
+          </div>
+        </a>
+        <p class="product-card-type">Ricaricabili · Uso professionale</p>
+        <h2 class="product-card-name">Accendini Ricaricabili</h2>
+        <a href="product-lit-accessori.html#1" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="accessori-candele"
+        data-gallery='["images/acc-2-1.webp","images/acc-2-2.webp","images/acc-2-3.webp","images/acc-2-4.webp","images/acc-2-5.webp","images/acc-2-6.webp","images/acc-2-7.webp","images/acc-2-8.webp"]'>
+        <a href="product-lit-accessori.html#2" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/acc-2-2.webp" alt="Flambeaux carta bianca" loading="lazy">
+            <img class="img-hover" src="images/acc-2-5.webp" alt="Flambeaux plastica rosso" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Accessori</span>
+          </div>
+        </a>
+        <p class="product-card-type">Carta e plastica · Vari colori</p>
+        <h2 class="product-card-name">Flambeaux da Processione</h2>
+        <a href="product-lit-accessori.html#2" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="accessori-candele">
+        <a href="product-lit-accessori.html#3" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/acc-3-1.webp" alt="Bottiglia Lamp Oil" loading="lazy">
+            <img class="img-hover" src="images/acc-3-2.webp" alt="Scatolone Lamp Oil" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Accessori</span>
+          </div>
+        </a>
+        <p class="product-card-type">Olio ad alta purezza per lucerne</p>
+        <h2 class="product-card-name">Lamp Oil</h2>
+        <a href="product-lit-accessori.html#3" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="accessori-candele">
+        <a href="product-lit-accessori.html#4" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/acc-4-1.webp" alt="Portacandele avorio" loading="lazy">
+            <img class="img-hover" src="images/acc-4-2.webp" alt="Portacandele marrone" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Accessori</span>
+          </div>
+        </a>
+        <p class="product-card-type">Avorio e marrone · Per lumini standard</p>
+        <h2 class="product-card-name">Portacandele</h2>
+        <a href="product-lit-accessori.html#4" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="accessori-candele"
+        data-gallery='["images/acc-5-1.webp","images/acc-5-2.webp","images/acc-5-3.webp","images/acc-5-4.webp"]'>
+        <a href="product-lit-accessori.html#5" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/acc-5-1.webp" alt="Ricariche per lucerne assortite" loading="lazy">
+            <img class="img-hover" src="images/acc-5-3.webp" alt="Ricarica media" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Accessori</span>
+          </div>
+        </a>
+        <p class="product-card-type">Piccola, media e grande</p>
+        <h2 class="product-card-name">Ricariche per Lucerne</h2>
+        <a href="product-lit-accessori.html#5" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="accessori-candele"
+        data-gallery='["images/acc-6-1.webp","images/acc-6-2.webp","images/acc-6-3.webp","images/acc-6-4.webp"]'>
+        <a href="product-lit-accessori.html#6" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/acc-6-1.webp" alt="Bicchiere del Santissimo in vetro rosso" loading="lazy">
+            <img class="img-hover" src="images/acc-6-2.webp" alt="Portavetro in ottone" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Accessori</span>
+          </div>
+        </a>
+        <p class="product-card-type">Kit completo per il Tabernacolo</p>
+        <h2 class="product-card-name">Bicchiere del Santissimo</h2>
+        <a href="product-lit-accessori.html#6" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <!-- ── Altri accessori ── -->
+      <div class="grid-section-heading" data-section="accessori-altri" aria-hidden="true">
+        <h2 class="grid-section-label">Altri accessori</h2>
+        <span class="grid-section-rule"></span>
+      </div>
+
+      <article class="product-card" data-category="accessori-altri"
+        data-gallery='["images/acc-7-1.webp","images/acc-7-2.webp","images/acc-7-3.webp","images/acc-7-4.webp","images/acc-7-5.webp","images/acc-7-6.webp","images/acc-7-7.webp"]'>
+        <a href="product-lit-accessori.html#7" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/acc-7-1.webp" alt="Carboncini Notte Stellata" loading="lazy">
+            <img class="img-hover" src="images/acc-7-2.webp" alt="Scatola aperta carboncini" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Accessori</span>
+          </div>
+        </a>
+        <p class="product-card-type">Per incensiere · Accensione rapida</p>
+        <h2 class="product-card-name">Carboncini per Incensiere</h2>
+        <a href="product-lit-accessori.html#7" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="accessori-altri"
+        data-gallery='["images/acc-8-1.webp","images/acc-8-2.webp","images/acc-8-3.webp"]'>
+        <a href="product-lit-accessori.html#8" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/acc-8-1.webp" alt="Boccette acqua santa" loading="lazy">
+            <img class="img-hover" src="images/acc-8-2.webp" alt="Confezione boccette acqua santa" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Accessori</span>
+          </div>
+        </a>
+        <p class="product-card-type">Per fedeli e celebrazioni</p>
+        <h2 class="product-card-name">Boccette Acqua Santa</h2>
+        <a href="product-lit-accessori.html#8" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="accessori-altri"
+        data-gallery='["images/acc-9-1.webp","images/acc-9-2.webp","images/acc-9-3.webp","images/acc-9-4.webp","images/acc-9-5.webp","images/acc-9-6.webp","images/acc-9-7.webp","images/acc-9-8.webp","images/acc-9-9.webp","images/acc-9-10.webp","images/acc-9-11.webp","images/acc-9-12.webp"]'>
+        <a href="product-lit-accessori.html#9" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/acc-9-1.webp" alt="Incensi liturgici in polvere" loading="lazy">
+            <img class="img-hover" src="images/acc-9-3.webp" alt="Incenso Pontifical in grani" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Accessori</span>
+          </div>
+        </a>
+        <p class="product-card-type">Grani e polvere · Vari profumi</p>
+        <h2 class="product-card-name">Incensi Liturgici</h2>
+        <a href="product-lit-accessori.html#9" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="accessori-altri"
+        data-gallery='["images/acc-10-1.webp","images/acc-10-2.webp","images/acc-10-3.webp","images/acc-10-4.webp","images/acc-10-5.webp","images/acc-10-6.webp","images/acc-10-7.webp","images/acc-10-8.webp"]'>
+        <a href="product-lit-accessori.html#10" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/acc-10-1.webp" alt="Particole per la Messa" loading="lazy">
+            <img class="img-hover" src="images/acc-10-4.webp" alt="Ostia magna" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Accessori</span>
+          </div>
+        </a>
+        <p class="product-card-type">Standard e per celiaci</p>
+        <h2 class="product-card-name">Ostie e Particole</h2>
+        <a href="product-lit-accessori.html#10" class="product-card-cta">Scopri →</a>
+      </article>
+
+      <article class="product-card" data-category="accessori-altri"
+        data-gallery='["images/acc-11-1.webp","images/acc-11-2.webp","images/acc-11-3.webp","images/acc-11-4.webp","images/acc-11-5.webp"]'>
+        <a href="product-lit-accessori.html#11" style="text-decoration:none;display:block">
+          <div class="product-card-visual">
+            <img class="img-base" src="images/acc-11-1.webp" alt="Vino da messa Pellegrino bianco" loading="lazy">
+            <img class="img-hover" src="images/acc-11-2.webp" alt="Vino da messa Pellegrino rosso" loading="lazy" aria-hidden="true">
+            <span class="product-card-tag">Accessori</span>
+          </div>
+        </a>
+        <p class="product-card-type">Pellegrino e Vinci</p>
+        <h2 class="product-card-name">Vini da Messa</h2>
+        <a href="product-lit-accessori.html#11" class="product-card-cta">Scopri →</a>
+      </article>
+
+    </div>
+  </main>
+
+  <div class="for-modal" id="for-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Scheda prodotto">
+    <div class="for-modal-backdrop" id="for-modal-backdrop"></div>
+    <div class="for-modal-panel">
+      <button class="for-modal-close" id="for-modal-close" aria-label="Chiudi scheda prodotto">✕</button>
+      <div class="for-modal-img-wrap">
+        <button class="for-modal-prev" id="for-modal-prev" aria-label="Immagine precedente">‹</button>
+        <img class="for-modal-img" id="for-modal-img" src="" alt="" loading="lazy">
+        <button class="for-modal-next" id="for-modal-next" aria-label="Immagine successiva">›</button>
+      </div>
+      <div class="for-modal-info">
+        <p class="for-modal-line" id="for-modal-line"></p>
+        <h2 class="for-modal-name" id="for-modal-name"></h2>
+        <p class="for-modal-desc" id="for-modal-desc"></p>
+        <p class="for-modal-swatch-label" id="for-modal-swatch-label">Colore</p>
+        <div class="for-modal-swatches" id="for-modal-swatches"></div>
+        <p class="for-modal-swatch-label" id="for-modal-size-label" hidden>Misura</p>
+        <div class="for-modal-swatches" id="for-modal-sizes"></div>
+        <p class="for-modal-thumbs-label" id="for-modal-thumbs-label">Immagini</p>
+        <div class="for-modal-thumbs" id="for-modal-thumbs"></div>
+        <a class="for-modal-pick" id="for-modal-pick" href="contatti.html">Scegli questo prodotto e parla con noi →</a>
+        <p class="for-modal-pick-note" id="for-modal-pick-note"></p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-row">
+          <img class="footer-stork" src="logo-stork.png" alt="" width="40" height="40" aria-hidden="true">
+          <span class="footer-wordmark">Cereria Cicogna</span>
+        </div>
+        <p class="footer-tagline">Dal sacro al quotidiano,<br>la stessa luce da generazioni.</p>
+      </div>
+      <div class="footer-col"><p class="footer-col-title">Linee</p><ul>
+        <li><a href="home-collection.html">Home Collection</a></li>
+        <li><a href="garden.html">Linea Garden</a></li>
+        <li><a href="liturgico.html">Articoli Liturgici</a></li>
+      </ul></div>
+      <div class="footer-col"><p class="footer-col-title">Azienda</p><ul>
+        <li><a href="chi-siamo.html">Chi Siamo</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul></div>
+      <div class="footer-col"><p class="footer-col-title">Contatti</p>
+        <address>Via Damiano Chiesa, 84<br>20026 Novate Milanese (MI)<br><br>
+          <a href="tel:+39023543707">02.35.43.707</a><br>
+          <a href="mailto:info@cerariacicogna.com">info@cerariacicogna.com</a>
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2025 Industria Ceraria F.lli Cicogna srl</span>
+      <span class="footer-legal">P.IVA 11980500158 &nbsp;&middot;&nbsp; <a href="privacy.html">Privacy</a></span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="js/main.js?v=8"></script>
+  <script src="js/selection.js?v=7"></script>
+  <script>
+  /* ── FORNITURE: data & inject ──────────────────────────────── */
+  const PRODUCTS = [
+    // ─ LINEA ANGELO ──────────────────────────────────────────
+    { id:'ang-5', line:'angelo', tag:'Linea Angelo', name:'5 Angelo',
+      desc:'Candela liturgica · altezza 5 cm',
+      vars:[
+        {id:'bianco',      label:'Bianco',      hex:'#ffffff', file:'for-ang-5-bianco-single.webp'},
+        {id:'rosso',       label:'Rosso',       hex:'#b51212', file:'for-ang-5-rosso-single.webp'},
+      ], gallery:['for-ang-5-pack.webp','for-ang-5-alto.webp','for-ang-5-etichetta.webp'], def:'bianco', hov:'rosso' },
+
+    { id:'ang-7', line:'angelo', tag:'Linea Angelo', name:'7 Angelo',
+      desc:'Candela liturgica · altezza 7 cm',
+      vars:[
+        {id:'bianco',      label:'Bianco',      hex:'#ffffff', file:'for-ang-7-bianco-single.webp'},
+        {id:'rosso',       label:'Rosso',       hex:'#b51212', file:'for-ang-7-rosso-single.webp'},
+      ], gallery:['for-ang-7-pack.webp','for-ang-7-alto.webp','for-ang-7-etichetta.webp'], def:'bianco', hov:'rosso' },
+
+    { id:'ang-10', line:'angelo', tag:'Linea Angelo', name:'10 Angelo',
+      desc:'Candela liturgica · altezza 10 cm',
+      vars:[
+        {id:'bianco', label:'Bianco', hex:'#ffffff', file:'for-ang-10-bianco.webp'},
+        {id:'rosso',  label:'Rosso',  hex:'#b51212', file:'for-ang-10-rosso.webp'},
+      ], gallery:['for-ang-10-pack.webp','for-ang-10-amb1.webp','for-ang-10-amb2.webp'], def:'bianco', hov:'rosso' },
+
+    { id:'ang-20', line:'angelo', tag:'Linea Angelo', name:'20 Angelo',
+      desc:'Candela liturgica · altezza 20 cm',
+      vars:[
+        {id:'bianco',      label:'Bianco',      hex:'#ffffff', file:'for-ang-20-bianco.webp'},
+        {id:'rosso',       label:'Rosso',       hex:'#b51212', file:'for-ang-20-rosso.webp'},
+        {id:'blu',         label:'Blu',         hex:'#1a3a7a', file:'for-ang-20-blu.webp'},
+        {id:'trasparente', label:'Trasparente', hex:null,      file:'for-ang-20-trasparente.webp'},
+      ], gallery:[], def:'bianco', hov:'rosso' },
+
+    { id:'ang-20cp', line:'angelo', tag:'Linea Angelo', name:'20 Coperchio Pioggia Angelo',
+      desc:'Candela con coperchio a pioggia · altezza 20 cm',
+      vars:[
+        {id:'bianco',      label:'Bianco',      hex:'#ffffff', file:'for-ang-20cp-bianco.webp'},
+        {id:'rosso',       label:'Rosso',       hex:'#b51212', file:'for-ang-20cp-rosso.webp'},
+        {id:'blu',         label:'Blu',         hex:'#1a3a7a', file:'for-ang-20cp-blu.webp'},
+        {id:'trasparente', label:'Trasparente', hex:null,      file:'for-ang-20cp-trasparente.webp'},
+      ], gallery:[], def:'bianco', hov:'rosso' },
+
+    { id:'ang-30', line:'angelo', tag:'Linea Angelo', name:'30 Angelo',
+      desc:'Candela liturgica · altezza 30 cm · Ø 65 mm',
+      vars:[
+        {id:'bianco',      label:'Bianco',      hex:'#ffffff', file:'for-ang-30-bianco.webp'},
+        {id:'rosso',       label:'Rosso',       hex:'#b51212', file:'for-ang-30-rosso.webp'},
+        {id:'blu',         label:'Blu',         hex:'#1a3a7a', file:'for-ang-30-blu.webp'},
+        {id:'trasparente', label:'Trasparente', hex:null,      file:'for-ang-30-trasparente.webp'},
+      ], gallery:[], def:'bianco', hov:'rosso' },
+
+    { id:'ang-40', line:'angelo', tag:'Linea Angelo', name:'40 Angelo',
+      desc:'Candela liturgica · altezza 40 cm · Ø 65 mm',
+      vars:[
+        {id:'bianco',      label:'Bianco',      hex:'#ffffff', file:'for-ang-40-bianco.webp'},
+        {id:'rosso',       label:'Rosso',       hex:'#b51212', file:'for-ang-40-rosso.webp'},
+        {id:'blu',         label:'Blu',         hex:'#1a3a7a', file:'for-ang-40-blu.webp'},
+        {id:'trasparente', label:'Trasparente', hex:null,      file:'for-ang-40-trasparente.webp'},
+      ], gallery:[], def:'bianco', hov:'rosso' },
+
+    { id:'ang-40m', line:'angelo', tag:'Linea Angelo', name:'40 Moplen',
+      desc:'Candela in moplen · altezza 40 cm',
+      vars:[
+        {id:'papa',      label:'Papa',      hex:'#8a7560', file:'for-ang-40m-papa.webp'},
+        {id:'arcangelo', label:'Arcangelo', hex:'#4a6882', file:'for-ang-40m-arcangelo.webp'},
+      ], gallery:[], def:'papa', hov:'arcangelo' },
+
+    { id:'ang-50', line:'angelo', tag:'Linea Angelo', name:'50 Angelo',
+      desc:'Candela liturgica · altezza 50 cm · Ø 65 mm',
+      vars:[
+        {id:'bianco',      label:'Bianco',      hex:'#ffffff', file:'for-ang-50-bianco.webp'},
+        {id:'rosso',       label:'Rosso',       hex:'#b51212', file:'for-ang-50-rosso.webp'},
+        {id:'blu',         label:'Blu',         hex:'#1a3a7a', file:'for-ang-50-blu.webp'},
+        {id:'trasparente', label:'Trasparente', hex:null,      file:'for-ang-50-trasparente.webp'},
+      ], gallery:[], def:'bianco', hov:'rosso' },
+
+    { id:'ang-60l', line:'angelo', tag:'Linea Angelo', name:'60 L Angelo',
+      desc:'Candela liturgica · altezza 60 cm · Ø 68 mm',
+      vars:[
+        {id:'bianco',      label:'Bianco',      hex:'#ffffff', file:'for-ang-60l-bianco.webp'},
+        {id:'rossa',       label:'Rossa',       hex:'#b51212', file:'for-ang-60l-rossa.webp'},
+        {id:'gialla',      label:'Gialla',      hex:'#e8b820', file:'for-ang-60l-gialla.webp'},
+        {id:'blu',         label:'Blu',         hex:'#1a3a7a', file:'for-ang-60l-blu.webp'},
+        {id:'trasparente', label:'Trasparente', hex:null,      file:'for-ang-60l-trasparente.webp'},
+      ], gallery:[], def:'bianco', hov:'rossa' },
+
+    // ─ LINEA AURE ────────────────────────────────────────────
+    { id:'aur-30x5', line:'aure', tag:'Linea Aure', name:'30/5 Aure',
+      desc:'Candela aure · altezza 30 cm · Ø 65 mm',
+      vars:[
+        {id:'trasparente', label:'Trasparente', hex:null,      file:'for-aur-30x5-trasparente.webp'},
+        {id:'rossa',       label:'Rossa',       hex:'#b51212', file:'for-aur-30x5-rossa.webp'},
+      ], gallery:[], def:'trasparente', hov:'rossa' },
+
+    { id:'aur-40x5', line:'aure', tag:'Linea Aure', name:'40/5 Aure',
+      desc:'Candela aure · altezza 40 cm · Ø 65 mm',
+      vars:[
+        {id:'trasparente', label:'Trasparente', hex:null,      file:'for-aur-40x5-trasparente.webp'},
+        {id:'rossa',       label:'Rossa',       hex:'#b51212', file:'for-aur-40x5-rossa.webp'},
+      ], gallery:[], def:'trasparente', hov:'rossa' },
+
+    { id:'aur-50x5', line:'aure', tag:'Linea Aure', name:'50/5 Aure',
+      desc:'Candela aure · altezza 50 cm · Ø 65 mm',
+      vars:[
+        {id:'trasparente', label:'Trasparente', hex:null,      file:'for-aur-50x5-trasparente.webp'},
+        {id:'rossa',       label:'Rossa',       hex:'#b51212', file:'for-aur-50x5-rossa.webp'},
+      ], gallery:[], def:'trasparente', hov:'rossa' },
+
+    { id:'aur-60x5', line:'aure', tag:'Linea Aure', name:'60/5',
+      desc:'Candela aure · altezza 60 cm · Ø 65 mm',
+      vars:[
+        {id:'bianco', label:'Bianco', hex:'#ffffff', file:'for-aur-60x5-bianco.webp'},
+        {id:'rosso',  label:'Rosso',  hex:'#b51212', file:'for-aur-60x5-rosso.webp'},
+      ], gallery:[], def:'bianco', hov:'rosso' },
+
+    { id:'aur-60x8', line:'aure', tag:'Linea Aure', name:'60/8',
+      desc:'Candela aure · altezza 60 cm · Ø 68 mm',
+      vars:[
+        {id:'trasparente', label:'Trasparente', hex:null,      file:'for-aur-60x8-trasparente.webp'},
+        {id:'rossa',       label:'Rossa',       hex:'#b51212', file:'for-aur-60x8-rossa.webp'},
+      ], gallery:[], def:'trasparente', hov:'rossa' },
+
+    { id:'aur-lampada', line:'aure', tag:'Linea Aure', name:'Lampada Tirolese',
+      desc:'Lampada in stile tirolese',
+      vars:[
+        {id:'default', label:'Modello unico', hex:'#c0b090', file:'for-aur-lampada.webp'},
+      ], gallery:[], def:'default', hov:null },
+
+    // ─ LINEA PAPA ────────────────────────────────────────────
+    { id:'pap-20', line:'papa', tag:'Linea Papa', name:'20 P',
+      desc:'Candela Papa · altezza 20 cm · Ø 58 mm',
+      vars:[
+        {id:'bianco',      label:'Bianco',      hex:'#ffffff', file:'for-pap-20-bianco.webp'},
+        {id:'rosso',       label:'Rosso',       hex:'#b51212', file:'for-pap-20-rosso.webp'},
+        {id:'blu',         label:'Blu',         hex:'#1a3a7a', file:'for-pap-20-blu.webp'},
+        {id:'trasparente', label:'Trasparente', hex:null,      file:'for-pap-20-trasparente.webp'},
+      ], gallery:[], def:'bianco', hov:'rosso' },
+
+    { id:'pap-30', line:'papa', tag:'Linea Papa', name:'30 P',
+      desc:'Candela Papa · altezza 30 cm · Ø 58 mm',
+      vars:[
+        {id:'bianco',      label:'Bianco',      hex:'#ffffff', file:'for-pap-30-bianco.webp'},
+        {id:'rosso',       label:'Rosso',       hex:'#b51212', file:'for-pap-30-rosso.webp'},
+        {id:'blu',         label:'Blu',         hex:'#1a3a7a', file:'for-pap-30-blu.webp'},
+        {id:'trasparente', label:'Trasparente', hex:null,      file:'for-pap-30-trasparente.webp'},
+      ], sizes:[{label:'Ø 58 mm',active:true},{label:'Ø 54,5 mm',active:false,goto:'pap-30s'}],
+      gallery:[], def:'bianco', hov:'rosso' },
+
+    { id:'pap-30s', line:'papa', tag:'Linea Papa', name:'30 P Stretto',
+      desc:'Candela Papa · altezza 30 cm · Ø 54,5 mm',
+      vars:[
+        {id:'bianco', label:'Bianco', hex:'#ffffff', file:'for-pap-30-stretto.webp'},
+      ], sizes:[{label:'Ø 58 mm',active:false,goto:'pap-30'},{label:'Ø 54,5 mm',active:true}],
+      gallery:[], def:'bianco', hov:null },
+
+    { id:'pap-50', line:'papa', tag:'Linea Papa', name:'50 P',
+      desc:'Candela Papa · altezza 50 cm · Ø 58 mm',
+      vars:[
+        {id:'bianco',      label:'Bianco',      hex:'#ffffff', file:'for-pap-50-bianco.webp'},
+        {id:'rossa',       label:'Rossa',       hex:'#b51212', file:'for-pap-50-rossa.webp'},
+        {id:'blu',         label:'Blu',         hex:'#1a3a7a', file:'for-pap-50-blu.webp'},
+        {id:'trasparente', label:'Trasparente', hex:null,      file:'for-pap-50-trasparente.webp'},
+      ], sizes:[{label:'Ø 58 mm',active:true},{label:'Ø 54,5 mm',active:false,goto:'pap-50s'}],
+      gallery:[], def:'bianco', hov:'rossa' },
+
+    { id:'pap-50s', line:'papa', tag:'Linea Papa', name:'50 P Stretto',
+      desc:'Candela Papa · altezza 50 cm · Ø 54,5 mm',
+      vars:[
+        {id:'bianco', label:'Bianco', hex:'#ffffff', file:'for-pap-50-stretto.webp'},
+      ], sizes:[{label:'Ø 58 mm',active:false,goto:'pap-50'},{label:'Ø 54,5 mm',active:true}],
+      gallery:[], def:'bianco', hov:null },
+
+    { id:'pap-60x8', line:'papa', tag:'Linea Papa', name:'60/8 P',
+      desc:'Candela Papa · altezza 60 cm · Ø 68 mm',
+      vars:[
+        {id:'bianco',      label:'Bianco',      hex:'#ffffff', file:'for-pap-60x8-bianco.webp'},
+        {id:'rosso',       label:'Rosso',       hex:'#b51212', file:'for-pap-60x8-rosso.webp'},
+        {id:'blu',         label:'Blu',         hex:'#1a3a7a', file:'for-pap-60x8-blu.webp'},
+        {id:'trasparente', label:'Trasparente', hex:null,      file:'for-pap-60x8-trasparente.webp'},
+      ], gallery:[], def:'bianco', hov:'rosso' },
+
+    { id:'pap-70t', line:'papa', tag:'Linea Papa', name:'70 T',
+      desc:'Candela Papa · altezza 70 cm · Ø 68 mm',
+      vars:[
+        {id:'bianco', label:'Bianco', hex:'#ffffff', file:'for-pap-70t-bianco.webp'},
+      ], gallery:[], def:'bianco', hov:null },
+
+    { id:'pap-80', line:'papa', tag:'Linea Papa', name:'80 P',
+      desc:'Candela Papa · altezza 80 cm · Ø 80 mm',
+      vars:[
+        {id:'bianco',      label:'Bianco',      hex:'#ffffff', file:'for-pap-80-bianco.webp'},
+        {id:'rosso',       label:'Rosso',       hex:'#b51212', file:'for-pap-80-rosso.webp'},
+        {id:'blu',         label:'Blu',         hex:'#1a3a7a', file:'for-pap-80-blu.webp'},
+        {id:'trasparente', label:'Trasparente', hex:null,      file:'for-pap-80-trasparente.webp'},
+      ], gallery:[], def:'bianco', hov:'rosso' },
+
+    { id:'pap-100', line:'papa', tag:'Linea Papa', name:'100 P',
+      desc:'Candela Papa · altezza 100 cm · Ø 80 mm',
+      vars:[
+        {id:'bianco',      label:'Bianco',      hex:'#ffffff', file:'for-pap-100-bianco.webp'},
+        {id:'rosso',       label:'Rosso',       hex:'#b51212', file:'for-pap-100-rosso.webp'},
+        {id:'blu',         label:'Blu',         hex:'#1a3a7a', file:'for-pap-100-blu.webp'},
+        {id:'trasparente', label:'Trasparente', hex:null,      file:'for-pap-100-trasparente.webp'},
+      ], gallery:[], def:'bianco', hov:'rosso' },
+
+    // ─ CANDELE ELETTRICHE ────────────────────────────────────
+    { id:'ele-cilindrico', line:'elettriche', tag:'Candele Elettriche', name:'Lumino Cilindrico',
+      desc:'Lumino elettrico a batteria · forma cilindrica · fiamma LED',
+      vars:[
+        {id:'rosso', label:'Rosso', hex:'#b51212', file:'for-ele-cilindrico-rosso.webp'},
+      ], gallery:[], def:'rosso', hov:null },
+
+    { id:'ele-cilindrico-papa', line:'elettriche', tag:'Candele Elettriche', name:'San Giovanni Paolo II',
+      desc:'Lumino elettrico a batteria · forma cilindrica · fiamma LED',
+      vars:[
+        {id:'bianco', label:'Bianco', hex:'#ffffff', file:'for-ele-cilindrico-papa.webp'},
+      ], gallery:[], def:'bianco', hov:null },
+
+    { id:'ele-botte', line:'elettriche', tag:'Candele Elettriche', name:'Rubino Elettrico',
+      desc:'Lumino elettrico a batteria · forma a botte · fiamma LED',
+      vars:[
+        {id:'default', label:'Modello unico', hex:'#b51212', file:'for-ele-botte.webp'},
+      ], gallery:[], def:'default', hov:null },
+
+    { id:'ele-classica', line:'elettriche', tag:'Candele Elettriche', name:'Lumino Annuale Elettrico',
+      desc:'Candela elettrica a batteria · forma classica · fiamma LED',
+      vars:[
+        {id:'default', label:'Modello unico', hex:'#c0b090', file:'for-ele-classica.webp'},
+      ], gallery:[], def:'default', hov:null },
+  ];
+
+  /* ── RENDER FORNITURE CARDS into .product-grid ─────────────── */
+  (function() {
+    const grid = document.querySelector('.product-grid');
+    const lineOrder  = ['angelo','aure','papa','elettriche'];
+    const lineLabels = { angelo:'Linea Angelo', aure:'Linea Aure', papa:'Linea Papa', elettriche:'Candele Elettriche' };
+    const lineSect   = { angelo:'forniture-angelo', aure:'forniture-aure', papa:'forniture-papa', elettriche:'forniture-elettriche' };
+
+    lineOrder.forEach(line => {
+      const hd = document.createElement('div');
+      hd.className = 'grid-section-heading';
+      hd.dataset.section = lineSect[line];
+      hd.setAttribute('aria-hidden', 'true');
+      hd.innerHTML = `<span class="grid-section-label">${lineLabels[line]}</span><span class="grid-section-rule"></span>`;
+      grid.appendChild(hd);
+
+      PRODUCTS.filter(p => p.line === line).forEach(p => {
+        const defV = p.vars.find(v => v.id === p.def);
+        const hovV = p.hov ? p.vars.find(v => v.id === p.hov) : null;
+        /* 1ª foto = frontale (def) · 2ª foto = vista dall'alto se presente, altrimenti variante colore */
+        const altoFile   = (p.gallery || []).find(g => /alto/i.test(g));
+        const secondFile = altoFile || (hovV && hovV.file) || null;
+        const secondAlt  = altoFile ? `${p.name} — dall'alto` : (hovV ? `${p.name} ${hovV.label}` : '');
+        const showDots = p.vars.length > 1 && !['default','frontale'].includes(p.vars[0].id);
+
+        const imgHtml = secondFile
+          ? `<img class="img-base" src="images/${defV.file}" alt="${p.name}" loading="lazy">
+             <img class="img-hover" src="images/${secondFile}" alt="${secondAlt}" loading="lazy" aria-hidden="true">`
+          : `<img class="img-base" src="images/${defV.file}" alt="${p.name}" loading="lazy">`;
+
+        const dotsHtml = showDots
+          ? '<div class="card-colors">' + p.vars.map(v => {
+              const isTr = v.id === 'trasparente';
+              return `<button class="card-color-dot${isTr?' trasparente':''}${v.id===p.def?' selected':''}"
+                style="${isTr||!v.hex?'':'background:'+v.hex}"
+                data-var="${v.id}" data-prod="${p.id}" title="${v.label}" aria-label="${v.label}"></button>`;
+            }).join('') + '</div>'
+          : '';
+
+        const sizesHtml = p.sizes?.length
+          ? '<div class="card-sizes">' + p.sizes.map(s =>
+              s.active
+                ? `<span class="card-size-pill active">${s.label}</span>`
+                : `<button class="card-size-pill" data-goto="${s.goto}">${s.label}</button>`
+            ).join('') + '</div>'
+          : '';
+
+        const art = document.createElement('article');
+        art.className = 'product-card';
+        art.dataset.category = 'forniture';
+        art.dataset.line = line;
+        art.dataset.prod = p.id;
+        art.innerHTML = `
+          <div class="product-card-visual" tabindex="0" role="button" aria-label="Apri scheda ${p.name}">
+            ${imgHtml}
+            <span class="product-card-tag">${p.tag}</span>
+          </div>
+          <h2 class="product-card-name">${p.name}</h2>
+          <p class="product-card-type">${p.desc}</p>
+          ${dotsHtml}
+          ${sizesHtml}
+          <button class="product-card-cta" aria-label="Scopri ${p.name}">Scopri →</button>`;
+        grid.appendChild(art);
+      });
+    });
+
+    /* frecce ‹ › per sfogliare le foto su tutte le card (forniture + lumini + accessori) */
+    if (window.initCardArrows) window.initCardArrows();
+
+    /* ── Colori dei lumini nella griglia ────────────────────────
+       Chi cerca il rubino blu doveva aprire la scheda, scoprire che
+       il colore c'era e tornare indietro. Le miniature lo mostrano
+       qui: si sceglie prima di entrare. La mappa la scrive
+       genera-colori-liturgico.mjs leggendo la pagina prodotto, cosi'
+       i due elenchi non divergono. */
+    /* ⟦colori-lumini:inizio⟧ generato da genera-colori-liturgico.py — non modificare a mano */
+    const COLORI_LUMINI = {
+      0: [{src:'images/lit-lum-giubileo-front.webp',id:'rosso',label:'Rosso',hex:'#b51212'}, {src:'images/lit-lum-giubileo-c1.webp',id:'bianco',label:'Bianco',hex:'#ffffff'}, {src:'images/lit-lum-giubileo-c2.webp',id:'blu',label:'Blu',hex:'#1a3a7a'}, {src:'images/lit-lum-giubileo-c3.webp',id:'ambra',label:'Ambra',hex:'#d38416'}],
+      1: [{src:'images/lit-lum-fiamma-pc-front.webp',id:'bianco',label:'Bianco',hex:'#ffffff'}, {src:'images/lit-lum-fiamma-pc-c1.webp',id:'bianco',label:'Bianco',hex:'#ffffff'}, {src:'images/lit-lum-fiamma-pc-c2.webp',id:'blu',label:'Blu',hex:'#1a3a7a'}, {src:'images/lit-lum-fiamma-pc-c3.webp',id:'rosso',label:'Rosso',hex:'#b51212'}, {src:'images/lit-lum-fiamma-pc-c4.webp',id:'ambra',label:'Ambra',hex:'#d38416'}],
+      2: [{src:'images/lit-lum-fiamma-mp-front.webp',id:'bianco',label:'Bianco',hex:'#ffffff'}, {src:'images/lit-lum-fiamma-mp-c1.webp',id:'bianco',label:'Bianco',hex:'#ffffff'}, {src:'images/lit-lum-fiamma-mp-c2.webp',id:'blu',label:'Blu',hex:'#1a3a7a'}, {src:'images/lit-lum-fiamma-mp-c3.webp',id:'rosso',label:'Rosso',hex:'#b51212'}, {src:'images/lit-lum-fiamma-mp-c4.webp',id:'ambra',label:'Ambra',hex:'#d38416'}, {src:'images/lit-lum-fiamma-mp-c5.webp',id:'verde',label:'Verde',hex:'#1f6b3a'}],
+      3: [{src:'images/lit-lum-rubino-front.webp',id:'blu',label:'Blu',hex:'#1a3a7a'}, {src:'images/lit-lum-rubino-c1.webp',id:'bianco',label:'Bianco',hex:'#ffffff'}, {src:'images/lit-lum-rubino-c2.webp',id:'bianco',label:'Bianco',hex:'#ffffff'}, {src:'images/lit-lum-rubino-c3.webp',id:'rosso',label:'Rosso',hex:'#b51212'}, {src:'images/lit-lum-rubino-c4.webp',id:'ambra',label:'Ambra',hex:'#d38416'}, {src:'images/lit-lum-rubino-c5.webp',id:'verde',label:'Verde',hex:'#1f6b3a'}],
+      4: [{src:'images/lit-lum-rub2-front.webp',id:'verde',label:'Verde',hex:'#1f6b3a'}, {src:'images/lit-lum-rub2-c1.webp',id:'bianco',label:'Bianco',hex:'#ffffff'}, {src:'images/lit-lum-rub2-c2.webp',id:'bianco',label:'Bianco',hex:'#ffffff'}, {src:'images/lit-lum-rub2-c3.webp',id:'rosso',label:'Rosso',hex:'#b51212'}, {src:'images/lit-lum-rub2-c4.webp',id:'ambra',label:'Ambra',hex:'#d38416'}, {src:'images/lit-lum-rub2-c5.webp',id:'blu',label:'Blu',hex:'#1a3a7a'}],
+      5: [{src:'images/lit-lum-rub1000-front.webp',id:'bianco',label:'Bianco',hex:'#ffffff'}, {src:'images/lit-lum-rub1000-c1.webp',id:'bianco',label:'Bianco',hex:'#ffffff'}, {src:'images/lit-lum-rub1000-c2.webp',id:'verde',label:'Verde',hex:'#1f6b3a'}, {src:'images/lit-lum-rub1000-c3.webp',id:'rosso',label:'Rosso',hex:'#b51212'}, {src:'images/lit-lum-rub1000-c4.webp',id:'ambra',label:'Ambra',hex:'#d38416'}, {src:'images/lit-lum-rub1000-c5.webp',id:'blu',label:'Blu',hex:'#1a3a7a'}],
+      6: [{src:'images/lit-lum-art5-front.webp',id:'bianco',label:'Bianco',hex:'#ffffff'}, {src:'images/lit-lum-art5-c1.webp',id:'rosso',label:'Rosso',hex:'#b51212'}, {src:'images/lit-lum-art5-c2.webp',id:'blu',label:'Blu',hex:'#1a3a7a'}],
+      7: [{src:'images/lit-lum-art7-front.webp',id:'bianco',label:'Bianco',hex:'#ffffff'}, {src:'images/lit-lum-art7-c1.webp',id:'rosso',label:'Rosso',hex:'#b51212'}, {src:'images/lit-lum-art7-c2.webp',id:'blu',label:'Blu',hex:'#1a3a7a'}],
+      8: [{src:'images/lit-lum-art10-front.webp',id:'blu',label:'Blu',hex:'#1a3a7a'}, {src:'images/lit-lum-art10-c1.webp',id:'bianco',label:'Bianco',hex:'#ffffff'}, {src:'images/lit-lum-art10-c2.webp',id:'rosso',label:'Rosso',hex:'#b51212'}],
+      9: [{src:'images/lit-lum-art15-front.webp',id:'bianco',label:'Bianco',hex:'#ffffff'}, {src:'images/lit-lum-art15-c1.webp',id:'blu',label:'Blu',hex:'#1a3a7a'}, {src:'images/lit-lum-art15-c2.webp',id:'rosso',label:'Rosso',hex:'#b51212'}],
+      10: [{src:'images/lit-lum-art20-front.webp',id:'bianco',label:'Bianco',hex:'#ffffff'}, {src:'images/lit-lum-art20-c1.webp',id:'blu',label:'Blu',hex:'#1a3a7a'}, {src:'images/lit-lum-art20-c2.webp',id:'rosso',label:'Rosso',hex:'#b51212'}],
+      11: [{src:'images/lit-lum-art30-front.webp',id:'rosso',label:'Rosso',hex:'#b51212'}, {src:'images/lit-lum-art30-c1.webp',id:'blu',label:'Blu',hex:'#1a3a7a'}, {src:'images/lit-lum-art30-c2.webp',id:'bianco',label:'Bianco',hex:'#ffffff'}],
+      12: [{src:'images/lit-lum-art50-front.webp',id:'rosso',label:'Rosso',hex:'#b51212'}, {src:'images/lit-lum-art50-c1.webp',id:'bianco',label:'Bianco',hex:'#ffffff'}, {src:'images/lit-lum-art50-c2.webp',id:'blu',label:'Blu',hex:'#1a3a7a'}],
+    };
+    /* ⟦colori-lumini:fine⟧ */
+
+    document.querySelectorAll('.product-card[data-category="lumini"]').forEach(card => {
+      const link = card.querySelector('a[href*="product-lit-lumini.html#"]');
+      if (!link) return;
+      const idx = parseInt(link.getAttribute('href').split('#')[1], 10);
+      const foto = COLORI_LUMINI[idx];
+      if (!foto || foto.length < 2) return;
+
+      const base = card.querySelector('.img-base');
+      const originale = base ? base.getAttribute('src') : '';
+      const nome = (card.querySelector('.product-card-name') || {}).textContent || '';
+
+      const strip = document.createElement('div');
+      strip.className = 'card-photos';
+      strip.setAttribute('role', 'group');
+      strip.setAttribute('aria-label', 'Colori disponibili di ' + nome.replace(/\s+/g, ' ').trim());
+
+      foto.forEach((v, i) => {
+        const src = v.src;
+        const b = document.createElement('button');
+        b.type = 'button';
+        /* senza colore e' il vetro trasparente: cerchio vuoto tratteggiato,
+           come gia' fanno le forniture nella stessa griglia */
+        b.className = 'card-photo' + (v.hex ? '' : ' trasparente')
+                    + (v.id === 'bianco' ? ' neutro' : '')
+                    + (src === originale || (i === 0 && !originale) ? ' selected' : '');
+        if (v.hex) b.style.background = v.hex;
+        b.title = v.label;
+        b.setAttribute('aria-label', v.label);
+        b.addEventListener('click', ev => {
+          /* la scheda intera e' un collegamento: senza questo, scegliere
+             un colore aprirebbe la pagina prodotto invece di cambiare foto */
+          ev.preventDefault();
+          ev.stopPropagation();
+          if (base) { base.src = src; base.alt = nome.replace(/\s+/g, ' ').trim() + ' ' + v.label.toLowerCase(); }
+          strip.querySelectorAll('.card-photo').forEach(x => x.classList.remove('selected'));
+          b.classList.add('selected');
+        });
+        strip.appendChild(b);
+      });
+
+      const tipo = card.querySelector('.product-card-type');
+      if (tipo) tipo.insertAdjacentElement('afterend', strip);
+      else card.appendChild(strip);
+    });
+
+    /* swatch click + size pill click + card click → modal */
+    grid.addEventListener('click', e => {
+      const sizePill = e.target.closest('.card-size-pill[data-goto]');
+      if (sizePill) {
+        e.stopPropagation();
+        const target = document.querySelector(`[data-prod="${sizePill.dataset.goto}"]`);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          target.style.outline = '2px solid var(--c-text-dark)';
+          setTimeout(() => { target.style.outline = ''; }, 1400);
+        }
+        return;
+      }
+      const dot = e.target.closest('.card-color-dot');
+      if (dot && dot.closest('[data-category="forniture"]')) {
+        e.stopPropagation();
+        const prod = PRODUCTS.find(p => p.id === dot.dataset.prod);
+        if (!prod) return;
+        const variant = prod.vars.find(v => v.id === dot.dataset.var);
+        const card = dot.closest('.product-card');
+        const imgBase = card.querySelector('.img-base');
+        imgBase.src = `images/${variant.file}`;
+        imgBase.alt = `${prod.name} ${variant.label}`;
+        card.querySelectorAll('.card-color-dot').forEach(d => d.classList.remove('selected'));
+        dot.classList.add('selected');
+        /* scegliere il colore dalla griglia è già una selezione: allegala */
+        litSalvaSelezione(prod, prod.vars.indexOf(variant));
+        /* update hover image to match selected variant if next var exists */
+        const imgHov = card.querySelector('.img-hover');
+        if (imgHov && prod.hov) {
+          const hovV = prod.vars.find(v => v.id === prod.hov);
+          imgHov.src = `images/${hovV.file}`;
+        }
+        return;
+      }
+      const card = e.target.closest('[data-category="forniture"]');
+      if (card && !e.target.closest('.card-colors') && !e.target.closest('.card-sizes')) litOpenModal(card.dataset.prod);
+    });
+
+    grid.addEventListener('keydown', e => {
+      if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('[data-category="forniture"] .product-card-visual')) {
+        e.preventDefault();
+        litOpenModal(e.target.closest('.product-card').dataset.prod);
+      }
+    });
+  })();
+
+  /* ── FORNITURE: modal ─────────────────────────────────────── */
+  const litModal    = document.getElementById('for-modal');
+  const litModalImg = document.getElementById('for-modal-img');
+  const litPrevBtn  = document.getElementById('for-modal-prev');
+  const litNextBtn  = document.getElementById('for-modal-next');
+  let litImages = [];
+  let litIdx    = 0;
+
+  function litBuildImages(prod) {
+    const imgs = prod.vars.map(v => ({ src:`images/${v.file}`, alt:`${prod.name} ${v.label}` }));
+    prod.gallery.forEach(g => imgs.push({ src:`images/${g}`, alt:prod.name }));
+    return imgs;
+  }
+
+  function litShowImg(idx) {
+    idx = Math.max(0, Math.min(idx, litImages.length - 1));
+    litIdx = idx;
+    litModalImg.style.opacity = '0';
+    setTimeout(() => {
+      litModalImg.src = litImages[idx].src;
+      litModalImg.alt = litImages[idx].alt;
+      litModalImg.style.opacity = '1';
+    }, 140);
+    /* le prime N immagini sono le varianti colore: se l'utente ne sceglie
+       una, la selezione allegata segue il colore mostrato */
+    if (litProdCorrente && idx < litProdCorrente.vars.length) litSalvaSelezione(litProdCorrente, idx);
+    const multi = litImages.length > 1;
+    litPrevBtn.hidden = !multi || idx === 0;
+    litNextBtn.hidden = !multi || idx === litImages.length - 1;
+    document.querySelectorAll('.modal-thumb').forEach((t,i)  => t.classList.toggle('active', i === idx));
+    document.querySelectorAll('.modal-swatch').forEach((s,i) => s.classList.toggle('active', i === idx));
+  }
+
+  /* prodotto liturgico attualmente aperto: serve a riallineare la
+     selezione quando l'utente cambia colore dentro la scheda */
+  let litProdCorrente = null;
+
+  /* registra il prodotto (con la variante scelta) per "Parla con noi" */
+  function litSalvaSelezione(prod, varIdx) {
+    if (!prod) return;
+    const v = prod.vars[varIdx] || prod.vars[0] || {};
+    const colorato = v.id && !['default', 'frontale'].includes(v.id);
+    litScelta = {
+      name: prod.name + (colorato && v.label ? ' \u00b7 ' + v.label : ''),
+      ref:  prod.id + (colorato ? '/' + v.id : ''),
+      img:  v.file ? 'images/' + v.file : '',
+      cat:  'liturgico',
+      url:  'liturgico.html?prodotto=' + encodeURIComponent(prod.id)
+    };
+    const nota = document.getElementById('for-modal-pick-note');
+    if (nota) nota.textContent = 'Aggiungeremo ' + litScelta.name + ' alla tua richiesta.';
+  }
+
+  /* prodotto attualmente mostrato nella scheda */
+  let litScelta = null;
+
+  /* la CTA aggiunge alla lista (senza sostituire le scelte precedenti) e porta ai contatti */
+  document.getElementById('for-modal-pick')?.addEventListener('click', e => {
+    if (!window.CCSel || !litScelta) return;
+    e.preventDefault();
+    CCSel.aggiungiProdotto(litScelta);
+    location.href = 'contatti.html';
+  });
+
+  /* Lumino Carta in evidenza: stessa logica di selezione */
+  document.getElementById('lumino-pick')?.addEventListener('click', () => {
+    if (!window.CCSel) return;
+    CCSel.aggiungiProdotto({
+      name: 'Lumino Carta',
+      ref:  'lumino-carta',
+      img:  'images/lit-lumino-carta-1.webp',
+      cat:  'liturgico',
+      url:  'liturgico.html#lumino-carta'
+    });
+    location.href = 'contatti.html';
+  });
+
+  function litOpenModal(prodId) {
+    const prod = PRODUCTS.find(p => p.id === prodId);
+    if (!prod) return;
+    litImages = litBuildImages(prod);
+    litProdCorrente = prod;
+    litSalvaSelezione(prod, 0);
+
+    document.getElementById('for-modal-line').textContent = prod.tag;
+    document.getElementById('for-modal-name').textContent = prod.name;
+    document.getElementById('for-modal-desc').textContent = prod.desc;
+
+    const swEl  = document.getElementById('for-modal-swatches');
+    const swLbl = document.getElementById('for-modal-swatch-label');
+    const isMultiColor = prod.vars.length > 1 && !['default','frontale'].includes(prod.vars[0].id);
+    swLbl.hidden = !isMultiColor;
+    swEl.innerHTML = '';
+    if (isMultiColor) {
+      prod.vars.forEach((v, i) => {
+        const isTr = v.id === 'trasparente';
+        const btn = document.createElement('button');
+        btn.className = 'modal-swatch' + (i===0?' active':'') + (isTr?' trasparente':'');
+        if (!isTr && v.hex) btn.style.background = v.hex;
+        btn.setAttribute('aria-label', v.label);
+        btn.innerHTML = `<span class="modal-swatch-tip">${v.label}</span>`;
+        btn.addEventListener('click', () => litShowImg(i));
+        swEl.appendChild(btn);
+      });
+    }
+
+    const szEl  = document.getElementById('for-modal-sizes');
+    const szLbl = document.getElementById('for-modal-size-label');
+    szEl.innerHTML = '';
+    szLbl.hidden = !(prod.sizes && prod.sizes.length);
+    if (prod.sizes && prod.sizes.length) {
+      prod.sizes.forEach(s => {
+        const btn = document.createElement('button');
+        btn.className = 'modal-size-pill' + (s.active ? ' active' : '');
+        btn.textContent = s.label;
+        if (!s.active && s.goto) btn.addEventListener('click', () => litOpenModal(s.goto));
+        szEl.appendChild(btn);
+      });
+    }
+
+    const thEl  = document.getElementById('for-modal-thumbs');
+    const thLbl = document.getElementById('for-modal-thumbs-label');
+    thEl.innerHTML = '';
+    thLbl.hidden = litImages.length <= 1;
+    litImages.forEach((img, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'modal-thumb' + (i===0?' active':'');
+      btn.setAttribute('aria-label', img.alt);
+      btn.innerHTML = `<img src="${img.src}" alt="${img.alt}" loading="lazy">`;
+      btn.addEventListener('click', () => litShowImg(i));
+      thEl.appendChild(btn);
+    });
+
+    litModalImg.src = litImages[0].src;
+    litModalImg.alt = litImages[0].alt;
+    litModalImg.style.opacity = '1';
+    litPrevBtn.hidden = litImages.length <= 1;
+    litNextBtn.hidden = litImages.length <= 1;
+    litModal.removeAttribute('aria-hidden');
+    litModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('for-modal-close').focus();
+  }
+
+  function litCloseModal() {
+    litModal.classList.remove('open');
+    litModal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+
+  litPrevBtn.addEventListener('click', () => litShowImg(litIdx - 1));
+  litNextBtn.addEventListener('click', () => litShowImg(litIdx + 1));
+  document.getElementById('for-modal-close').addEventListener('click', litCloseModal);
+  document.getElementById('for-modal-backdrop').addEventListener('click', litCloseModal);
+  document.addEventListener('keydown', e => {
+    if (!litModal.classList.contains('open')) return;
+    if (e.key === 'Escape')     litCloseModal();
+    if (e.key === 'ArrowLeft')  litShowImg(litIdx - 1);
+    if (e.key === 'ArrowRight') litShowImg(litIdx + 1);
+  });
+
+  let litSwipeX = 0;
+  document.querySelector('.for-modal-img-wrap').addEventListener('touchstart', e => { litSwipeX = e.touches[0].clientX; }, {passive:true});
+  document.querySelector('.for-modal-img-wrap').addEventListener('touchend', e => {
+    const dx = litSwipeX - e.changedTouches[0].clientX;
+    if (Math.abs(dx) > 40) litShowImg(dx > 0 ? litIdx + 1 : litIdx - 1);
+  }, {passive:true});
+
+  /* preload */
+  PRODUCTS.forEach(p => {
+    p.vars.forEach(v => { const img = new Image(); img.src = `images/${v.file}`; });
+    p.gallery.forEach(g => { const img = new Image(); img.src = `images/${g}`; });
+  });
+
+  /* own stagger for forniture cards — overrides main.js's long stagger on all 50 items */
+  document.addEventListener('DOMContentLoaded', function() {
+    const forCards = Array.from(document.querySelectorAll('[data-category="forniture"]'));
+    if (!forCards.length) return;
+    const gridEl = document.querySelector('.product-grid');
+    const inView = gridEl.getBoundingClientRect().top < window.innerHeight * 0.96;
+    const tween = {
+      opacity: 1, y: 0, duration: 0.85, stagger: 0.08, ease: 'power3.out',
+      overwrite: true
+    };
+    if (inView) {
+      tween.delay = 0.3;
+    } else {
+      tween.scrollTrigger = { trigger: gridEl, start: 'top 82%', toggleActions: 'play none none none' };
+    }
+    gsap.fromTo(forCards, { opacity: 0, y: 32 }, tween);
+  });
+  </script>
+  <script>
+    (function () {
+      const grid       = document.querySelector('.product-grid');
+      const allCards   = Array.from(document.querySelectorAll('.product-card'));
+      const sortSel    = document.querySelector('select[aria-label="Ordina prodotti"]');
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const subFilterBar = document.getElementById('forniture-sub-filter');
+      const subFilterBtns = document.querySelectorAll('.sub-filter-btn');
+      const countEl    = document.querySelector('.cat-title sup');
+      let activeFilter    = 'all';
+      let activeSubFilter = 'all';
+      let activeSort      = 'az';
+
+      function getName(c) {
+        return (c.querySelector('.product-card-name')?.textContent || '').replace(/\s+/g, ' ').trim();
+      }
+
+      /* Ordine curato per la vista TUTTI: linee forniture, poi dal più vicino
+         alla candela-oggetto (lumini in cera) al più distante (lamp oil). */
+      const ACC_RANK = {
+        'ricariche per lucerne': 1,
+        'bicchiere del santissimo': 2,
+        'portacandele': 3,
+        'flambeaux da processione': 4,
+        'accendilumini e streghe': 5,
+        'accendini ricaricabili': 6,
+        'carboncini per incensiere': 7,
+        'incensi liturgici': 8,
+        'boccette acqua santa': 9,
+        'ostie e particole': 10,
+        'vini da messa': 11,
+        'lamp oil': 12,
+      };
+      function getRank(c) {
+        const line = c.dataset.line;
+        if (line === 'angelo') return 100;
+        if (line === 'aure') return 200;
+        if (line === 'papa') return 300;
+        if ((c.dataset.category || '').includes('lumini')) return 400;
+        if (line === 'elettriche') return 500;
+        return 600 + (ACC_RANK[getName(c).toLowerCase()] || 50);
+      }
+
+      function apply() {
+        const visible = [], hidden = [];
+        allCards.forEach(c => {
+          let show;
+          if (activeFilter === 'all') {
+            show = true;
+          } else if (activeFilter === 'forniture') {
+            show = (c.dataset.category || '').includes('forniture') &&
+                   (activeSubFilter === 'all' || c.dataset.line === activeSubFilter);
+          } else {
+            show = (c.dataset.category || '').includes(activeFilter);
+          }
+          (show ? visible : hidden).push(c);
+        });
+        const sortable = activeFilter !== 'all' && !activeFilter.startsWith('accessori') && activeFilter !== 'forniture';
+        const curated  = activeFilter === 'all';
+        if (sortable) {
+          visible.sort((a, b) => {
+            const cmp = getName(a).localeCompare(getName(b), 'it', { sensitivity: 'base' });
+            return activeSort === 'az' ? cmp : -cmp;
+          });
+        } else if (curated) {
+          visible.sort((a, b) => getRank(a) - getRank(b));
+        }
+        hidden.forEach(c => { c.style.display = 'none'; c.style.order = ''; });
+        visible.forEach((c, i) => {
+          const wasHidden = c.style.display === 'none';
+          c.style.display = '';
+          c.style.order = (sortable || curated) ? i : '';
+          if (wasHidden) gsap.fromTo(c,
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.3, delay: i * 0.05, ease: 'power2.out' });
+          else if (c.style.opacity === '0') gsap.to(c, { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out', overwrite: true });
+        });
+        document.querySelectorAll('.grid-section-heading').forEach(h => {
+          const s = h.dataset.section || '';
+          let show;
+          if (activeFilter === 'forniture') {
+            show = activeSubFilter === 'all' ? s.includes('forniture') : s === 'forniture-' + activeSubFilter;
+          } else {
+            show = activeFilter !== 'all' && s.includes(activeFilter);
+          }
+          h.style.display = show ? 'flex' : 'none';
+          h.setAttribute('aria-hidden', show ? 'false' : 'true');
+        });
+        if (countEl) countEl.textContent = visible.length;
+
+        /* Lumino Carta in evidenza: solo in "Tutti" e "Lumini da chiesa" */
+        const spot = document.querySelector('.lumino-spot');
+        if (spot) spot.style.display =
+          (activeFilter === 'all' || activeFilter === 'lumini') ? '' : 'none';
+      }
+
+      filterBtns.forEach(btn => btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilter = btn.dataset.filter;
+        if (activeFilter === 'forniture') {
+          subFilterBar.classList.add('visible');
+          subFilterBar.setAttribute('aria-hidden', 'false');
+          activeSubFilter = 'all';
+          subFilterBtns.forEach(b => b.classList.remove('active'));
+          subFilterBtns[0].classList.add('active');
+        } else {
+          subFilterBar.classList.remove('visible');
+          subFilterBar.setAttribute('aria-hidden', 'true');
+          activeSubFilter = 'all';
+        }
+        apply();
+      }));
+
+      subFilterBtns.forEach(btn => btn.addEventListener('click', () => {
+        subFilterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeSubFilter = btn.dataset.subfilter;
+        apply();
+      }));
+
+      if (sortSel) sortSel.addEventListener('change', () => {
+        activeSort = sortSel.value;
+        apply();
+      });
+
+      const urlC = new URLSearchParams(window.location.search).get('c');
+      if (urlC) {
+        const match = Array.from(filterBtns).find(b => b.dataset.filter === urlC);
+        if (match) {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          match.classList.add('active');
+          activeFilter = urlC;
+        }
+      }
+      apply();
+    })();
+
+    document.querySelectorAll('.product-card').forEach(card => {
+      const visual = card.querySelector('.product-card-visual');
+      const cta    = card.querySelector('.product-card-cta');
+      if (!visual || !cta) return;
+      const href = cta.getAttribute('href');
+      if (!href || href === '#') return;
+      visual.style.cursor = 'pointer';
+      visual.addEventListener('click', () => { window.location.href = href; });
+    });
+
+    (function() {
+      const slides = document.querySelectorAll('.page-gallery-slide');
+      const dots   = document.querySelectorAll('.page-gallery-dot');
+      const slider = document.getElementById('liturgico-gallery');
+      if (!slides.length || !slider) return;
+      let cur = 0, timer, startX = 0;
+      function show(n) {
+        slides[cur].classList.remove('active'); dots[cur]?.classList.remove('active');
+        cur = ((n % slides.length) + slides.length) % slides.length;
+        slides[cur].classList.add('active'); dots[cur]?.classList.add('active');
+      }
+      function play()  { clearInterval(timer); timer = setInterval(() => show(cur + 1), 4000); }
+      function pause() { clearInterval(timer); }
+      show(0); play();
+      dots.forEach((d, i) => d.addEventListener('click', () => { pause(); show(i); play(); }));
+      slider.addEventListener('mouseenter', pause);
+      slider.addEventListener('mouseleave', play);
+      slider.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+      slider.addEventListener('touchend', e => {
+        const dx = startX - e.changedTouches[0].clientX;
+        if (Math.abs(dx) > 40) { pause(); show(dx > 0 ? cur + 1 : cur - 1); play(); }
+      }, { passive: true });
+
+      let wheelAccum = 0, wheelTimer, wheelCooldown = false;
+      slider.addEventListener('wheel', e => {
+        if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+        e.preventDefault();
+        if (wheelCooldown) return;
+        wheelAccum += e.deltaX;
+        clearTimeout(wheelTimer);
+        wheelTimer = setTimeout(() => {
+          if (Math.abs(wheelAccum) > 40) {
+            pause(); show(wheelAccum > 0 ? cur + 1 : cur - 1); play();
+            wheelCooldown = true;
+            setTimeout(() => { wheelCooldown = false; }, 700);
+          }
+          wheelAccum = 0;
+        }, 120);
+      }, { passive: false });
+    })();
+
+    /* ── LINES NAV POSITIONING ───────────────────── */
+  </script>
+  <script src="js/i18n-pages.js?v=3"></script>
+  <script src="js/i18n.js?v=7"></script>
+  <script src="js/link-personale.js?v=6" defer></script>
+  <script src="assistant/widget/cc-assistant.js?v=12" data-endpoint="http://localhost:8787/api/chat" data-privacy="privacy.html" defer></script>
+</body>
+</html>

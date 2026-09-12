@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scent Glass — Cereria Cicogna</title>
+  <meta name="description" content="Scent Glass: candele in bicchiere di vetro colorato, nove profumazioni d'autore. Ogni fragranza può essere personalizzata su richiesta.">
+  <!-- anteprime social e indirizzo canonico -->
+  <link rel="canonical" href="https://www.cerariacicogna.com/glass-candles.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cereria Cicogna">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:url" content="https://www.cerariacicogna.com/glass-candles.html">
+  <meta property="og:title" content="Scent Glass — Cereria Cicogna">
+  <meta property="og:description" content="Scent Glass: candele in bicchiere di vetro colorato, nove profumazioni d&#x27;autore. Ogni fragranza può essere personalizzata su richiesta.">
+  <meta property="og:image" content="https://www.cerariacicogna.com/images/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Scent Glass — Cereria Cicogna">
+  <meta name="twitter:description" content="Scent Glass: candele in bicchiere di vetro colorato, nove profumazioni d&#x27;autore. Ogni fragranza può essere personalizzata su richiesta.">
+  <meta name="twitter:image" content="https://www.cerariacicogna.com/images/og-cover.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/main.css?v=13">
+  <style>
+    body { background: var(--c-bg-light); color: var(--c-text-dark); }
+
+    /* nav chiara */
+    nav:not(.scrolled) .nav-logo { color: var(--c-text-dark); }
+    nav:not(.scrolled) .nav-logo span { color: var(--c-text-mid); }
+    nav:not(.scrolled) .nav-links > li > a { color: var(--c-text-mid); }
+    nav:not(.scrolled) .nav-links > li > a:hover { color: var(--c-text-dark); }
+    nav:not(.scrolled) .nav-cta { color: var(--c-text-dark); border-color: rgba(26,22,18,.25); }
+    nav:not(.scrolled) .nav-cta:hover { background: rgba(26,22,18,.07); border-color: var(--c-text-dark); }
+    nav:not(.scrolled) .hamburger-line { background: var(--c-text-dark); }
+    nav:not(.scrolled) .nav-stork path { fill: var(--c-text-dark) !important; }
+    nav:not(.scrolled) .nav-stork circle { stroke: var(--c-text-dark) !important; }
+    nav.scrolled { background: rgba(250,250,248,.95); }
+    nav.scrolled .nav-logo { color: var(--c-text-dark); }
+    nav.scrolled .nav-links > li > a { color: var(--c-text-mid); }
+    nav.scrolled .nav-cta { color: var(--c-text-dark); border-color: rgba(26,22,18,.25); }
+    nav.scrolled .hamburger-line { background: var(--c-text-dark); }
+
+    /* ── intro ── */
+    .gc-intro { padding: 150px var(--gutter) 34px; max-width: 1420px; margin: 0 auto; }
+    .gc-breadcrumb { font-family: var(--ff-sans); font-size: .46rem; font-weight: 300; letter-spacing: .24em; text-transform: uppercase; color: var(--c-text-mid); margin-bottom: 22px; }
+    .gc-breadcrumb a { color: var(--c-text-mid); text-decoration: none; }
+    .gc-breadcrumb a:hover { color: var(--c-text-dark); }
+    .gc-eyebrow { display: inline-block; font-family: var(--ff-sans); font-size: .5rem; font-weight: 300; letter-spacing: .34em; text-transform: uppercase; color: var(--c-gold); margin-bottom: 16px; }
+    .gc-title { font-family: var(--ff-display); font-size: clamp(2.6rem, 7vw, 5.4rem); font-weight: 300; letter-spacing: .06em; color: var(--c-text-dark); line-height: .98; }
+    .gc-subtitle { max-width: 540px; margin-top: 20px; font-family: var(--ff-serif); font-style: italic; font-size: 1.05rem; line-height: 1.8; color: var(--c-text-mid); }
+
+    /* ── layout prodotto ── */
+    .gc-product { max-width: 1420px; margin: 0 auto; padding: 24px var(--gutter) 40px; display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(32px, 6vw, 90px); align-items: start; }
+    @media (max-width: 900px) { .gc-product { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* ── carousel ── */
+    .gc-carousel { position: sticky; top: 96px; }
+    @media (max-width: 900px) { .gc-carousel { position: static; } }
+    .gc-viewport { position: relative; overflow: hidden; background: var(--c-bg-cream); aspect-ratio: 4/5; touch-action: pan-y; }
+    .gc-track { display: flex; height: 100%; transition: transform .55s cubic-bezier(.65,.05,.36,1); }
+    .gc-slide { min-width: 100%; height: 100%; }
+    .gc-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gc-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 44px; height: 44px; border: none; border-radius: 50%; background: rgba(250,250,248,.82); color: var(--c-text-dark); font-size: .95rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .25s, opacity .25s; }
+    .gc-arrow:hover { background: #fff; }
+    .gc-arrow.prev { left: 16px; }
+    .gc-arrow.next { right: 16px; }
+    @media (hover: none) { .gc-arrow { display: none; } }
+    .gc-dots { display: flex; justify-content: center; gap: 9px; margin-top: 18px; }
+    .gc-dot { width: 7px; height: 7px; border-radius: 50%; border: none; padding: 0; background: rgba(26,22,18,.2); cursor: pointer; transition: background .25s, transform .25s; }
+    .gc-dot.active { background: var(--c-text-dark); transform: scale(1.25); }
+    .gc-slide-label { text-align: center; margin-top: 12px; font-family: var(--ff-sans); font-size: .46rem; font-weight: 300; letter-spacing: .22em; text-transform: uppercase; color: var(--c-text-mid); }
+
+    /* ── pannello info ── */
+    .gc-info { padding-top: 6px; }
+    .gc-color-name { font-family: var(--ff-sans); font-size: .52rem; font-weight: 300; letter-spacing: .3em; text-transform: uppercase; color: var(--c-gold); margin-bottom: 12px; }
+    .gc-perfume { font-family: var(--ff-display); font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 300; letter-spacing: .04em; color: var(--c-text-dark); line-height: 1.05; margin-bottom: 10px; }
+    .gc-family { font-family: var(--ff-serif); font-style: italic; font-size: 1.05rem; color: var(--c-text-mid); margin-bottom: 22px; }
+    .gc-default { margin: 2px 0 34px; }
+    .gc-default-rule { display: block; width: 32px; height: 1px; background: var(--c-gold); opacity: .85; margin-bottom: 16px; }
+    .gc-default-txt { font-family: var(--ff-serif); font-size: 1.06rem; line-height: 1.78; color: var(--c-text-mid); max-width: 470px; }
+    .gc-default-txt em { font-style: italic; color: var(--c-text-dark); }
+    .gc-default-txt a { color: var(--c-text-dark); text-decoration: none; border-bottom: 1px solid rgba(200,152,48,.6); padding-bottom: 1px; transition: border-color .3s; }
+    .gc-default-txt a:hover { border-bottom-color: var(--c-text-dark); }
+
+    /* swatch selettore colore */
+    .gc-swatches-label, .gc-block-label { font-family: var(--ff-sans); font-size: .44rem; font-weight: 300; letter-spacing: .26em; text-transform: uppercase; color: var(--c-text-mid); margin-bottom: 12px; }
+    .gc-swatches { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 34px; }
+    .gc-swatch { width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid rgba(26,22,18,.16); cursor: pointer; padding: 0; position: relative; transition: transform .18s, box-shadow .2s; }
+    .gc-swatch:hover { transform: scale(1.1); }
+    .gc-swatch.active { box-shadow: 0 0 0 2px var(--c-bg-light), 0 0 0 4px rgba(26,22,18,.6); cursor: default; }
+
+    .gc-block { padding: 22px 0; border-top: 1px solid rgba(26,22,18,.09); }
+    .gc-notes { font-family: var(--ff-serif); font-size: 1.1rem; line-height: 1.7; color: var(--c-text-dark); }
+    .gc-desc { font-family: var(--ff-serif); font-size: 1.02rem; font-style: italic; line-height: 1.85; color: var(--c-text-mid); }
+    .gc-candle-desc { font-family: var(--ff-sans); font-size: .58rem; font-weight: 300; letter-spacing: .06em; line-height: 2; color: var(--c-text-mid); text-transform: none; }
+    .gc-alts { display: flex; flex-wrap: wrap; gap: 8px; }
+    .gc-alt { font-family: var(--ff-sans); font-size: .5rem; font-weight: 300; letter-spacing: .12em; text-transform: uppercase; color: var(--c-text-mid); padding: 8px 14px; border: 1px solid rgba(26,22,18,.16); border-radius: 2px; }
+
+    .gc-note-final { margin: 6px 0 0; padding: 26px 0 0; border-top: 1px solid rgba(26,22,18,.09); font-family: var(--ff-serif); font-style: italic; font-size: .98rem; line-height: 1.7; color: var(--c-text-mid); }
+
+    /* banner: cambia l'abbinamento olfattivo */
+    .gc-swap { display: flex; align-items: center; gap: 20px; margin-top: 6px; padding: 22px 24px;
+      background: var(--c-bg-cream); border: 1px solid rgba(26,22,18,.1); text-decoration: none;
+      transition: border-color .3s, background .3s; }
+    .gc-swap:hover { border-color: rgba(26,22,18,.3); background: #f4eee2; }
+    .gc-swap-txt { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+    .gc-swap-label { font-family: var(--ff-sans); font-size: .56rem; font-weight: 600; letter-spacing: .24em;
+      text-transform: uppercase; color: var(--c-gold); }
+    .gc-swap-sub { font-family: var(--ff-serif); font-size: 1.04rem; line-height: 1.62; color: var(--c-text-dark); }
+    .gc-swap-sub strong { font-weight: 600; color: var(--c-text-dark); }
+    .gc-swap-arrow { margin-left: auto; flex: 0 0 auto; font-family: var(--ff-sans); font-size: 1rem;
+      color: var(--c-text-mid); transition: transform .3s, color .3s; }
+    .gc-swap:hover .gc-swap-arrow { transform: translateX(5px); color: var(--c-text-dark); }
+
+    .gc-cta-row { margin-top: 34px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .gc-cta { font-family: var(--ff-sans); font-size: .5rem; font-weight: 300; letter-spacing: .2em; text-transform: uppercase; text-decoration: none; padding: 15px 30px; transition: background .25s, border-color .25s, gap .25s; display: inline-flex; align-items: center; gap: 10px; }
+    .gc-cta.primary { background: var(--c-text-dark); color: var(--c-bg-light); border: 1px solid var(--c-text-dark); }
+    .gc-cta.primary:hover { gap: 16px; }
+    .gc-cta.ghost { color: var(--c-text-dark); border: 1px solid rgba(26,22,18,.28); }
+    .gc-cta.ghost:hover { border-color: var(--c-text-dark); }
+
+    /* fade contenuto al cambio colore */
+    .gc-fade { animation: gcFade .45s ease; }
+    @keyframes gcFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+    /* ── PROFUMI ASSOCIATI ── */
+    .gc-assoc { border-top: 1px solid rgba(26,22,18,.09); padding: 70px var(--gutter) 90px; }
+    .gc-assoc-inner { max-width: 1420px; margin: 0 auto; }
+    .gc-assoc-eyebrow { font-family: var(--ff-sans); font-size: .5rem; font-weight: 300; letter-spacing: .3em; text-transform: uppercase; color: var(--c-gold); margin-bottom: 12px; }
+    .gc-assoc-title { font-family: var(--ff-display); font-size: clamp(1.7rem, 3.6vw, 2.6rem); font-weight: 300; letter-spacing: .04em; color: var(--c-text-dark); margin-bottom: 40px; }
+    .gc-assoc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px 26px; }
+    @media (max-width: 900px) { .gc-assoc-grid { grid-template-columns: repeat(2, 1fr); gap: 30px 18px; } }
+    @media (max-width: 520px) { .gc-assoc-grid { grid-template-columns: 1fr; } }
+    .gc-assoc-card { text-decoration: none; display: block; }
+    .gc-assoc-media { position: relative; aspect-ratio: 3/4; overflow: hidden; background: var(--c-bg-cream); margin-bottom: 14px; }
+    .gc-assoc-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1s cubic-bezier(.25,.46,.45,.94); }
+    .gc-assoc-card:hover .gc-assoc-media img { transform: scale(1.05); }
+    .gc-assoc-name { font-family: var(--ff-display); font-size: 1.18rem; font-weight: 300; letter-spacing: .04em; color: var(--c-text-dark); margin-bottom: 6px; }
+    .gc-assoc-desc { font-family: var(--ff-serif); font-style: italic; font-size: .92rem; line-height: 1.6; color: var(--c-text-mid); }
+  </style>
+</head>
+<body>
+
+  <nav id="main-nav">
+    <a href="index.html" class="nav-brand">
+      <img class="nav-stork" src="logo-stork.png" alt="Logo Cereria Cicogna" width="32" height="32" loading="eager">
+      <div class="nav-logo">Cereria Cicogna<span>Industria F.lli Cicogna · Novate Milanese</span></div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li class="nav-has-drop">
+        <a href="home-collection.html" aria-haspopup="true" aria-expanded="false">Home Collection</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Home Collection">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="home-collection.html" class="mega-feat-title">Home Collection</a>
+            <p class="mega-feat-desc">Candele profumate per arredare e impreziosire ogni ambiente della casa.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul><li><a href="home-collection.html?c=sand">Sand</a></li><li><a href="home-collection.html?c=rock">Rock</a></li><li><a href="home-collection.html?c=glass">Glass</a></li><li><a href="home-collection.html?c=metallic">Metallic</a></li><li><a href="home-collection.html?c=ceri">Ceri</a></li></ul>
+            <a href="home-collection.html" class="mega-all">Vedi tutti</a>
+          </div><div class="mega-img-col"><a href="home-collection.html"><img src="images/hero-home-collection.webp" alt="Home Collection — Cereria Cicogna"></a></div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="nav-has-drop">
+        <a href="garden.html" aria-haspopup="true" aria-expanded="false">Garden</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Linea Garden">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="garden.html" class="mega-feat-title">Linea Garden</a>
+            <p class="mega-feat-desc">Candele per esterni e interni, pensate per ogni stagione all'aperto.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul>
+              <li><a href="garden.html?c=citronelle">Citronelle</a></li>
+              <li><a href="garden.html?c=cerabianca">Cera Bianca</a></li>
+              <li><a href="garden.html?c=ricariche">Ricariche</a></li>
+            </ul>
+            <a href="garden.html" class="mega-all">Vedi tutti</a>
+          </div><div class="mega-img-col"><a href="garden.html"><img src="images/hero-garden.webp" alt="Linea Garden — Cereria Cicogna"></a></div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="nav-has-drop">
+        <a href="liturgico.html" aria-haspopup="true" aria-expanded="false">Liturgico</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Articoli Liturgici">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="liturgico.html" class="mega-feat-title">Articoli Liturgici</a>
+            <p class="mega-feat-desc">Ceri, lumini e arredi sacri per chiese, santuari e cerimonie religiose.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul>
+              <li><a href="liturgico.html?c=lumini">Lumini da chiesa</a></li>
+              <li><a href="liturgico.html?c=accessori">Accessori</a></li>
+              <li><a href="liturgico.html?c=forniture">Forniture</a></li>
+            </ul>
+            <a href="liturgico.html" class="mega-all">Vedi tutti</a>
+          </div><div class="mega-img-col"><a href="liturgico.html"><img src="images/hero-liturgico.webp" alt="Articoli Liturgici — Cereria Cicogna"></a></div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="nav-sep" aria-hidden="true"></li>
+      <li>
+        <a href="private-label.html">Private Label</a>
+      </li>
+      <li><a href="fragrance-library.html">Fragrance Library</a></li><li><a href="personalizzazione.html">Collaborazioni</a></li>
+      <li><a href="chi-siamo.html">Chi Siamo</a></li>
+    </ul>
+    <a href="contatti.html" class="nav-cta">Contattaci</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Apri menu" aria-expanded="false">
+      <span class="hamburger-line"></span><span class="hamburger-line"></span>
+    </button>
+  </nav>
+
+  <!-- INTRO -->
+  <header class="gc-intro">
+    <nav class="gc-breadcrumb" aria-label="Percorso">
+      <a href="home-collection.html">Home Collection</a> · Scent Glass
+    </nav>
+    <span class="gc-eyebrow">Cereria Cicogna · Home Collection</span>
+    <h1 class="gc-title">Scent Glass</h1>
+    <p class="gc-subtitle">Candele in bicchiere di vetro colorato, nove profumazioni d'autore.
+      Ogni colore racconta una fragranza: seleziona la tua e lasciati guidare.</p>
+  </header>
+
+  <!-- PRODOTTO -->
+  <section class="gc-product" aria-label="Configuratore Scent Glass">
+
+    <!-- CAROUSEL -->
+    <div class="gc-carousel">
+      <div class="gc-viewport" id="gc-viewport">
+        <div class="gc-track" id="gc-track" aria-live="polite"></div>
+        <button class="gc-arrow prev" id="gc-prev" aria-label="Immagine precedente">←</button>
+        <button class="gc-arrow next" id="gc-next" aria-label="Immagine successiva">→</button>
+      </div>
+      <div class="gc-dots" id="gc-dots" role="tablist" aria-label="Vai all'immagine"></div>
+      <p class="gc-slide-label" id="gc-slide-label"></p>
+    </div>
+
+    <!-- INFO -->
+    <div class="gc-info">
+      <div id="gc-info-fade">
+        <p class="gc-color-name" id="gc-color-name"></p>
+        <h2 class="gc-perfume" id="gc-perfume"></h2>
+        <p class="gc-family" id="gc-family"></p>
+      </div>
+
+      <div class="gc-default">
+        <span class="gc-default-rule" aria-hidden="true"></span>
+        <p class="gc-default-txt">Questa è la fragranza che <em>scegliamo noi di serie</em> per questo colore. Puoi tenerla così o <a href="fragrance-library.html">sceglierne un'altra</a> tra le nostre famiglie olfattive.</p>
+      </div>
+
+      <p class="gc-swatches-label">Colore · Profumo</p>
+      <div class="gc-swatches" id="gc-swatches" role="listbox" aria-label="Scegli colore e profumo"></div>
+
+      <div class="gc-block">
+        <p class="gc-block-label">Note principali</p>
+        <p class="gc-notes" id="gc-notes"></p>
+      </div>
+      <div class="gc-block">
+        <p class="gc-block-label">Il profumo</p>
+        <p class="gc-desc" id="gc-perfume-desc"></p>
+      </div>
+      <div class="gc-block">
+        <p class="gc-block-label">La candela</p>
+        <p class="gc-candle-desc" id="gc-candle-desc"></p>
+      </div>
+      <a class="gc-swap" id="gc-swap-link" href="fragrance-library.html">
+        <span class="gc-swap-txt">
+          <span class="gc-swap-label">Cambia il profumo</span>
+          <span class="gc-swap-sub">Di serie questo colore arriva con <strong id="gc-swap-current"></strong>. Sfoglia le famiglie olfattive e abbinane un'altra.</span>
+        </span>
+        <span class="gc-swap-arrow" aria-hidden="true">→</span>
+      </a>
+
+      <p class="gc-note-final">Ogni candela può essere personalizzata con altre fragranze disponibili su richiesta.</p>
+
+      <div class="gc-cta-row">
+        <a href="contatti.html" class="gc-cta primary" id="gc-add">Richiedi la tua candela →</a>
+        <a href="fragrance-library.html" class="gc-cta ghost">Esplora le famiglie olfattive</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFUMI ASSOCIATI (aggiornati al cambio colore) -->
+  <section class="gc-assoc" aria-label="Profumi associati">
+    <div class="gc-assoc-inner">
+      <p class="gc-assoc-eyebrow">Profumi associati · <span id="gc-assoc-color"></span></p>
+      <h2 class="gc-assoc-title">Le fragranze pensate per questo colore</h2>
+      <div class="gc-assoc-grid" id="gc-assoc-grid"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-row">
+          <img class="footer-stork" src="logo-stork.png" alt="" width="40" height="40" aria-hidden="true">
+          <span class="footer-wordmark">Cereria Cicogna</span>
+        </div>
+        <p class="footer-tagline">Dal sacro al quotidiano,<br>la stessa luce da generazioni.</p>
+      </div>
+      <div class="footer-col"><p class="footer-col-title">Linee</p><ul>
+        <li><a href="home-collection.html">Home Collection</a></li>
+        <li><a href="garden.html">Linea Garden</a></li>
+        <li><a href="liturgico.html">Articoli Liturgici</a></li>
+        <li class="mobile-menu-sep" aria-hidden="true"></li>
+      <li><a href="private-label.html">Private Label</a></li>
+      </ul></div>
+      <div class="footer-col"><p class="footer-col-title">Azienda</p><ul>
+        <li><a href="chi-siamo.html">Chi Siamo</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="contatti.html#b2b">Per professionisti</a></li>
+      </ul></div>
+      <div class="footer-col"><p class="footer-col-title">Contatti</p>
+        <address>Via Damiano Chiesa, 84<br>20026 Novate Milanese (MI)<br><br>
+          <a href="tel:+39023543707">02.35.43.707</a><br>
+          <a href="mailto:info@cerariacicogna.com">info@cerariacicogna.com</a>
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2025 Industria Ceraria F.lli Cicogna srl</span>
+      <span class="footer-legal">P.IVA 11980500158 &nbsp;&middot;&nbsp; <a href="privacy.html">Privacy</a></span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="js/main.js?v=8"></script>
+  <script src="js/selection.js?v=7"></script>
+  <script>
+  /* ═══════════════════════════════════════════════════
+     GLASS CANDLES — 9 varianti colore/profumo.
+     Carousel per colore: [frontale, scent, vista dall'alto].
+     Cambio colore → immagini, nome, note, descrizioni, alternative.
+  ═══════════════════════════════════════════════════ */
+  (function () {
+    const VARIANTS = [
+      { id: 'orange', color: 'Orange', hex: '#d97a2e', perfume: 'Citrus Spice',
+        family: 'Agrumata speziata',
+        notes: 'Arancia amara · Zenzero · Cedro · Betulla · Ebano',
+        perfumeDesc: 'Un agrume vibrante che si scalda tra le spezie: l’arancia amara incontra lo zenzero, poi cedro, betulla ed ebano per un finale caldo e avvolgente.',
+        alts: ['Bergamotto', 'Agrumi', 'Zenzero', 'Cedro'] },
+
+      { id: 'lightblue', color: 'Light Blue', hex: '#7ab8d9', perfume: 'Sea Salt',
+        family: 'Marina · acquatica',
+        notes: 'Bergamotto · Sale · Cassis · Alga marina',
+        perfumeDesc: 'La brezza salmastra dell’onda: bergamotto e sale marino si aprono sul cassis e sull’alga, per una freschezza pulita e ariosa.',
+        alts: ['Sale marino', 'Alga', 'Bergamotto', 'Menta'] },
+
+      { id: 'blue', color: 'Blue', hex: '#1a3a7a', perfume: 'Winter Tree',
+        family: 'Legnosa balsamica',
+        notes: 'Ginepro · Pino · Aghi · Muschio · Eucalipto · Cedro',
+        perfumeDesc: 'Il respiro del bosco d’inverno: ginepro e pino tra aghi resinosi, muschio ed eucalipto, chiusi da un cedro netto e profondo.',
+        alts: ['Ginepro', 'Pino', 'Eucalipto', 'Muschio'] },
+
+      { id: 'yellow', color: 'Yellow', hex: '#e8c832', perfume: 'Mimosa Sun',
+        family: 'Floreale',
+        notes: 'Mimosa',
+        perfumeDesc: 'Un soliflore luminoso: la mimosa in piena fioritura, dolce e cipriata, come un raggio di sole di primavera.',
+        alts: ['Mimosa', 'Fiori gialli', 'Agrumi dolci', 'Cipria'] },
+
+      { id: 'amber', color: 'Amber', hex: '#a8795a', perfume: 'Baraggia',
+        family: 'Gourmand speziata',
+        notes: 'Rhum · Caffè tostato · Garofano · Cannella',
+        perfumeDesc: 'Un abbraccio goloso: rhum e caffè tostato speziati da garofano e cannella, densi, caldi e confortevoli.',
+        alts: ['Caffè', 'Rhum', 'Cannella', 'Vaniglia', 'Spezie'] },
+
+      { id: 'black', color: 'Black', hex: '#1a1a1a', perfume: 'Incense',
+        family: 'Ambrata · incenso',
+        notes: 'Incenso · Frankincense · Incenso indiano · Tabacco',
+        perfumeDesc: 'Sacro e meditativo: incenso e frankincense si fondono all’incenso indiano su un fondo di tabacco, fumoso e avvolgente.',
+        alts: ['Incenso', 'Resine', 'Tabacco', 'Legni affumicati'] },
+
+      { id: 'darkred', color: 'Dark Red', hex: '#8a1f2a', perfume: 'Uva Rara',
+        family: 'Fruttata',
+        notes: 'Uva americana · Rabarbaro · Cassis · Bergamotto',
+        perfumeDesc: 'Succosa e inaspettata: uva americana e cassis con un guizzo di rabarbaro e bergamotto, come una vendemmia matura.',
+        alts: ['Uva', 'Cassis', 'Rabarbaro', 'Frutti scuri'] },
+
+      { id: 'red', color: 'Red', hex: '#c01818', perfume: 'Bessa',
+        family: 'Legnosa orientale',
+        notes: 'Oud · Sandalo · Cannella · Vaniglia · Liquirizia',
+        perfumeDesc: 'Intenso e prezioso: oud e sandalo avvolti da cannella, vaniglia e liquirizia, per un carattere orientale e sensuale.',
+        alts: ['Oud', 'Sandalo', 'Vaniglia', 'Cannella'] },
+
+      { id: 'green', color: 'Green', hex: '#5c8030', perfume: 'Fig Leaf',
+        family: 'Verde · fresca',
+        notes: 'Fico · Menta · Pepe bianco',
+        perfumeDesc: 'La freschezza dell’orto mediterraneo: fico verde e menta con un tocco di pepe bianco, nitido e vivo.',
+        alts: ['Fico', 'Foglia di fico', 'Menta', 'Basilico', 'Vetiver'] },
+    ];
+
+    /* la descrizione candela è comune a tutta la linea (vetro colorato + stoppino in legno) */
+    const CANDLE_DESC = 'Candela in bicchiere di vetro colorato con stoppino in legno. ' +
+      'Disponibile in più formati e abbinabile al coperchio in legno.';
+
+    /* ── Profumi (nuovi asset approvati) ── */
+    const PERF = {
+      'melange':        { n:'Melange',         img:'images/perfume-melange.webp',              d:'Delicato, cipriato e raffinato, con una parte floreale luminosa e un fondo caldo-legnoso.' },
+      'baraggia':       { n:'Baraggia',        img:'images/perfume-baraggia.webp',             d:'Caldo, liquoroso e speziato: caffè tostato, rhum e spezie profonde.' },
+      'via-italia':     { n:'Via Italia',      img:'images/perfume-via-italia.webp',           d:'Fresco e mediterraneo: agrumi luminosi, fiori delicati e una base verde di vetiver.' },
+      'uva-rara':       { n:'Uva Rara',        img:'images/perfume-uva-rara.webp',             d:'Fruttato e raffinato: uva scura, cassis e rabarbaro con la freschezza del bergamotto.' },
+      'oasi':           { n:'Oasi',            img:'images/perfume-oasi.webp',                 d:'Floreale, luminoso e arioso: un bouquet bianco, pulito ed elegante.' },
+      'bessa':          { n:'Bessa',           img:'images/perfume-bessa.webp',                d:'Caldo e orientale: legni preziosi, spezie dolci e accenti scuri.' },
+      'winter-tree':    { n:'Winter Tree',     img:'images/perfume-winter-tree.webp',          d:'Boschivo e balsamico: conifere, muschio ed eucalipto di un paesaggio invernale.' },
+      'profumoir-1':    { n:'Profumoir 1',     img:'images/perfume-profumoir-1.webp',          d:'Verde e contemporaneo: fico, accenti di menta e una nota pulita di pepe bianco.' },
+      'profumoir-2':    { n:'Profumoir 2',     img:'images/perfume-profumoir-2.webp',          d:'Marino e minerale: bergamotto, sale, alga marina e una sfumatura di cassis.' },
+      'profumoir-3':    { n:'Profumoir 3',     img:'images/perfume-profumoir-3.webp',          d:'Floreale e cremoso: fiori bianchi, rosa e una base calda ambrata.' },
+      'profumoir-4':    { n:'Profumoir 4',     img:'images/perfume-profumoir-4.webp',          d:'Agrumato-legnoso e sofisticato: arancia amara, zenzero e legni scuri.' },
+      'gelsomino':      { n:'Gelsomino',       img:'images/scentlib-gelsomino.webp?v=3',       d:'Floreale bianco, puro, luminoso e delicato.' },
+      'mimosa':         { n:'Mimosa',          img:'images/scentlib-mimosa.webp?v=3',          d:'Solare, morbido, cipriato e primaverile.' },
+      'basilico':       { n:'Basilico',        img:'images/scentlib-basilico.webp?v=3',        d:'Verde, fresco, aromatico e mediterraneo.' },
+      'coconut':        { n:'Coconut',         img:'images/scentlib-cocco.webp?v=3',           d:'Morbido, cremoso, pulito e leggermente tropicale.' },
+      'menta':          { n:'Menta',           img:'images/scentlib-menta.webp?v=3',           d:'Fresco, brillante, verde e aromatico.' },
+      'fico':           { n:'Fico',            img:'images/scentlib-fico.webp?v=3',            d:'Verde, lattiginoso, mediterraneo e naturale.' },
+      'oud-sandalo':    { n:'Oud & Sandalo',   img:'images/scentlib-sandalo.webp?v=3',         d:'Legnoso, caldo, profondo e sofisticato.' },
+      'tabacco':        { n:'Tabacco',         img:'images/scentlib-tabacco.webp?v=3',         d:'Caldo, secco, avvolgente e materico.' },
+      'winter-incense': { n:'Winter Incense',  img:'images/scentlib-winter-incense.webp?v=3',  d:'Fumoso, invernale, resinoso e meditativo.' },
+      'frankincense':   { n:'Frankincense',    img:'images/scentlib-frankincense.webp?v=3',    d:'Sacro, resinoso, minerale e pulito.' },
+      'incenso-indiano':{ n:'Incenso Indiano', img:'images/scentlib-incenso-indiano.webp?v=3', d:'Speziato, mistico, caldo e profondo.' },
+    };
+
+    /* ── associazione colore → profumi ── */
+    const ASSOC = {
+      red:       ['profumoir-3','bessa','oasi'],
+      orange:    ['via-italia','profumoir-4','basilico'],
+      lightblue: ['profumoir-2','coconut','menta'],
+      blue:      ['winter-tree','frankincense'],
+      yellow:    ['mimosa','melange','gelsomino','oasi'],
+      amber:     ['baraggia','oud-sandalo','tabacco'],
+      black:     ['winter-incense','incenso-indiano','frankincense','bessa'],
+      darkred:   ['uva-rara','bessa','tabacco'],
+      green:     ['profumoir-1','fico','menta','basilico'],
+    };
+
+    /* gallery: frontale → foto dei profumi associati (nuovi asset) → vista dall'alto */
+    VARIANTS.forEach(v => {
+      v.assoc = ASSOC[v.id] || [];
+      const perfSlides = v.assoc.map(pid => ({
+        src: PERF[pid].img,
+        alt: v.color + ' · profumo ' + PERF[pid].n,
+        label: PERF[pid].n,
+      }));
+      v.slides = [
+        { src: 'images/glass-' + v.id + '-front.webp', alt: v.color + ' — candela frontale', label: 'Candela' },
+        ...perfSlides,
+        { src: 'images/glass-' + v.id + '-top.webp',   alt: v.color + ' — candela vista dall’alto', label: 'Dall’alto' },
+      ];
+    });
+
+    const track   = document.getElementById('gc-track');
+    const dotsWrap = document.getElementById('gc-dots');
+    const slideLbl = document.getElementById('gc-slide-label');
+    const swWrap  = document.getElementById('gc-swatches');
+    const prevBtn = document.getElementById('gc-prev');
+    const nextBtn = document.getElementById('gc-next');
+
+    let current = 0;  /* variante */
+    let slide = 0;    /* immagine nel carousel */
+
+    /* ── swatches ── */
+    VARIANTS.forEach((v, i) => {
+      const b = document.createElement('button');
+      b.className = 'gc-swatch' + (i === 0 ? ' active' : '');
+      b.style.background = v.hex;
+      if (v.hex === '#f0ede6' || v.hex === '#e8c832') b.style.borderColor = 'rgba(26,22,18,.3)';
+      b.title = v.color + ' — ' + v.perfume;
+      b.setAttribute('role', 'option');
+      b.setAttribute('aria-label', v.color + ', profumo ' + v.perfume);
+      b.addEventListener('click', () => selectVariant(i));
+      swWrap.appendChild(b);
+    });
+
+    /* ── carousel ── */
+    function buildSlides(v) {
+      track.innerHTML = '';
+      v.slides.forEach(s => {
+        const d = document.createElement('div');
+        d.className = 'gc-slide';
+        d.innerHTML = `<img src="${s.src}" alt="${s.alt}" loading="eager">`;
+        track.appendChild(d);
+      });
+      dotsWrap.innerHTML = '';
+      v.slides.forEach((s, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'gc-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-label', s.label);
+        dot.addEventListener('click', () => goSlide(i));
+        dotsWrap.appendChild(dot);
+      });
+    }
+
+    function goSlide(i) {
+      const v = VARIANTS[current];
+      slide = (i + v.slides.length) % v.slides.length;
+      track.style.transform = 'translateX(' + (-slide * 100) + '%)';
+      dotsWrap.querySelectorAll('.gc-dot').forEach((d, j) => d.classList.toggle('active', j === slide));
+      slideLbl.textContent = v.slides[slide].label;
+    }
+
+    /* ── selezione variante ── */
+    function selectVariant(i) {
+      current = i; slide = 0;
+      const v = VARIANTS[i];
+      buildSlides(v);
+      track.style.transition = 'none';
+      track.style.transform = 'translateX(0)';
+      requestAnimationFrame(() => { track.style.transition = ''; });
+      slideLbl.textContent = v.slides[0].label;
+
+      swWrap.querySelectorAll('.gc-swatch').forEach((s, j) => s.classList.toggle('active', j === i));
+
+      document.getElementById('gc-color-name').textContent = v.color + ' · Profumo di serie';
+      document.getElementById('gc-perfume').textContent = v.perfume;
+      document.getElementById('gc-family').textContent = v.family;
+      document.getElementById('gc-notes').textContent = v.notes;
+      document.getElementById('gc-perfume-desc').textContent = v.perfumeDesc;
+      document.getElementById('gc-candle-desc').textContent = CANDLE_DESC;
+
+      /* profumi associati: si aggiornano col colore */
+      document.getElementById('gc-assoc-color').textContent = v.color;
+      document.getElementById('gc-assoc-grid').innerHTML = v.assoc.map(pid => {
+        const p = PERF[pid];
+        return '<a class="gc-assoc-card" href="fragrance-library.html?profumo=' + pid + '&candela=glass-' + v.id + '">' +
+          '<div class="gc-assoc-media"><img src="' + p.img + '" alt="' + p.n + '" loading="lazy"></div>' +
+          '<p class="gc-assoc-name">' + p.n + '</p>' +
+          '<p class="gc-assoc-desc">' + p.d + '</p></a>';
+      }).join('');
+
+      const fade = document.getElementById('gc-info-fade');
+      fade.classList.remove('gc-fade'); void fade.offsetWidth; fade.classList.add('gc-fade');
+
+      /* aggiorna URL senza ricaricare */
+      history.replaceState(null, '', '?c=' + v.id);
+
+      aggiornaAbbinamento();
+    }
+
+    /* ── abbinamento olfattivo ──
+       Il colore arriva con la sua fragranza di serie: la registriamo come
+       coppia (così "Parla con noi" la allega da sola) e offriamo il passaggio
+       alla Fragrance Library per sceglierne un'altra fra tutte le famiglie. */
+    let glassScelta = null;
+
+    /* la CTA aggiunge l'abbinamento corrente alla richiesta, senza sostituire le altre scelte */
+    document.addEventListener('DOMContentLoaded', function () {
+      const btn = document.getElementById('gc-add');
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        if (!window.CCSel || !glassScelta) return;
+        e.preventDefault();
+        CCSel.aggiungiAbbinamento(glassScelta[0], glassScelta[1]);
+        location.href = 'contatti.html';
+      });
+    });
+
+    function aggiornaAbbinamento() {
+      const v   = VARIANTS[current];
+      const pid = Object.keys(PERF).find(x => PERF[x].n === v.perfume);
+
+      glassScelta = [
+        { name: 'Scent Glass \u00b7 ' + v.color, ref: 'glass-' + v.id,
+          img: v.slides[0] && v.slides[0].src, cat: 'home-collection',
+          url: 'glass-candles.html?c=' + v.id },
+        { name: v.perfume, ref: pid || '', img: pid ? PERF[pid].img : '',
+          cat: 'profumo',
+          url: pid ? 'fragrance-library.html?profumo=' + pid : 'fragrance-library.html' }
+      ];
+      /* candela in transito: così scegliendo un profumo dalla libreria
+         l'abbinamento si aggancia a questa candela vetro */
+      if (window.CCSel) CCSel.setCandelaInCorso(glassScelta[0]);
+
+      const cur = document.getElementById('gc-swap-current');
+      if (cur) cur.textContent = v.perfume;
+      const link = document.getElementById('gc-swap-link');
+      if (link) link.href = 'fragrance-library.html?candela=glass-' + v.id;
+    }
+
+    prevBtn.addEventListener('click', () => goSlide(slide - 1));
+    nextBtn.addEventListener('click', () => goSlide(slide + 1));
+
+    /* frecce tastiera sul carousel */
+    document.getElementById('gc-viewport').addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  goSlide(slide - 1);
+      if (e.key === 'ArrowRight') goSlide(slide + 1);
+    });
+
+    /* swipe mobile */
+    let sx = null;
+    const vp = document.getElementById('gc-viewport');
+    vp.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+    vp.addEventListener('touchend', e => {
+      if (sx === null) return;
+      const dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 40) goSlide(slide + (dx < 0 ? 1 : -1));
+      sx = null;
+    }, { passive: true });
+
+    /* precarica tutte le immagini per switch istantanei */
+    VARIANTS.forEach(v => v.slides.forEach(s => { const im = new Image(); im.src = s.src; }));
+
+    /* variante iniziale (?c=id o la prima) */
+    const startId = new URLSearchParams(location.search).get('c');
+    const startIdx = Math.max(0, VARIANTS.findIndex(v => v.id === startId));
+    selectVariant(startIdx === -1 ? 0 : startIdx);
+  })();
+  </script>
+  <script src="js/i18n-pages.js?v=3"></script>
+  <script src="js/i18n.js?v=7"></script>
+  <script src="js/link-personale.js?v=6" defer></script>
+  <script src="assistant/widget/cc-assistant.js?v=12" data-endpoint="http://localhost:8787/api/chat" data-privacy="privacy.html" defer></script>
+</body>
+</html>

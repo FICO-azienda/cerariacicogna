@@ -1,0 +1,2060 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cereria Cicogna — Industria Ceraria, Novate Milanese</title>
+  <meta name="description" content="Industria Ceraria F.lli Cicogna. Oltre 50 anni di artigianalità. Articoli liturgici, linea Garden, Home Collection e private label per ristoranti ed eventi.">
+  <!-- anteprime social e indirizzo canonico -->
+  <link rel="canonical" href="https://www.cerariacicogna.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cereria Cicogna">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:url" content="https://www.cerariacicogna.com/">
+  <meta property="og:title" content="Cereria Cicogna — Industria Ceraria, Novate Milanese">
+  <meta property="og:description" content="Industria Ceraria F.lli Cicogna. Oltre 50 anni di artigianalità. Articoli liturgici, linea Garden, Home Collection e private label per ristoranti ed eventi.">
+  <meta property="og:image" content="https://www.cerariacicogna.com/images/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cereria Cicogna — Industria Ceraria, Novate Milanese">
+  <meta name="twitter:description" content="Industria Ceraria F.lli Cicogna. Oltre 50 anni di artigianalità. Articoli liturgici, linea Garden, Home Collection e private label per ristoranti ed eventi.">
+  <meta name="twitter:image" content="https://www.cerariacicogna.com/images/og-cover.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/main.css?v=13">
+  <style>
+
+    /* ═══════════════════════════════════════════════════
+       VIDEO HERO  —  position:fixed overlay, z:100
+       Dismissed on "Entra" click or scroll/touch event
+    ═══════════════════════════════════════════════════ */
+
+    .v-hero {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      overflow: hidden;
+      background: #100C06;
+    }
+
+    /* ── Media layer (video + CSS poster) ── */
+    .v-hero-media {
+      position: absolute;
+      inset: 0;
+    }
+
+    .v-hero-media video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      /* z-index above poster once it plays */
+      z-index: 1;
+      /* invisibile finché non parte davvero da 0: evita il flash
+         dell'ultimo frame rimasto in cache */
+      opacity: 0;
+      transition: opacity .45s ease;
+    }
+    .v-hero-media video.is-playing { opacity: 1; }
+
+    /* Poster — shown while video loads or when prefers-reduced-motion is set */
+    .v-hero-poster {
+      position: absolute; inset: 0;
+      background-image: url('video/hero-poster.jpg');
+      background-size: cover;
+      background-position: center center;
+      z-index: 0;
+      display: none;   /* nascosto di default: il video sfuma dal fondo scuro, niente flash del poster */
+    }
+
+    /* prefers-reduced-motion: hide video, show static poster fallback */
+    @media (prefers-reduced-motion: reduce) {
+      #hero-video { display: none !important; }
+      .v-hero-poster { display: block; }
+      .v-hero-content * { animation: none !important; transition: none !important; }
+    }
+
+    /* Warm vignette — espresso, not cold void */
+    .v-hero-vignette {
+      position: absolute; inset: 0; z-index: 2;
+      background:
+        radial-gradient(ellipse 72% 58% at 50% 50%,
+          transparent 18%, rgba(16,10,4,.44) 68%, rgba(16,10,4,.86) 100%),
+        linear-gradient(to top,
+          rgba(16,10,4,.88) 0%, transparent 42%, transparent 100%),
+        linear-gradient(to bottom,
+          rgba(16,10,4,.55) 0%, transparent 28%, transparent 100%);
+    }
+
+    /* ── Content ── */
+    .v-hero-content {
+      position: absolute; inset: 0; z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 var(--gutter);
+      padding-top: 80px;
+      padding-bottom: 22vh;
+    }
+
+    .v-hero-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .5rem; font-weight: 300;
+      letter-spacing: .44em; text-transform: uppercase;
+      color: rgba(232,165,48,.95);
+      margin-bottom: 28px;
+      opacity: 0;
+      text-shadow: 0 1px 12px rgba(16,10,4,.7);
+    }
+
+    .v-hero-title {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(4rem, 10.5vw, 10rem);
+      font-weight: 300;
+      letter-spacing: .20em;
+      line-height: .92;
+      color: #F0EAD8;
+      margin-bottom: 6px;
+      opacity: 0;
+      text-shadow: 0 2px 32px rgba(16,10,4,.65), 0 4px 80px rgba(16,10,4,.45);
+    }
+
+    .v-hero-title-sub {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(1.7rem, 4.6vw, 4.6rem);
+      font-weight: 300;
+      letter-spacing: .55em;
+      color: rgba(240,234,216,.92);
+      margin-bottom: 28px;
+      opacity: 0;
+      text-shadow: 0 2px 24px rgba(16,10,4,.6);
+    }
+
+    .v-hero-rule {
+      width: 32px; height: 1px;
+      background: rgba(232,165,48,.55);
+      margin-bottom: 24px;
+      opacity: 0;
+    }
+
+    .v-hero-tagline {
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      font-size: clamp(.92rem, 2.2vw, 1.4rem);
+      font-weight: 300;
+      letter-spacing: .1em;
+      color: rgba(220,205,175,.90);
+      line-height: 1.8;
+      margin-bottom: 54px;
+      opacity: 0;
+      text-shadow: 0 1px 16px rgba(16,10,4,.65);
+    }
+
+    /* "Entra" button */
+    .v-hero-enter {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: inherit;
+      padding: 8px 16px;
+      opacity: 0;
+    }
+
+    .v-hero-enter-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .62rem; font-weight: 300;
+      letter-spacing: .40em; text-transform: uppercase;
+      color: rgba(232,165,48,.98);
+      border: 1px solid rgba(232,165,48,.60);
+      padding: 14px 44px;
+      transition: border-color .45s, color .45s, background .45s;
+    }
+    .v-hero-enter:hover .v-hero-enter-label {
+      border-color: rgba(232,165,48,.55);
+      color: rgba(232,165,48,1);
+      background: rgba(232,165,48,.05);
+    }
+
+    .v-hero-enter-arrow {
+      display: block;
+      width: 1px; height: 36px;
+      background: linear-gradient(to bottom, rgba(232,165,48,.45), transparent);
+      transition: height .45s;
+    }
+    .v-hero-enter:hover .v-hero-enter-arrow { height: 50px; }
+
+    /* Bottom scroll cue */
+    .v-scroll-cue {
+      position: absolute;
+      bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+    }
+
+    .v-scroll-cue span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .44rem; font-weight: 300;
+      letter-spacing: .40em; text-transform: uppercase;
+      color: rgba(191,174,140,.75);
+    }
+
+    .v-scroll-line {
+      width: 1px; height: 44px;
+      background: linear-gradient(to bottom, rgba(232,165,48,.38), transparent);
+      animation: drip 2.8s ease-in-out infinite;
+    }
+
+    @keyframes drip {
+      0%   { transform: scaleY(0); transform-origin: top;    opacity:0; }
+      45%  { transform: scaleY(1); transform-origin: top;    opacity:1; }
+      55%  { transform: scaleY(1); transform-origin: bottom; opacity:1; }
+      100% { transform: scaleY(0); transform-origin: bottom; opacity:0; }
+    }
+
+    /* ── Skip link (accessibility) ── */
+    .v-hero-skip {
+      position: absolute;
+      bottom: 36px; right: clamp(24px, 5vw, 80px);
+      z-index: 3;
+      font-family: 'Montserrat', sans-serif;
+      font-size: .44rem; font-weight: 300;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: rgba(191,174,140,.65);
+      text-decoration: none;
+      cursor: pointer;
+      background: none; border: none;
+      transition: color .3s;
+      opacity: 0;
+    }
+    .v-hero-skip:hover { color: rgba(191,174,140,.95); }
+
+    /* ── Mobile adjustments ── */
+    @media (max-width: 768px) {
+      .v-hero-poster { animation-duration: 14s; }
+      .v-hero-title  { letter-spacing: .12em; line-height: .98; }
+      .v-hero-title-sub { letter-spacing: .28em; }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       MARQUEE STRIP
+    ═══════════════════════════════════════════════════ */
+    .marquee-strip {
+      overflow: hidden;
+      border-top: 1px solid var(--c-border);
+      border-bottom: 1px solid var(--c-border);
+      padding: 16px 0;
+      background: var(--c-dark-2);
+    }
+    .marquee-track {
+      display: flex; align-items: center;
+      animation: marquee-scroll 28s linear infinite;
+      width: max-content;
+    }
+    @keyframes marquee-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-item {
+      display: flex; align-items: center; gap: 28px;
+      padding: 0 28px; white-space: nowrap;
+      font-family: 'Montserrat', sans-serif;
+      font-size: .52rem; font-weight: 300;
+      letter-spacing: .26em; text-transform: uppercase;
+      color: var(--c-muted);
+    }
+    .marquee-dot {
+      display: inline-block;
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--c-gold); opacity: .4;
+    }
+
+    /* ═══════════════════════════════════════════════════
+       LINES PREVIEW  —  alternating editorial split
+       3 product lines, each with full half-width image
+       and structured text panel. Elegant, orderly, clear.
+    ═══════════════════════════════════════════════════ */
+
+    .lines-intro-header {
+      padding: 72px var(--gutter) 64px;
+      text-align: center;
+      border-top: 1px solid var(--c-border);
+      background: var(--c-dark);
+    }
+
+    .lines-intro-eyebrow {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: .46rem; font-weight: 300;
+      letter-spacing: .36em; text-transform: uppercase;
+      color: var(--c-gold); opacity: .65;
+      margin-bottom: 20px;
+    }
+
+    .lines-intro-title {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+      font-weight: 300; letter-spacing: .14em;
+      color: var(--c-vellum); margin-bottom: 14px;
+    }
+
+    .lines-intro-sub {
+      font-family: 'Cormorant', serif; font-style: italic;
+      font-size: clamp(.9rem, 1.5vw, 1.08rem); font-weight: 300;
+      color: var(--c-muted); letter-spacing: .04em;
+    }
+
+    /* Each line row — behaves as a link */
+    .line-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 500px;
+      border-top: 1px solid var(--c-border);
+      overflow: hidden;
+      text-decoration: none;
+      position: relative;
+    }
+
+    .line-row--rev .line-img  { order: 2; }
+    .line-row--rev .line-text { order: 1; }
+
+    /* Image cell */
+    .line-img {
+      position: relative; overflow: hidden; min-height: 420px;
+    }
+    .line-img img,
+    .line-img video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform 1.8s cubic-bezier(.18,.46,.28,.96);
+    }
+    .line-row:hover .line-img img,
+    .line-row:hover .line-img video { transform: scale(1.06); }
+
+    .line-img-overlay {
+      position: absolute; inset: 0;
+      background: rgba(16,10,4,.22);
+      transition: background .75s;
+    }
+    .line-row:hover .line-img-overlay { background: rgba(16,10,4,.08); }
+
+    /* ── SCENT LIBRARY CTA (sostituisce il vecchio carosello famiglie) ── */
+    .scentcta {
+      position: relative; overflow: hidden;
+      min-height: 80vh;
+      background: #17100a;                 /* fondo scuro: niente "vuoto" mentre le immagini caricano */
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 96px var(--gutter);
+    }
+    .scentcta-bg {
+      position: absolute; inset: 0; z-index: 0;
+      display: grid; grid-template-columns: 1fr;
+      transition: transform 2.4s cubic-bezier(.2,.5,.2,1);
+    }
+    .scentcta:hover .scentcta-bg { transform: scale(1.05); }
+    .scentcta-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
+    .scentcta::after {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(180deg, rgba(18,12,7,.74) 0%, rgba(18,12,7,.55) 45%, rgba(18,12,7,.86) 100%);
+    }
+    .scentcta-inner { position: relative; z-index: 2; max-width: 680px; }
+    .scentcta-eyebrow {
+      display: inline-block; font-family: var(--ff-sans);
+      font-size: .52rem; font-weight: 300; letter-spacing: .42em; text-transform: uppercase;
+      color: var(--c-gold-lt); margin-bottom: 24px;
+    }
+    .scentcta-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2.6rem, 6vw, 5rem); font-weight: 300; letter-spacing: .04em;
+      color: #fff; line-height: 1.02;
+    }
+    .scentcta-sub {
+      margin: 26px auto 42px; max-width: 520px;
+      font-family: var(--ff-serif); font-style: italic;
+      font-size: 1.14rem; line-height: 1.75; color: rgba(255,255,255,.84);
+    }
+    .scentcta-btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: var(--ff-sans); font-size: .56rem; font-weight: 300;
+      letter-spacing: .24em; text-transform: uppercase;
+      color: #1a1610; background: var(--c-gold-lt);
+      padding: 19px 42px; text-decoration: none;
+      transition: gap .3s, background .3s;
+    }
+    .scentcta-btn:hover { gap: 20px; background: #fff; }
+    .scentcta-alt {
+      display: block; margin-top: 26px;
+      font-family: var(--ff-sans); font-size: .5rem; letter-spacing: .18em; text-transform: uppercase;
+      color: rgba(255,255,255,.62); text-decoration: none; transition: color .3s;
+    }
+    .scentcta-alt:hover { color: #fff; }
+    @media (max-width: 768px) {
+      .scentcta { min-height: 66vh; }
+      .scentcta-bg { grid-template-columns: 1fr; }
+    }
+
+    /* Text cell */
+    .line-text {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: clamp(52px, 6vw, 92px) clamp(40px, 5.5vw, 84px);
+      background: var(--c-dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Large ghosted index number */
+    .line-num {
+      position: absolute; top: clamp(20px, 3vw, 36px);
+      right: clamp(20px, 3vw, 36px);
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(4rem, 8vw, 7.5rem);
+      font-weight: 300; letter-spacing: .04em;
+      color: rgba(196,146,42,.055);
+      line-height: 1; pointer-events: none;
+      transition: color .6s;
+    }
+    .line-row--rev .line-num { right: auto; left: clamp(20px, 3vw, 36px); }
+    .line-row:hover .line-num { color: rgba(196,146,42,.10); }
+
+    .line-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .43rem; font-weight: 300;
+      letter-spacing: .32em; text-transform: uppercase;
+      color: var(--c-gold); opacity: .72;
+      margin-bottom: 18px;
+    }
+    .line-row[data-line="garden"] .line-tag { color: var(--c-garden); }
+    .line-row[data-line="home"]   .line-tag { color: var(--c-stone); }
+
+    .line-name {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(1.7rem, 2.8vw, 2.7rem);
+      font-weight: 300; letter-spacing: .12em;
+      color: var(--c-vellum); line-height: 1.18;
+      margin-bottom: 10px;
+    }
+
+    .line-rule {
+      width: 24px; height: 1px;
+      background: var(--c-gold); opacity: .35;
+      margin: 22px 0;
+      flex-shrink: 0;
+    }
+    .line-row[data-line="garden"] .line-rule { background: var(--c-garden); }
+    .line-row[data-line="home"]   .line-rule { background: var(--c-stone); }
+
+    .line-desc {
+      font-family: 'Cormorant', serif; font-style: italic;
+      font-size: clamp(.88rem, 1.18vw, 1.02rem); font-weight: 300;
+      line-height: 1.82; color: var(--c-muted);
+      max-width: 340px; margin-bottom: 32px;
+    }
+
+    /* Product chips */
+    .line-items {
+      list-style: none;
+      display: flex; flex-wrap: wrap; gap: 7px 10px;
+      margin-bottom: 34px;
+    }
+    .line-items li {
+      position: relative;
+      overflow: hidden;
+      padding: 5px 11px;
+      border: 1px solid rgba(196,146,42,.10);
+      transition: border-color .35s;
+    }
+    .line-items li:hover { border-color: rgba(196,146,42,.42); }
+    .chip-front {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: .40rem; font-weight: 300;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--c-muted);
+      transition: opacity .28s ease, transform .28s ease;
+      white-space: nowrap;
+    }
+    .line-items li:hover .chip-front { opacity: 0; transform: translateY(-5px); }
+    .chip-back {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant', serif; font-style: italic;
+      font-size: .42rem; letter-spacing: .06em;
+      color: var(--c-gold-lt);
+      opacity: 0; transform: translateY(6px);
+      transition: opacity .28s ease, transform .28s ease;
+      white-space: nowrap;
+    }
+    .line-items li:hover .chip-back { opacity: .88; transform: translateY(0); }
+
+    .line-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: .46rem; font-weight: 300;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--c-gold-lt);
+      border-bottom: 1px solid rgba(196,146,42,.28);
+      padding-bottom: 4px; width: fit-content;
+      text-decoration: none;
+      transition: gap .35s, border-color .35s;
+    }
+    .line-row[data-line="garden"] .line-cta { color: var(--c-garden); border-color: rgba(142,184,122,.28); }
+    .line-row[data-line="home"]   .line-cta { color: var(--c-stone);  border-color: rgba(191,180,154,.28); }
+    .line-row:hover .line-cta { gap: 17px; border-color: rgba(196,146,42,.55); }
+    .line-row[data-line="garden"]:hover .line-cta { border-color: rgba(142,184,122,.55); }
+    .line-row[data-line="home"]:hover   .line-cta { border-color: rgba(191,180,154,.55); }
+
+    @media (max-width: 900px) {
+      .line-row {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .line-row--rev .line-img  { order: -1; }
+      .line-row--rev .line-text { order: 1; }
+      .line-img { height: 58vw; }
+      .line-num  { display: none; }
+    }
+
+    /* ── CANDLE CURSOR MASK ──────────────────────────── */
+    .lines-wrap {
+      position: relative;
+    }
+
+    /* ── HERITAGE SCALE ANIMATION ─────────────────────── */
+    .heritage-quote {
+      will-change: transform;
+    }
+    .heritage-glow {
+      display: block;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(196,146,42,.7), transparent);
+      margin: 0 auto 22px;
+      opacity: 0;
+    }
+
+    /* ═══════════════════════════════════════════════════
+       HERITAGE QUOTE
+    ═══════════════════════════════════════════════════ */
+    .section-heritage {
+      padding: 120px var(--gutter);
+      border-top: 1px solid var(--c-border);
+      border-bottom: 1px solid var(--c-border);
+      background: linear-gradient(180deg, var(--c-dark) 0%, var(--c-dark-2) 100%);
+    }
+    .heritage-inner { max-width: 820px; margin: 0 auto; text-align: center; }
+    .heritage-ornament {
+      display: block; font-size: .52rem; letter-spacing: .7em;
+      color: rgba(196,146,42,.3); margin-bottom: 40px;
+    }
+    .heritage-quote {
+      font-family: 'Cormorant', serif; font-style: italic;
+      font-size: clamp(1.2rem, 3vw, 1.9rem); font-weight: 300;
+      color: var(--c-vellum); line-height: 1.85; margin-bottom: 40px;
+    }
+    .heritage-quote em { font-style: normal; color: var(--c-gold-lt); }
+    .heritage-rule {
+      width: 28px; height: 1px; background: var(--c-gold);
+      margin: 0 auto 22px; opacity: .45;
+    }
+    .heritage-attr {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .52rem; font-weight: 300;
+      letter-spacing: .28em; text-transform: uppercase;
+      color: var(--c-muted);
+    }
+    .heritage-story {
+      margin-top: 52px;
+      font-family: 'Cormorant', serif; font-size: 1.05rem;
+      line-height: 1.9; color: var(--c-muted);
+      max-width: 640px; margin-left: auto; margin-right: auto;
+      text-align: left;
+    }
+
+    /* ═══════════════════════════════════════════════════
+       B2B SECTION
+    ═══════════════════════════════════════════════════ */
+    .section-b2b {
+      display: grid; grid-template-columns: 1fr;
+      overflow: hidden;
+      border-top: 1px solid var(--c-border);
+    }
+    .b2b-text {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px var(--gutter) 80px clamp(24px, 5vw, 80px);
+    }
+    .b2b-kicker {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: .52rem; font-weight: 300;
+      letter-spacing: .28em; text-transform: uppercase;
+      color: var(--c-gold); border: 1px solid rgba(196,146,42,.28);
+      padding: 6px 16px; margin-bottom: 32px;
+    }
+    .b2b-title {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(1.7rem, 4vw, 3rem); font-weight: 300;
+      letter-spacing: .12em; color: var(--c-vellum);
+      line-height: 1.25; margin-bottom: 22px;
+    }
+    .b2b-body {
+      font-family: 'Cormorant', serif; font-size: 1.05rem;
+      line-height: 1.85; color: var(--c-stone);
+      max-width: 380px; margin-bottom: 10px;
+    }
+    .b2b-list {
+      list-style: none; margin: 24px 0 36px;
+      display: flex; flex-direction: column; gap: 11px;
+    }
+    .b2b-list li {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .56rem; font-weight: 300;
+      letter-spacing: .12em; color: var(--c-stone);
+      display: flex; align-items: center; gap: 14px;
+    }
+    .b2b-list li::before { display: none; }
+    .b2b-visual { position: relative; overflow: hidden; width: 100%; max-width: 1040px; margin: 4px auto 64px; aspect-ratio: 1672 / 941; }
+    .b2b-img {
+      width: 100%; height: 100%; object-fit: contain; object-position: center; display: block;
+      transition: transform 1.2s var(--ease);
+    }
+    .section-b2b:hover .b2b-img { transform: scale(1.04); }
+    .b2b-img-overlay { display: none; }
+    .b2b-claim { position: absolute; left: clamp(24px,6%,72px); top: 50%; transform: translateY(-50%); z-index: 3; max-width: 46%; }
+    /* Testo scuro, non bianco: l'immagine ha il fondo avorio e il bianco ci
+       finiva sopra a 1,21 di contrasto, cioe' invisibile. Con l'inchiostro
+       del sito siamo a 14,83. */
+    .b2b-claim-eyebrow { display: block; font-family: var(--ff-sans); font-size: .5rem; font-weight: 400; letter-spacing: .34em; text-transform: uppercase; color: #1A1612; margin-bottom: 16px; }
+    .b2b-claim-text { font-family: var(--ff-display); font-weight: 300; font-size: clamp(1.3rem,2.8vw,2.4rem); line-height: 1.2; letter-spacing: .03em; color: #1A1612; margin: 0; }
+    @media (max-width: 700px) { .b2b-claim { max-width: 62%; } }
+    @media (max-width: 900px) {
+      .b2b-visual { margin: 4px auto 40px; }
+    }
+
+    /* ── GALLERY SLIDER ──────────────────────── */
+    .gallery-slider {
+      position: relative;
+      width: 100%;
+      height: 62vh;
+      overflow: hidden;
+      background: var(--c-dark);
+      user-select: none;
+    }
+    .gallery-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1.2s cubic-bezier(.4,0,.2,1);
+      z-index: 0;
+    }
+    .gallery-slide.active { opacity: 1; z-index: 1; }
+    .gallery-slide img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      pointer-events: none;
+    }
+    .gallery-slide::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(13,10,5,.38) 0%, transparent 45%);
+      z-index: 1; pointer-events: none;
+    }
+    .gallery-dots {
+      position: absolute;
+      bottom: 28px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 8px; z-index: 10;
+    }
+    .gallery-dot {
+      width: 28px; height: 2px;
+      background: rgba(255,255,255,.28);
+      border: none; cursor: pointer; padding: 0;
+      transition: background .35s, width .4s cubic-bezier(.4,0,.2,1);
+    }
+    .gallery-dot.active {
+      background: rgba(255,255,255,.88);
+      width: 48px;
+    }
+    @media (max-width: 768px) {
+      .gallery-slider { height: 56vh; }
+    }
+
+    /* ══════════════════════════════════════════════
+       SHOP BY SCENT  —  famiglia olfattiva carousel
+    ══════════════════════════════════════════════ */
+    /* ─────────────────────────────────────────────
+       SHOP BY SCENT — two-level (family grid → scents)
+    ───────────────────────────────────────────── */
+    .sf-section {
+      background: var(--c-dark);
+      overflow: hidden;
+    }
+
+    /* Header */
+    .sf-intro {
+      padding: 88px var(--gutter) 56px;
+      text-align: center;
+    }
+    .sf-eyebrow {
+      display: block;
+      font-family: var(--ff-sans);
+      font-size: .5rem; font-weight: 300;
+      letter-spacing: .34em; text-transform: uppercase;
+      color: var(--c-gold); margin-bottom: 18px;
+    }
+    .sf-heading {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 5vw, 4.2rem);
+      font-weight: 300; letter-spacing: .08em;
+      color: var(--c-vellum); line-height: .96;
+    }
+
+    /* ── Level 1: family grid ── */
+    /* ── Scent marquee carousel ── */
+    .sf-viewport { overflow: hidden; position: relative; }
+    .sf-nav {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 6;
+      width: 42px; height: 42px; border-radius: 50%;
+      border: 1px solid rgba(196,146,42,.4); background: rgba(16,10,4,.55);
+      color: var(--c-gold); font-size: .95rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .25s, border-color .25s;
+      backdrop-filter: blur(2px);
+    }
+    .sf-nav:hover { background: rgba(196,146,42,.18); border-color: var(--c-gold); }
+    .sf-nav.prev { left: 14px; }
+    .sf-nav.next { right: 14px; }
+    @media (max-width: 767px) { .sf-nav { width: 36px; height: 36px; } .sf-nav.prev { left: 8px; } .sf-nav.next { right: 8px; } }
+    .sf-track {
+      display: flex; width: max-content; gap: 2px;
+      animation: sf-scroll 44s linear infinite;
+    }
+    .sf-viewport:hover .sf-track,
+    .sf-viewport:focus-within .sf-track { animation-play-state: paused; }
+    @keyframes sf-scroll { to { transform: translateX(-50%); } }
+    .sf-viewport.sf-exit { opacity: 0; transition: opacity .32s; pointer-events: none; }
+
+    .sf-car {
+      width: 210px; aspect-ratio: 3/4.2; flex-shrink: 0;
+      position: relative; overflow: hidden; cursor: pointer;
+      background: var(--sf-color, #1A1209);
+    }
+    @media (max-width: 767px) { .sf-car { width: 148px; } }
+    .sf-car-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .8s ease;
+    }
+    .sf-car:hover .sf-car-img { transform: scale(1.06); }
+    @media (prefers-reduced-motion: reduce) { .sf-car-img { transition: none; } }
+    .sf-car-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.72) 0%, rgba(0,0,0,.08) 55%);
+    }
+    .sf-car-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px 14px; }
+    .sf-car-name {
+      display: block; font-family: var(--ff-display); font-weight: 400;
+      font-size: 1.05rem; color: var(--c-vellum); letter-spacing: .04em;
+      transition: transform .3s ease;
+    }
+    .sf-car:hover .sf-car-name { transform: translateY(-3px); }
+    @media (prefers-reduced-motion: reduce) { .sf-car-name { transition: none; } }
+    .sf-car:focus-visible { outline: 2px solid var(--c-gold); outline-offset: -2px; }
+
+    .sf-cta {
+      margin: 2px 0 0;
+      padding: 52px var(--gutter);
+      display: flex; align-items: center;
+      justify-content: space-between;
+      gap: 32px; flex-wrap: wrap;
+      border-top: 1px solid rgba(196,146,42,.12);
+      border-bottom: 1px solid rgba(196,146,42,.12);
+      transition: border-color .4s, opacity .32s ease;
+    }
+    .sf-cta.sf-exit { opacity: 0; transition: opacity .32s; pointer-events: none; }
+    .sf-cta-text { max-width: 620px; }
+    .sf-cta-ornament {
+      display: block; color: var(--c-gold);
+      font-size: 1rem; margin-bottom: 16px;
+    }
+    .sf-cta-title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.1rem, 2.8vw, 2.2rem);
+      font-weight: 300; letter-spacing: .1em;
+      color: var(--c-vellum); line-height: 1.12; margin-bottom: 12px;
+    }
+    .sf-cta-body {
+      font-family: var(--ff-serif); font-style: italic;
+      font-size: clamp(.84rem, 1.1vw, 1rem);
+      line-height: 1.76; color: var(--c-stone);
+    }
+    .sf-cta-link {
+      display: inline-block; flex-shrink: 0;
+      font-family: var(--ff-sans); font-size: .5rem;
+      font-weight: 300; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--c-gold); text-decoration: none;
+      padding: 13px 28px; border: 1px solid rgba(196,146,42,.35);
+      transition: background .3s, border-color .3s;
+      white-space: nowrap;
+    }
+    .sf-cta-link:hover { background: rgba(196,146,42,.1); border-color: var(--c-gold); }
+
+    /* ── Level 2: scents panel ── */
+    .sf-panel { padding: 0 var(--gutter) 96px; }
+    .sf-panel[hidden] { display: none !important; }
+    .sf-panel { animation: sf-in .42s ease; }
+    @keyframes sf-in {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      @keyframes sf-in { from { opacity: 0; } to { opacity: 1; } }
+    }
+
+    .sf-back {
+      display: inline-flex; align-items: center; gap: 11px;
+      font-family: var(--ff-sans); font-size: .46rem;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--c-gold); background: none; border: none;
+      cursor: pointer; padding: 52px 0 0;
+      transition: gap .28s; text-decoration: none;
+    }
+    .sf-back:hover { gap: 18px; }
+    .sf-back svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+    .sf-panel-header {
+      padding: 32px 0 44px;
+      border-bottom: 1px solid rgba(191,174,140,.11);
+      margin-bottom: 44px;
+      display: flex; align-items: flex-end;
+      gap: 48px; flex-wrap: wrap;
+    }
+    .sf-panel-name {
+      font-family: var(--ff-display);
+      font-size: clamp(2.4rem, 7vw, 5.8rem);
+      font-weight: 300; letter-spacing: .08em;
+      color: var(--c-vellum); line-height: .9;
+    }
+    .sf-panel-desc {
+      font-family: var(--ff-serif); font-style: italic;
+      font-size: clamp(.88rem, 1.15vw, 1.06rem);
+      line-height: 1.78; color: var(--c-stone);
+      max-width: 400px; padding-bottom: 4px;
+    }
+
+    /* Scent cards */
+    .sf-scents {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(191,174,140,.07);
+      margin-bottom: 52px;
+    }
+    @media (max-width: 960px)  { .sf-scents { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px)  { .sf-scents { grid-template-columns: 1fr; } }
+
+    .sf-scent-card {
+      padding: 32px 26px 36px;
+      background: var(--c-dark);
+      display: flex; flex-direction: column; gap: 11px;
+      transition: background .3s;
+    }
+    .sf-scent-card:hover { background: rgba(255,255,255,.03); }
+    .sf-scent-num {
+      font-family: var(--ff-sans); font-size: .38rem;
+      letter-spacing: .32em; color: var(--c-gold); opacity: .65;
+    }
+    .sf-scent-name {
+      font-family: var(--ff-display);
+      font-size: clamp(.95rem, 1.5vw, 1.3rem);
+      font-weight: 300; letter-spacing: .1em;
+      color: var(--c-vellum); line-height: 1.15;
+    }
+    .sf-scent-notes {
+      font-family: var(--ff-serif); font-style: italic;
+      font-size: clamp(.78rem, 1vw, .9rem);
+      line-height: 1.72; color: var(--c-stone); flex: 1;
+    }
+    .sf-scent-req {
+      font-family: var(--ff-sans); font-size: .38rem;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: rgba(191,174,140,.38);
+      text-decoration: none;
+      padding-bottom: 2px;
+      border-bottom: 1px solid rgba(191,174,140,.18);
+      transition: color .3s, border-color .3s;
+      align-self: flex-start; margin-top: 6px;
+    }
+    .sf-scent-req:hover { color: var(--c-gold-lt); border-color: var(--c-gold); }
+
+    .sf-panel-footer {
+      text-align: center; padding-top: 8px;
+    }
+    .sf-panel-footer a {
+      font-family: var(--ff-sans); font-size: .48rem;
+      font-weight: 300; letter-spacing: .24em; text-transform: uppercase;
+      color: var(--c-stone); text-decoration: none;
+      padding-bottom: 2px;
+      border-bottom: 1px solid rgba(191,174,140,.24);
+      transition: color .3s, border-color .3s;
+    }
+    .sf-panel-footer a:hover { color: var(--c-vellum); border-color: rgba(191,174,140,.6); }
+
+
+    /* ─── PRODUZIONE ──────────────────────────────── */
+    .prod-section {
+      background: #0C0A07;
+      padding: 96px var(--gutter);
+      overflow: hidden;
+    }
+    .prod-inner {
+      max-width: 820px; margin: 0 auto;
+      text-align: center;
+    }
+    .prod-video-wrap {
+      position: relative; aspect-ratio: 3/2;
+      overflow: hidden; background: #111;
+    }
+    .prod-photo {
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: center; display: block;
+    }
+    .prod-content { color: var(--c-vellum); }
+    .prod-eyebrow {
+      display: block; font-family: var(--ff-sans);
+      font-size: .58rem; letter-spacing: .3em; text-transform: uppercase;
+      color: var(--c-gold); margin-bottom: 20px;
+    }
+    .prod-heading {
+      font-family: var(--ff-display); font-weight: 400;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--c-vellum); line-height: 1.12;
+      margin: 0 0 24px;
+    }
+    .prod-body {
+      font-family: var(--ff-display); font-style: italic;
+      font-size: clamp(.95rem, 1.5vw, 1.05rem);
+      color: var(--c-stone); line-height: 1.72;
+      margin: 0 auto 40px; max-width: 600px;
+    }
+    .prod-steps {
+      display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;
+      gap: clamp(28px, 6vw, 80px); margin-top: 8px;
+      border-top: 1px solid rgba(196,146,42,.14); padding-top: 40px;
+    }
+    .prod-step {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      padding: 0;
+    }
+    .prod-step-num {
+      font-family: var(--ff-sans); font-size: .52rem;
+      letter-spacing: .2em; color: var(--c-gold); opacity: .7;
+      flex-shrink: 0;
+    }
+    .prod-step-label {
+      font-family: var(--ff-sans); font-size: .62rem;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: rgba(191,174,140,.75);
+    }
+
+
+    /* ══ NUOVO INGRESSO — hero caldo + selettore categorie (stile editoriale) ══ */
+    :root{ --warm-bg:#f2ecdb; --warm-bg-2:#e9e1cd; --hx-ink:#2a231a; --hx-ink-mid:#6d6252; }
+    .hx-hero{ display:grid; grid-template-columns:0.85fr 1.15fr; min-height:100vh; background:var(--warm-bg); }
+    .hx-text{ display:flex; flex-direction:column; justify-content:center; padding:0 clamp(28px,6vw,110px); background:linear-gradient(180deg,var(--warm-bg),var(--warm-bg-2)); }
+    .hx-eyebrow{ font-family:var(--ff-sans); font-weight:300; font-size:.52rem; letter-spacing:.42em; text-transform:uppercase; color:var(--c-gold,#b08a3c); margin-bottom:30px; }
+    .hx-title{ font-family:var(--ff-display); font-weight:300; letter-spacing:.02em; font-size:clamp(3.2rem,7vw,6.4rem); line-height:.98; color:var(--hx-ink); }
+    .hx-sub{ margin:30px 0 42px; max-width:400px; font-family:var(--ff-serif); font-style:italic; font-size:1.12rem; line-height:1.75; color:var(--hx-ink-mid); }
+    .hx-cta{ display:inline-flex; align-items:center; gap:12px; align-self:flex-start; font-family:var(--ff-sans); font-weight:300; font-size:.56rem; letter-spacing:.24em; text-transform:uppercase; color:var(--hx-ink); text-decoration:none; padding-bottom:8px; border-bottom:1px solid var(--hx-ink); transition:gap .3s; }
+    .hx-cta:hover{ gap:20px; }
+    .hx-caption{ margin-top:60px; font-family:var(--ff-sans); font-weight:300; font-size:.56rem; letter-spacing:.26em; text-transform:uppercase; color:var(--hx-ink-mid); transition:opacity .45s ease; }
+    .hx-dots{ display:flex; gap:5px; margin-top:16px; }
+    .hx-dots button{ width:16px; height:16px; padding:0; border:0; background:transparent; cursor:pointer; display:grid; place-items:center; -webkit-appearance:none; appearance:none; }
+    .hx-dots button::before{ content:''; width:7px; height:7px; border-radius:50%; background:rgba(42,35,26,.22); transition:background .35s, transform .35s; }
+    .hx-dots button.on::before{ background:var(--hx-ink); transform:scale(1.15); }
+    .hx-dots button:hover::before{ background:rgba(42,35,26,.5); }
+    .hx-img{ position:relative; overflow:hidden; background:var(--warm-bg-2); min-height:100vh; }
+    .hx-img .hx-slide{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 42%; display:block; opacity:0; transition:opacity 1.1s ease; }
+    .hx-img .hx-slide.on{ opacity:1; }
+    @media(max-width:820px){ .hx-hero{ grid-template-columns:1fr; } .hx-img{ min-height:52vh; order:-1; } .hx-text{ padding:110px 28px 70px; } }
+    .hx-cats{ background:#f7f2e8; padding:clamp(72px,9vw,130px) clamp(24px,5vw,80px); }
+    .hx-cats-head{ text-align:center; max-width:700px; margin:0 auto clamp(48px,6vw,74px); }
+    .hx-cats-eyebrow{ font-family:var(--ff-sans); font-weight:300; font-size:.52rem; letter-spacing:.42em; text-transform:uppercase; color:var(--c-gold,#b08a3c); }
+    .hx-cats-title{ font-family:var(--ff-display); font-weight:300; font-size:clamp(2rem,4.5vw,3.4rem); letter-spacing:.03em; color:var(--hx-ink); margin-top:16px; }
+    .hx-cats-grid{ max-width:1400px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(16px,2.2vw,30px); }
+    .hx-cat{ position:relative; display:block; overflow:hidden; aspect-ratio:3/4; text-decoration:none; background:var(--warm-bg-2); }
+    .hx-cat img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 1.3s cubic-bezier(.22,.61,.36,1); }
+    .hx-cat:hover img{ transform:scale(1.06); }
+    .hx-cat::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg,rgba(20,14,8,.04) 34%,rgba(20,14,8,.74) 100%); transition:background .5s; }
+    .hx-cat:hover::after{ background:linear-gradient(180deg,rgba(20,14,8,.10) 30%,rgba(20,14,8,.80) 100%); }
+    .hx-cat-body{ position:absolute; left:0; right:0; bottom:0; z-index:2; padding:clamp(24px,2.6vw,38px); color:#fff; }
+    .hx-cat-num{ font-family:var(--ff-display); font-size:1.05rem; color:rgba(255,255,255,.5); letter-spacing:.1em; }
+    .hx-cat-tag{ display:block; font-family:var(--ff-sans); font-weight:300; font-size:.46rem; letter-spacing:.28em; text-transform:uppercase; color:#e8c98a; margin:12px 0 8px; }
+    .hx-cat-name{ font-family:var(--ff-display); font-weight:300; font-size:clamp(1.5rem,2.4vw,2.15rem); line-height:1.05; letter-spacing:.02em; }
+    .hx-cat-cta{ display:inline-flex; align-items:center; gap:9px; margin-top:18px; font-family:var(--ff-sans); font-weight:300; font-size:.5rem; letter-spacing:.2em; text-transform:uppercase; color:#fff; border-bottom:1px solid rgba(255,255,255,.42); padding-bottom:5px; transition:gap .3s; }
+    .hx-cat:hover .hx-cat-cta{ gap:16px; }
+    @media(max-width:820px){ .hx-cats-grid{ grid-template-columns:1fr; } .hx-cat{ aspect-ratio:4/5; } }
+    /* nav leggibile (scura) sul nuovo ingresso chiaro */
+    body.hx-entered nav:not(.scrolled) .nav-logo,
+    body.hx-entered nav:not(.scrolled) .nav-links > li > a,
+    body.hx-entered nav:not(.scrolled) .nav-cta{ color:var(--hx-ink) !important; }
+    body.hx-entered nav:not(.scrolled) .nav-links > li > a{ color:var(--hx-ink-mid) !important; }
+    body.hx-entered nav:not(.scrolled) .hamburger-line{ background:var(--hx-ink) !important; }
+
+    /* ══ HOME "pre-sito" — tutte le sezioni sul beige caldo ══ */
+    .marquee-strip{ background:#f2ecdb !important; border-color:rgba(42,35,26,.12) !important; }
+    .marquee-strip *{ color:var(--hx-ink-mid) !important; }
+    .gallery-slider{ background:#f2ecdb !important; }
+    /* ── Fragrance Library CTA ─────────────────────────────────
+       Prima c'era un velo color crema al 62/42/72%: sbiadiva la foto e
+       soprattutto lasciava il sottotitolo a 1,64 di contrasto, cioe'
+       illeggibile. La foto pero' e' rossa su tutta la superficie, non
+       solo al centro, quindi con testo scuro non si arriva a un
+       contrasto decente a nessuna opacita'.
+       Velo scuro leggero e testo chiaro: il rosso resta pieno — e' quello
+       che si voleva — e il testo sale a 8-9 di contrasto. */
+    .scentcta{ background:#3a0a08 !important; }
+    .scentcta::after{ background:linear-gradient(180deg,rgba(18,12,7,.34) 0%,rgba(18,12,7,.24) 45%,rgba(18,12,7,.42) 100%) !important; }
+    .scentcta-title{ color:#F7F3EC !important; }
+    .scentcta-sub{ color:#EDE5D8 !important; }
+    .scentcta-eyebrow{ color:#E8C67A !important; }
+    .scentcta-alt{ color:#EDE5D8 !important; }
+    .scentcta-alt:hover{ color:#ffffff !important; }
+    .scentcta-btn{ background:#2a231a !important; color:#f7f2e8 !important; }
+    .scentcta-btn:hover{ background:#000 !important; }
+    /* Heritage → chiaro */
+    .section-heritage{ background:linear-gradient(180deg,#f2ecdb,#e9e1cd) !important; border-color:rgba(42,35,26,.12) !important; }
+    .heritage-quote{ color:var(--hx-ink) !important; }
+    .heritage-quote em{ color:#a9822f !important; }
+    .heritage-attr{ color:var(--hx-ink-mid) !important; }
+    .heritage-story{ color:var(--hx-ink-mid) !important; }
+    .heritage-ornament{ color:rgba(169,130,47,.5) !important; }
+    /* B2B → chiaro */
+    .section-b2b{ background:#f7f2e8 !important; border-color:rgba(42,35,26,.12) !important; }
+    .b2b-title{ color:var(--hx-ink) !important; }
+    .b2b-body,.b2b-list li{ color:var(--hx-ink-mid) !important; }
+    .b2b-kicker{ color:#a9822f !important; border-color:rgba(169,130,47,.32) !important; }
+    .b2b-list li::before{ background:#a9822f !important; }
+    /* Produzione → chiaro */
+    .prod-section{ background:#f2ecdb !important; }
+    .prod-section h2, .prod-section h3, .prod-section p, .prod-section span, .prod-section li{ color:var(--hx-ink-mid) !important; }
+    .prod-section h2, .prod-section h3{ color:var(--hx-ink) !important; }
+
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.cerariacicogna.com/#azienda",
+  "name": "Cereria Cicogna",
+  "legalName": "Industria Ceraria F.lli Cicogna srl",
+  "url": "https://www.cerariacicogna.com",
+  "image": "https://www.cerariacicogna.com/images/og-cover.jpg",
+  "logo": "https://www.cerariacicogna.com/logo-stork.png",
+  "telephone": "+39023543707",
+  "faxNumber": "+39023548228",
+  "email": "info@cerariacicogna.com",
+  "vatID": "IT11980500158",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via Damiano Chiesa, 84",
+    "postalCode": "20026",
+    "addressLocality": "Novate Milanese",
+    "addressRegion": "MI",
+    "addressCountry": "IT"
+  },
+  "description": "Industria ceraria a Novate Milanese: candele artigianali per la casa, articoli liturgici per chiese e cimiteri, linea da giardino e private label.",
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Product",
+        "name": "Articoli liturgici — lumini, ceri, incensi"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Product",
+        "name": "Home Collection — candele profumate in bicchiere"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Product",
+        "name": "Linea Garden — citronelle e candele da esterno"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Product",
+        "name": "Private label e produzioni su misura"
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+  <!-- ── NAV ─────────────────────────────────────── -->
+  <nav id="main-nav" role="navigation" aria-label="Navigazione principale">
+    <a href="index.html" class="nav-brand" aria-label="Cereria Cicogna — Homepage">
+      <img class="nav-stork" src="logo-stork.png" alt="Logo Cereria Cicogna" width="32" height="32" loading="eager">
+      <div class="nav-logo">
+        Cereria Cicogna
+        <span>Industria F.lli Cicogna · Novate Milanese</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li class="nav-has-drop">
+        <a href="home-collection.html" aria-haspopup="true" aria-expanded="false">Home Collection</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Home Collection">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="home-collection.html" class="mega-feat-title">Home Collection</a>
+            <p class="mega-feat-desc">Candele profumate per arredare e impreziosire ogni ambiente della casa.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul>
+              <li><a href="home-collection.html?c=sand">Sand</a></li>
+              <li><a href="home-collection.html?c=rock">Rock</a></li>
+              <li><a href="home-collection.html?c=glass">Glass</a></li>
+              <li><a href="home-collection.html?c=metallic">Metallic</a></li>
+              <li><a href="home-collection.html?c=ceri">Ceri</a></li>
+            </ul>
+            <a href="home-collection.html" class="mega-all">Vedi tutti</a>
+          </div><div class="mega-img-col"><a href="home-collection.html"><img src="images/hero-home-collection.webp" alt="Home Collection — Cereria Cicogna"></a></div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="nav-has-drop">
+        <a href="garden.html" aria-haspopup="true" aria-expanded="false">Garden</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Linea Garden">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="garden.html" class="mega-feat-title">Linea Garden</a>
+            <p class="mega-feat-desc">Candele per esterni e interni, pensate per ogni stagione all'aperto.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul>
+              <li><a href="garden.html?c=citronelle">Citronelle</a></li>
+              <li><a href="garden.html?c=cerabianca">Cera Bianca</a></li>
+              <li><a href="garden.html?c=ricariche">Ricariche</a></li>
+            </ul>
+            <a href="garden.html" class="mega-all">Vedi tutti</a>
+          </div><div class="mega-img-col"><a href="garden.html"><img src="images/hero-garden.webp" alt="Linea Garden — Cereria Cicogna"></a></div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="nav-has-drop">
+        <a href="liturgico.html" aria-haspopup="true" aria-expanded="false">Liturgico</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Articoli Liturgici">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="liturgico.html" class="mega-feat-title">Articoli Liturgici</a>
+            <p class="mega-feat-desc">Ceri, lumini e arredi sacri per chiese, santuari e cerimonie religiose.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul>
+              <li><a href="liturgico.html?c=lumini">Lumini da chiesa</a></li>
+              <li><a href="liturgico.html?c=accessori">Accessori</a></li>
+              <li><a href="liturgico.html?c=forniture">Forniture</a></li>
+            </ul>
+            <a href="liturgico.html" class="mega-all">Vedi tutti</a>
+          </div><div class="mega-img-col"><a href="liturgico.html"><img src="images/hero-liturgico.webp" alt="Articoli Liturgici — Cereria Cicogna"></a></div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="nav-sep" aria-hidden="true"></li>
+      <li>
+        <a href="private-label.html">Private Label</a>
+      </li>
+      <li><a href="fragrance-library.html">Fragrance Library</a></li><li><a href="personalizzazione.html">Collaborazioni</a></li>
+      <li><a href="chi-siamo.html">Chi Siamo</a></li>
+    </ul>
+    <a href="contatti.html" class="nav-cta">Contattaci</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Apri menu" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </nav>
+
+  <!-- ── MOBILE MENU ─────────────────────────────── -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu principale">
+    <ul class="mobile-menu-links" role="list">
+      <li class="mm-has-sub">
+        <div class="mm-top">
+          <a href="liturgico.html" class="mm-link">Liturgico</a>
+          <button class="mm-expand" aria-expanded="false" aria-label="Espandi Liturgico">+</button>
+        </div>
+        <ul class="mm-sub" hidden>
+          <li><a href="liturgico.html?c=lumini">Lumini da chiesa</a></li>
+          <li><a href="liturgico.html?c=accessori">Accessori</a></li>
+              <li><a href="liturgico.html?c=forniture">Forniture</a></li>
+        </ul>
+      </li>
+      <li class="mm-has-sub"><div class="mm-top"><a href="garden.html" class="mm-link">Garden</a><button class="mm-expand" aria-expanded="false" aria-label="Espandi Garden">+</button></div><ul class="mm-sub" hidden><li><a href="garden.html?c=citronelle">Citronelle</a></li><li><a href="garden.html?c=cerabianca">Cera Bianca</a></li><li><a href="garden.html?c=ricariche">Ricariche</a></li></ul></li>
+      <li class="mm-has-sub"><div class="mm-top"><a href="home-collection.html" class="mm-link">Home Collection</a><button class="mm-expand" aria-expanded="false" aria-label="Espandi Home Collection">+</button></div><ul class="mm-sub" hidden><li><a href="home-collection.html?c=sand">Sand</a></li><li><a href="home-collection.html?c=rock">Rock</a></li><li><a href="home-collection.html?c=glass">Glass</a></li><li><a href="home-collection.html?c=metallic">Metallic</a></li><li><a href="home-collection.html?c=ceri">Ceri</a></li></ul></li>
+      <li><a href="chi-siamo.html">Chi Siamo</a></li>
+      <li><a href="contatti.html">Contatti</a></li>
+      <li class="mobile-menu-sep" aria-hidden="true"></li>
+      <li><a href="private-label.html">Private Label</a></li>
+      <li><a href="fragrance-library.html">Fragrance Library</a></li><li><a href="personalizzazione.html">Collaborazioni</a></li>
+    </ul>
+    <div class="mobile-menu-rule" aria-hidden="true"></div>
+    <address class="mobile-menu-contact">
+      <a href="tel:+39023543707">02.35.43.707</a>&ensp;·&ensp;<a href="mailto:info@cerariacicogna.com">info@cerariacicogna.com</a>
+    </address>
+  </div>
+
+  <!-- ════════════════════════════════════════════════
+       VIDEO HERO  (fixed overlay)
+  ═════════════════════════════════════════════════ -->
+  <section class="v-hero" id="v-hero" aria-label="Intro Cereria Cicogna">
+
+    <!-- Media -->
+    <div class="v-hero-media" aria-hidden="true">
+      <video id="hero-video" autoplay muted playsinline preload="auto">
+        <source src="video/hero.mp4" type="video/mp4">
+      </video>
+      <div class="v-hero-poster"></div>
+      <div class="v-hero-vignette"></div>
+    </div>
+
+    <!-- Text content -->
+    <div class="v-hero-content" id="v-hero-content">
+
+      <span class="v-hero-eyebrow" id="vh-ey">Novate Milanese (MI)</span>
+
+      <h1 class="v-hero-title" id="vh-t1">Cereria</h1>
+      <p  class="v-hero-title-sub" id="vh-t2">Cicogna</p>
+
+      <div class="v-hero-rule" id="vh-rule" aria-hidden="true"></div>
+
+      <p class="v-hero-tagline" id="vh-tag">
+        La stessa luce, da generazioni.<br>
+        Dal sacro al quotidiano.
+      </p>
+
+      <button class="v-hero-enter" id="hero-enter" aria-label="Entra nel sito">
+        <span class="v-hero-enter-label">Entra</span>
+        <span class="v-hero-enter-arrow" aria-hidden="true"></span>
+      </button>
+
+    </div>
+
+    <!-- Scroll cue -->
+    <div class="v-scroll-cue" id="v-scroll-cue" aria-hidden="true">
+      <span>Scorri</span>
+      <div class="v-scroll-line"></div>
+    </div>
+
+    <!-- Skip for keyboard / accessibility -->
+    <button class="v-hero-skip" id="hero-skip" aria-label="Salta l'intro">Salta ↓</button>
+
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       MAIN CONTENT  (sits behind the fixed hero)
+  ═════════════════════════════════════════════════ -->
+  <main id="main-content">
+
+    <!-- ══ NUOVO INGRESSO: hero + selettore categorie (contenuti recuperati) ══ -->
+    <section class="hx-hero" aria-label="Cereria Cicogna">
+      <div class="hx-text">
+        <span class="hx-eyebrow">Cereria Cicogna · Novate Milanese</span>
+        <h1 class="hx-title">Luce.<br>Materia.<br>Silenzio.</h1>
+        <p class="hx-sub">Candele artigianali dove la tradizione incontra la ricerca estetica. Luce che dura nel tempo.</p>
+        <a href="#categorie" class="hx-cta">Scopri le collezioni <span aria-hidden="true">&rarr;</span></a>
+        <p class="hx-caption">La collezione a colori</p>
+        <div class="hx-dots" role="tablist" aria-label="Cambia immagine"><button class="on" type="button" aria-label="Immagine 1"></button><button type="button" aria-label="Immagine 2"></button><button type="button" aria-label="Immagine 3"></button><button type="button" aria-label="Immagine 4"></button></div>
+      </div>
+      <div class="hx-img">
+        <img class="hx-slide on" src="images/home-carousel-1.webp" alt="Composizione di candele · cerchi" loading="eager">
+        <img class="hx-slide" src="images/home-carousel-3.webp?v=2" alt="Composizione di candele · forme" loading="lazy">
+        <img class="hx-slide" src="images/home-carousel-2.webp" alt="Composizione di candele · geometrie" loading="lazy">
+        <img class="hx-slide" src="images/home-carousel-4.webp" alt="Composizione di candele · colore" loading="lazy">
+      </div>
+    </section>
+
+    <section class="hx-cats" id="categorie" aria-label="Le nostre linee">
+      <header class="hx-cats-head">
+        <span class="hx-cats-eyebrow">Le nostre linee</span>
+        <h2 class="hx-cats-title">Da dove vuoi cominciare?</h2>
+      </header>
+      <div class="hx-cats-grid">
+        <a class="hx-cat" href="home-collection.html" aria-label="Scopri la Home Collection">
+          <img src="images/home-cat-interni.webp?v=5" alt="Home Collection" loading="lazy">
+          <div class="hx-cat-body"><span class="hx-cat-num">01</span><span class="hx-cat-tag">Candele per interni</span><h3 class="hx-cat-name">Home<br>Collection</h3><span class="hx-cat-cta">Scopri la collezione &rarr;</span></div>
+        </a>
+        <a class="hx-cat" href="garden.html" aria-label="Scopri la linea Garden">
+          <img src="images/home-cat-garden.webp?v=4" alt="Gardening" loading="lazy">
+          <div class="hx-cat-body"><span class="hx-cat-num">02</span><span class="hx-cat-tag">Citronelle</span><h3 class="hx-cat-name">Garden</h3><span class="hx-cat-cta">Scopri la collezione &rarr;</span></div>
+        </a>
+        <a class="hx-cat" href="liturgico.html" aria-label="Scopri gli Articoli Liturgici">
+          <img src="images/home-cat-liturgico.webp?v=2" alt="Articoli Liturgici" loading="lazy">
+          <div class="hx-cat-body"><span class="hx-cat-num">03</span><span class="hx-cat-tag">Ceri, lumini e devozione</span><h3 class="hx-cat-name">Liturgico</h3><span class="hx-cat-cta">Scopri la collezione &rarr;</span></div>
+        </a>
+      </div>
+    </section>
+
+
+    <!-- ── MARQUEE ──────────────────────────────── -->
+    <div class="marquee-strip" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="marquee-item">Cereria Cicogna <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Oltre 50 anni di artigianalità <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Novate Milanese <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Articoli Liturgici <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Linea Garden <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Home Collection <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Private Label <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Industria F.lli Cicogna srl <span class="marquee-dot"></span></div>
+        <!-- duplicate for seamless loop -->
+        <div class="marquee-item">Cereria Cicogna <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Oltre 50 anni di artigianalità <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Novate Milanese <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Articoli Liturgici <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Linea Garden <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Home Collection <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Private Label <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Industria F.lli Cicogna srl <span class="marquee-dot"></span></div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════
+         SHOP BY SCENT — due livelli (famiglia → profumi)
+    ══════════════════════════════════════════════ -->
+    <section class="scentcta" aria-label="Libreria olfattiva">
+      <div class="scentcta-bg" aria-hidden="true">
+        <img src="images/scent-library-bg.webp?v=4" alt="" loading="lazy">
+      </div>
+      <div class="scentcta-inner reveal-up">
+        <span class="scentcta-eyebrow">Libreria Olfattiva</span>
+        <h2 class="scentcta-title">Trova la tua fragranza</h2>
+        <p class="scentcta-sub">Un archivio di profumi d'autore e note naturali, da comporre su misura per la tua candela.</p>
+        <a href="fragrance-library.html" class="scentcta-btn">Esplora la Fragrance Library <span aria-hidden="true">→</span></a>
+        <a href="personalizzazione.html" class="scentcta-alt">Oppure richiedi un profumo su misura →</a>
+      </div>
+    </section>
+
+    <!-- ── HERITAGE ──────────────────────────────── -->
+    <section class="section-heritage" id="heritage" aria-label="La nostra storia">
+      <div class="heritage-inner">
+        <span class="heritage-ornament reveal-fade" aria-hidden="true">✦</span>
+        <blockquote class="heritage-quote reveal-up">
+          "Ogni candela che esce dalle nostre mani<br>
+          porta con sé la stessa dedizione —<br>
+          quella che abbiamo ricevuto, e che oggi <em>tramandiamo</em>."
+        </blockquote>
+        <span class="heritage-glow" id="heritage-glow" aria-hidden="true"></span>
+        <div class="heritage-rule reveal-fade" aria-hidden="true"></div>
+        <p class="heritage-attr reveal-fade">Filippo e Fabio Cicogna &nbsp;&middot;&nbsp; Cereria Cicogna, Novate Milanese</p>
+        <p class="heritage-story reveal-up">
+          La Cereria Cicogna nasce dall'intuizione di Luigi Cicogna e cresce
+          di generazione in generazione: tre generazioni di maestri cerai in
+          Lombardia, una tradizione che Filippo e Fabio Cicogna portano avanti
+          oggi con la stessa cura di sempre. Le chiese e i santuari più importanti del nord Italia
+          si affidano a noi da decenni — una fiducia costruita in silenzio,
+          candela dopo candela. Nel tempo, questa dedizione ha trovato nuovi
+          spazi: la casa, il giardino, la tavola. Le materie prime non cambiano.
+          Il metodo non cambia. Il cognome nemmeno.
+        </p>
+        <div style="margin-top:48px;">
+          <a href="chi-siamo.html" class="btn-ghost reveal-up">La nostra storia →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── B2B ───────────────────────────────────── -->
+    <section class="section-b2b" id="b2b" aria-label="Servizi per professionisti">
+
+      <div class="b2b-text">
+        <span class="b2b-kicker reveal-fade">Per professionisti</span>
+        <h2 class="b2b-title reveal-up">
+          Fornitura su misura<br>
+          per locali ed eventi
+        </h2>
+        <p class="b2b-body reveal-up">
+          Ristoranti, hotel, catering e organizzatori di eventi:
+          progettiamo candele private label con la vostra identità visiva.
+          Quantità flessibili, consegne puntuali, assistenza dedicata.
+        </p>
+        <ul class="b2b-list reveal-up">
+          <li>Candele in bicchiere con etichetta personalizzata</li>
+          <li>Accessori liturgici per chiese e parrocchie</li>
+          <li>Forniture ricorrenti per hotel e ristoranti</li>
+          <li>Campionari su richiesta</li>
+        </ul>
+        <a href="contatti.html" class="btn-ghost reveal-up">
+          Richiedi informazioni <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="b2b-visual">
+        <img class="b2b-img"
+          src="images/b2b-colorate.webp?v=8"
+          alt="Candele in cera naturale accese su fondo avorio"
+          loading="lazy">
+        <div class="b2b-img-overlay" aria-hidden="true"></div>
+        <div class="b2b-claim">
+          <span class="b2b-claim-eyebrow">Cereria Cicogna</span>
+          <p class="b2b-claim-text">Ogni ambiente<br>merita la sua luce.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── PRODUZIONE ──────────────────────────── -->
+    <section class="prod-section reveal-up" id="produzione" aria-label="Il nostro processo produttivo">
+      <div class="prod-inner">
+        <div class="prod-content">
+          <span class="prod-eyebrow">La nostra produzione</span>
+          <h2 class="prod-heading">Dalla cera<br>al prodotto finito</h2>
+          <p class="prod-body">Tre generazioni di esperienza incontrano le tecnologie più avanzate: ogni candela nasce da materiali selezionati e da una lavorazione curata in ogni fase, dalla colata al confezionamento.</p>
+          <div class="prod-steps">
+            <div class="prod-step">
+              <span class="prod-step-num">01</span>
+              <span class="prod-step-label">Selezione della cera</span>
+            </div>
+            <div class="prod-step">
+              <span class="prod-step-num">02</span>
+              <span class="prod-step-label">Colata e raffreddamento</span>
+            </div>
+            <div class="prod-step">
+              <span class="prod-step-num">03</span>
+              <span class="prod-step-label">Confezionamento</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── GALLERY SLIDER ───────────────────────── -->
+    <section class="gallery-slider" aria-label="Galleria immagini" id="gallery-slider">
+      <div class="gallery-slide active">
+        <img src="images/gallery-palazzo.webp?v=4" alt="Palazzo Cicogna — Novate Milanese" loading="eager">
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ──────────────────────────────────── -->
+  <footer role="contentinfo">
+    <div class="footer-top">
+
+      <div>
+        <div class="footer-brand-row">
+          <img class="footer-stork" src="logo-stork.png" alt="" width="40" height="40" aria-hidden="true">
+          <span class="footer-wordmark">Cereria Cicogna</span>
+        </div>
+        <p class="footer-tagline">
+          Industria ceraria artigianale.<br>
+          Dal sacro al quotidiano,<br>
+          la stessa luce da generazioni.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-title">Linee</p>
+        <ul>
+          <li><a href="liturgico.html">Articoli Liturgici</a></li>
+          <li><a href="garden.html">Linea Garden</a></li>
+          <li><a href="home-collection.html">Home Collection</a></li>
+          <li class="mobile-menu-sep" aria-hidden="true"></li>
+      <li><a href="private-label.html">Private Label</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-title">Azienda</p>
+        <ul>
+          <li><a href="chi-siamo.html">Chi Siamo</a></li>
+          <li><a href="contatti.html">Contatti</a></li>
+          <li><a href="private-label.html">B2B &amp; Private Label</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-title">Contatti</p>
+        <address>
+          Via Damiano Chiesa, 84<br>
+          20026 Novate Milanese (MI)<br><br>
+          <a href="tel:+39023543707">02.35.43.707</a><br>
+          <a href="tel:+39023548228">02.35.48.228</a><br>
+          <a href="mailto:info@cerariacicogna.com">info@cerariacicogna.com</a>
+        </address>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2025 Industria Ceraria F.lli Cicogna srl</span>
+      <span class="footer-legal">P.IVA 11980500158 &nbsp;&middot;&nbsp; <a href="privacy.html">Privacy</a></span>
+    </div>
+  </footer>
+
+  <!-- ── SCRIPTS ─────────────────────────────────── -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="js/main.js?v=8"></script>
+  <script src="js/selection.js?v=7"></script>
+  <script>
+
+    /* ═══════════════════════════════════════════════
+       VIDEO HERO  —  entrance + exit logic
+    ═══════════════════════════════════════════════ */
+    const vHero    = document.getElementById('v-hero');
+    const heroEnter = document.getElementById('hero-enter');
+    const heroSkip  = document.getElementById('hero-skip');
+
+    /* Lock scroll while hero is visible */
+    document.body.style.overflow = 'hidden';
+
+    /* Video d'ingresso: mostralo solo quando riparte davvero da 0,
+       così non lampeggia l'ultimo frame rimasto in cache */
+    const hv = document.getElementById('hero-video');
+    if (hv) {
+      const revealVideo = () => hv.classList.add('is-playing');
+      hv.addEventListener('playing', revealVideo, { once: true });
+      /* taglia il primo secondo: l'intro parte dal punto in cui la scena entra davvero.
+         Va applicato anche quando il video arriva già pronto dalla cache
+         (in quel caso 'loadeddata' non scatta e riprenderebbe dove era rimasto). */
+      const START_AT = 1.00;
+      const rewind = () => { try { if (hv.currentTime < START_AT || hv.currentTime > START_AT + 0.5) hv.currentTime = START_AT; } catch (e) {} };
+      hv.addEventListener('loadeddata', rewind);
+      if (hv.readyState >= 1) rewind();
+      /* se il frame è già disponibile e in play, mostralo subito */
+      if (hv.readyState >= 3 && !hv.paused) revealVideo();
+      /* fallback: se autoplay è bloccato, dopo 1.2s mostra comunque il video
+         (resta sotto il poster identico, nessun salto visibile) */
+      setTimeout(revealVideo, 1200);
+    }
+
+    /* Exit: registered FIRST so the gate can always be dismissed,
+       even if GSAP fails to load or an error occurs later on */
+    let heroExited = false;
+    function exitHero() {
+      if (heroExited) return;
+      heroExited = true;
+
+      const done = () => {
+        vHero.style.display = 'none';
+        document.body.style.overflow = '';
+        document.body.classList.add('hx-entered');   /* nav scura sul nuovo ingresso chiaro */
+        /* Trigger ScrollTrigger refresh now that hero is gone */
+        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+      };
+
+      if (typeof gsap !== 'undefined') {
+        gsap.to(vHero, {
+          opacity: 0,
+          scale: 1.06,
+          duration: 1.0,
+          ease: 'power2.in',
+          onComplete: done
+        });
+      } else {
+        done();
+      }
+    }
+
+    heroEnter.addEventListener('click', exitHero);
+    if (heroSkip) heroSkip.addEventListener('click', exitHero);
+    vHero.addEventListener('click', exitHero);
+
+    /* Scroll wheel or touch swipe → exit */
+    window.addEventListener('wheel',     exitHero, { once: true, passive: true });
+    window.addEventListener('touchmove', exitHero, { once: true, passive: true });
+
+    /* Keyboard: Enter / Space / Escape / ArrowDown
+       (persistent listener: a Tab or any other key must not consume it) */
+    window.addEventListener('keydown', e => {
+      if (['Enter','Space','Escape','ArrowDown'].includes(e.code)) exitHero();
+    });
+
+    /* Video: autoplay + prefers-reduced-motion */
+    const heroVideo = document.getElementById('hero-video');
+    if (heroVideo) {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        heroVideo.style.display = 'none';
+      } else {
+        heroVideo.playbackRate = 1.825;   /* velocità iniziale: +15% due volte (~+32% dal video originale) */
+        try { if (heroVideo.currentTime < 1.00) heroVideo.currentTime = 1.00; } catch (e) {}
+        heroVideo.play().catch(() => {});
+        // At second 10, return to normal speed for the rest of the first take
+        // (9.15 e non 10: dal file sono stati tagliati in tutto 0.85s, il punto della scena e' lo stesso)
+        heroVideo.addEventListener('timeupdate', function normalSpeed() {
+          if (heroVideo.currentTime >= 9.15) {
+            heroVideo.playbackRate = 1.0;
+            heroVideo.removeEventListener('timeupdate', normalSpeed);
+          }
+        });
+        // Loop from 5.45s (0.5s before the wood wick close-up) at half speed
+        // (era 6.3 prima che venissero tagliati in tutto i primi 0.85s del file)
+        heroVideo.addEventListener('ended', () => {
+          heroVideo.currentTime = 5.45;
+          heroVideo.playbackRate = 0.9;
+          heroVideo.play().catch(() => {});
+        });
+      }
+    }
+
+    /* Staggered text entrance — with a no-GSAP fallback so the
+       hero text can never stay stuck invisible */
+    const heroItems = [
+      document.getElementById('vh-ey'),
+      document.getElementById('vh-t1'),
+      document.getElementById('vh-t2'),
+      document.getElementById('vh-rule'),
+      document.getElementById('vh-tag'),
+      heroEnter,
+      document.getElementById('v-scroll-cue'),
+      document.getElementById('hero-skip')
+    ].filter(Boolean);
+
+    /* Il testo entra quando si accende la fiamma: campioniamo la luminosità
+       del video e facciamo partire l'animazione al primo guizzo di luce.
+       Fallback temporale se il rilevamento non è possibile (autoplay bloccato,
+       canvas non disponibile, ecc.) così il testo non resta mai invisibile. */
+    (function () {
+      let fired = false;
+      function revealHero() {
+        if (fired) return;
+        fired = true;
+        if (typeof gsap !== 'undefined') {
+          gsap.fromTo(heroItems,
+            { opacity: 0, y: 22 },
+            { opacity: 1, y: 0, duration: 1.2, stagger: 0.14, ease: 'power3.out' }
+          );
+        } else {
+          heroItems.forEach(el => { el.style.opacity = '1'; });
+        }
+      }
+
+      if (typeof gsap !== 'undefined') gsap.set(heroItems, { opacity: 0, y: 22 });
+
+      const vid = document.getElementById('hero-video');
+      let watching = false;
+      if (vid && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        try {
+          const cv = document.createElement('canvas');
+          cv.width = 32; cv.height = 18;
+          const ctx = cv.getContext('2d', { willReadFrequently: true });
+          let base = null;
+          const sample = () => {
+            if (fired) return;
+            if (vid.readyState >= 2) {
+              try {
+                ctx.drawImage(vid, 0, 0, cv.width, cv.height);
+                const d = ctx.getImageData(0, 0, cv.width, cv.height).data;
+                let sum = 0;
+                for (let i = 0; i < d.length; i += 4) sum += (d[i] * 0.299 + d[i + 1] * 0.587 + d[i + 2] * 0.114);
+                const lum = sum / (d.length / 4);
+                if (base === null) base = lum;
+                else if (lum > base + 6) { revealHero(); return; }   /* guizzo della fiamma */
+                else base = Math.min(base, lum);
+              } catch (e) { revealHero(); return; }
+            }
+            requestAnimationFrame(sample);
+          };
+          watching = true;
+          requestAnimationFrame(sample);
+        } catch (e) { watching = false; }
+      }
+
+      /* rete di sicurezza: se la fiamma non viene rilevata, mostra comunque */
+      setTimeout(revealHero, watching ? 4200 : 1200);
+    })();
+
+    /* ── LINE-ROW VIDEO: hover-to-play, resta sul primo frame a riposo ── */
+    (function () {
+      const vids = document.querySelectorAll('.line-vid');
+      if (!vids.length) return;
+
+      vids.forEach(vid => {
+        /* mostra il primo frame anche con preload=metadata */
+        function showFirst() {
+          try { if (vid.currentTime === 0) vid.currentTime = 0.001; } catch (e) {}
+        }
+        vid.addEventListener('loadeddata', showFirst);
+        if (vid.readyState >= 2) showFirst();
+
+        /* a fine riproduzione torna al primo frame */
+        vid.addEventListener('ended', () => { vid.pause(); vid.currentTime = 0; });
+
+        const trigger = vid.closest('.line-row') || vid.closest('.line-img');
+        if (!trigger) return;
+        trigger.addEventListener('mouseenter', () => {
+          vid.currentTime = 0;
+          vid.play().catch(() => {});
+        });
+        trigger.addEventListener('mouseleave', () => {
+          vid.pause();
+          vid.currentTime = 0;
+        });
+      });
+    })();
+
+
+    /* ═══════════════════════════════════════════════
+       HERITAGE  —  quote scale + golden glow
+    ═══════════════════════════════════════════════ */
+    gsap.fromTo('.heritage-quote',
+      { scale: 0.96, opacity: 0.55 },
+      {
+        scale: 1, opacity: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.section-heritage',
+          start: 'top 72%',
+          end: 'top 20%',
+          scrub: 1.2
+        }
+      }
+    );
+    gsap.fromTo('#heritage-glow',
+      { width: '0px', opacity: 0 },
+      {
+        width: '180px', opacity: 1,
+        duration: 1.4, ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.section-heritage',
+          start: 'top 60%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+
+    /* ═══════════════════════════════════════════════
+       B2B IMAGE  —  subtle parallax
+    ═══════════════════════════════════════════════ */
+    gsap.to('.b2b-img', {
+      yPercent: -8, ease: 'none',
+      scrollTrigger: {
+        trigger: '.section-b2b',
+        start: 'top bottom', end: 'bottom top', scrub: true
+      }
+    });
+
+    /* ── GALLERY SLIDESHOW ─────────────────────── */
+    (function() {
+      const slides = document.querySelectorAll('.gallery-slide');
+      const dots   = document.querySelectorAll('.gallery-dot');
+      const slider = document.getElementById('gallery-slider');
+      if (!slides.length || !slider) return;
+
+      let cur = 0, timer, startX = 0;
+
+      function show(n) {
+        slides[cur].classList.remove('active');
+        dots[cur]?.classList.remove('active');
+        dots[cur]?.setAttribute('aria-selected', 'false');
+        cur = ((n % slides.length) + slides.length) % slides.length;
+        slides[cur].classList.add('active');
+        dots[cur]?.classList.add('active');
+        dots[cur]?.setAttribute('aria-selected', 'true');
+      }
+
+      function play()  { clearInterval(timer); timer = setInterval(() => show(cur + 1), 3000); }
+      function pause() { clearInterval(timer); }
+
+      show(0);
+      play();
+
+      dots.forEach((d, i) => d.addEventListener('click', () => { pause(); show(i); play(); }));
+      slider.addEventListener('mouseenter', pause);
+      slider.addEventListener('mouseleave', play);
+
+      slider.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+      slider.addEventListener('touchend', e => {
+        const dx = startX - e.changedTouches[0].clientX;
+        if (Math.abs(dx) > 40) { pause(); show(dx > 0 ? cur + 1 : cur - 1); play(); }
+      }, { passive: true });
+
+      let wheelAccum = 0, wheelTimer, wheelCooldown = false;
+      slider.addEventListener('wheel', e => {
+        if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+        e.preventDefault();
+        if (wheelCooldown) return;
+        wheelAccum += e.deltaX;
+        clearTimeout(wheelTimer);
+        wheelTimer = setTimeout(() => {
+          if (Math.abs(wheelAccum) > 40) {
+            pause(); show(wheelAccum > 0 ? cur + 1 : cur - 1); play();
+            wheelCooldown = true;
+            setTimeout(() => { wheelCooldown = false; }, 700);
+          }
+          wheelAccum = 0;
+        }, 120);
+      }, { passive: false });
+    })();
+
+  </script>
+
+  <!-- ── SHOP BY SCENT ────────────────────────────── -->
+  <script>
+  (function () {
+    const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const FAMILIES = [
+      { id: 'legnoso',      name: 'Legnoso',      color: '#3E2A18',
+        desc: 'Note calde e avvolgenti di cedro e legni nobili. Un profumo che evoca raccoglimento e intimità.',
+        scents: [
+          { name: 'Cedro & Muschio Bianco', notes: 'Cedro dell\'Atlas, muschio bianco, fondo di sandalo ambrato.' },
+          { name: 'Legno di Sandalo',       notes: 'Sandalo del Mysore, legno di rosa, lieve soffio di vaniglia.' },
+          { name: 'Oud Ambrato',            notes: 'Oud selvatico, ambra grigia, resina di benzoino, patchouli.' },
+          { name: 'Pino & Ginepro',         notes: 'Aghi di pino, bacche di ginepro, sottofondo di resina fresca.' },
+        ]},
+      { id: 'agrumato',    name: 'Agrumato',    color: '#5A3E08',
+        desc: 'La freschezza vibrante di limone, arancia e bergamotto.',
+        scents: [
+          { name: 'Bergamotto di Calabria', notes: 'Bergamotto IGP, cedro, neroli, cuore di muschio bianco.' },
+          { name: 'Limone di Amalfi',       notes: 'Scorza di limone sfumata, fiori d\'arancio, fondo cipriato.' },
+          { name: 'Arancio Amaro',          notes: 'Arancio amaro, mandorla dolce, legno di violetta.' },
+          { name: 'Pompelmo & Menta',       notes: 'Pompelmo rosa, menta fresca, note verdi e acquatiche.' },
+        ]},
+      { id: 'floreale',    name: 'Floreale',    color: '#6A3040',
+        desc: 'Petali delicati e fiori appena colti, un bouquet elegante e raffinato.',
+        scents: [
+          { name: 'Rosa Damascena',     notes: 'Rosa turca, muschio rosa, fondo di cedro bianco.' },
+          { name: 'Gelsomino Notturno', notes: 'Gelsomino sambac, tubero, fiori bianchi, vaniglia.' },
+          { name: 'Peonia & Magnolia',  notes: 'Peonia cinese, magnolia, polvere di iris e muschio.' },
+          { name: 'Fiori d\'Arancio',  notes: 'Neroli, zagara, bergamotto, fondo di miele tiepido.' },
+        ]},
+      { id: 'lavanda',     name: 'Lavanda',     color: '#3A2858',
+        desc: 'L\'inconfondibile abbraccio della lavanda in fiore, calmo e rasserenante.',
+        scents: [
+          { name: 'Lavanda di Provenza', notes: 'Lavanda alta provenzale, rosmarino, canfora, fondo erbaceo.' },
+          { name: 'Lavanda & Vaniglia',  notes: 'Lavanda fine, vaniglia bourbon, muschio bianco caldo.' },
+          { name: 'Lavanda Selvatica',   notes: 'Lavanda aspic, timo, eucalipto, note di pietra fredda.' },
+          { name: 'Lavanda & Miele',     notes: 'Lavanda officinale, miele di lavanda, cera d\'api, iris.' },
+        ]},
+      { id: 'speziato',    name: 'Speziato',    color: '#5A2808',
+        desc: 'Cannella, cardamomo e spezie calde in un accordo intenso e accogliente.',
+        scents: [
+          { name: 'Cannella & Chiodo',  notes: 'Cannella di Ceylon, chiodo di garofano, zenzero, ambra.' },
+          { name: 'Cardamomo Nero',     notes: 'Cardamomo affumicato, pepe nero, legno di oud, tabacco.' },
+          { name: 'Anice & Liquirizia', notes: 'Anice stellato, liquirizia, finocchio, muschio bianco.' },
+          { name: 'Zafferano & Rosa',   notes: 'Zafferano iraniano, petali di rosa, cuoio, fondo balsamico.' },
+        ]},
+      { id: 'fresco',      name: 'Fresco',      color: '#0E3040',
+        desc: 'Aria aperta, erba e cielo terso. Una fragranza pulita e ariosa.',
+        scents: [
+          { name: 'Erba di Prato',    notes: 'Erba fresca tagliata, foglie verdi, rugiada mattutina.' },
+          { name: 'Tè Verde & Bambù', notes: 'Tè verde sencha, bambù fresco, latte di riso, muschio.' },
+          { name: 'Menta Piperita',   notes: 'Menta piperita, eucalipto, mentolo, fondo acquatico.' },
+          { name: 'Cetriolo & Lime',  notes: 'Cetriolo verde, lime, lemon grass, aldeidi fresche.' },
+        ]},
+      { id: 'balsamico',   name: 'Balsamico',   color: '#0E2C18',
+        desc: 'Resine, aghi di pino e boschi di conifere. Un profumo rigenerante.',
+        scents: [
+          { name: 'Abete & Resina',   notes: 'Abete bianco, resina di pino, benzoino, muschio di quercia.' },
+          { name: 'Mirra & Incenso',  notes: 'Mirra etiopica, incenso, sangue di drago, cuore ambrato.' },
+          { name: 'Eucalipto Blu',    notes: 'Eucalipto radiata, canfora, aghi di pino, fondo mentolato.' },
+          { name: 'Vetiver & Terra',  notes: 'Vetiver di Haiti, terra umida, patchouli, muschio di bosco.' },
+        ]},
+      { id: 'dolce',       name: 'Dolce',       color: '#5A2E08',
+        desc: 'Vaniglia, miele e note gourmand, suadenti e confortanti.',
+        scents: [
+          { name: 'Vaniglia Bourbon',    notes: 'Vaniglia del Madagascar, fava tonka, benzoino dolce.' },
+          { name: 'Caramello Salato',    notes: 'Caramello burro salato, pralinato di nocciola, muschio dolce.' },
+          { name: 'Cioccolato & Tonka',  notes: 'Cacao in polvere, fava tonka, vanillina, note lattiginose.' },
+          { name: 'Miele & Cera d\'Api', notes: 'Miele grezzo, cera d\'api, polline, propoli, cedro.' },
+        ]},
+      { id: 'mediterraneo', name: 'Mediterraneo', color: '#0E3030',
+        desc: 'Ulivo, timo e pietra calda baciata dal sole. L\'essenza dell\'Italia del Sud.',
+        scents: [
+          { name: 'Ulivo & Timo',          notes: 'Foglie d\'ulivo, timo selvatico, rosmarino, pietra di Istria.' },
+          { name: 'Fico & Cipresso',       notes: 'Fico maturo, cipresso, terraggio verde, sottobosco.' },
+          { name: 'Zagara di Sicilia',     notes: 'Zagara d\'arancio amaro, mandarino, muschio bianco, sale.' },
+          { name: 'Finocchietto & Limone', notes: 'Finocchietto selvatico, limone di Sicilia, erba cipollina.' },
+        ]},
+      { id: 'marino',      name: 'Marino',      color: '#081A30',
+        desc: 'La freschezza salmastra del mare. Limpido e ossigenante, evoca l\'orizzonte.',
+        scents: [
+          { name: 'Brezza Marina',   notes: 'Ozono, sale marino, alghe, note acquatiche e muschio bianco.' },
+          { name: 'Ambra Grigia',    notes: 'Ambra grigia, muschio di mare, legno di drift, sale.' },
+          { name: 'Alghe & Vetiver', notes: 'Alghe brune, vetiver acquatico, cedro, fondo marino.' },
+          { name: 'Nebbia di Sale',  notes: 'Sale di Cervia, nebbia mattutina, iris, muschio di pietra.' },
+        ]},
+    ];
+
+    const viewport  = document.getElementById('sf-viewport');
+    const track     = document.getElementById('sf-track');
+    const cta       = document.getElementById('sf-cta');
+    const panel     = document.getElementById('sf-panel');
+    const pName     = document.getElementById('sf-panel-name');
+    const pDesc     = document.getElementById('sf-panel-desc');
+    const pScents   = document.getElementById('sf-scents');
+    const backBtn   = document.getElementById('sf-back');
+    if (!track) return;
+
+    /* ── Build a carousel card ── */
+    function buildCard(fam, isClone) {
+      const card = document.createElement('div');
+      card.className = 'sf-car';
+      card.style.setProperty('--sf-color', fam.color);
+      card.dataset.famId = fam.id;
+      if (!isClone) {
+        card.setAttribute('role', 'listitem');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-label', fam.name);
+        card.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = 'fragrance-library.html?family=' + fam.id; }
+        });
+      } else {
+        card.setAttribute('aria-hidden', 'true');
+      }
+      card.innerHTML =
+        '<img class="sf-car-img" src="images/scent-' + fam.id + '.webp" alt="" loading="lazy" aria-hidden="true" onerror="this.style.display=\'none\'">' +
+        '<div class="sf-car-overlay" aria-hidden="true"></div>' +
+        '<div class="sf-car-label"><span class="sf-car-name">' + fam.name + '</span></div>';
+      return card;
+    }
+
+    /* ── Populate track (×2 for seamless loop) ── */
+    FAMILIES.forEach(fam => track.appendChild(buildCard(fam, false)));
+    FAMILIES.forEach(fam => track.appendChild(buildCard(fam, true)));
+
+    /* ── Event delegation — works for both real cards and clones ── */
+    track.addEventListener('click', e => {
+      const card = e.target.closest('[data-fam-id]');
+      if (card) window.location.href = 'fragrance-library.html?family=' + card.dataset.famId;
+    });
+
+    /* ── Preload images ── */
+    FAMILIES.forEach(f => { const i = new Image(); i.src = 'images/scent-' + f.id + '.webp'; });
+
+    /* ── Frecce: scorrimento manuale (sposta la fase del marquee di una card) ── */
+    (function () {
+      const prevBtn = document.getElementById('sf-prev');
+      const nextBtn = document.getElementById('sf-next');
+      if (!prevBtn || !nextBtn) return;
+      let phase = 0;
+      function step(dir) {
+        const card = track.querySelector('.sf-car');
+        if (!card) return;
+        const stepPx = card.getBoundingClientRect().width + 2; /* card + gap */
+        const half = track.scrollWidth / 2;                    /* lunghezza di un giro */
+        if (!half) return;
+        phase -= dir * (44 * stepPx / half);                   /* 44s = durata del giro */
+        track.style.animationDelay = phase + 's';
+      }
+      nextBtn.addEventListener('click', () => step(1));
+      prevBtn.addEventListener('click', () => step(-1));
+    })();
+
+    /* ── Pause on reduced-motion ── */
+    if (REDUCED) { track.style.animationPlayState = 'paused'; }
+
+    /* ── Open a family panel ── */
+    function openFamily(idx) {
+      const fam = FAMILIES[idx];
+      pName.textContent = fam.name;
+      pDesc.textContent = fam.desc;
+      pScents.innerHTML = '';
+      fam.scents.forEach((s, i) => {
+        const card = document.createElement('div');
+        card.className = 'sf-scent-card';
+        card.setAttribute('role', 'listitem');
+        card.innerHTML =
+          '<span class="sf-scent-num">0' + (i + 1) + '</span>' +
+          '<span class="sf-scent-name">' + s.name + '</span>' +
+          '<span class="sf-scent-notes">' + s.notes + '</span>' +
+          '<a href="contatti.html?profumo=' + encodeURIComponent(s.name) + '&famiglia=' + fam.id + '" class="sf-scent-req">Richiedi questa fragranza \u2192</a>';
+        pScents.appendChild(card);
+      });
+
+      if (REDUCED) {
+        viewport.style.display = 'none';
+        cta.style.display = 'none';
+        panel.removeAttribute('hidden');
+      } else {
+        viewport.classList.add('sf-exit');
+        cta.classList.add('sf-exit');
+        setTimeout(() => {
+          viewport.style.display = 'none';
+          cta.style.display = 'none';
+          viewport.classList.remove('sf-exit');
+          cta.classList.remove('sf-exit');
+          panel.removeAttribute('hidden');
+          document.getElementById('scent-families').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 320);
+      }
+    }
+
+    /* ── Close panel ── */
+    function closePanel() {
+      panel.setAttribute('hidden', '');
+      viewport.style.display = '';
+      cta.style.display = '';
+      if (!REDUCED) {
+        document.getElementById('scent-families').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    if (backBtn) backBtn.addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !panel.hidden) closePanel();
+    });
+  })();
+  </script>
+
+  <!-- Hero carousel: puntini cliccabili + autoplay -->
+  <script>
+  (function(){
+    var hero = document.querySelector('.hx-hero');
+    if(!hero) return;
+    var slides = hero.querySelectorAll('.hx-slide');
+    var dots   = hero.querySelectorAll('.hx-dots button');
+    var cap    = hero.querySelector('.hx-caption');
+    var captions = ['La collezione a colori','Forma e materia','Geometrie di luce','Colore e composizione'];
+    if(slides.length < 2) return;
+    var i = 0, timer = null;
+    function show(n){
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function(s,k){ s.classList.toggle('on', k===i); });
+      dots.forEach(function(d,k){ d.classList.toggle('on', k===i); });
+      if(cap){ cap.style.opacity = 0; setTimeout(function(){ cap.textContent = captions[i]; cap.style.opacity = 1; }, 240); }
+    }
+    function next(){ show(i+1); }
+    function play(){ stop(); timer = setInterval(next, 5000); }
+    function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+    dots.forEach(function(d,k){ d.addEventListener('click', function(){ show(k); play(); }); });
+    var img = hero.querySelector('.hx-img');
+    if(img){ img.addEventListener('mouseenter', stop); img.addEventListener('mouseleave', play); }
+    play();
+  })();
+  </script>
+
+  <script src="js/i18n-pages.js?v=3"></script>
+  <script src="js/i18n.js?v=7"></script>
+  <script src="js/link-personale.js?v=6" defer></script>
+  <script src="assistant/widget/cc-assistant.js?v=12" data-endpoint="http://localhost:8787/api/chat" data-privacy="privacy.html" defer></script>
+</body>
+</html>

@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fragrance Library — Cereria Cicogna</title>
+  <meta name="description" content="A curated archive of scents, natural notes and olfactory compositions. La libreria olfattiva Cereria Cicogna: profumi finiti e singole note.">
+  <!-- anteprime social e indirizzo canonico -->
+  <link rel="canonical" href="https://www.cerariacicogna.com/fragrance-library.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cereria Cicogna">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:url" content="https://www.cerariacicogna.com/fragrance-library.html">
+  <meta property="og:title" content="Fragrance Library — Cereria Cicogna">
+  <meta property="og:description" content="A curated archive of scents, natural notes and olfactory compositions. La libreria olfattiva Cereria Cicogna: profumi finiti e singole note.">
+  <meta property="og:image" content="https://www.cerariacicogna.com/images/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fragrance Library — Cereria Cicogna">
+  <meta name="twitter:description" content="A curated archive of scents, natural notes and olfactory compositions. La libreria olfattiva Cereria Cicogna: profumi finiti e singole note.">
+  <meta name="twitter:image" content="https://www.cerariacicogna.com/images/og-cover.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/main.css?v=13">
+  <style>
+    body { background: #f2ecdb; color: var(--c-text-dark); }
+
+    /* nav chiara */
+    /* nav chiara sopra l'hero-immagine (in cima); scura una volta scrollati sul beige */
+    nav:not(.scrolled) .nav-logo { color: #f8f3ea; }
+    nav:not(.scrolled) .nav-logo span { color: rgba(248,243,234,.7); }
+    nav:not(.scrolled) .nav-links > li > a { color: rgba(248,243,234,.85); }
+    nav:not(.scrolled) .nav-links > li > a:hover { color: #fff; }
+    nav:not(.scrolled) .nav-cta { color: #f8f3ea; border-color: rgba(248,243,234,.42); }
+    nav:not(.scrolled) .nav-cta:hover { background: rgba(248,243,234,.14); border-color: #f8f3ea; }
+    nav:not(.scrolled) .hamburger-line { background: #f8f3ea; }
+    nav:not(.scrolled) .nav-stork path { fill: #f8f3ea !important; }
+    nav:not(.scrolled) .nav-stork circle { stroke: #f8f3ea !important; }
+    nav.scrolled { background: rgba(242, 236, 219,.95); }
+    nav.scrolled .nav-logo { color: var(--c-text-dark); }
+    nav.scrolled .nav-links > li > a { color: var(--c-text-mid); }
+    nav.scrolled .nav-cta { color: var(--c-text-dark); border-color: rgba(26,22,18,.25); }
+    nav.scrolled .hamburger-line { background: var(--c-text-dark); }
+
+    /* ── HERO ── */
+    .fl-hero { padding: 168px var(--gutter) 54px; max-width: 1200px; margin: 0 auto; text-align: center; }
+    .fl-eyebrow { display: inline-block; font-family: var(--ff-sans); font-size: .5rem; font-weight: 300; letter-spacing: .38em; text-transform: uppercase; color: var(--c-gold); margin-bottom: 22px; }
+    .fl-title { font-family: var(--ff-display); font-size: clamp(2.8rem, 8vw, 6rem); font-weight: 300; letter-spacing: .05em; color: var(--c-text-dark); line-height: .98; }
+    .fl-rule { width: 34px; height: 1px; background: var(--c-gold); margin: 28px auto 24px; }
+    .fl-sub { max-width: 560px; margin: 0 auto; font-family: var(--ff-serif); font-style: italic; font-size: 1.1rem; line-height: 1.8; color: var(--c-text-mid); }
+
+    /* ── FILTRI ── */
+    .fl-filters { position: sticky; top: 70px; z-index: 40; background: rgba(242, 236, 219,.92); backdrop-filter: blur(6px); border-top: 1px solid rgba(26,22,18,.07); border-bottom: 1px solid rgba(26,22,18,.07); }
+    .fl-filters-inner { max-width: 1280px; margin: 0 auto; padding: 0 var(--gutter); display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+    .fl-filters-inner::-webkit-scrollbar { display: none; }
+    .fl-filter { font-family: var(--ff-sans); font-size: .46rem; font-weight: 300; letter-spacing: .18em; text-transform: uppercase; color: var(--c-text-mid); padding: 18px 13px; border: none; border-bottom: 2px solid transparent; background: none; cursor: pointer; white-space: nowrap; transition: color .25s, border-color .25s; }
+    .fl-filter.active, .fl-filter:hover { color: var(--c-text-dark); border-bottom-color: var(--c-text-dark); }
+
+    /* ── SEZIONI ── */
+    .fl-section { max-width: 1280px; margin: 0 auto; padding: 60px var(--gutter) 10px; }
+    .fl-section-head { margin-bottom: 40px; }
+    .fl-section-eyebrow { font-family: var(--ff-sans); font-size: .46rem; font-weight: 300; letter-spacing: .3em; text-transform: uppercase; color: var(--c-gold); }
+    .fl-section-title { display: flex; align-items: baseline; gap: 14px; margin-top: 10px; }
+    .fl-section-title h2 { font-family: var(--ff-display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 300; letter-spacing: .05em; color: var(--c-text-dark); }
+    .fl-section-title span { font-family: var(--ff-sans); font-size: .5rem; letter-spacing: .12em; color: var(--c-text-mid); }
+    .fl-section-desc { max-width: 560px; margin-top: 12px; font-family: var(--ff-serif); font-style: italic; font-size: 1rem; line-height: 1.7; color: var(--c-text-mid); }
+
+    /* ── GRIGLIA ── */
+    .fl-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 46px 30px; }
+    @media (max-width: 1080px) { .fl-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 760px)  { .fl-grid { grid-template-columns: repeat(2, 1fr); gap: 34px 18px; } }
+
+    .fl-card { cursor: pointer; }
+    .fl-card.hidden { display: none; }
+    .fl-card-media { position: relative; overflow: hidden; aspect-ratio: 3/4; background: #e9e1cd; margin-bottom: 16px; }
+    .fl-card-media img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(.95) saturate(.97); transition: transform 1.1s cubic-bezier(.25,.46,.45,.94), filter .5s; }
+    .fl-card-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(20,16,10,.18) 0%, transparent 46%); opacity: 0; transition: opacity .5s; }
+    .fl-card:hover .fl-card-media img { transform: scale(1.05); filter: brightness(1) saturate(1); }
+    .fl-card:hover .fl-card-media::after { opacity: 1; }
+    .fl-card:hover .fl-card-media { box-shadow: 0 18px 40px rgba(20,16,10,.14); }
+    .fl-card-fam { font-family: var(--ff-sans); font-size: .42rem; font-weight: 300; letter-spacing: .22em; text-transform: uppercase; color: var(--c-gold); margin-bottom: 6px; }
+    .fl-card-name { font-family: var(--ff-display); font-size: 1.32rem; font-weight: 300; letter-spacing: .03em; color: var(--c-text-dark); line-height: 1.1; margin-bottom: 7px; }
+    .fl-card-desc { font-family: var(--ff-serif); font-style: italic; font-size: .9rem; line-height: 1.55; color: var(--c-text-mid); margin-bottom: 9px; }
+    .fl-card-meta { font-family: var(--ff-sans); font-size: .46rem; font-weight: 300; letter-spacing: .06em; line-height: 1.7; color: var(--c-text-mid); }
+    .fl-card-meta b { font-weight: 400; color: var(--c-text-dark); letter-spacing: .1em; text-transform: uppercase; font-size: .4rem; }
+
+    .fl-empty { grid-column: 1 / -1; text-align: center; padding: 20px 0; font-family: var(--ff-serif); font-style: italic; color: var(--c-text-mid); }
+
+    /* ── FRASE FINALE ── */
+    .fl-note { max-width: 760px; margin: 0 auto; padding: 60px var(--gutter) 96px; text-align: center; }
+    .fl-note p { font-family: var(--ff-serif); font-style: italic; font-size: clamp(1.05rem, 2.2vw, 1.35rem); line-height: 1.7; color: var(--c-text-mid); }
+
+    /* ── MODAL ── */
+    .flm { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+    .flm.open { opacity: 1; pointer-events: all; }
+    .flm-backdrop { position: absolute; inset: 0; background: rgba(20,16,10,.62); backdrop-filter: blur(5px); }
+    .flm-panel { position: relative; background: #f2ecdb; max-width: 920px; width: 100%; max-height: 92vh; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; box-shadow: 0 30px 80px rgba(10,8,5,.4); }
+    @media (max-width: 780px) { .flm-panel { grid-template-columns: 1fr; max-height: 90vh; } }
+    .flm-close { position: absolute; top: 12px; right: 12px; z-index: 5; width: 38px; height: 38px; border: none; background: rgba(20,16,10,.5); color: #fff; font-size: 1rem; cursor: pointer; border-radius: 50%; transition: background .25s; }
+    .flm-close:hover { background: rgba(20,16,10,.8); }
+    .flm-media { aspect-ratio: 3/4; overflow: hidden; background: #e9e1cd; }
+    @media (max-width: 780px) { .flm-media { aspect-ratio: 4/3; } }
+    .flm-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .flm-info { padding: 46px 42px 38px; display: flex; flex-direction: column; }
+    @media (max-width: 780px) { .flm-info { padding: 30px 24px 30px; } }
+    .flm-kind { font-family: var(--ff-sans); font-size: .44rem; font-weight: 300; letter-spacing: .3em; text-transform: uppercase; color: var(--c-text-mid); margin-bottom: 12px; }
+    .flm-fam { font-family: var(--ff-sans); font-size: .46rem; font-weight: 300; letter-spacing: .26em; text-transform: uppercase; color: var(--c-gold); margin-bottom: 14px; }
+    .flm-name { font-family: var(--ff-display); font-size: 2.1rem; font-weight: 300; letter-spacing: .04em; color: var(--c-text-dark); line-height: 1.08; margin-bottom: 18px; }
+    .flm-desc { font-family: var(--ff-serif); font-style: italic; font-size: 1.05rem; line-height: 1.85; color: var(--c-text-mid); margin-bottom: 28px; }
+    .flm-block-label { font-family: var(--ff-sans); font-size: .42rem; font-weight: 300; letter-spacing: .26em; text-transform: uppercase; color: var(--c-text-mid); margin-bottom: 11px; }
+    .flm-block { margin-bottom: 24px; }
+    .flm-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .flm-chip { font-family: var(--ff-sans); font-size: .5rem; font-weight: 300; letter-spacing: .1em; text-transform: uppercase; color: var(--c-text-dark); padding: 8px 14px; border: 1px solid rgba(26,22,18,.18); border-radius: 2px; background: none; cursor: pointer; transition: background .2s, border-color .2s; }
+    .flm-chip:hover { background: rgba(200,152,48,.1); border-color: var(--c-gold); }
+    .flm-cta { margin-top: auto; padding-top: 20px; font-family: var(--ff-sans); font-size: .46rem; font-weight: 300; letter-spacing: .24em; text-transform: uppercase; color: var(--c-text-mid); }
+    .flm-cta a { color: var(--c-text-dark); text-decoration: none; border-bottom: 1px solid var(--c-gold); padding-bottom: 2px; }
+    body.flm-lock { overflow: hidden; }
+    /* ══ CAMPAIGN — confinato alla Fragrance Library (registro editoriale distinto) ══ */
+    .flc-hero { position: relative; width: 100%; height: 65vh; min-height: 440px; overflow: hidden; }
+    .flc-hero > img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+    .flc-hero-veil { position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse 60% 52% at 50% 54%, rgba(22,8,6,.5) 0%, rgba(22,8,6,.16) 46%, transparent 72%); }
+    .flc-hero-text { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 24px; }
+    .flc-hero-eyebrow { font-family: var(--ff-sans); font-weight: 300; font-size: .56rem; letter-spacing: .42em; text-transform: uppercase; color: #e0b45a; margin-bottom: 22px; }
+    .flc-hero-title { font-family: var(--ff-display); font-weight: 300; font-size: clamp(2.6rem, 6vw, 5.4rem); letter-spacing: .04em; line-height: 1; color: #f8f3ea; }
+
+    /* ── barra "stai abbinando" ── */
+    .fl-pairbar { position: sticky; top: 72px; z-index: 40; background: #2a231a; border-bottom: 1px solid rgba(248,243,234,.14); }
+    .fl-pairbar-inner { max-width: 1320px; margin: 0 auto; padding: 12px var(--gutter); display: flex; align-items: center; gap: 16px; }
+    .fl-pairbar-img { width: 46px; height: 46px; object-fit: cover; flex: 0 0 auto; background: #f7f2e8; }
+    .fl-pairbar-txt { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+    .fl-pairbar-eyebrow { font-family: var(--ff-sans); font-weight: 300; font-size: .46rem; letter-spacing: .26em; text-transform: uppercase; color: rgba(248,243,234,.55); }
+    .fl-pairbar-name { font-family: var(--ff-display); font-weight: 300; font-size: 1.02rem; letter-spacing: .03em; color: #f8f3ea; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .fl-pairbar-exit { margin-left: auto; flex: 0 0 auto; font-family: var(--ff-sans); font-weight: 300; font-size: .46rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(248,243,234,.6); text-decoration: none; border-bottom: 1px solid rgba(248,243,234,.28); padding-bottom: 3px; transition: color .25s, border-color .25s; }
+    .fl-pairbar-exit:hover { color: #f8f3ea; border-color: #f8f3ea; }
+    @media (max-width: 600px) { .fl-pairbar-eyebrow { letter-spacing: .18em; } .fl-pairbar-img { width: 38px; height: 38px; } }
+
+    /* ── pulsante "abbina" nella scheda profumo ── */
+    .flm-pair-btn { display: block; margin: 26px 0 4px; padding: 17px 32px; text-align: center; text-decoration: none;
+      font-family: var(--ff-sans); font-weight: 300; font-size: .54rem; letter-spacing: .24em; text-transform: uppercase;
+      background: #2a231a; color: #f7f2e8; transition: background .3s; }
+    .flm-pair-btn:hover { background: #000; }
+
+    /* fascia contenitori */
+
+    .flc-col > .flc-fig > img { aspect-ratio: 3/2; object-fit: cover; }              /* landscape: ratio nativo, nessun crop */
+    .flc-col-center .flc-fig img { aspect-ratio: 3/4; object-fit: cover; object-position: center; }  /* accento verticale: taglia solo i margini vuoti, l'arco resta intero */
+    @media (max-width: 768px) {
+      .flc-hero { height: 52vh; min-height: 360px; }
+      .flc-col-center .flc-fig img { aspect-ratio: 3/2; }   /* mobile: full-width nativo, arco intero */
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="main-nav">
+    <a href="index.html" class="nav-brand">
+      <img class="nav-stork" src="logo-stork.png" alt="Logo Cereria Cicogna" width="32" height="32" loading="eager">
+      <div class="nav-logo">Cereria Cicogna<span>Industria F.lli Cicogna · Novate Milanese</span></div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li class="nav-has-drop">
+        <a href="home-collection.html" aria-haspopup="true" aria-expanded="false">Home Collection</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Home Collection">
+        <div class="mega-container"><div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="home-collection.html" class="mega-feat-title">Home Collection</a>
+            <p class="mega-feat-desc">Candele profumate per arredare e impreziosire ogni ambiente della casa.</p>
+          </div>
+          <div class="mega-col"><p class="mega-col-head">Prodotti</p><ul><li><a href="home-collection.html?c=sand">Sand</a></li><li><a href="home-collection.html?c=rock">Rock</a></li><li><a href="home-collection.html?c=glass">Glass</a></li><li><a href="home-collection.html?c=metallic">Metallic</a></li><li><a href="home-collection.html?c=ceri">Ceri</a></li></ul><a href="home-collection.html" class="mega-all">Vedi tutti</a></div><div class="mega-img-col"><a href="home-collection.html"><img src="images/hero-home-collection.webp" alt="Home Collection — Cereria Cicogna"></a></div>
+        </div></div>
+      </div>
+      </li>
+      <li class="nav-has-drop">
+        <a href="garden.html" aria-haspopup="true" aria-expanded="false">Garden</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Linea Garden">
+        <div class="mega-container"><div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="garden.html" class="mega-feat-title">Linea Garden</a>
+            <p class="mega-feat-desc">Candele per esterni e interni, pensate per ogni stagione all'aperto.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul>
+              <li><a href="garden.html?c=citronelle">Citronelle</a></li>
+              <li><a href="garden.html?c=cerabianca">Cera Bianca</a></li>
+              <li><a href="garden.html?c=ricariche">Ricariche</a></li>
+            </ul>
+            <a href="garden.html" class="mega-all">Vedi tutti</a>
+          </div><div class="mega-img-col"><a href="garden.html"><img src="images/hero-garden.webp" alt="Linea Garden — Cereria Cicogna"></a></div>
+        </div></div>
+      </div>
+      </li>
+      <li class="nav-has-drop">
+        <a href="liturgico.html" aria-haspopup="true" aria-expanded="false">Liturgico</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Articoli Liturgici">
+        <div class="mega-container"><div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="liturgico.html" class="mega-feat-title">Articoli Liturgici</a>
+            <p class="mega-feat-desc">Ceri, lumini e arredi sacri per chiese, santuari e cerimonie religiose.</p>
+          </div>
+          <div class="mega-col"><p class="mega-col-head">Prodotti</p><ul>
+            <li><a href="liturgico.html?c=lumini">Lumini da chiesa</a></li>
+            <li><a href="liturgico.html?c=accessori">Accessori</a></li>
+              <li><a href="liturgico.html?c=forniture">Forniture</a></li>
+          </ul><a href="liturgico.html" class="mega-all">Vedi tutti</a></div><div class="mega-img-col"><a href="liturgico.html"><img src="images/hero-liturgico.webp" alt="Articoli Liturgici — Cereria Cicogna"></a></div>
+        </div></div>
+      </div>
+      </li>
+      <li class="nav-sep" aria-hidden="true"></li>
+      <li>
+        <a href="private-label.html">Private Label</a>
+      </li>
+      <li><a href="fragrance-library.html" aria-current="page">Fragrance Library</a></li>
+      <li><a href="personalizzazione.html">Collaborazioni</a></li>
+      <li><a href="chi-siamo.html">Chi Siamo</a></li>
+    </ul>
+    <a href="contatti.html" class="nav-cta">Contattaci</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Apri menu" aria-expanded="false">
+      <span class="hamburger-line"></span><span class="hamburger-line"></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true">
+    <ul class="mobile-menu-links" role="list">
+      <li class="mm-has-sub"><div class="mm-top"><a href="liturgico.html" class="mm-link">Liturgico</a><button class="mm-expand" aria-expanded="false" aria-label="Espandi Liturgico">+</button></div>
+        <ul class="mm-sub" hidden><li><a href="liturgico.html?c=lumini">Lumini da chiesa</a></li><li><a href="liturgico.html?c=accessori">Accessori</a></li>
+              <li><a href="liturgico.html?c=forniture">Forniture</a></li></ul></li>
+      <li class="mm-has-sub"><div class="mm-top"><a href="garden.html" class="mm-link">Garden</a><button class="mm-expand" aria-expanded="false" aria-label="Espandi Garden">+</button></div><ul class="mm-sub" hidden><li><a href="garden.html?c=citronelle">Citronelle</a></li><li><a href="garden.html?c=cerabianca">Cera Bianca</a></li><li><a href="garden.html?c=ricariche">Ricariche</a></li></ul></li>
+      <li class="mm-has-sub"><div class="mm-top"><a href="home-collection.html" class="mm-link">Home Collection</a><button class="mm-expand" aria-expanded="false" aria-label="Espandi Home Collection">+</button></div><ul class="mm-sub" hidden><li><a href="home-collection.html?c=sand">Sand</a></li><li><a href="home-collection.html?c=rock">Rock</a></li><li><a href="home-collection.html?c=glass">Glass</a></li><li><a href="home-collection.html?c=metallic">Metallic</a></li><li><a href="home-collection.html?c=ceri">Ceri</a></li></ul></li>
+      <li><a href="fragrance-library.html">Fragrance Library</a></li>
+      <li><a href="chi-siamo.html">Chi Siamo</a></li>
+      <li><a href="contatti.html">Contatti</a></li>
+      <li class="mobile-menu-sep" aria-hidden="true"></li>
+      <li><a href="private-label.html">Private Label</a></li>
+      <li><a href="personalizzazione.html">Collaborazioni</a></li>
+    </ul>
+    <div class="mobile-menu-rule" aria-hidden="true"></div>
+    <address class="mobile-menu-contact">
+      <a href="tel:+39023543707">02.35.43.707</a>&ensp;·&ensp;<a href="mailto:info@cerariacicogna.com">info@cerariacicogna.com</a>
+    </address>
+  </div>
+
+  <!-- HERO — campaign (immagine piena, overlay minimo) -->
+  <header class="flc-hero">
+    <img src="images/fragrance-hero.webp?v=1" alt="Materie prime della profumeria: fiori, spezie, agrumi e resine" loading="eager">
+    <div class="flc-hero-veil" aria-hidden="true"></div>
+    <div class="flc-hero-text">
+      <span class="flc-hero-eyebrow">Fragrance Library</span>
+      <h1 class="flc-hero-title">L'archivio olfattivo</h1>
+    </div>
+  </header>
+
+  <!-- BARRA ABBINAMENTO — visibile solo arrivando da una candela -->
+  <div class="fl-pairbar" id="fl-pairbar" hidden>
+    <div class="fl-pairbar-inner">
+      <img class="fl-pairbar-img" id="fl-pairbar-img" src="" alt="">
+      <div class="fl-pairbar-txt">
+        <span class="fl-pairbar-eyebrow">Stai abbinando un profumo a</span>
+        <strong class="fl-pairbar-name" id="fl-pairbar-name"></strong>
+      </div>
+      <a class="fl-pairbar-exit" id="fl-pairbar-exit" href="fragrance-library.html">Annulla</a>
+    </div>
+  </div>
+
+  <!-- FILTRI -->
+  <div class="fl-filters" role="search" aria-label="Filtra per famiglia olfattiva">
+    <div class="fl-filters-inner" id="fl-filters"></div>
+  </div>
+
+  <!-- PROFUMI -->
+  <section class="fl-section" id="sec-profumi" aria-label="Profumi">
+    <div class="fl-section-head">
+      <span class="fl-section-eyebrow">Livello 01</span>
+      <div class="fl-section-title"><h2>Profumi</h2><span id="count-profumi"></span></div>
+      <p class="fl-section-desc">Le composizioni olfattive finite: i blend d'autore che danno voce alle nostre candele.</p>
+    </div>
+    <div class="fl-grid" id="grid-profumi"></div>
+  </section>
+
+  <!-- SINGOLE NOTE -->
+  <section class="fl-section" id="sec-note" aria-label="Singole Note">
+    <div class="fl-section-head">
+      <span class="fl-section-eyebrow">Livello 02</span>
+      <div class="fl-section-title"><h2>Singole Note</h2><span id="count-note"></span></div>
+      <p class="fl-section-desc">Le materie prime e le singole fragranze che compongono i profumi. Ogni nota vive in una o più composizioni.</p>
+    </div>
+    <div class="fl-grid" id="grid-note"></div>
+  </section>
+
+  <!-- FRASE FINALE -->
+  <section class="fl-note">
+    <p>Altre fragranze e combinazioni olfattive su misura sono disponibili su richiesta.</p>
+  </section>
+
+  <!-- MODAL -->
+  <div class="flm" id="flm" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Dettaglio">
+    <div class="flm-backdrop" id="flm-backdrop"></div>
+    <div class="flm-panel">
+      <button class="flm-close" id="flm-close" aria-label="Chiudi">✕</button>
+      <div class="flm-media"><img id="flm-img" src="" alt=""></div>
+      <div class="flm-info">
+        <p class="flm-kind" id="flm-kind"></p>
+        <p class="flm-fam" id="flm-fam"></p>
+        <h2 class="flm-name" id="flm-name"></h2>
+        <p class="flm-desc" id="flm-desc"></p>
+        <div class="flm-block" id="flm-block"><p class="flm-block-label" id="flm-block-label"></p><div class="flm-chips" id="flm-chips"></div></div>
+        <a class="flm-pair-btn" id="flm-pair-btn" href="#" hidden></a>
+        <p class="flm-cta">Disponibile su richiesta · <a href="contatti.html">Contattaci</a></p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-row">
+          <img class="footer-stork" src="logo-stork.png" alt="" width="40" height="40" aria-hidden="true">
+          <span class="footer-wordmark">Cereria Cicogna</span>
+        </div>
+        <p class="footer-tagline">Dal sacro al quotidiano,<br>la stessa luce da generazioni.</p>
+      </div>
+      <div class="footer-col"><p class="footer-col-title">Linee</p><ul>
+        <li><a href="home-collection.html">Home Collection</a></li>
+        <li><a href="garden.html">Linea Garden</a></li>
+        <li><a href="liturgico.html">Articoli Liturgici</a></li>
+        <li class="mobile-menu-sep" aria-hidden="true"></li>
+      <li><a href="private-label.html">Private Label</a></li>
+      </ul></div>
+      <div class="footer-col"><p class="footer-col-title">Azienda</p><ul>
+        <li><a href="chi-siamo.html">Chi Siamo</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul></div>
+      <div class="footer-col"><p class="footer-col-title">Contatti</p>
+        <address>Via Damiano Chiesa, 84<br>20026 Novate Milanese (MI)<br><br>
+          <a href="tel:+39023543707">02.35.43.707</a><br>
+          <a href="mailto:info@cerariacicogna.com">info@cerariacicogna.com</a>
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2025 Industria Ceraria F.lli Cicogna srl</span>
+      <span class="footer-legal">P.IVA 11980500158 &nbsp;&middot;&nbsp; <a href="privacy.html">Privacy</a></span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="js/main.js?v=8"></script>
+  <script src="js/selection.js?v=7"></script>
+  <script>
+  /* ═══════════════════════════════════════════════════
+     FRAGRANCE LIBRARY — due livelli:
+     · PROFUMI  = blend finiti (nome commerciale)
+     · NOTE     = singole materie prime che li compongono
+     Cross-linking: profumo ⇄ note ⇄ altri profumi.
+  ═══════════════════════════════════════════════════ */
+  (function () {
+    const IMG = s => 'images/scentlib-' + s + '.webp?v=3';
+    /* profumi con foto-composizione dedicata (gli altri usano la nota principale) */
+    const PERF_PHOTO = new Set(['melange','baraggia','via-italia','oasi','bessa','winter-tree','profumoir-1','profumoir-2','profumoir-3','profumoir-4','uva-rara']);
+    const perfImg = p => PERF_PHOTO.has(p.id) ? 'images/perfume-' + p.id + '.webp?v=1' : IMG(p.img);
+    /* candela da abbinare, valorizzata da initPairing() quando si arriva con ?candela= */
+    let candelaInCorso = null;
+    const FILTERS = ['All','Floral','Citrus','Green','Woody','Spicy','Resin','Marine','Gourmand','Powdery','Tobacco','Aromatic'];
+
+    /* ── NOTE (43) ── */
+    const NOTES = [
+      { s:'cipria', n:'Cipria', f:'powdery', d:'Nota morbida, pulita, vellutata e cipriata.' },
+      { s:'magnolia', n:'Magnolia', f:'floral', d:'Fiore elegante, chiaro, morbido e raffinato.' },
+      { s:'cedro', n:'Cedro', f:'woody citrus', d:'Nota legnosa, secca, pulita e luminosa.' },
+      { s:'cannella', n:'Cannella', f:'spicy', d:'Spezia calda, avvolgente e dolcemente intensa.' },
+      { s:'rhum', n:'Rhum', f:'gourmand liquor', d:'Nota liquorosa, ambrata, calda e profonda.' },
+      { s:'caffe', n:'Caffè tostato', f:'gourmand', d:'Nota scura, tostata, intensa e materica.' },
+      { s:'garofano', n:'Garofano', f:'spicy floral', d:'Nota speziata, calda e leggermente floreale.' },
+      { s:'vetiver', n:'Vetiver', f:'green woody', d:'Nota verde, secca, terrosa ed elegante.' },
+      { s:'fiori', n:'Fiori', f:'floral', d:'Accordo floreale morbido, luminoso e arioso.' },
+      { s:'agrumi', n:'Agrumi', f:'citrus', d:'Nota fresca, brillante, mediterranea e pulita.' },
+      { s:'uva-americana', n:'Uva americana', f:'fruity', d:'Nota fruttata, intensa, dolce-acidula e riconoscibile.' },
+      { s:'rabarbaro', n:'Rabarbaro', f:'fruity green', d:'Nota acidula, verde, croccante e moderna.' },
+      { s:'cassis', n:'Cassis', f:'fruity dark berry', d:'Nota di bacca scura, intensa, fruttata e sofisticata.' },
+      { s:'bergamotto', n:'Bergamotto', f:'citrus', d:'Agrume elegante, fresco, luminoso e raffinato.' },
+      { s:'oud', n:'Oud', f:'woody oriental', d:'Legno profondo, prezioso, scuro e avvolgente.' },
+      { s:'sandalo', n:'Sandalo', f:'woody creamy', d:'Legno morbido, cremoso, caldo e vellutato.' },
+      { s:'vaniglia', n:'Vaniglia', f:'gourmand', d:'Nota dolce, morbida, calda e rotonda.' },
+      { s:'liquirizia', n:'Liquirizia', f:'dark gourmand', d:'Nota scura, dolce-amara, intensa e originale.' },
+      { s:'ginepro', n:'Ginepro', f:'balsamic green', d:'Nota fresca, resinosa, verde e boschiva.' },
+      { s:'aghi-di-pino', n:'Aghi di pino', f:'balsamic green', d:'Nota verde, resinosa, fredda e naturale.' },
+      { s:'zenzero', n:'Zenzero', f:'spicy fresh', d:'Nota speziata, fresca, luminosa e vibrante.' },
+      { s:'muschio', n:'Muschio', f:'green earthy', d:'Nota umida, verde, terrosa e naturale.' },
+      { s:'eucalipto', n:'Eucalipto', f:'aromatic balsamic', d:'Nota fresca, balsamica, pulita e respirante.' },
+      { s:'fico', n:'Fico', f:'green fruity', d:'Nota verde, lattiginosa, fruttata e mediterranea.' },
+      { s:'menta', n:'Menta', f:'green fresh', d:'Nota fresca, brillante, pulita e aromatica.' },
+      { s:'pepe-bianco', n:'Pepe bianco', f:'spicy', d:'Nota speziata, pulita, secca e moderna.' },
+      { s:'sale', n:'Sale', f:'marine mineral', d:'Nota minerale, marina, secca e luminosa.' },
+      { s:'alga-marina', n:'Alga marina', f:'marine', d:'Nota acquatica, salina, naturale e minerale.' },
+      { s:'gardenia', n:'Gardenia', f:'floral white', d:'Fiore bianco cremoso, elegante e luminoso.' },
+      { s:'rosa', n:'Rosa', f:'floral', d:'Nota floreale elegante, romantica e vellutata.' },
+      { s:'gelsomino', n:'Gelsomino', f:'floral white', d:'Fiore bianco luminoso, sensuale e raffinato.' },
+      { s:'ambra', n:'Ambra', f:'amber resin', d:'Nota calda, resinosa, morbida e avvolgente.' },
+      { s:'arancia-amara', n:'Arancia amara', f:'citrus bitter', d:'Agrume amaro, brillante, elegante e deciso.' },
+      { s:'betulla', n:'Betulla', f:'woody', d:'Legno chiaro, secco, naturale e pulito.' },
+      { s:'ebano', n:'Ebano', f:'dark woody', d:'Legno scuro, profondo, elegante e intenso.' },
+      { s:'mimosa', n:'Mimosa', f:'floral powdery', d:'Fiore solare, morbido, cipriato e luminoso.' },
+      { s:'basilico', n:'Basilico', f:'green aromatic', d:'Nota aromatica, verde, fresca e mediterranea.' },
+      { s:'cocco', n:'Cocco', f:'creamy tropical', d:'Nota cremosa, pulita, morbida e solare.' },
+      { s:'tabacco', n:'Tabacco', f:'tobacco', d:'Nota secca, calda, elegante e avvolgente.' },
+      { s:'winter-incense', n:'Winter Incense', f:'incense', d:'Incenso freddo, fumoso, resinoso e meditativo.' },
+      { s:'frankincense', n:'Frankincense', f:'resin', d:'Resina sacra, luminosa, minerale e spirituale.' },
+      { s:'incenso-indiano', n:'Incenso indiano', f:'incense spicy', d:'Incenso caldo, speziato, profondo e mistico.' },
+    ];
+
+    /* ── PROFUMI (22) — notes = slug delle note; img = nota rappresentativa ── */
+    const PERFUMES = [
+      { id:'melange', n:'Melange', f:'powdery floral woody', img:'magnolia', notes:['cipria','magnolia','cedro','cannella'],
+        d:'Profumo delicato, cipriato, morbido e raffinato, con una parte floreale luminosa e un fondo caldo-legnoso.' },
+      { id:'baraggia', n:'Baraggia', f:'gourmand spicy', img:'caffe', notes:['rhum','caffe','garofano','cannella'],
+        d:'Profumo caldo, liquoroso, intenso e speziato, costruito su caffè tostato, rhum e spezie profonde.' },
+      { id:'via-italia', n:'Via Italia', f:'citrus floral green', img:'agrumi', notes:['vetiver','fiori','agrumi'],
+        d:'Profumo fresco, elegante e mediterraneo, con agrumi luminosi, fiori delicati e una base verde di vetiver.' },
+      { id:'uva-rara', n:'Uva Rara', f:'fruity citrus', img:'uva-americana', notes:['uva-americana','rabarbaro','cassis','bergamotto'],
+        d:'Profumo fruttato, intenso ma raffinato, con uva scura, cassis e rabarbaro bilanciati dalla freschezza del bergamotto.' },
+      { id:'oasi', n:'Oasi', f:'floral', img:'fiori', notes:['fiori'],
+        d:'Profumo floreale, luminoso, morbido e arioso, pensato come un bouquet pulito ed elegante.' },
+      { id:'bessa', n:'Bessa', f:'woody oriental', img:'oud', notes:['oud','sandalo','cannella','vaniglia','liquirizia'],
+        d:'Profumo caldo, orientale, avvolgente e profondo, con legni preziosi, spezie dolci e accenti scuri.' },
+      { id:'winter-tree', n:'Winter Tree', f:'woody green balsamic', img:'aghi-di-pino', notes:['ginepro','aghi-di-pino','zenzero','muschio','eucalipto','cedro'],
+        d:'Profumo boschivo, fresco e balsamico, ispirato a un paesaggio invernale di conifere, muschio ed eucalipto.' },
+      { id:'profumoir-1', n:'Profumoir 1', f:'green aromatic', img:'fico', notes:['fico','menta','pepe-bianco'],
+        d:'Profumo verde, fresco e contemporaneo, dominato dal fico con accenti aromatici di menta e una nota pulita di pepe bianco.' },
+      { id:'profumoir-2', n:'Profumoir 2', f:'marine citrus', img:'alga-marina', notes:['bergamotto','sale','cassis','alga-marina'],
+        d:'Profumo marino, minerale e luminoso, con bergamotto, sale, alga marina e una sfumatura fruttata di cassis.' },
+      { id:'profumoir-3', n:'Profumoir 3', f:'floral amber', img:'rosa', notes:['gardenia','rosa','gelsomino','ambra'],
+        d:'Profumo floreale, cremoso ed elegante, con fiori bianchi, rosa e una base calda ambrata.' },
+      { id:'profumoir-4', n:'Profumoir 4', f:'citrus woody', img:'arancia-amara', notes:['arancia-amara','zenzero','cedro','betulla','ebano'],
+        d:'Profumo agrumato-legnoso, deciso e sofisticato, con arancia amara, zenzero e legni scuri.' },
+      { id:'gelsomino', n:'Gelsomino', f:'floral', img:'gelsomino', notes:['gelsomino'],
+        d:'Profumo floreale bianco, puro, luminoso e delicato.' },
+      { id:'mimosa', n:'Mimosa', f:'floral powdery', img:'mimosa', notes:['mimosa'],
+        d:'Profumo solare, morbido, cipriato e primaverile.' },
+      { id:'basilico', n:'Basilico', f:'green aromatic', img:'basilico', notes:['basilico'],
+        d:'Profumo verde, fresco, aromatico e mediterraneo.' },
+      { id:'coconut', n:'Coconut', f:'creamy tropical', img:'cocco', notes:['cocco'],
+        d:'Profumo morbido, cremoso, pulito e leggermente tropicale.' },
+      { id:'menta', n:'Menta', f:'green fresh', img:'menta', notes:['menta'],
+        d:'Profumo fresco, brillante, verde e aromatico.' },
+      { id:'fico', n:'Fico', f:'green fruity', img:'fico', notes:['fico'],
+        d:'Profumo verde, lattiginoso, mediterraneo e naturale.' },
+      { id:'oud-sandalo', n:'Oud & Sandalo', f:'woody', img:'sandalo', notes:['oud','sandalo'],
+        d:'Profumo legnoso, caldo, profondo e sofisticato.' },
+      { id:'tabacco', n:'Tabacco', f:'tobacco woody', img:'tabacco', notes:['tabacco'],
+        d:'Profumo caldo, secco, avvolgente e materico.' },
+      { id:'winter-incense', n:'Winter Incense', f:'resin incense', img:'incenso-indiano', notes:['winter-incense'],
+        d:'Profumo fumoso, invernale, resinoso e meditativo.' },
+      { id:'frankincense', n:'Frankincense', f:'resin', img:'frankincense', notes:['frankincense'],
+        d:'Profumo sacro, resinoso, minerale e pulito.' },
+      { id:'incenso-indiano', n:'Incenso Indiano', f:'incense spicy', img:'winter-incense', notes:['incenso-indiano'],
+        d:'Profumo speziato, mistico, caldo e profondo.' },
+    ];
+
+    /* lookup + cross-link (nota → profumi che la usano) */
+    const noteBySlug = {}; NOTES.forEach(x => noteBySlug[x.s] = x);
+    const perfById   = {}; PERFUMES.forEach(x => perfById[x.id] = x);
+    NOTES.forEach(nt => { nt.perfumes = PERFUMES.filter(p => p.notes.includes(nt.s)).map(p => p.id); });
+
+    const gridP = document.getElementById('grid-profumi');
+    const gridN = document.getElementById('grid-note');
+
+    /* ── card profumo ── */
+    PERFUMES.forEach(p => {
+      const noteNames = p.notes.map(s => noteBySlug[s] ? noteBySlug[s].n : s).join(' · ');
+      const c = document.createElement('article');
+      c.className = 'fl-card'; c.dataset.type = 'perfume'; c.dataset.id = p.id; c.dataset.fam = p.f;
+      c.innerHTML =
+        '<div class="fl-card-media"><img src="'+perfImg(p)+'" alt="'+p.n+'" loading="lazy"></div>' +
+        '<p class="fl-card-fam">'+p.f+'</p>' +
+        '<h2 class="fl-card-name">'+p.n+'</h2>' +
+        '<p class="fl-card-desc">'+p.d+'</p>' +
+        '<p class="fl-card-meta"><b>Note</b><br>'+noteNames+'</p>';
+      c.addEventListener('click', () => openModal('perfume', p.id));
+      gridP.appendChild(c);
+    });
+
+    /* ── card nota ── */
+    NOTES.forEach(nt => {
+      const inNames = nt.perfumes.map(id => perfById[id] ? perfById[id].n : id).join(' · ') || '—';
+      const c = document.createElement('article');
+      c.className = 'fl-card'; c.dataset.type = 'note'; c.dataset.id = nt.s; c.dataset.fam = nt.f;
+      c.innerHTML =
+        '<div class="fl-card-media"><img src="'+IMG(nt.s)+'" alt="'+nt.n+'" loading="lazy"></div>' +
+        '<p class="fl-card-fam">'+nt.f+'</p>' +
+        '<h2 class="fl-card-name">'+nt.n+'</h2>' +
+        '<p class="fl-card-desc">'+nt.d+'</p>' +
+        '<p class="fl-card-meta"><b>Presente in</b><br>'+inNames+'</p>';
+      c.addEventListener('click', () => openModal('note', nt.s));
+      gridN.appendChild(c);
+    });
+
+    /* ── filtri (una barra per entrambe le sezioni) ── */
+    const filtersEl = document.getElementById('fl-filters');
+    let active = 'All';
+    FILTERS.forEach(f => {
+      const b = document.createElement('button');
+      b.className = 'fl-filter' + (f === 'All' ? ' active' : '');
+      b.textContent = f; b.dataset.fam = f;
+      b.addEventListener('click', () => { active = f; filtersEl.querySelectorAll('.fl-filter').forEach(x => x.classList.toggle('active', x.dataset.fam === f)); render(); });
+      filtersEl.appendChild(b);
+    });
+
+    function famMatch(el) {
+      return active === 'All' || (el.dataset.fam || '').toLowerCase().split(/\s+/).includes(active.toLowerCase());
+    }
+    function render() {
+      let np = 0, nn = 0;
+      gridP.querySelectorAll('.fl-card').forEach(c => { const ok = famMatch(c); c.classList.toggle('hidden', !ok); if (ok) np++; });
+      gridN.querySelectorAll('.fl-card').forEach(c => { const ok = famMatch(c); c.classList.toggle('hidden', !ok); if (ok) nn++; });
+      document.getElementById('count-profumi').textContent = np + (np === 1 ? ' profumo' : ' profumi');
+      document.getElementById('count-note').textContent = nn + (nn === 1 ? ' nota' : ' note');
+      document.getElementById('sec-profumi').style.display = np ? '' : 'none';
+      document.getElementById('sec-note').style.display = nn ? '' : 'none';
+    }
+
+    /* ── modal (gestisce profumi e note, con cross-link) ── */
+    const modal = document.getElementById('flm');
+    const chipsEl = document.getElementById('flm-chips');
+    let lastFocus = null;
+
+    function openModal(type, id) {
+      const isPerf = type === 'perfume';
+      const it = isPerf ? perfById[id] : noteBySlug[id];
+      if (!it) return;
+      document.getElementById('flm-img').src = isPerf ? perfImg(it) : IMG(it.s);
+      document.getElementById('flm-img').alt = it.n;
+      document.getElementById('flm-kind').textContent = isPerf ? 'Profumo' : 'Nota olfattiva';
+      document.getElementById('flm-fam').textContent = it.f;
+      document.getElementById('flm-name').textContent = it.n;
+      document.getElementById('flm-desc').textContent = it.d;
+      document.getElementById('flm-block-label').textContent = isPerf ? 'Note che lo compongono' : 'Presente nei profumi';
+      chipsEl.innerHTML = '';
+      const items = isPerf ? it.notes : it.perfumes;
+      items.forEach(x => {
+        const label = isPerf ? (noteBySlug[x] ? noteBySlug[x].n : x) : (perfById[x] ? perfById[x].n : x);
+        const b = document.createElement('button');
+        b.className = 'flm-chip'; b.textContent = label;
+        b.addEventListener('click', () => openModal(isPerf ? 'note' : 'perfume', x));
+        chipsEl.appendChild(b);
+      });
+      document.getElementById('flm-block').style.display = items.length ? '' : 'none';
+
+      /* ── selezione + abbinamento ── */
+      const pairBtn = document.getElementById('flm-pair-btn');
+      if (isPerf && window.CCSel) {
+        const profumo = {
+          name: it.n,
+          ref:  it.id,
+          img:  perfImg(it),
+          cat:  'profumo',
+          url:  'fragrance-library.html?profumo=' + encodeURIComponent(it.id)
+        };
+        pairBtn.hidden = false;
+        if (candelaInCorso) {
+          /* si sta abbinando: il click aggiunge la coppia e apre il riepilogo */
+          pairBtn.textContent = 'Abbina a ' + candelaInCorso.name + ' →';
+          pairBtn.setAttribute('href', '#');
+          pairBtn.onclick = e => {
+            e.preventDefault();
+            CCSel.aggiungiAbbinamento(candelaInCorso, profumo);
+            location.href = 'abbinamento.html';
+          };
+        } else {
+          /* il profumo da solo non è un prodotto: va sempre abbinato a una candela */
+          pairBtn.textContent = 'Scegli una candela da profumare →';
+          pairBtn.onclick = null;
+          pairBtn.setAttribute('href', 'home-collection.html');
+        }
+      } else if (pairBtn) {
+        pairBtn.hidden = true;
+        pairBtn.onclick = null;
+      }
+
+      if (!modal.classList.contains('open')) lastFocus = document.activeElement;
+      modal.classList.add('open'); modal.removeAttribute('aria-hidden');
+      document.body.classList.add('flm-lock');
+      document.getElementById('flm-close').focus();
+      modal.querySelector('.flm-panel').scrollTop = 0;
+    }
+    function closeModal() {
+      modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('flm-lock'); if (lastFocus) lastFocus.focus();
+    }
+    document.getElementById('flm-close').addEventListener('click', closeModal);
+    document.getElementById('flm-backdrop').addEventListener('click', closeModal);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+
+    render();
+
+    /* entrata soft */
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray('.fl-card').forEach(c => {
+        gsap.fromTo(c, { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out',
+          scrollTrigger: { trigger: c, start: 'top 94%', once: true } });
+      });
+    }
+
+    /* ── modalità abbinamento: ?candela=<id> ──
+       La candela è già in localStorage (salvata aprendo la sua scheda
+       in Home Collection): qui serve solo il segnale che stiamo
+       abbinando, così mostriamo la barra e il pulsante "Abbina". */
+    (function initPairing() {
+      const cid = new URLSearchParams(location.search).get('candela');
+      if (!cid || !window.CCSel) return;
+      /* la candela arriva dalla scheda Home Collection (sessionStorage);
+         in mancanza, si ripiega su una già presente nella richiesta */
+      let cand = CCSel.getCandelaInCorso();
+      if (!cand || cand.ref.split('/')[0] !== cid) {
+        cand = null;
+        CCSel.voci().forEach(v => {
+          if (v.tipo === 'prodotto' && v.prodotto.ref.split('/')[0] === cid) cand = v.prodotto;
+          if (v.tipo === 'abbinamento' && v.candela.ref.split('/')[0] === cid) cand = v.candela;
+        });
+      }
+      if (!cand) return;
+      candelaInCorso = cand;
+      const bar = document.getElementById('fl-pairbar');
+      document.getElementById('fl-pairbar-img').src = cand.img || '';
+      document.getElementById('fl-pairbar-img').alt = cand.name;
+      document.getElementById('fl-pairbar-name').textContent = cand.name;
+      bar.hidden = false;
+    })();
+
+    /* deep-link: ?profumo=id  |  ?nota=slug  |  ?fam=Famiglia */
+    const q = new URLSearchParams(location.search);
+    if (q.get('fam') && FILTERS.includes(q.get('fam'))) { active = q.get('fam'); filtersEl.querySelectorAll('.fl-filter').forEach(x => x.classList.toggle('active', x.dataset.fam === active)); render(); }
+    if (q.get('profumo') && perfById[q.get('profumo')]) requestAnimationFrame(() => openModal('perfume', q.get('profumo')));
+    else if (q.get('nota') && noteBySlug[q.get('nota')]) requestAnimationFrame(() => openModal('note', q.get('nota')));
+  })();
+  </script>
+
+  <script src="js/i18n-pages.js?v=3"></script>
+  <script src="js/i18n.js?v=7"></script>
+  <script src="js/link-personale.js?v=6" defer></script>
+  <script src="assistant/widget/cc-assistant.js?v=12" data-endpoint="http://localhost:8787/api/chat" data-privacy="privacy.html" defer></script>
+</body>
+</html>

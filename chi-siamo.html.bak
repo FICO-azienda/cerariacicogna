@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi Siamo — Cereria Cicogna</title>
+  <meta name="description" content="Tre generazioni di cerai a Novate Milanese. Filippo e Fabio Cicogna portano avanti una tradizione liturgica e artigianale costruita nel tempo, tra le chiese dell'Italia del Nord e i tavoli dei migliori ristoranti.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/main.css?v=8">
+  <style>
+
+    /* ── ABOUT HERO ─────────────────────────── */
+    .about-hero {
+      min-height: 72vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 var(--gutter) 88px;
+      position: relative;
+      overflow: hidden;
+      background: var(--c-dark);
+    }
+
+    .about-hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .about-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.18;
+      display: block;
+    }
+
+    .about-hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,10,5,1) 0%, rgba(13,10,5,.7) 50%, rgba(13,10,5,.3) 100%);
+    }
+
+    .about-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 740px;
+    }
+
+    .about-hero-eyebrow {
+      display: block;
+      font-family: var(--ff-sans);
+      font-size: .54rem;
+      font-weight: 300;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      margin-bottom: 22px;
+    }
+
+    .about-hero-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 300;
+      letter-spacing: .14em;
+      color: var(--c-vellum);
+      line-height: 1.1;
+      margin-bottom: 28px;
+    }
+
+    .about-hero-lead {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-size: clamp(1.05rem, 2.5vw, 1.4rem);
+      font-weight: 300;
+      color: var(--c-stone);
+      line-height: 1.8;
+      max-width: 560px;
+    }
+
+    /* ── ABOUT BODY ─────────────────────────── */
+    .about-body {
+      background: var(--c-bg-light);
+      color: var(--c-text-dark);
+    }
+
+    /* Story section */
+    .about-story {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 96px var(--gutter);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-story-text {}
+
+    .about-story-eyebrow {
+      display: block;
+      font-family: var(--ff-sans);
+      font-size: .52rem;
+      font-weight: 300;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--c-text-mid);
+      margin-bottom: 20px;
+    }
+
+    .about-story-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      letter-spacing: .1em;
+      color: var(--c-text-dark);
+      line-height: 1.2;
+      margin-bottom: 28px;
+    }
+
+    .about-story-title em {
+      font-style: italic;
+      color: var(--c-text-mid);
+    }
+
+    .about-story-body {
+      font-family: var(--ff-serif);
+      font-size: 1.08rem;
+      line-height: 1.95;
+      color: var(--c-text-mid);
+    }
+
+    .about-story-body + .about-story-body {
+      margin-top: 16px;
+    }
+
+    .about-story-visual {
+      position: relative;
+    }
+
+    .about-story-img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-story-img-caption {
+      position: absolute;
+      bottom: -14px;
+      right: -14px;
+      background: var(--c-bg-light);
+      border: 1px solid rgba(26,22,18,.1);
+      padding: 16px 22px;
+    }
+
+    .about-story-img-caption strong {
+      display: block;
+      font-family: var(--ff-display);
+      font-size: 1.8rem;
+      font-weight: 300;
+      letter-spacing: .08em;
+      color: var(--c-text-dark);
+      line-height: 1;
+    }
+
+    .about-story-img-caption span {
+      font-family: var(--ff-sans);
+      font-size: .48rem;
+      font-weight: 300;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--c-text-mid);
+      display: block;
+      margin-top: 4px;
+    }
+
+    /* Values grid */
+    .about-values {
+      background: var(--c-bg-cream);
+      padding: 80px var(--gutter);
+    }
+
+    .about-values-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .about-values-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .about-values-title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      letter-spacing: .12em;
+      color: var(--c-text-dark);
+    }
+
+    .about-values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .about-value-item {
+      background: var(--c-bg-light);
+      padding: 48px 44px;
+    }
+
+    .about-value-icon {
+      font-size: .6rem;
+      letter-spacing: .4em;
+      color: var(--c-gold);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .about-value-title {
+      font-family: var(--ff-display);
+      font-size: 1.3rem;
+      font-weight: 300;
+      letter-spacing: .1em;
+      color: var(--c-text-dark);
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+
+    .about-value-desc {
+      font-family: var(--ff-serif);
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--c-text-mid);
+    }
+
+    /* Quote section */
+    .about-quote-section {
+      background: var(--c-dark);
+      padding: 100px var(--gutter);
+      text-align: center;
+    }
+
+    .about-quote {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-weight: 300;
+      color: var(--c-vellum);
+      line-height: 1.85;
+      max-width: 800px;
+      margin: 0 auto 28px;
+    }
+
+    .about-quote em {
+      font-style: normal;
+      color: var(--c-gold-lt);
+    }
+
+    .about-quote-rule {
+      width: 28px; height: 1px;
+      background: var(--c-gold);
+      margin: 0 auto 20px;
+      opacity: .4;
+    }
+
+    .about-quote-attr {
+      font-family: var(--ff-sans);
+      font-size: .52rem;
+      font-weight: 300;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--c-muted);
+    }
+
+    /* Products section */
+    .about-products {
+      background: var(--c-bg-light);
+      padding: 80px var(--gutter);
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .about-products-title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      letter-spacing: .1em;
+      color: var(--c-text-dark);
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .about-products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+
+    .about-product-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--c-bg-cream);
+    }
+
+    .about-product-card img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+      transition: transform .9s cubic-bezier(.25,.46,.45,.94);
+    }
+
+    .about-product-card:hover img { transform: scale(1.06); }
+
+    .about-product-card-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 28px 24px;
+      background: linear-gradient(to top, rgba(26,22,18,.85), transparent);
+    }
+
+    .about-product-card-label span {
+      font-family: var(--ff-display);
+      font-size: 1rem;
+      font-weight: 300;
+      letter-spacing: .1em;
+      color: var(--c-vellum);
+      display: block;
+    }
+
+    .about-product-card-label a {
+      font-family: var(--ff-sans);
+      font-size: .5rem;
+      font-weight: 300;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--c-stone);
+      text-decoration: none;
+      margin-top: 6px;
+      display: inline-block;
+      transition: color .3s;
+    }
+    .about-product-card:hover .about-product-card-label a { color: var(--c-vellum); }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .about-story { grid-template-columns: 1fr; }
+      .about-story-visual { order: -1; }
+      .about-story-img { aspect-ratio: 16/9; }
+      .about-values-grid { grid-template-columns: 1fr 1fr; }
+      .about-products-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .about-values-grid { grid-template-columns: 1fr; gap: 2px; }
+      .about-products-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Light nav */
+    nav.scrolled { background: rgba(13,10,5,.93); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a href="index.html" class="nav-brand">
+      <img class="nav-stork" src="logo-stork.png" alt="Logo Cereria Cicogna" width="32" height="32" loading="eager">
+      <div class="nav-logo">
+        Cereria Cicogna
+        <span>Industria F.lli Cicogna · Novate Milanese</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li class="nav-has-drop">
+        <a href="home-collection.html" aria-haspopup="true" aria-expanded="false">Home Collection</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Home Collection">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="home-collection.html" class="mega-feat-title">Home Collection</a>
+            <p class="mega-feat-desc">Candele profumate per arredare e impreziosire ogni ambiente della casa.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul>
+              <li><a href="home-collection.html?c=bicchiere">Bicchiere</a></li>
+              <li><a href="home-collection.html?c=profumata">Profumate</a></li>
+              <li><a href="home-collection.html?c=eventi">Per eventi</a></li>
+              <li><a href="home-collection.html?c=personalizzata">Personalizzate</a></li>
+            </ul>
+            <a href="home-collection.html" class="mega-all">Vedi tutti</a>
+          </div>
+          <div class="mega-img-col">
+            <img src="images/home-collection-feature.webp" alt="Home Collection" loading="lazy">
+            <p class="mega-img-caption">Eleganza artigianale per la casa</p>
+            <a href="home-collection.html" class="mega-img-cta">Scopri la linea</a>
+          </div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="nav-has-drop">
+        <a href="garden.html" aria-haspopup="true" aria-expanded="false">Garden</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Linea Garden">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="garden.html" class="mega-feat-title">Linea Garden</a>
+            <p class="mega-feat-desc">Candele per esterni e interni, pensate per ogni stagione all'aperto.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Candele</p>
+            <ul>
+              <li><a href="product-garden-bicchiere.html">Bicchiere</a></li>
+            </ul>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Esterno</p>
+            <ul>
+              <li><a href="product-garden-esterno.html">Candele da Esterno</a></li>
+              <li><a href="garden.html?c=citronelle">Citronelle</a></li>
+            </ul>
+            <a href="garden.html" class="mega-all">Vedi tutti</a>
+          </div>
+          <div class="mega-img-col">
+            <img src="images/menu-garden.jpg" alt="Candele da giardino" loading="lazy">
+            <p class="mega-img-caption">Per ogni stagione, all'aperto</p>
+            <a href="garden.html" class="mega-img-cta">Scopri la linea</a>
+          </div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="nav-has-drop">
+        <a href="liturgico.html" aria-haspopup="true" aria-expanded="false">Liturgico</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Articoli Liturgici">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="liturgico.html" class="mega-feat-title">Articoli Liturgici</a>
+            <p class="mega-feat-desc">Ceri, lumini e arredi sacri per chiese, santuari e cerimonie religiose.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul>
+              <li><a href="liturgico.html?c=lumini">Lumini</a></li>
+              <li><a href="liturgico.html?c=accessori">Accessori</a></li>
+              <li><a href="forniture.html">Forniture</a></li>
+            </ul>
+            <a href="liturgico.html" class="mega-all">Vedi tutti</a>
+          </div>
+          <div class="mega-img-col">
+            <img src="images/liturgico-hero-1.webp" alt="Ceri artigianali" loading="lazy">
+            <p class="mega-img-caption">Artigianalità sacra dal 1960</p>
+            <a href="liturgico.html" class="mega-img-cta">Scopri la linea</a>
+          </div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="nav-sep" aria-hidden="true"></li>
+      <li class="nav-has-drop">
+        <a href="private-label.html" aria-haspopup="true" aria-expanded="false">Private Label</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Private Label">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="private-label.html" class="mega-feat-title">Private Label</a>
+            <p class="mega-feat-desc">Candele personalizzate per ristoranti, hotel, eventi e brand del lusso.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Servizi</p>
+            <ul>
+              <li><a href="private-label.html">Come funziona</a></li>
+              <li><a href="contatti.html">Richiedi preventivo</a></li>
+            </ul>
+            <a href="private-label.html" class="mega-all">Scopri il servizio</a>
+          </div>
+          <div class="mega-img-col">
+            <img src="images/batch2_img_1.webp" alt="Candele private label" loading="lazy">
+            <p class="mega-img-caption">Su misura per il tuo brand</p>
+            <a href="private-label.html" class="mega-img-cta">Richiedi info</a>
+          </div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li><a href="fragrance-library.html">Fragrance Library</a></li><li><a href="personalizzazione.html">Collaborazioni</a></li>
+      <li><a href="chi-siamo.html" aria-current="page">Chi Siamo</a></li>
+    </ul>
+    <a href="contatti.html" class="nav-cta">Contattaci</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Apri menu" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true">
+    <ul class="mobile-menu-links" role="list">
+      <li class="mm-has-sub">
+        <div class="mm-top">
+          <a href="home-collection.html" class="mm-link">Home Collection</a>
+          <button class="mm-expand" aria-expanded="false" aria-label="Espandi Home Collection">+</button>
+        </div>
+        <ul class="mm-sub" hidden>
+          <li><a href="home-collection.html?c=bicchiere">Bicchiere</a></li>
+          <li><a href="home-collection.html?c=profumata">Profumate</a></li>
+          <li><a href="home-collection.html?c=eventi">Per eventi</a></li>
+          <li><a href="home-collection.html?c=personalizzata">Personalizzate</a></li>
+        </ul>
+      </li>
+      <li class="mm-has-sub">
+        <div class="mm-top">
+          <a href="garden.html" class="mm-link">Garden</a>
+          <button class="mm-expand" aria-expanded="false" aria-label="Espandi Garden">+</button>
+        </div>
+        <ul class="mm-sub" hidden>
+          <li><a href="product-garden-bicchiere.html">Bicchiere</a></li>
+          <li><a href="product-garden-esterno.html">Candele da Esterno</a></li>
+          <li><a href="garden.html?c=citronelle">Citronelle</a></li>
+        </ul>
+      </li>
+      <li class="mm-has-sub">
+        <div class="mm-top">
+          <a href="liturgico.html" class="mm-link">Liturgico</a>
+          <button class="mm-expand" aria-expanded="false" aria-label="Espandi Liturgico">+</button>
+        </div>
+        <ul class="mm-sub" hidden>
+          <li><a href="liturgico.html?c=lumini">Lumini</a></li>
+          <li><a href="liturgico.html?c=accessori">Accessori</a></li>
+        </ul>
+      </li>
+      <li><a href="chi-siamo.html">Chi Siamo</a></li>
+      <li><a href="contatti.html">Contatti</a></li>
+      <li class="mobile-menu-sep" aria-hidden="true"></li>
+      <li class="mm-has-sub">
+        <div class="mm-top">
+          <a href="private-label.html" class="mm-link">Private Label</a>
+          <button class="mm-expand" aria-expanded="false" aria-label="Espandi Private Label">+</button>
+        </div>
+        <ul class="mm-sub" hidden>
+          <li><a href="private-label.html">Come funziona</a></li>
+          <li><a href="contatti.html">Richiedi preventivo</a></li>
+        </ul>
+      </li>
+      <li><a href="fragrance-library.html">Fragrance Library</a></li><li><a href="personalizzazione.html">Collaborazioni</a></li>
+    </ul>
+    <div class="mobile-menu-rule" aria-hidden="true"></div>
+    <address class="mobile-menu-contact">
+      <a href="tel:+39023543707">02.35.43.707</a>&ensp;·&ensp;<a href="mailto:info@cerariacicogna.com">info@cerariacicogna.com</a>
+    </address>
+  </div>
+
+  <!-- HERO -->
+  <header class="about-hero" id="chi-siamo">
+    <div class="about-hero-bg">
+      <img
+        src="images/about-hero.jpg"
+        alt=""
+        aria-hidden="true"
+        loading="eager">
+    </div>
+    <div class="about-hero-content">
+      <span class="about-hero-eyebrow reveal-fade">La nostra storia</span>
+      <h1 class="about-hero-title reveal-up">
+        Tre generazioni<br>
+        di luce artigianale
+      </h1>
+      <p class="about-hero-lead reveal-up">
+        La Cereria Cicogna è nata in una famiglia che sapeva già fare candele.
+        Filippo e Fabio Cicogna sono la terza generazione a portare avanti
+        questo mestiere — con la stessa materia prima, la stessa bottega,
+        lo stesso cognome che dà il nome all'azienda.
+      </p>
+    </div>
+  </header>
+
+  <!-- ABOUT BODY (light) -->
+  <main class="about-body">
+
+    <!-- Storia -->
+    <section class="about-story" id="storia">
+      <div class="about-story-text">
+        <span class="about-story-eyebrow reveal-fade">Dalle origini a oggi</span>
+        <h2 class="about-story-title reveal-up">
+          Una famiglia,<br>
+          <em>tre generazioni</em>
+        </h2>
+        <p class="about-story-body reveal-up">
+          Il mestiere del ceraio non si insegna in un manuale: si eredita, si affina,
+          si porta avanti. In famiglia Cicogna è così da tre generazioni, nell'officina
+          di Via Damiano Chiesa a Novate Milanese, nel cuore della Lombardia industriale
+          che sa ancora tenere insieme artigianalità e precisione.
+        </p>
+        <p class="about-story-body reveal-up">
+          La reputazione si è costruita sul candelabro liturgico. Le chiese e i santuari
+          più importanti dell'Italia settentrionale si riforniscono da Cereria Cicogna
+          da decenni: ceri d'altare e da processione, lumini da chiesa e da cimitero,
+          incensi e particole, accessori per la celebrazione. Chi ci sceglie una volta
+          tende a restare. La continuità è la nostra referenza più credibile.
+        </p>
+        <p class="about-story-body reveal-up">
+          Nel laboratorio di Novate Milanese, la produzione artigianale e la tecnologia
+          moderna non si escludono: si completano. Gli impianti garantiscono precisione
+          e continuità; il giudizio delle persone garantisce che ogni lotto rispetti
+          la qualità che i nostri clienti hanno imparato ad aspettarsi. È una
+          combinazione che richiede tempo per essere messa a punto — e che nessun
+          concorrente più giovane può semplicemente comprare.
+        </p>
+      </div>
+
+      <div class="about-story-visual reveal-right">
+        <img class="about-story-img"
+          src="images/about-story-1.jpg"
+          alt="Artigiano al lavoro nella cereria — lavorazione tradizionale" loading="lazy">
+        <div class="about-story-img-caption">
+          <strong>50+</strong>
+          <span>Anni di attività</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filippo e Fabio — seconda storia, colonne invertite -->
+    <section class="about-story" id="fratelli" style="background: var(--c-bg-cream);">
+      <div class="about-story-visual reveal-left">
+        <img class="about-story-img"
+          src="images/about-story-2.jpg"
+          alt="Mani che aprono lo stampo di una candela in cera rossa"
+          loading="lazy">
+        <div class="about-story-img-caption">
+          <strong>F &amp; F</strong>
+          <span>Filippo e Fabio Cicogna</span>
+        </div>
+      </div>
+      <div class="about-story-text">
+        <span class="about-story-eyebrow reveal-fade">Chi guida l'azienda oggi</span>
+        <h2 class="about-story-title reveal-up">
+          Filippo e Fabio,<br>
+          <em>due fratelli</em>
+        </h2>
+        <p class="about-story-body reveal-up">
+          Filippo e Fabio Cicogna hanno conosciuto l'azienda prima ancora di
+          entrarvi come soci. Hanno visto lavorare chi li ha preceduti, hanno
+          imparato il rispetto per la materia prima e per il cliente prima di
+          imparare la gestione. Oggi guidano la Cereria Cicogna con sensibilità
+          complementari, formate dalla stessa bottega e dalla stessa storia.
+        </p>
+        <p class="about-story-body reveal-up">
+          Nell'arco degli anni hanno ampliato la produzione verso la Home Collection —
+          candele in bicchiere per ristoranti, hotel ed eventi — e verso la Linea Garden,
+          con fiaccole e citronelle per gli spazi esterni. Non si è trattato di una svolta
+          pianificata a tavolino, ma di risposte concrete a richieste concrete: clienti
+          che conoscevano già la qualità Cicogna e chiedevano di portarla anche oltre
+          i contesti liturgici.
+        </p>
+        <p class="about-story-body reveal-up">
+          Cereria Cicogna non ha una dichiarazione di missione appesa in ufficio.
+          Ha un catalogo che funziona, clienti che tornano, e due fratelli che
+          rispondono personalmente al telefono.
+        </p>
+        <div style="margin-top: 32px;">
+          <a href="contatti.html" class="btn-dark reveal-up">Scrivici →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="about-values">
+      <div class="about-values-inner">
+        <div class="about-values-header">
+          <h2 class="about-values-title reveal-up">I valori che guidano ogni candela</h2>
+        </div>
+        <div class="about-values-grid reveal-stagger">
+
+          <div class="about-value-item">
+            <span class="about-value-icon">✦ ARTIGIANALITÀ</span>
+            <h3 class="about-value-title">Il mestiere<br>che si eredita</h3>
+            <p class="about-value-desc">
+              Tre generazioni di cerai hanno costruito un modo di fare che non si
+              delega e non si automatizza del tutto. La selezione delle cere, il
+              controllo del prodotto finito, il giudizio sul lotto: queste cose
+              le fanno ancora le persone. E si vede.
+            </p>
+          </div>
+
+          <div class="about-value-item">
+            <span class="about-value-icon">◈ TRADIZIONE LITURGICA</span>
+            <h3 class="about-value-title">La luce<br>delle chiese</h3>
+            <p class="about-value-desc">
+              Le chiese e i santuari dell'Italia settentrionale si riforniscono da
+              Cereria Cicogna da decenni. La fiducia che abbiamo guadagnato nel
+              settore liturgico è la base su cui poggia tutto il resto: una reputazione
+              che non si costruisce in fretta e non si perde per distrazione.
+            </p>
+          </div>
+
+          <div class="about-value-item">
+            <span class="about-value-icon">◇ RELAZIONE DIRETTA</span>
+            <h3 class="about-value-title">Filippo e Fabio<br>rispondono loro</h3>
+            <p class="about-value-desc">
+              Non siamo anonimi. I fratelli Cicogna seguono personalmente i clienti
+              più importanti. Con una parrocchia come con un ristoratore a cinque stelle:
+              si ascolta prima di proporre, e si propone solo quello che si è certi
+              di poter mantenere.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- QUOTE (dark) -->
+  <section class="about-quote-section">
+    <p class="about-quote reveal-up">
+      "La luce artigianale non ha scorciatoie.<br>
+      Ha materie prime, ha tempo, ha persone che <em>ci credono davvero</em>.<br>
+      Noi ci crediamo da tre generazioni."
+    </p>
+    <div class="about-quote-rule reveal-fade" aria-hidden="true"></div>
+    <p class="about-quote-attr reveal-fade">Filippo e Fabio Cicogna &nbsp;&middot;&nbsp; Cereria Cicogna, Novate Milanese</p>
+  </section>
+
+  <!-- PRODUCTS -->
+  <div class="about-products" id="prodotti">
+    <h2 class="about-products-title reveal-up">Le nostre linee</h2>
+    <div class="about-products-grid reveal-stagger">
+
+      <div class="about-product-card">
+        <img
+          src="https://images.unsplash.com/photo-1620678835433-37a0ecb02a9f?auto=format&fit=crop&w=600&q=80"
+          alt="Articoli Liturgici">
+        <div class="about-product-card-label">
+          <span>Articoli Liturgici</span>
+          <a href="liturgico.html">Scopri →</a>
+        </div>
+      </div>
+
+      <div class="about-product-card">
+        <img
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80"
+          alt="Linea Garden">
+        <div class="about-product-card-label">
+          <span>Linea Garden</span>
+          <a href="garden.html">Scopri →</a>
+        </div>
+      </div>
+
+      <div class="about-product-card">
+        <img
+          src="https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=600&q=80"
+          alt="Home Collection">
+        <div class="about-product-card-label">
+          <span>Home Collection</span>
+          <a href="home-collection.html">Scopri →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-row">
+          <img class="footer-stork" src="logo-stork.png" alt="" width="40" height="40" aria-hidden="true">
+          <span class="footer-wordmark">Cereria Cicogna</span>
+        </div>
+        <p class="footer-tagline">Industria ceraria artigianale.<br>Dal sacro al quotidiano.</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Linee</p>
+        <ul>
+          <li><a href="liturgico.html">Articoli Liturgici</a></li>
+          <li><a href="garden.html">Linea Garden</a></li>
+          <li><a href="home-collection.html">Home Collection</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Azienda</p>
+        <ul>
+          <li><a href="chi-siamo.html">Chi Siamo</a></li>
+          <li><a href="contatti.html">Contatti</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Contatti</p>
+        <address>
+          Via Damiano Chiesa, 84<br>
+          20026 Novate Milanese (MI)<br><br>
+          <a href="tel:+39023543707">02.35.43.707</a><br>
+          <a href="mailto:info@cerariacicogna.com">info@cerariacicogna.com</a>
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2025 Industria Ceraria F.lli Cicogna srl</span>
+      <span class="footer-legal">P.IVA 11980500158</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="js/main.js?v=8"></script>
+</body>
+</html>

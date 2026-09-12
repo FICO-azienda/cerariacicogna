@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contatti — Cereria Cicogna</title>
+  <meta name="description" content="Contatta Cereria Cicogna per informazioni su prodotti, forniture B2B e private label. Via Damiano Chiesa 84, Novate Milanese.">
+  <!-- anteprime social e indirizzo canonico -->
+  <link rel="canonical" href="https://www.cerariacicogna.com/contatti.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cereria Cicogna">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:url" content="https://www.cerariacicogna.com/contatti.html">
+  <meta property="og:title" content="Contatti — Cereria Cicogna">
+  <meta property="og:description" content="Contatta Cereria Cicogna per informazioni su prodotti, forniture B2B e private label. Via Damiano Chiesa 84, Novate Milanese.">
+  <meta property="og:image" content="https://www.cerariacicogna.com/images/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contatti — Cereria Cicogna">
+  <meta name="twitter:description" content="Contatta Cereria Cicogna per informazioni su prodotti, forniture B2B e private label. Via Damiano Chiesa 84, Novate Milanese.">
+  <meta name="twitter:image" content="https://www.cerariacicogna.com/images/og-cover.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/main.css?v=13">
+  <style>
+
+    /* ── CONTACT HERO ───────────────────────── */
+    .contact-hero {
+      min-height: 55vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 var(--gutter) 80px;
+      background: var(--c-dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 40%, rgba(196,146,42,.1) 0%, transparent 60%),
+        linear-gradient(180deg, var(--c-dark) 0%, var(--c-dark-2) 100%);
+    }
+
+    .contact-hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-hero-eyebrow {
+      display: block;
+      font-family: var(--ff-sans);
+      font-size: .54rem;
+      font-weight: 300;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      margin-bottom: 22px;
+    }
+
+    .contact-hero-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 300;
+      letter-spacing: .14em;
+      color: var(--c-vellum);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .contact-hero-sub {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      font-weight: 300;
+      color: var(--c-stone);
+      line-height: 1.75;
+      max-width: 500px;
+    }
+
+    /* ── CONTACT BODY ───────────────────────── */
+    .contact-body {
+      background: var(--c-bg-light);
+      color: var(--c-text-dark);
+    }
+
+    .contact-main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      max-width: 100%;
+    }
+
+    /* Info column */
+    .contact-info-col {
+      padding: 80px var(--gutter) 80px clamp(24px, 5vw, 80px);
+      border-right: 1px solid rgba(26,22,18,.08);
+    }
+
+    .contact-info-title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 300;
+      letter-spacing: .1em;
+      color: var(--c-text-dark);
+      margin-bottom: 40px;
+      line-height: 1.25;
+    }
+
+    .contact-info-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+
+    .contact-info-item {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .contact-info-label {
+      font-family: var(--ff-sans);
+      font-size: .48rem;
+      font-weight: 400;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      padding-top: 3px;
+      width: 76px;
+      flex-shrink: 0;
+    }
+
+    .contact-info-value {
+      font-family: var(--ff-serif);
+      font-size: 1.05rem;
+      color: var(--c-text-dark);
+      line-height: 1.75;
+    }
+
+    .contact-info-value a {
+      color: var(--c-text-dark);
+      text-decoration: none;
+      transition: color .3s;
+      border-bottom: 1px solid rgba(26,22,18,.2);
+      padding-bottom: 1px;
+    }
+    .contact-info-value a:hover { color: var(--c-text-mid); border-bottom-color: transparent; }
+
+    /* B2B subsection */
+    .contact-b2b-note {
+      border-top: 1px solid rgba(26,22,18,.08);
+      padding-top: 40px;
+    }
+
+    .contact-b2b-title {
+      font-family: var(--ff-display);
+      font-size: 1.3rem;
+      font-weight: 300;
+      letter-spacing: .1em;
+      color: var(--c-text-dark);
+      margin-bottom: 12px;
+    }
+
+    .contact-b2b-desc {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--c-text-mid);
+    }
+
+    /* Form column */
+    .contact-form-col {
+      padding: 80px var(--gutter) 80px clamp(24px, 5vw, 80px);
+    }
+
+    .contact-form-title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 300;
+      letter-spacing: .1em;
+      color: var(--c-text-dark);
+      margin-bottom: 40px;
+      line-height: 1.25;
+    }
+
+    /* Form */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 28px;
+    }
+
+    .form-group {
+      margin-bottom: 32px;
+    }
+
+    .form-label {
+      display: block;
+      font-family: var(--ff-sans);
+      font-size: .48rem;
+      font-weight: 400;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--c-text-mid);
+      margin-bottom: 10px;
+    }
+
+    .form-label .req {
+      color: var(--c-gold);
+      margin-left: 2px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      font-family: var(--ff-serif);
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--c-text-dark);
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(26,22,18,.22);
+      padding: 10px 0 10px;
+      outline: none;
+      transition: border-color .35s;
+      appearance: none;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-bottom-color: var(--c-text-dark);
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: rgba(90,74,56,.35);
+      font-style: italic;
+    }
+
+    .form-textarea {
+      resize: none;
+      min-height: 130px;
+    }
+
+    .form-select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235A4A38'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 4px center;
+      padding-right: 22px;
+    }
+
+    .form-select option {
+      font-family: sans-serif;
+      color: var(--c-text-dark);
+    }
+
+    .form-submit {
+      width: 100%;
+      margin-top: 8px;
+      font-family: var(--ff-sans);
+      font-size: .58rem;
+      font-weight: 300;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--c-bg-light);
+      background: var(--c-text-dark);
+      border: none;
+      padding: 18px 32px;
+      cursor: pointer;
+      transition: background .4s, transform .15s;
+    }
+    .form-submit:hover { background: #2C2416; }
+    .form-submit:active { transform: scale(0.99); }
+
+    .form-privacy {
+      font-family: var(--ff-sans);
+      font-size: .48rem;
+      font-weight: 300;
+      letter-spacing: .1em;
+      color: var(--c-text-mid);
+      margin-top: 14px;
+      line-height: 1.7;
+    }
+
+    .form-privacy a { color: var(--c-text-dark); border-bottom: 1px solid rgba(26,22,18,.25); }
+
+    /* B2B section */
+    .contact-b2b-section {
+      background: var(--c-dark-2);
+      padding: 80px var(--gutter);
+      border-top: 1px solid var(--c-border);
+    }
+
+    .contact-b2b-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .b2b-section-title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      letter-spacing: .12em;
+      color: var(--c-vellum);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .b2b-section-body {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--c-stone);
+      margin-bottom: 32px;
+    }
+
+    .b2b-feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .b2b-feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      font-family: var(--ff-sans);
+      font-size: .58rem;
+      font-weight: 300;
+      letter-spacing: .1em;
+      color: var(--c-stone);
+    }
+
+    .b2b-feature-list li::before {
+      content: '✦';
+      font-size: .4rem;
+      color: var(--c-gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .b2b-section-cta-area {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .b2b-stat {
+      font-family: var(--ff-display);
+      font-size: 4rem;
+      font-weight: 300;
+      letter-spacing: .08em;
+      color: rgba(242,232,208,.07);
+      line-height: 1;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .b2b-section-quote {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--c-stone);
+      line-height: 1.8;
+      margin-bottom: 28px;
+      padding-left: 20px;
+      border-left: 2px solid rgba(196,146,42,.25);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .contact-main { grid-template-columns: 1fr; }
+      .contact-info-col { border-right: none; border-bottom: 1px solid rgba(26,22,18,.08); }
+      .contact-b2b-inner { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── allegato automatico (prodotto / abbinamento scelto) ── */
+    .cc-allegato { border: 1px solid rgba(26,22,18,.16); background: rgba(255,255,255,.5); padding: 20px 22px 22px; margin-bottom: 34px; }
+    .cc-allegato-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 16px; }
+    .cc-allegato-eyebrow { font-family: var(--ff-sans); font-weight: 300; font-size: .46rem; letter-spacing: .28em;
+      text-transform: uppercase; color: #a9822f; }
+    .cc-allegato-rm { margin-left: auto; background: none; border: none; cursor: pointer; padding: 0;
+      font-family: var(--ff-sans); font-weight: 300; font-size: .44rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--c-text-mid); border-bottom: 1px solid rgba(26,22,18,.22); transition: color .25s, border-color .25s; }
+    .cc-allegato-rm:hover { color: var(--c-text-dark); border-color: var(--c-text-dark); }
+    .cc-allegato-items { display: flex; flex-direction: column; }
+    .cc-allegato-riga { padding: 12px 0; }
+    /* La riga e' una colonna: sopra il contenuto, sotto l'eventuale nota.
+       Prima era tutto su una sola fila con flex-wrap, e negli abbinamenti —
+       dove candela e profumo occupano gia' l'intera larghezza — il campo dei
+       pezzi finiva a capo sotto le foto invece di restare a destra. */
+    .cc-allegato-capo { display: flex; align-items: center; gap: 14px; }
+    .cc-allegato-riga + .cc-allegato-riga { border-top: 1px solid rgba(26,22,18,.09); }
+    .cc-allegato-parti { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; flex: 1 1 auto; min-width: 0; }
+    .cc-allegato-profumo {
+      margin-left: -10px;                 /* leggera sovrapposizione: si legge come una coppia */
+      border: 2px solid var(--c-bg-light, #FAFAF8);
+    }
+    .cc-allegato-qta {
+      display: flex; align-items: baseline; gap: 5px;
+      font-family: var(--ff-sans);
+      font-size: .58rem;
+      font-weight: 500;
+      letter-spacing: .14em;
+      color: var(--c-gold);
+      white-space: nowrap;
+      margin-right: 18px;
+      flex: 0 0 auto;
+    }
+    /* Il numero e' un campo, non un'etichetta: la quantita' la decide il
+       cliente, e doverla chiedere nel messaggio era un passaggio in piu'. */
+    .cc-allegato-qta input {
+      width: 3.4em; padding: 4px 2px;
+      font: inherit; color: inherit; letter-spacing: inherit;
+      text-align: right; background: none;
+      border: 0; border-bottom: 1px solid rgba(169,130,47,.35);
+      border-radius: 0; -moz-appearance: textfield;
+      transition: border-color .25s, background-color .25s;
+    }
+    .cc-allegato-qta input::-webkit-outer-spin-button,
+    .cc-allegato-qta input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    .cc-allegato-qta input:hover { border-bottom-color: var(--c-gold); }
+    .cc-allegato-qta input:focus {
+      outline: none; border-bottom-color: var(--c-text-dark);
+      background: rgba(169,130,47,.06);
+    }
+    .cc-allegato-qta input::placeholder { color: rgba(26,22,18,.28); letter-spacing: .1em; }
+    /* Sopra il tetto non e' un errore da correggere ma una fornitura di cui
+       parlare: tono neutro, non rosso, e la riga non si blocca. */
+    .cc-allegato-nota {
+      margin: 8px 0 0 66px;
+      font-family: var(--ff-sans); font-weight: 300;
+      font-size: .46rem; letter-spacing: .12em; text-transform: uppercase;
+      line-height: 1.8; color: var(--c-gold);
+    }
+    @media (max-width: 560px) { .cc-allegato-nota { margin-left: 0; } }
+    .cc-allegato-x { margin-left: auto; flex: 0 0 auto; background: none; border: none; cursor: pointer;
+      padding: 6px 8px; font-size: .8rem; line-height: 1; color: rgba(26,22,18,.35); transition: color .25s; }
+    .cc-allegato-x:hover { color: var(--c-text-dark); }
+    .cc-allegato-piu { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px;
+      margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(26,22,18,.12); }
+    .cc-allegato-piu-txt { font-family: var(--ff-serif); font-style: italic; font-size: .95rem; color: var(--c-text-mid); }
+    .cc-allegato-piu a { font-family: var(--ff-sans); font-weight: 300; font-size: .46rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--c-text-dark); text-decoration: none;
+      border-bottom: 1px solid rgba(26,22,18,.25); padding-bottom: 3px; transition: border-color .25s; }
+    .cc-allegato-piu a:hover { border-color: var(--c-text-dark); }
+    /* stesso peso dei link accanto, ma pieno: e' l'azione consigliata */
+    .cc-allegato-piu-b { font-family: var(--ff-sans); font-weight: 400; font-size: .46rem;
+      letter-spacing: .2em; text-transform: uppercase; cursor: pointer;
+      background: var(--c-text-dark); color: var(--c-bg-light, #FAFAF8);
+      border: 1px solid var(--c-text-dark); padding: 8px 14px;
+      transition: background .25s, color .25s; }
+    .cc-allegato-piu-b:hover { background: var(--c-gold); border-color: var(--c-gold); color: var(--c-text-dark); }
+    .cc-allegato-item { display: flex; align-items: center; gap: 13px; min-width: 0; }
+    .cc-allegato-item img { width: 52px; height: 52px; object-fit: cover; flex: 0 0 auto; background: #fff;
+      border: 1px solid rgba(26,22,18,.08); }
+    .cc-allegato-txt { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+    .cc-allegato-kind { font-family: var(--ff-sans); font-weight: 300; font-size: .42rem; letter-spacing: .24em;
+      text-transform: uppercase; color: rgba(26,22,18,.45); }
+    .cc-allegato-name { font-family: var(--ff-display); font-weight: 300; font-size: 1.02rem; letter-spacing: .02em;
+      color: var(--c-text-dark); line-height: 1.25; }
+    .cc-allegato-sep { align-self: center; font-family: var(--ff-display); font-size: 1.1rem; color: rgba(26,22,18,.28); }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.cerariacicogna.com/#azienda",
+  "name": "Cereria Cicogna",
+  "legalName": "Industria Ceraria F.lli Cicogna srl",
+  "url": "https://www.cerariacicogna.com",
+  "image": "https://www.cerariacicogna.com/images/og-cover.jpg",
+  "logo": "https://www.cerariacicogna.com/logo-stork.png",
+  "telephone": "+39023543707",
+  "faxNumber": "+39023548228",
+  "email": "info@cerariacicogna.com",
+  "vatID": "IT11980500158",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via Damiano Chiesa, 84",
+    "postalCode": "20026",
+    "addressLocality": "Novate Milanese",
+    "addressRegion": "MI",
+    "addressCountry": "IT"
+  },
+  "description": "Industria ceraria a Novate Milanese: candele artigianali per la casa, articoli liturgici per chiese e cimiteri, linea da giardino e private label.",
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Product",
+        "name": "Articoli liturgici — lumini, ceri, incensi"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Product",
+        "name": "Home Collection — candele profumate in bicchiere"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Product",
+        "name": "Linea Garden — citronelle e candele da esterno"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Product",
+        "name": "Private label e produzioni su misura"
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a href="index.html" class="nav-brand">
+      <img class="nav-stork" src="logo-stork.png" alt="Logo Cereria Cicogna" width="32" height="32" loading="eager">
+      <div class="nav-logo">
+        Cereria Cicogna
+        <span>Industria F.lli Cicogna · Novate Milanese</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li class="nav-has-drop">
+        <a href="home-collection.html" aria-haspopup="true" aria-expanded="false">Home Collection</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Home Collection">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="home-collection.html" class="mega-feat-title">Home Collection</a>
+            <p class="mega-feat-desc">Candele profumate per arredare e impreziosire ogni ambiente della casa.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul>
+              <li><a href="home-collection.html?c=sand">Sand</a></li>
+              <li><a href="home-collection.html?c=rock">Rock</a></li>
+              <li><a href="home-collection.html?c=glass">Glass</a></li>
+              <li><a href="home-collection.html?c=metallic">Metallic</a></li>
+              <li><a href="home-collection.html?c=ceri">Ceri</a></li>
+            </ul>
+            <a href="home-collection.html" class="mega-all">Vedi tutti</a>
+          </div><div class="mega-img-col"><a href="home-collection.html"><img src="images/hero-home-collection.webp" alt="Home Collection — Cereria Cicogna"></a></div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="nav-has-drop">
+        <a href="garden.html" aria-haspopup="true" aria-expanded="false">Garden</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Linea Garden">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="garden.html" class="mega-feat-title">Linea Garden</a>
+            <p class="mega-feat-desc">Candele per esterni e interni, pensate per ogni stagione all'aperto.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul>
+              <li><a href="garden.html?c=citronelle">Citronelle</a></li>
+              <li><a href="garden.html?c=cerabianca">Cera Bianca</a></li>
+              <li><a href="garden.html?c=ricariche">Ricariche</a></li>
+            </ul>
+            <a href="garden.html" class="mega-all">Vedi tutti</a>
+          </div><div class="mega-img-col"><a href="garden.html"><img src="images/hero-garden.webp" alt="Linea Garden — Cereria Cicogna"></a></div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="nav-has-drop">
+        <a href="liturgico.html" aria-haspopup="true" aria-expanded="false">Liturgico</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Articoli Liturgici">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="liturgico.html" class="mega-feat-title">Articoli Liturgici</a>
+            <p class="mega-feat-desc">Ceri, lumini e arredi sacri per chiese, santuari e cerimonie religiose.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul>
+              <li><a href="liturgico.html?c=lumini">Lumini da chiesa</a></li>
+              <li><a href="liturgico.html?c=accessori">Accessori</a></li>
+              <li><a href="liturgico.html?c=forniture">Forniture</a></li>
+            </ul>
+            <a href="liturgico.html" class="mega-all">Vedi tutti</a>
+          </div><div class="mega-img-col"><a href="liturgico.html"><img src="images/hero-liturgico.webp" alt="Articoli Liturgici — Cereria Cicogna"></a></div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="nav-sep" aria-hidden="true"></li>
+      <li>
+        <a href="private-label.html">Private Label</a>
+      </li>
+      <li><a href="fragrance-library.html">Fragrance Library</a></li><li><a href="personalizzazione.html">Collaborazioni</a></li>
+      <li><a href="chi-siamo.html">Chi Siamo</a></li>
+    </ul>
+    <a href="contatti.html" class="nav-cta" aria-current="page">Contattaci</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Apri menu" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true">
+    <ul class="mobile-menu-links" role="list">
+      <li class="mm-has-sub">
+        <div class="mm-top">
+          <a href="liturgico.html" class="mm-link">Liturgico</a>
+          <button class="mm-expand" aria-expanded="false" aria-label="Espandi Liturgico">+</button>
+        </div>
+        <ul class="mm-sub" hidden>
+          <li><a href="liturgico.html?c=lumini">Lumini da chiesa</a></li>
+          <li><a href="liturgico.html?c=accessori">Accessori</a></li>
+              <li><a href="liturgico.html?c=forniture">Forniture</a></li>
+        </ul>
+      </li>
+      <li class="mm-has-sub"><div class="mm-top"><a href="garden.html" class="mm-link">Garden</a><button class="mm-expand" aria-expanded="false" aria-label="Espandi Garden">+</button></div><ul class="mm-sub" hidden><li><a href="garden.html?c=citronelle">Citronelle</a></li><li><a href="garden.html?c=cerabianca">Cera Bianca</a></li><li><a href="garden.html?c=ricariche">Ricariche</a></li></ul></li>
+      <li class="mm-has-sub"><div class="mm-top"><a href="home-collection.html" class="mm-link">Home Collection</a><button class="mm-expand" aria-expanded="false" aria-label="Espandi Home Collection">+</button></div><ul class="mm-sub" hidden><li><a href="home-collection.html?c=sand">Sand</a></li><li><a href="home-collection.html?c=rock">Rock</a></li><li><a href="home-collection.html?c=glass">Glass</a></li><li><a href="home-collection.html?c=metallic">Metallic</a></li><li><a href="home-collection.html?c=ceri">Ceri</a></li></ul></li>
+      <li><a href="chi-siamo.html">Chi Siamo</a></li>
+      <li><a href="contatti.html">Contatti</a></li>
+      <li class="mobile-menu-sep" aria-hidden="true"></li>
+      <li><a href="private-label.html">Private Label</a></li>
+      <li><a href="fragrance-library.html">Fragrance Library</a></li><li><a href="personalizzazione.html">Collaborazioni</a></li>
+    </ul>
+    <div class="mobile-menu-rule" aria-hidden="true"></div>
+    <address class="mobile-menu-contact">
+      <a href="tel:+39023543707">02.35.43.707</a>&ensp;·&ensp;<a href="mailto:info@cerariacicogna.com">info@cerariacicogna.com</a>
+    </address>
+  </div>
+
+  <!-- HERO -->
+  <header class="contact-hero">
+    <div class="contact-hero-content">
+      <span class="contact-hero-eyebrow reveal-fade">Siamo qui</span>
+      <h1 class="contact-hero-title reveal-up">
+        Parliamo<br>insieme
+      </h1>
+      <p class="contact-hero-sub reveal-up">
+        Che tu cerchi una fornitura per la tua chiesa, un allestimento
+        per il ristorante o una linea private label — siamo a tua disposizione.
+      </p>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <main class="contact-body">
+
+    <div class="contact-main">
+
+      <!-- INFO -->
+      <div class="contact-info-col">
+        <h2 class="contact-info-title reveal-up">
+          Trovaci<br>o scrivici
+        </h2>
+        <ul class="contact-info-list" aria-label="Informazioni di contatto">
+
+          <li class="contact-info-item reveal-up">
+            <span class="contact-info-label">Sede</span>
+            <address class="contact-info-value" style="font-style:normal;">
+              Via Damiano Chiesa, 84<br>
+              20026 Novate Milanese (MI)<br>
+              Italia
+            </address>
+          </li>
+
+          <li class="contact-info-item reveal-up">
+            <span class="contact-info-label">Telefono</span>
+            <div class="contact-info-value">
+              <a href="tel:+39023543707">02.35.43.707</a><br>
+              <a href="tel:+39023548228" style="font-size:.9em; opacity:.7;">Fax 02.35.48.228</a>
+            </div>
+          </li>
+
+          <li class="contact-info-item reveal-up">
+            <span class="contact-info-label">Email</span>
+            <div class="contact-info-value">
+              <a href="mailto:info@cerariacicogna.com">info@cerariacicogna.com</a>
+            </div>
+          </li>
+
+          <li class="contact-info-item reveal-up">
+            <span class="contact-info-label">Orari</span>
+            <div class="contact-info-value">
+              Lun – Ven: 8:30 – 12:30 &amp; 14:00 – 18:00<br>
+              Sab: su appuntamento
+            </div>
+          </li>
+
+        </ul>
+
+        <div class="contact-b2b-note reveal-up" id="b2b">
+          <h3 class="contact-b2b-title">Per professionisti</h3>
+          <p class="contact-b2b-desc">
+            Ristoranti, hotel, chiese, catering, agenzie eventi:
+            contattaci per discutere le tue esigenze specifiche.
+            Progettiamo soluzioni su misura, con campionari gratuiti
+            su richiesta.
+          </p>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="contact-form-col">
+        <h2 class="contact-form-title reveal-up">
+          Inviaci<br>un messaggio
+        </h2>
+
+        <!-- allegato automatico: prodotto o abbinamento scelto dall'utente -->
+        <div class="cc-allegato" id="cc-allegato" hidden>
+          <div class="cc-allegato-head">
+            <span class="cc-allegato-eyebrow" id="cc-allegato-eyebrow">In allegato alla richiesta</span>
+            <button type="button" class="cc-allegato-rm" id="cc-allegato-rm" aria-label="Rimuovi l'allegato">Rimuovi</button>
+          </div>
+          <div class="cc-allegato-items" id="cc-allegato-items"></div>
+          <div class="cc-allegato-piu">
+            <span class="cc-allegato-piu-txt">Vuoi aggiungerne altri?</span>
+            <!-- La via piu' corta: riapre il percorso guidato senza uscire da
+                 qui. I link alle pagine restano per chi preferisce guardare. -->
+            <button type="button" class="cc-allegato-piu-b" id="cc-aggiungi-assistente">Chiedilo all’assistente</button>
+            <a href="home-collection.html">Home Collection</a>
+            <a href="garden.html">Garden</a>
+            <a href="liturgico.html">Liturgico</a>
+          </div>
+        </div>
+
+        <form
+          data-endpoint="http://localhost:8787/api/contatto"
+          action="mailto:info@cerariacicogna.com"
+          method="get"
+          enctype="text/plain"
+          aria-label="Modulo di contatto"
+          novalidate>
+
+          <div class="form-row">
+            <div class="form-group reveal-up">
+              <label class="form-label" for="nome">Nome <span class="req">*</span></label>
+              <input class="form-input" type="text" id="nome" name="nome" placeholder="Il tuo nome" required autocomplete="given-name">
+            </div>
+            <div class="form-group reveal-up">
+              <label class="form-label" for="cognome">Cognome</label>
+              <input class="form-input" type="text" id="cognome" name="cognome" placeholder="Il tuo cognome" autocomplete="family-name">
+            </div>
+          </div>
+
+          <div class="form-group reveal-up">
+            <label class="form-label" for="email">Email <span class="req">*</span></label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="la@tuaemail.it" required autocomplete="email">
+          </div>
+
+          <div class="form-group reveal-up">
+            <label class="form-label" for="azienda">Azienda / Ente</label>
+            <input class="form-input" type="text" id="azienda" name="azienda" placeholder="Nome azienda o parrocchia (opzionale)" autocomplete="organization">
+          </div>
+
+          <div class="form-group reveal-up">
+            <label class="form-label" for="oggetto">Interesse <span class="req">*</span></label>
+            <select class="form-select" id="oggetto" name="oggetto" required>
+              <option value="" disabled selected>Seleziona un argomento</option>
+              <option value="liturgico">Articoli Liturgici</option>
+              <option value="garden">Linea Garden</option>
+              <option value="home-collection">Home Collection</option>
+              <option value="private-label">Private Label / B2B</option>
+              <option value="collaborazioni">Collaborazioni</option>
+              <option value="campionario">Richiesta campionario</option>
+              <option value="altro">Altro</option>
+            </select>
+          </div>
+
+          <div class="form-group reveal-up">
+            <label class="form-label" for="messaggio">Messaggio <span class="req">*</span></label>
+            <textarea class="form-textarea" id="messaggio" name="messaggio" placeholder="Descrivi la tua richiesta..." required rows="5"></textarea>
+          </div>
+
+          <div class="reveal-up">
+            <button type="submit" class="form-submit">Invia il messaggio</button>
+            <p class="form-privacy">
+              Inviando questo modulo accetti la nostra
+              <a href="#">Privacy Policy</a>.
+              I tuoi dati non saranno ceduti a terzi.
+            </p>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- B2B SECTION -->
+  <section class="contact-b2b-section" aria-label="Servizi B2B">
+    <div class="contact-b2b-inner">
+      <div>
+        <span class="b2b-stat" aria-hidden="true">B2B</span>
+        <h2 class="b2b-section-title reveal-up">
+          Siamo il partner<br>
+          giusto per la tua<br>
+          attività
+        </h2>
+        <p class="b2b-section-body reveal-up">
+          Dalla piccola parrocchia al grand hotel, ogni cliente riceve
+          la stessa attenzione personalizzata che distingue Cereria Cicogna
+          da mezzo secolo.
+        </p>
+        <ul class="b2b-feature-list reveal-up">
+          <li>Quantità minime flessibili, adatte anche a piccole realtà</li>
+          <li>Campionari gratuiti prima dell'ordine</li>
+          <li>Progettazione etichette e fragranze personalizzate</li>
+          <li>Consegne puntuali su tutto il territorio nazionale</li>
+          <li>Referente dedicato per ogni cliente professionale</li>
+        </ul>
+      </div>
+      <div class="b2b-section-cta-area reveal-right">
+        <blockquote class="b2b-section-quote">
+          "Non un catalogo da sfogliare, ma una conversazione
+          da iniziare. Chiamateci."
+        </blockquote>
+        <a href="tel:+39023543707" class="btn-ghost">
+          Chiama ora: 02.35.43.707
+        </a>
+        <a href="mailto:info@cerariacicogna.com" class="btn-ghost" style="margin-top:12px;">
+          Scrivi a info@cerariacicogna.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-row">
+          <img class="footer-stork" src="logo-stork.png" alt="" width="40" height="40" aria-hidden="true">
+          <span class="footer-wordmark">Cereria Cicogna</span>
+        </div>
+        <p class="footer-tagline">Industria ceraria artigianale.<br>Dal sacro al quotidiano.</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Linee</p>
+        <ul>
+          <li><a href="liturgico.html">Articoli Liturgici</a></li>
+          <li><a href="garden.html">Linea Garden</a></li>
+          <li><a href="home-collection.html">Home Collection</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Azienda</p>
+        <ul>
+          <li><a href="chi-siamo.html">Chi Siamo</a></li>
+          <li><a href="contatti.html">Contatti</a></li>
+          <li><a href="private-label.html">Private Label</a></li>
+          <li><a href="fragrance-library.html">Fragrance Library</a></li><li><a href="personalizzazione.html">Collaborazioni</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Contatti</p>
+        <address>
+          Via Damiano Chiesa, 84<br>
+          20026 Novate Milanese (MI)<br><br>
+          <a href="tel:+39023543707">02.35.43.707</a><br>
+          <a href="mailto:info@cerariacicogna.com">info@cerariacicogna.com</a>
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2025 Industria Ceraria F.lli Cicogna srl</span>
+      <span class="footer-legal">P.IVA 11980500158 &nbsp;&middot;&nbsp; <a href="privacy.html">Privacy</a></span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="js/main.js?v=8"></script>
+  <script src="js/selection.js?v=7"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      /* Hero entrance — fromTo to avoid opacity:0 CSS conflict */
+      const els = document.querySelectorAll('.contact-hero .reveal-up, .contact-hero .reveal-fade');
+      gsap.fromTo(els,
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 1.1, stagger: 0.14, ease: 'power3.out', delay: 0.4 }
+      );
+
+      /* ── prodotti allegati automaticamente ──
+         Tutto ciò che l'utente ha scelto lungo il sito arriva qui da solo
+         via localStorage: lo mostriamo, resta modificabile, e lo accodiamo
+         al corpo del messaggio senza che vada reinserito. */
+      /* Questi testi non stanno nell'HTML: li scrive JavaScript, e il
+         traduttore del sito lavora per corrispondenza esatta — "2 prodotti
+         allegati" contiene un numero e non puo' stare in un dizionario.
+         Quindi le due lingue stanno qui, e la lista si ridisegna quando
+         la lingua cambia. */
+      const ALG = {
+        it: {
+          uno: 'Prodotto allegato alla richiesta',
+          molti: n => n + ' prodotti allegati alla richiesta',
+          Prodotto: 'Prodotto', Candela: 'Candela', Profumo: 'Profumo',
+          pz: 'pz',
+          pezziDi: n => 'Pezzi di ' + n,
+          togli: n => 'Togli ' + n,
+          oltre: max => 'Oltre ' + max + ' pz — scrivi la quantita\' esatta nel '
+                      + 'messaggio: te la confermiamo via email',
+          notaBozza: 'Testo preparato dall\'assistente: rileggilo e modificalo pure prima di inviare.',
+        },
+        en: {
+          uno: 'Item attached to your enquiry',
+          molti: n => n + ' items attached to your enquiry',
+          Prodotto: 'Product', Candela: 'Candle', Profumo: 'Fragrance',
+          pz: 'pcs',
+          pezziDi: n => 'Pieces of ' + n,
+          togli: n => 'Remove ' + n,
+          oltre: max => 'Over ' + max + ' pcs — write the exact quantity in your '
+                      + 'message: we will confirm it by email',
+          notaBozza: 'Text prepared by the assistant: read it over and change it as you like before sending.',
+        },
+      };
+      const A = () => ALG[(window.CCI18n && CCI18n.get() === 'en') ? 'en' : 'it'];
+
+      /* I pezzi della bozza durano quanto la richiesta in corso. Finita
+         quella — inviata, oppure svuotata a mano — vanno via, altrimenti
+         il prossimo visitatore (o la prossima richiesta nella stessa
+         scheda) si ritroverebbe i prodotti di prima nel messaggio. */
+      function azzeraBozza() {
+        ['cc-pezzi', 'cc-pezzi-scritti', 'cc-bozza-scritto', 'cc-msg', 'cc-bozza', 'cc-fornitura', 'cc-percorso']
+          .forEach(k => { try { sessionStorage.removeItem(k); } catch (e) {} });
+      }
+
+      let qtaInFocus = false, rinviaRender = false;
+
+      function renderAllegato() {
+        const box   = document.getElementById('cc-allegato');
+        const items = document.getElementById('cc-allegato-items');
+        if (!box || !items || !window.CCSel) return;
+
+        const voci = CCSel.voci();
+        if (!voci.length) { box.hidden = true; return; }
+
+        /* Mentre si sta scrivendo una quantita' il ridisegno aspetta: rifare
+           il markup toglierebbe il fuoco dalla casella a meta' numero. */
+        if (qtaInFocus) { rinviaRender = true; return; }
+
+        const esc = s => String(s).replace(/[&<>"]/g, c =>
+          ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+        const parti = v => v.tipo === 'abbinamento'
+          ? [{ k: A().Candela, o: v.candela }, { k: A().Profumo, o: v.profumo }]
+          : [{ k: A().Prodotto, o: v.prodotto }];
+
+        items.innerHTML = voci.map((v, i) =>
+          '<div class="cc-allegato-riga">' +
+            '<div class="cc-allegato-capo">' +
+            '<div class="cc-allegato-parti">' +
+              parti(v).map((p, j) =>
+                (j > 0 ? '<span class="cc-allegato-sep" aria-hidden="true">+</span>' : '') +
+                '<div class="cc-allegato-item">' +
+                  (p.o.img ? `<img src="${esc(p.o.img)}" alt="">` : '') +
+                  /* accanto alla candela, la foto della profumazione scelta */
+                  (p.o.imgProfumo ? `<img class="cc-allegato-profumo" src="${esc(p.o.imgProfumo)}" alt="" title="Profumazione">` : '') +
+                  '<div class="cc-allegato-txt">' +
+                    `<span class="cc-allegato-kind">${p.k}</span>` +
+                    `<span class="cc-allegato-name">${esc(p.o.name)}</span>` +
+                  '</div>' +
+                '</div>'
+              ).join('') +
+            '</div>' +
+            /* quantita': campo modificabile, a destra prima della X.
+               Vale anche per gli abbinamenti — li' i pezzi sono quelli della
+               candela, il profumo non si conta a parte. */
+            '<span class="cc-allegato-qta">' +
+              /* campo di testo, non "number": su type=number select() non
+                 seleziona nulla, e per cambiare 100 in 24 toccava prima
+                 cancellare a mano. Con inputmode la tastiera del telefono
+                 resta comunque numerica. */
+              `<input type="text" inputmode="numeric" autocomplete="off"` +
+              ` maxlength="4" data-i="${i}" value="${CCSel.qtaDi(v).qta || ''}" placeholder="—"` +
+              ` aria-label="${esc(A().pezziDi(CCSel.etichetta(v)))}">` +
+              `<span>${A().pz}</span>` +
+            '</span>' +
+            `<button type="button" class="cc-allegato-x" data-i="${i}" aria-label="${esc(A().togli(CCSel.etichetta(v)))}">✕</button>` +
+            '</div>' +
+            (CCSel.qtaDi(v).oltre
+              ? `<p class="cc-allegato-nota">${esc(A().oltre(CCSel.QTA_MAX))}</p>`
+              : '') +
+          '</div>'
+        ).join('');
+
+        document.getElementById('cc-allegato-eyebrow').textContent =
+          voci.length === 1 ? A().uno : A().molti(voci.length);
+
+        box.hidden = false;
+
+        /* preseleziona l'interesse coerente, senza sovrascrivere una scelta già fatta */
+        const sel = document.getElementById('oggetto');
+        const val = CCSel.interesse(voci);
+        if (sel && !sel.value && val) sel.value = val;
+
+        items.querySelectorAll('.cc-allegato-x').forEach(b => {
+          b.addEventListener('click', () => { CCSel.rimuovi(+b.dataset.i); renderAllegato(); });
+        });
+
+        /* Scrivere un numero salva subito, ma la lista NON si ridisegna
+           mentre lo si scrive: salvare emette 'ccsel:change', il ridisegno
+           rifarebbe tutti i campi e il fuoco si perderebbe a ogni cifra —
+           toccava ricliccare la casella per scrivere la seconda. Finche' si
+           sta scrivendo il ridisegno resta sospeso; la nota "oltre 1000" la
+           aggiorno a mano, che e' l'unica cosa che cambia davvero. */
+        items.querySelectorAll('.cc-allegato-qta input').forEach(inp => {
+          /* Il primo click seleziona tutto il numero, cosi' si scrive sopra
+             senza cancellare. Da solo select() non basta: il mouseup che
+             segue il click rimette il cursore dove si e' cliccato e la
+             selezione sparisce — va trattenuto, ma solo quella volta,
+             altrimenti non si riesce piu' a posizionare il cursore. */
+          let appenaEntrato = false;
+          inp.addEventListener('focus', () => {
+            qtaInFocus = true;
+            appenaEntrato = true;
+            inp.select();
+          });
+          inp.addEventListener('mouseup', e => {
+            if (appenaEntrato) { e.preventDefault(); appenaEntrato = false; }
+          });
+
+          inp.addEventListener('input', () => {
+            const pulito = inp.value.replace(/[^0-9]/g, '');
+            if (pulito !== inp.value) inp.value = pulito;
+            const esito = CCSel.setQta(+inp.dataset.i, pulito);
+            if (!esito) return;
+            const riga = inp.closest('.cc-allegato-riga');
+            let nota = riga.querySelector('.cc-allegato-nota');
+            if (esito.oltre && !nota) {
+              nota = document.createElement('p');
+              nota.className = 'cc-allegato-nota';
+              nota.textContent = A().oltre(CCSel.QTA_MAX);
+              riga.appendChild(nota);
+            } else if (!esito.oltre && nota) {
+              nota.remove();
+            }
+          });
+
+          inp.addEventListener('blur', () => {
+            qtaInFocus = false;
+            appenaEntrato = false;
+            /* solo ora allineo cio' che si vede a cio' che e' stato salvato:
+               chi ha scritto 5000 vede 1000, con la nota che spiega perche' */
+            const v = CCSel.voci()[+inp.dataset.i];
+            if (v) inp.value = CCSel.qtaDi(v).qta || '';
+            if (rinviaRender) { rinviaRender = false; renderAllegato(); }
+          });
+
+          inp.addEventListener('keydown', e => {
+            if (e.key === 'Enter') { e.preventDefault(); inp.blur(); }
+          });
+        });
+      }
+
+      document.getElementById('cc-aggiungi-assistente')?.addEventListener('click', () => {
+        if (window.ccAssistente) window.ccAssistente.nuovoPercorso();
+      });
+
+      document.getElementById('cc-allegato-rm')?.addEventListener('click', () => {
+        CCSel.svuota();
+        azzeraBozza();
+        renderAllegato();
+      });
+      renderAllegato();
+
+      /* Se la Selezione cambia mentre si e' gia' su questa pagina — per esempio
+         dall'assistente — gli allegati si riaggiornano da soli. Prima serviva
+         ricaricare o passare dal carrello in alto. */
+      window.addEventListener('ccsel:change', renderAllegato);
+      /* la lista e' scritta da JavaScript: al cambio lingua va rifatta */
+      window.addEventListener('cc-lang:change', renderAllegato);
+      window.addEventListener('storage', e => { if (e.key === 'cc-selezione') renderAllegato(); });
+
+      /* ── Bozza dall'assistente ──────────────────────────────────
+         Se l'assistente ha preparato un messaggio e la persona ha cliccato
+         "Vai al modulo e invia", il testo arriva qui via sessionStorage.
+         Riempie solo il messaggio: nome, cognome ed email restano da compilare,
+         e la Selezione la gestisce gia' il blocco allegati qui sopra (quindi
+         non la ricopio nel testo, altrimenti finirebbe due volte). */
+      function applicaBozza() {
+        var raw;
+        try { raw = sessionStorage.getItem('cc-bozza'); } catch (e) { return; }
+        if (!raw) return;
+        try { sessionStorage.removeItem('cc-bozza'); } catch (e) {}
+
+        var b;
+        try { b = JSON.parse(raw); } catch (e) { return; }
+        if (!b || !b.corpo) return;
+        /* una bozza vecchia di ore non c'entra piu' nulla con questa visita */
+        if (b.ts && Date.now() - b.ts > 60 * 60 * 1000) return;
+
+        var ta = document.getElementById('messaggio');
+        if (!ta) return;
+
+        /* Una seconda tornata dall'assistente non deve cancellare la prima
+           richiesta. Due casi:
+           — il testo nel campo e' ancora quello che avevamo scritto noi
+             (o il campo e' vuoto): riscrivo tutto, cosi' saluto e congedo
+             restano uno per parte;
+           — la persona ci ha messo mano: il suo testo e' sacro, accodo solo
+             il prodotto nuovo, appena prima della frase di congedo. */
+        var intestazione = b.oggetto ? b.oggetto + '\n\n' : '';
+        var completo = intestazione + b.corpo;
+        var precedente = '', salvato = '';
+        try {
+          precedente = sessionStorage.getItem('cc-bozza-scritto') || '';
+          salvato = sessionStorage.getItem('cc-msg') || '';
+        } catch (e) {}
+        /* Tornare dall'assistente ricarica la pagina: quello che la persona
+           aveva scritto a mano vive solo nel campo e sparirebbe. Lo rimetto
+           da sessionStorage prima di decidere se riscrivere o accodare. */
+        if (!ta.value.trim() && salvato) ta.value = salvato;
+        var attuale = ta.value.trim();
+
+        if (!attuale || attuale === precedente.trim() || !b.aggiunta) {
+          ta.value = completo;
+        } else {
+          var coda = b.congedo || '';
+          var i = coda ? ta.value.lastIndexOf(coda) : -1;
+          if (i >= 0) {
+            /* il congedo resta in fondo: il prodotto nuovo va prima */
+            ta.value = ta.value.slice(0, i).replace(/\s+$/, '')
+                     + '\n\n' + b.aggiunta + '\n\n' + ta.value.slice(i);
+          } else {
+            ta.value = ta.value.replace(/\s+$/, '') + '\n\n' + b.aggiunta;
+          }
+        }
+        try {
+          sessionStorage.setItem('cc-bozza-scritto', ta.value);
+          sessionStorage.setItem('cc-msg', ta.value);
+        } catch (e) {}
+
+        /* argomento: lo imposto solo dove la corrispondenza e' certa,
+           senza sovrascrivere quello gia' dedotto dalla Selezione */
+        var mappa = { 'private-label': 'private-label', 'personalizzazione': 'collaborazioni' };
+        var sel = document.getElementById('oggetto');
+        if (sel && !sel.value && mappa[b.motivo]) sel.value = mappa[b.motivo];
+
+        /* avviso discreto sopra il campo, cosi' si capisce da dove arriva il testo */
+        var vecchiaNota = ta.parentNode.querySelector('.cc-nota-bozza');
+        if (vecchiaNota) vecchiaNota.remove();
+        var nota = document.createElement('p');
+        nota.className = 'cc-nota-bozza';
+        nota.textContent = A().notaBozza;
+        nota.style.cssText = 'font-family:var(--ff-sans);font-size:.46rem;letter-spacing:.12em;'
+          + 'text-transform:uppercase;color:var(--c-gold);margin:0 0 10px;line-height:1.7;';
+        ta.parentNode.insertBefore(nota, ta);
+
+        /* porto la persona sul primo campo davvero da compilare */
+        var primo = document.getElementById('nome');
+        setTimeout(function () {
+          (primo && !primo.value ? primo : ta).focus({ preventScroll: true });
+          ta.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        }, 260);
+        return true;
+      }
+
+      /* ── Cliente arrivato da un link personale ──────────────────
+         Nessun account: il link ha gia' detto al server chi e', e i suoi
+         dati sono in sessionStorage. Qui li metto nei campi, lasciandoli
+         modificabili: se il collega compila per un altro reparto, deve
+         poter sovrascrivere senza combattere col modulo. */
+      function applicaCliente() {
+        var c = window.CCCliente && window.CCCliente.dati && window.CCCliente.dati();
+        if (!c) return;
+
+        var pezzi = String(c.nome || '').trim().split(/\s+/);
+        var campi = {
+          nome: c.nome ? pezzi[0] : '',
+          cognome: c.cognome || (pezzi.length > 1 ? pezzi.slice(1).join(' ') : ''),
+          email: c.email || '',
+          azienda: c.azienda || '',
+        };
+        Object.keys(campi).forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el && !el.value && campi[id]) el.value = campi[id];
+        });
+
+        var sel = document.getElementById('oggetto');
+        var linee = { 'Home Collection': 'home-collection', 'Garden': 'garden',
+                      'Liturgica': 'liturgica', 'Private Label': 'private-label' };
+        if (sel && !sel.value && linee[c.linea]) sel.value = linee[c.linea];
+      }
+      applicaCliente();
+      document.addEventListener('cc-cliente:pronto', applicaCliente);
+
+      /* Il messaggio si salva mentre lo si scrive: se si torna
+         dall'assistente per aggiungere un prodotto, la pagina si ricarica e
+         senza questo il testo battuto a mano andrebbe perso. */
+      document.getElementById('messaggio')?.addEventListener('input', function () {
+        try { sessionStorage.setItem('cc-msg', this.value); } catch (e) {}
+      });
+
+      /* Al caricamento la bozza viene applicata subito. Ma se si e' gia' qui e
+         l'assistente ne prepara un'altra, cambiare l'ancora non ricarica nulla:
+         per questo la funzione resta raggiungibile e la richiama il widget. */
+      applicaBozza();
+      window.ccApplicaBozza = function () { renderAllegato(); applicaCliente(); return applicaBozza(); };
+
+      /* Form: intercept submit, show thank-you and open mailto */
+      const form = document.querySelector('form');
+      const formCol = document.querySelector('.contact-form-col');
+      if (form && formCol) {
+        /* Endpoint del backend. Se non risponde (o la posta non e' ancora
+           collegata) si torna al mailto: di sempre, senza che il visitatore
+           veda errori: la richiesta parte comunque dal suo programma di posta. */
+        /* come per l'assistente: l'indirizzo locale vale solo in sviluppo.
+           Online il modulo deve parlare con la propria origine, altrimenti
+           ogni richiesta finirebbe verso il computer del visitatore. */
+        const inLocale = /^(localhost|127\.|0\.0\.0\.0|\[::1\])/.test(location.hostname);
+        const API_CONTATTO = (inLocale && form.dataset.endpoint) || '/api/contatto';
+
+        form.addEventListener('submit', async e => {
+          e.preventDefault();
+          const nome     = form.nome?.value.trim()      || '';
+          const cognome  = form.cognome?.value.trim()   || '';
+          const email    = form.email?.value.trim()     || '';
+          const azienda  = form.azienda?.value.trim()   || '';
+          const oggetto  = form.oggetto?.value          || '';
+          const msg      = form.messaggio?.value.trim() || '';
+          const voci     = window.CCSel ? CCSel.voci() : [];
+          const selTesto = voci.length ? CCSel.toText(voci) : '';
+          const scelta   = selTesto ? '\n\n──────────\n' + selTesto : '';
+          const body     = `Nome: ${nome}\nEmail: ${email}\nInteresse: ${oggetto}\n\n${msg}${scelta}`;
+          const mailto   = `mailto:info@cerariacicogna.com?subject=Contatto%20dal%20sito&body=${encodeURIComponent(body)}`;
+
+          const bottone = form.querySelector('.form-submit');
+          const etichetta = bottone ? bottone.textContent : '';
+          if (bottone) { bottone.disabled = true; bottone.textContent = 'Invio in corso…'; }
+
+          let inviatoDalSito = false;
+          let messaggioLimite = '';
+          try {
+            const r = await fetch(API_CONTATTO, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ nome, cognome, email, azienda, oggetto, messaggio: msg,
+                selezione: selTesto,
+                fornitura: (() => { try { return JSON.parse(sessionStorage.getItem('cc-fornitura') || 'null'); } catch (e) { return null; } })(),
+                /* la lingua in cui sta navigando: decide in che lingua gli
+                   arriva la conferma. In cereria la richiesta resta italiana */
+                lingua: (window.CCI18n && CCI18n.get() === 'en') ? 'en' : 'it',
+                /* anche in forma strutturata: serve al server per comporre le
+                   schede con le foto nell'email di conferma */
+                articoli: voci.map(v => v.tipo === 'abbinamento'
+                  ? { tipo:'abbinamento', nome: v.candela.name + ' + ' + v.profumo.name,
+                      img: v.candela.img, imgProfumo: v.profumo.img, url: v.candela.url,
+                      quantita: v.candela.qta || 0, oltre: !!v.candela.oltre }
+                  : { tipo:'prodotto', nome: v.prodotto.name, img: v.prodotto.img,
+                      url: v.prodotto.url, categoria: v.prodotto.cat,
+                      quantita: v.prodotto.qta || 0, oltre: !!v.prodotto.oltre,
+                      imgProfumo: v.prodotto.imgProfumo || '' })
+              })
+            });
+            if (r.ok) inviatoDalSito = true;
+            else if (r.status === 429) { const j = await r.json().catch(() => ({})); messaggioLimite = j.messaggio || ''; }
+          } catch (err) { /* backend irraggiungibile: si ripiega sul mailto: */ }
+
+          if (bottone) { bottone.disabled = false; bottone.textContent = etichetta; }
+
+          if (messaggioLimite) { alert(messaggioLimite); return; }
+          if (!inviatoDalSito) window.location.href = mailto;
+          if (inviatoDalSito && window.CCSel) CCSel.svuota();
+          if (inviatoDalSito) azzeraBozza();
+
+          formCol.innerHTML = inviatoDalSito ? `
+            <div style="display:flex;flex-direction:column;justify-content:center;height:100%;padding:40px 0;">
+              <span style="font-family:var(--ff-sans);font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--c-gold);display:block;margin-bottom:24px;">Richiesta inviata</span>
+              <h2 style="font-family:var(--ff-display);font-size:clamp(1.6rem,4vw,2.8rem);font-weight:300;letter-spacing:.1em;color:var(--c-text-dark);line-height:1.2;margin-bottom:16px;">Grazie,<br>ti risponderemo presto.</h2>
+              <p style="font-family:var(--ff-serif);font-style:italic;font-size:1.05rem;color:var(--c-text-mid);line-height:1.8;">Abbiamo mandato una conferma a <strong>${email.replace(/[<>&]/g, '')}</strong>.<br>Se non la vedi, controlla la posta indesiderata.</p>
+            </div>` : `
+            <div style="display:flex;flex-direction:column;justify-content:center;height:100%;padding:40px 0;">
+              <span style="font-family:var(--ff-sans);font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--c-gold);display:block;margin-bottom:24px;">Messaggio inviato</span>
+              <h2 style="font-family:var(--ff-display);font-size:clamp(1.6rem,4vw,2.8rem);font-weight:300;letter-spacing:.1em;color:var(--c-text-dark);line-height:1.2;margin-bottom:16px;">Grazie,<br>ti risponderemo presto.</h2>
+              <p style="font-family:var(--ff-serif);font-style:italic;font-size:1.05rem;color:var(--c-text-mid);line-height:1.8;">Il tuo messaggio è stato preparato per l'invio.<br>Se non si apre il client email, scrivici direttamente a<br><a href="mailto:info@cerariacicogna.com" style="color:var(--c-text-dark);">info@cerariacicogna.com</a>.</p>
+            </div>`;
+        });
+      }
+    });
+  </script>
+  <script src="js/i18n-pages.js?v=3"></script>
+  <script src="js/i18n.js?v=7"></script>
+  <script src="js/link-personale.js?v=6" defer></script>
+  <script src="assistant/widget/cc-assistant.js?v=12" data-endpoint="http://localhost:8787/api/chat" data-privacy="privacy.html" defer></script>
+</body>
+</html>

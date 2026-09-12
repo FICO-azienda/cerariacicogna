@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumini Liturgici — Cereria Cicogna</title>
+  <meta name="description" content="Lumini votivi per chiese, cimiteri e altari: ECO, Fiamma, Rubino, ART 5–60. Cera italiana di qualità superiore. Cereria Cicogna.">
+  <!-- anteprime social e indirizzo canonico -->
+  <link rel="canonical" href="https://www.cerariacicogna.com/product-lit-lumini.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cereria Cicogna">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:url" content="https://www.cerariacicogna.com/product-lit-lumini.html">
+  <meta property="og:title" content="Lumini Liturgici — Cereria Cicogna">
+  <meta property="og:description" content="Lumini votivi per chiese, cimiteri e altari: ECO, Fiamma, Rubino, ART 5–60. Cera italiana di qualità superiore. Cereria Cicogna.">
+  <meta property="og:image" content="https://www.cerariacicogna.com/images/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lumini Liturgici — Cereria Cicogna">
+  <meta name="twitter:description" content="Lumini votivi per chiese, cimiteri e altari: ECO, Fiamma, Rubino, ART 5–60. Cera italiana di qualità superiore. Cereria Cicogna.">
+  <meta name="twitter:image" content="https://www.cerariacicogna.com/images/og-cover.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/main.css?v=13">
+  <style>
+    body { background: var(--c-bg-light); color: var(--c-text-dark); }
+    nav:not(.scrolled) .nav-logo { color: var(--c-text-dark); }
+    nav:not(.scrolled) .nav-logo span { color: var(--c-text-mid); }
+    nav:not(.scrolled) .nav-links > li > a { color: var(--c-text-mid); }
+    nav:not(.scrolled) .nav-cta { color: var(--c-text-dark); border-color: rgba(26,22,18,.25); }
+    nav:not(.scrolled) .hamburger-line { background: var(--c-text-dark); }
+    nav:not(.scrolled) .nav-stork path { fill: var(--c-text-dark) !important; }
+    nav:not(.scrolled) .nav-stork circle { stroke: var(--c-text-dark) !important; }
+    nav.scrolled { background: rgba(250,250,248,.95); }
+    nav.scrolled .nav-logo { color: var(--c-text-dark); }
+    nav.scrolled .nav-links > li > a { color: var(--c-text-mid); }
+    nav.scrolled .nav-cta { color: var(--c-text-dark); border-color: rgba(26,22,18,.25); }
+
+    .pd-section { display: grid; grid-template-columns: 1fr 1fr; align-items: start; }
+    .pd-gallery { position: sticky; top: 142px; background: var(--c-bg-cream); padding: 48px; }
+    .pd-img-wrap { position: relative; }
+    #img-main { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; object-position: center 60%; transition: opacity .15s; }
+    .pd-car-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(26,22,18,.55); color: #fff; border: none; width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; transition: background .2s, transform .15s; box-shadow: 0 2px 12px rgba(0,0,0,.28); }
+    .pd-car-btn:hover { background: rgba(26,22,18,.82); transform: translateY(-50%) scale(1.06); }
+    .pd-car-btn svg { width: 20px; height: 20px; }
+    .pd-car-prev { left: 16px; }
+    .pd-car-next { right: 16px; }
+    .pd-car-dots { position: absolute; bottom: -26px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; }
+    .pd-car-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(26,22,18,.18); border: none; cursor: pointer; transition: background .25s, transform .2s; }
+    .pd-car-dot.active { background: rgba(26,22,18,.55); transform: scale(1.3); }
+    .pd-info { padding: 56px 64px 80px; overflow-y: auto; }
+    .pd-breadcrumb { font-family: var(--ff-sans); font-size: .44rem; font-weight: 300; letter-spacing: .26em; text-transform: uppercase; color: var(--c-text-mid); margin-bottom: 28px; }
+    .pd-breadcrumb a { color: inherit; text-decoration: none; }
+    .pd-breadcrumb a:hover { color: var(--c-text-dark); }
+    .pd-title { font-family: var(--ff-display); font-size: clamp(1.8rem, 2.8vw, 3rem); font-weight: 300; letter-spacing: .04em; color: var(--c-text-dark); line-height: 1.1; margin-bottom: 36px; }
+    .pd-panel { display: none; }
+    .pd-panel.active { display: block; }
+    .pd-intro { font-family: var(--ff-serif); font-size: 1rem; line-height: 1.85; color: var(--c-text-mid); margin-bottom: 28px; max-width: 520px; }
+    .pd-cta { display: block; width: 100%; font-family: var(--ff-sans); font-size: .52rem; font-weight: 300; letter-spacing: .26em; text-transform: uppercase; color: var(--c-text-dark); border: 1px solid rgba(26,22,18,.28); padding: 18px 32px; text-align: center; text-decoration: none; transition: background .35s, border-color .35s, color .35s; }
+    .pd-cta:hover { background: var(--c-text-dark); color: var(--c-bg-light); border-color: var(--c-text-dark); }
+
+    @media (max-width: 960px) {
+      .pd-section { grid-template-columns: 1fr; }
+      .pd-gallery { position: relative; top: auto; padding: 32px; }
+      .pd-info { padding: 36px var(--gutter) 60px; }
+    }
+
+    /* ── Color variant selector ── */
+    .pd-color-bar {
+      margin-bottom: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .pd-color-bar[hidden] { display: none; }
+    .pd-color-label {
+      font-family: var(--ff-sans);
+      font-size: .40rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--c-text-mid);
+      flex-basis: 100%;
+      margin-bottom: 2px;
+    }
+    .pd-swatch {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      box-shadow: 0 0 0 1px rgba(26,22,18,.16);
+      background-size: cover;
+      background-position: center top;
+      cursor: pointer;
+      transition: box-shadow .2s, transform .15s, border-color .2s;
+      outline: none;
+      flex-shrink: 0;
+    }
+    .pd-swatch:hover { transform: scale(1.14); box-shadow: 0 0 0 2px rgba(26,22,18,.38); }
+    .pd-swatch.active { border-color: var(--c-text-dark); transform: scale(1.1); box-shadow: 0 0 0 1px rgba(26,22,18,.16); }
+    .pd-swatch:focus-visible { outline: 2px solid var(--c-text-dark); outline-offset: 3px; }
+    /* #img-main transition merged above */
+    @media (max-width: 960px) {
+      .pd-color-bar { margin-top: 28px; gap: 12px; }
+      .pd-swatch { width: 42px; height: 42px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="main-nav" role="navigation" aria-label="Navigazione principale">
+    <a href="index.html" class="nav-brand" aria-label="Cereria Cicogna — Homepage">
+      <img class="nav-stork" src="logo-stork.png" alt="Logo Cereria Cicogna" width="32" height="32" loading="eager">
+      <div class="nav-logo">Cereria Cicogna<span>Industria F.lli Cicogna · Novate Milanese</span></div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li class="nav-has-drop">
+        <a href="home-collection.html" aria-haspopup="true" aria-expanded="false">Home Collection</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Home Collection">
+        <div class="mega-container"><div class="mega-inner">
+          <div class="mega-feat-col"><a href="home-collection.html" class="mega-feat-title">Home Collection</a><p class="mega-feat-desc">Candele profumate per arredare e impreziosire ogni ambiente della casa.</p></div>
+          <div class="mega-col"><p class="mega-col-head">Prodotti</p><ul><li><a href="home-collection.html?c=sand">Sand</a></li><li><a href="home-collection.html?c=rock">Rock</a></li><li><a href="home-collection.html?c=glass">Glass</a></li></ul><a href="home-collection.html" class="mega-all">Vedi tutti</a></div><div class="mega-img-col"><a href="home-collection.html"><img src="images/hero-home-collection.webp" alt="Home Collection — Cereria Cicogna"></a></div>
+        </div></div></div>
+      </li>
+      <li class="nav-has-drop">
+        <a href="garden.html" aria-haspopup="true" aria-expanded="false">Garden</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Linea Garden">
+        <div class="mega-container"><div class="mega-inner">
+          <div class="mega-feat-col"><a href="garden.html" class="mega-feat-title">Linea Garden</a><p class="mega-feat-desc">Candele per esterni e interni, pensate per ogni stagione all'aperto.</p></div>
+          <div class="mega-col"><p class="mega-col-head">Prodotti</p><ul><li><a href="garden.html?c=citronelle">Citronelle</a></li><li><a href="garden.html?c=cerabianca">Cera Bianca</a></li><li><a href="garden.html?c=ricariche">Ricariche</a></li></ul><a href="garden.html" class="mega-all">Vedi tutti</a></div><div class="mega-img-col"><a href="garden.html"><img src="images/hero-garden.webp" alt="Linea Garden — Cereria Cicogna"></a></div>
+        </div></div></div>
+      </li>
+      <li class="nav-has-drop">
+        <a href="liturgico.html" aria-current="page" aria-haspopup="true" aria-expanded="false">Liturgico</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Articoli Liturgici">
+        <div class="mega-container"><div class="mega-inner">
+          <div class="mega-feat-col"><a href="liturgico.html" class="mega-feat-title">Articoli Liturgici</a><p class="mega-feat-desc">Ceri, lumini e arredi sacri per chiese, santuari e cerimonie religiose.</p></div>
+          <div class="mega-col"><p class="mega-col-head">Prodotti</p><ul><li><a href="liturgico.html?c=lumini">Lumini da chiesa</a></li><li><a href="liturgico.html?c=accessori">Accessori</a></li>
+              <li><a href="liturgico.html?c=forniture">Forniture</a></li></ul><a href="liturgico.html" class="mega-all">Vedi tutti</a></div><div class="mega-img-col"><a href="liturgico.html"><img src="images/hero-liturgico.webp" alt="Articoli Liturgici — Cereria Cicogna"></a></div>
+        </div></div></div>
+      </li>
+      <li class="nav-sep" aria-hidden="true"></li>
+      <li>
+        <a href="private-label.html">Private Label</a>
+      </li>
+      <li><a href="fragrance-library.html">Fragrance Library</a></li><li><a href="personalizzazione.html">Collaborazioni</a></li>
+      <li><a href="chi-siamo.html">Chi Siamo</a></li>
+    </ul>
+    <a href="contatti.html" class="nav-cta">Contattaci</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Apri menu" aria-expanded="false">
+      <span class="hamburger-line"></span><span class="hamburger-line"></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true">
+    <ul class="mobile-menu-links" role="list">
+      <li><a href="home-collection.html" class="mm-link">Home Collection</a></li>
+      <li><a href="garden.html" class="mm-link">Garden</a></li>
+      <li><a href="liturgico.html" class="mm-link">Liturgico</a></li>
+      <li><a href="chi-siamo.html">Chi Siamo</a></li>
+      <li><a href="contatti.html">Contatti</a></li>
+    </ul>
+    <div class="mobile-menu-rule" aria-hidden="true"></div>
+    <address class="mobile-menu-contact">
+      <a href="tel:+39023543707">02.35.43.707</a>&ensp;&middot;&ensp;<a href="mailto:info@cerariacicogna.com">info@cerariacicogna.com</a>
+    </address>
+  </div>
+
+  <!-- Product picker strip -->
+
+
+  <main class="pd-section">
+
+    <section class="pd-gallery" aria-label="Galleria prodotto">
+      <div class="pd-img-wrap">
+        <img id="img-main" src="images/lit-lum-giubileo-c1.webp" alt="Lumino Giubileo" loading="eager">
+        <button class="pd-car-btn pd-car-prev" id="car-prev" aria-label="Immagine precedente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="pd-car-btn pd-car-next" id="car-next" aria-label="Immagine successiva">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <div class="pd-car-dots" id="car-dots" role="tablist" aria-label="Seleziona immagine"></div>
+      </div>
+    </section>
+
+    <div class="pd-info">
+      <p class="pd-breadcrumb">
+        <a href="index.html">Cereria Cicogna</a>&ensp;&middot;&ensp;
+        <a href="liturgico.html">Articoli Liturgici</a>&ensp;&middot;&ensp;
+        <a href="liturgico.html">Lumini</a>
+      </p>
+      <h1 class="pd-title" id="lum-title">Lumino Giubileo</h1>
+      <div id="pd-color-bar" class="pd-color-bar" hidden role="group" aria-label="Variante di colore"></div>
+
+      <div class="pd-panel active" id="panel-0">
+        <a href="contatti.html" class="pd-cta">Richiedi informazioni</a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-row">
+          <img class="footer-stork" src="logo-stork.png" alt="" width="40" height="40" aria-hidden="true">
+          <span class="footer-wordmark">Cereria Cicogna</span>
+        </div>
+        <p class="footer-tagline">Industria ceraria artigianale.<br>Dal sacro al quotidiano.</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Linee</p>
+        <ul>
+          <li><a href="liturgico.html">Articoli Liturgici</a></li>
+          <li><a href="garden.html">Linea Garden</a></li>
+          <li><a href="home-collection.html">Home Collection</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Azienda</p>
+        <ul>
+          <li><a href="chi-siamo.html">Chi Siamo</a></li>
+          <li><a href="contatti.html">Contatti</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Contatti</p>
+        <address>
+          Via Damiano Chiesa, 84<br>
+          20026 Novate Milanese (MI)<br><br>
+          <a href="tel:+39023543707">02.35.43.707</a><br>
+          <a href="mailto:info@cerariacicogna.com">info@cerariacicogna.com</a>
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2025 Industria Ceraria F.lli Cicogna srl</span>
+      <span class="footer-legal">P.IVA 11980500158 &nbsp;&middot;&nbsp; <a href="privacy.html">Privacy</a></span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="js/main.js?v=8"></script>
+  <script src="js/selection.js?v=7"></script>
+  <script>
+  (function () {
+
+    /* ── Icons ── */
+
+    var products = [
+      /* ── Giubileo ── */
+      {
+        name: 'Lumino Giubileo',
+        neutra:  'images/lit-lum-giubileo-c1.webp',
+        ambient: 'images/lit-lum-giubileo-c1.webp',
+        colors:  [{src:'images/lit-lum-giubileo-front.webp',label:''},{src:'images/lit-lum-giubileo-c1.webp',label:''},{src:'images/lit-lum-giubileo-c2.webp',label:''},{src:'images/lit-lum-giubileo-c3.webp',label:''}],
+        utilizzo: 'Per chiese e santuari impegnati nelle celebrazioni giubilari, processioni, pellegrinaggi e altari votivi dell\'Anno Santo. La decorazione è resistente al calore della combustione. Compatibile con portacandele standard.'
+      },
+      {
+        name: 'Fiamma Policarbonato',
+        neutra:  'images/lit-lum-fiamma-pc-neutra.webp',
+        ambient: 'images/lit-lum-fiamma-pc-ambient.webp',
+        colors:  [{src:'images/lit-lum-fiamma-pc-front.webp',label:''},{src:'images/lit-lum-fiamma-pc-c1.webp',label:''},{src:'images/lit-lum-fiamma-pc-c2.webp',label:''},{src:'images/lit-lum-fiamma-pc-c3.webp',label:''},{src:'images/lit-lum-fiamma-pc-c4.webp',label:''}],
+        utilizzo: 'Adatto per uso interno ed esterno al riparo dal vento. Non toccare il contenitore durante o subito dopo la combustione: il policarbonato trattiene il calore. Lasciare raffreddare prima della sostituzione.'
+      },
+      {
+        name: 'Fiamma Moplen',
+        neutra:  'images/lit-lum-fiamma-mp-neutra.webp',
+        ambient: 'images/lit-lum-fiamma-mp-ambient.webp',
+        colors:  [{src:'images/lit-lum-fiamma-mp-front.webp',label:''},{src:'images/lit-lum-fiamma-mp-c1.webp',label:''},{src:'images/lit-lum-fiamma-mp-c2.webp',label:''},{src:'images/lit-lum-fiamma-mp-c3.webp',label:''},{src:'images/lit-lum-fiamma-mp-c4.webp',label:''},{src:'images/lit-lum-fiamma-mp-c5.webp',label:''}],
+        utilizzo: 'La superficie opalina disperde il calore meglio del vetro. Maneggiare con cura al termine della combustione. Compatibile con portacandele standard da teca.'
+      },
+      {
+        name: 'Rubino',
+        neutra:  'images/lit-lum-rubino-neutra.webp',
+        ambient: 'images/lit-lum-rubino-ambient.webp',
+        colors:  [{src:'images/lit-lum-rubino-front.webp',label:''},{src:'images/lit-lum-rubino-c1.webp',label:''},{src:'images/lit-lum-rubino-c2.webp',label:''},{src:'images/lit-lum-rubino-c3.webp',label:''},{src:'images/lit-lum-rubino-c4.webp',label:''},{src:'images/lit-lum-rubino-c5.webp',label:''}],
+        utilizzo: 'Progettato per ardere in portacandele in ottone o ferro battuto. La base allargata garantisce stabilità. Non ribaltare durante la combustione. Sostituire prima che la cera sia completamente esaurita per evitare surriscaldamento del contenitore.'
+      },
+      {
+        name: 'Rubino 2',
+        neutra:  'images/lit-lum-rub2-neutra.webp',
+        ambient: 'images/lit-lum-rub2-ambient.webp',
+        colors:  [{src:'images/lit-lum-rub2-front.webp',label:''},{src:'images/lit-lum-rub2-c1.webp',label:''},{src:'images/lit-lum-rub2-c2.webp',label:''},{src:'images/lit-lum-rub2-c3.webp',label:''},{src:'images/lit-lum-rub2-c4.webp',label:''},{src:'images/lit-lum-rub2-c5.webp',label:''}],
+        utilizzo: 'Adatto per portacandele di piccole dimensioni e nicchie votive anguste. Compatibile con supporti da Ø 38 mm. Verificare la stabilità prima di lasciare acceso.'
+      },
+      {
+        name: 'Rubino 1000',
+        neutra:  'images/lit-lum-rub1000-neutra.webp',
+        ambient: 'images/lit-lum-rub1000-ambient.webp',
+        colors:  [{src:'images/lit-lum-rub1000-front.webp',label:''},{src:'images/lit-lum-rub1000-c1.webp',label:''},{src:'images/lit-lum-rub1000-c2.webp',label:''},{src:'images/lit-lum-rub1000-c3.webp',label:''},{src:'images/lit-lum-rub1000-c4.webp',label:''},{src:'images/lit-lum-rub1000-c5.webp',label:''}],
+        utilizzo: 'Per altari ad alto traffico e luce perpetua. Richiede portacandele robusti con apertura ≥ 60 mm. Controllare regolarmente il livello della cera. Sostituire prima dell\'esaurimento completo.'
+      },
+      {
+        name: 'Lumino ART 5',
+        neutra:  'images/lit-lum-art5-neutra.webp',
+        ambient: 'images/lit-lum-art5-ambient.webp',
+        colors:  [{src:'images/lit-lum-art5-front.webp',label:''},{src:'images/lit-lum-art5-c1.webp',label:''},{src:'images/lit-lum-art5-c2.webp',label:''}],
+        utilizzo: 'La forma piatta si presta a essere posizionato in teche basse e portacandele a ciotola. Compatibile con i porta-lumini standard da teca cimiteriale. Non rimuovere durante la combustione.'
+      },
+      {
+        name: 'Lumino ART 7',
+        neutra:  'images/lit-lum-art7-neutra.webp',
+        ambient: 'images/lit-lum-art7-ambient.webp',
+        colors:  [{src:'images/lit-lum-art7-front.webp',label:''},{src:'images/lit-lum-art7-c1.webp',label:''},{src:'images/lit-lum-art7-c2.webp',label:''}],
+        utilizzo: 'Compatibile con portacandele da teca standard. Posizionare su superficie stabile lontano da correnti d\'aria forti.'
+      },
+      {
+        name: 'Lumino ART 10',
+        neutra:  'images/lit-lum-art10-neutra.webp',
+        ambient: 'images/lit-lum-art10-ambient.webp',
+        colors:  [{src:'images/lit-lum-art10-front.webp',label:''},{src:'images/lit-lum-art10-c1.webp',label:''},{src:'images/lit-lum-art10-c2.webp',label:''}],
+        utilizzo: 'Il bicchierino in policarbonato è resistente agli urti e mantiene il calore. Compatibile con portacandele da teca standard. Non toccare il contenitore durante o subito dopo la combustione.'
+      },
+      {
+        name: 'Lumino ART 15',
+        neutra:  'images/lit-lum-art15-neutra.webp',
+        ambient: 'images/lit-lum-art15-ambient.webp',
+        colors:  [{src:'images/lit-lum-art15-front.webp',label:''},{src:'images/lit-lum-art15-c1.webp',label:''},{src:'images/lit-lum-art15-c2.webp',label:''}],
+        utilizzo: 'Adatto per altari con alta frequentazione devozionale. Compatibile con portacandele standard da teca.'
+      },
+      {
+        name: 'Lumino ART 20',
+        neutra:  'images/lit-lum-art20-neutra.webp',
+        ambient: 'images/lit-lum-art20-ambient.webp',
+        colors:  [{src:'images/lit-lum-art20-front.webp',label:''},{src:'images/lit-lum-art20-c1.webp',label:''},{src:'images/lit-lum-art20-c2.webp',label:''}],
+        utilizzo: 'Particolarmente adatto per cappelle non riscaldate in inverno. Il formulato termostabilizzante mantiene la corretta viscosità della cera fusa anche sotto i 10°C. La trasparenza del contenitore permette di monitorare il livello senza toccare il lumino.'
+      },
+      {
+        name: 'Lumino ART 30',
+        neutra:  'images/lit-lum-art30-neutra.webp',
+        ambient: 'images/lit-lum-art30-ambient.webp',
+        colors:  [{src:'images/lit-lum-art30-front.webp',label:''},{src:'images/lit-lum-art30-c1.webp',label:''},{src:'images/lit-lum-art30-c2.webp',label:''}],
+        utilizzo: 'Adatto per uso interno e in portacandele chiusi all\'esterno. Nella stagione calda, posizionare preferibilmente in ambienti ombreggiati per evitare ammorbidimento della cera prima dell\'accensione. Non esporre direttamente al sole.'
+      },
+      {
+        name: 'Lumino ART 50',
+        neutra:  'images/lit-lum-art50-neutra.webp',
+        ambient: 'images/lit-lum-art50-ambient.webp',
+        colors:  [{src:'images/lit-lum-art50-front.webp',label:''},{src:'images/lit-lum-art50-c1.webp',label:''},{src:'images/lit-lum-art50-c2.webp',label:''}],
+        utilizzo: 'Per altari a luce perpetua in chiese aperte tutto il giorno. Controllare regolarmente il livello per evitare interruzioni impreviste. Sostituire prima dell\'esaurimento completo.'
+      },
+      {
+        name: 'Lumino ART 60 — Bianca & Gialla',
+        neutra:  'images/lit-lum-art60-front.webp',
+        ambient: 'images/lit-lum-art60l-front.webp',
+        colors:  [],
+        utilizzo: 'Versione bianca: per teche cimiteriali e portacandele devozionali. Versione gialla: per altari di chiesa, messe, tridui, ottavari e adorazione perpetua. La cera gialla è il riferimento tradizionale per l\'illuminazione liturgica cattolica.'
+      },
+      {
+        name: 'Lumino ART 30 — Bianca & Gialla',
+        neutra:  'images/lit-lum-art30b-front.webp?v=2',
+        ambient: 'images/lit-lum-art30l-front.webp?v=2',
+        colors:  [],
+        utilizzo: 'Versione bianca: per teche cimiteriali, nicchie votive e uso domestico. Versione gialla: per altari di chiesa, messe e celebrazioni liturgiche. La cera gialla è il colore tradizionale dell\'illuminazione cattolica da altare.'
+      }
+    ];
+
+    /* ── DOM refs ── */
+    var imgMain  = document.getElementById('img-main');
+    var carDots  = document.getElementById('car-dots');
+    var colorBar = document.getElementById('pd-color-bar');
+    var carPrev  = document.getElementById('car-prev');
+    var carNext  = document.getElementById('car-next');
+
+    /* ── State ── */
+    var curPid   = 0;
+    var curSlide = 0;
+    var curColor = 0;
+
+    /* ── Preload ── */
+    function preloadColors(colors) {
+      colors.forEach(function(c) {
+        if (!c._img) { c._img = new Image(); c._img.src = c.src; }
+      });
+    }
+
+    /* ── Fade image ── */
+    function setImage(src, alt) {
+      imgMain.style.opacity = '0';
+      setTimeout(function() {
+        imgMain.src = src;
+        imgMain.alt = alt || '';
+        imgMain.style.opacity = '1';
+      }, 180);
+    }
+
+    /* ── Dots ── */
+    function renderDots(n) {
+      carDots.innerHTML = '';
+      for (var i = 0; i < n; i++) {
+        var btn = document.createElement('button');
+        btn.className = 'pd-car-dot' + (i === 0 ? ' active' : '');
+        btn.setAttribute('aria-label', 'Immagine ' + (i + 1));
+        btn.dataset.slide = i;
+        (function(idx){ btn.addEventListener('click', function(){ goCar(idx); }); })(i);
+        carDots.appendChild(btn);
+      }
+    }
+
+    function updateDotActive(idx) {
+      Array.from(carDots.children).forEach(function(d, i) {
+        d.classList.toggle('active', i === idx);
+      });
+    }
+
+    /* ── Color bar ── */
+    function renderColorBar(colors) {
+      colorBar.innerHTML = '<span class="pd-color-label">Variante colore</span>';
+      colors.forEach(function(c, idx) {
+        var btn = document.createElement('button');
+        btn.className = 'pd-swatch' + (idx === 0 ? ' active' : '');
+        btn.style.backgroundImage = 'url(' + c.src + ')';
+        var lbl = c.label || ('Variante ' + (idx + 1));
+        btn.setAttribute('aria-label', lbl);
+        btn.setAttribute('title', lbl);
+        btn.setAttribute('role', 'radio');
+        btn.setAttribute('aria-checked', idx === 0 ? 'true' : 'false');
+        (function(i){ btn.addEventListener('click', function(){ selectColorVariant(i); }); })(idx);
+        btn.addEventListener('keydown', function(e) {
+          var n = colors.length;
+          if (e.key === 'ArrowRight') { e.preventDefault(); selectColorVariant((idx + 1) % n); colorBar.querySelectorAll('.pd-swatch')[(idx + 1) % n].focus(); }
+          if (e.key === 'ArrowLeft')  { e.preventDefault(); selectColorVariant((idx - 1 + n) % n); colorBar.querySelectorAll('.pd-swatch')[(idx - 1 + n) % n].focus(); }
+        });
+        colorBar.appendChild(btn);
+      });
+      colorBar.removeAttribute('hidden');
+    }
+
+    function hideColorBar() {
+      colorBar.innerHTML = '';
+      colorBar.setAttribute('hidden', '');
+    }
+
+    /* ── Select color variant ── */
+    function selectColorVariant(idx) {
+      curColor = idx;
+      curSlide = idx;
+      var p = products[curPid];
+      var lbl = p.colors[idx].label || ('variante ' + (idx + 1));
+      setImage(p.colors[idx].src, p.name + ' — ' + lbl);
+      colorBar.querySelectorAll('.pd-swatch').forEach(function(s, i) {
+        s.classList.toggle('active', i === idx);
+        s.setAttribute('aria-checked', i === idx ? 'true' : 'false');
+      });
+      updateDotActive(idx);
+    }
+
+    /* ── Carousel navigation ── */
+    function goCar(n) {
+      var p = products[curPid];
+      if (p.colors && p.colors.length > 0) {
+        var next = ((n % p.colors.length) + p.colors.length) % p.colors.length;
+        selectColorVariant(next);
+      } else {
+        curSlide = ((n % 2) + 2) % 2;
+        setImage(
+          curSlide === 0 ? p.neutra : p.ambient,
+          p.name + (curSlide === 0 ? ' · Bianca' : ' · Gialla')
+        );
+        updateDotActive(curSlide);
+      }
+    }
+
+    carPrev.addEventListener('click', function(){ goCar(curSlide - 1); });
+    carNext.addEventListener('click', function(){ goCar(curSlide + 1); });
+
+    /* ── Product selector ── */
+    var picks = document.querySelectorAll('.lum-pick');
+
+    function selectProduct(idx) {
+      curPid   = idx;
+      curSlide = 0;
+      curColor = 0;
+      var p = products[idx];
+
+      if (p.colors && p.colors.length > 0) {
+        preloadColors(p.colors);
+        renderColorBar(p.colors);
+        renderDots(p.colors.length);
+        imgMain.src = p.colors[0].src;
+        imgMain.alt = p.name + ' — ' + (p.colors[0].label || 'variante 1');
+      } else {
+        hideColorBar();
+        renderDots(2);
+        imgMain.src = p.neutra;
+        imgMain.alt = p.name + ' — Bianca';
+      }
+      updateDotActive(0);
+
+      document.getElementById('lum-title').textContent = p.name;
+
+
+
+      picks.forEach(function(pk, i){
+        var active = i === idx;
+        pk.classList.toggle('active', active);
+        pk.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+
+      if (picks[idx]) picks[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+
+    picks.forEach(function(pk){
+      pk.addEventListener('click', function(){ selectProduct(+pk.dataset.pid); });
+    });
+
+    selectProduct(0);
+
+    var hash = parseInt(window.location.hash.replace('#',''), 10);
+    if (!isNaN(hash) && hash >= 0 && hash < products.length) selectProduct(hash);
+
+  })();
+  </script>
+  <script src="js/i18n-pages.js?v=3"></script>
+  <script src="js/i18n.js?v=7"></script>
+  <script src="js/link-personale.js?v=6" defer></script>
+  <script src="assistant/widget/cc-assistant.js?v=12" data-endpoint="http://localhost:8787/api/chat" data-privacy="privacy.html" defer></script>
+</body>
+</html>

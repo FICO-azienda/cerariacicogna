@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il tuo abbinamento — Cereria Cicogna</title>
+  <meta name="description" content="Riepilogo dell'abbinamento candela e profumo scelto, pronto da inviare insieme alla tua richiesta.">
+  <!-- anteprime social e indirizzo canonico -->
+  <link rel="canonical" href="https://www.cerariacicogna.com/abbinamento.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cereria Cicogna">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:url" content="https://www.cerariacicogna.com/abbinamento.html">
+  <meta property="og:title" content="Il tuo abbinamento — Cereria Cicogna">
+  <meta property="og:description" content="Riepilogo dell&#x27;abbinamento candela e profumo scelto, pronto da inviare insieme alla tua richiesta.">
+  <meta property="og:image" content="https://www.cerariacicogna.com/images/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Il tuo abbinamento — Cereria Cicogna">
+  <meta name="twitter:description" content="Riepilogo dell&#x27;abbinamento candela e profumo scelto, pronto da inviare insieme alla tua richiesta.">
+  <meta name="twitter:image" content="https://www.cerariacicogna.com/images/og-cover.jpg">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/main.css?v=13">
+  <style>
+    body { background: #f2ecdb; color: var(--c-text-dark); }
+    nav:not(.scrolled) .nav-logo { color: var(--c-text-dark); }
+    nav:not(.scrolled) .nav-logo span { color: var(--c-text-mid); }
+    nav:not(.scrolled) .nav-links > li > a { color: var(--c-text-mid); }
+    nav:not(.scrolled) .nav-cta { color: var(--c-text-dark); border-color: rgba(26,22,18,.25); }
+    nav:not(.scrolled) .hamburger-line { background: var(--c-text-dark); }
+
+    .ab-wrap { max-width: 1120px; margin: 0 auto; padding: 148px var(--gutter) 96px; }
+
+    .ab-head { text-align: center; margin-bottom: 64px; }
+    .ab-eyebrow { display: inline-block; font-family: var(--ff-sans); font-weight: 300; font-size: .52rem;
+      letter-spacing: .42em; text-transform: uppercase; color: #a9822f; margin-bottom: 22px; }
+    .ab-title { font-family: var(--ff-display); font-weight: 300; font-size: clamp(2.1rem, 5vw, 3.6rem);
+      letter-spacing: .04em; line-height: 1.08; color: var(--c-text-dark); }
+    .ab-sub { margin: 20px auto 0; max-width: 520px; font-family: var(--ff-serif); font-style: italic;
+      font-size: 1.06rem; line-height: 1.8; color: var(--c-text-mid); }
+
+    /* coppia */
+    .ab-pair { display: grid; grid-template-columns: 1fr auto 1fr; align-items: stretch; gap: 0; }
+    .ab-item { background: #f8f3ea; border: 1px solid rgba(26,22,18,.09); display: flex; flex-direction: column; }
+    .ab-item-media { aspect-ratio: 1/1; overflow: hidden; background: #fff; }
+    .ab-item-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ab-item-body { padding: 30px 30px 34px; text-align: center; }
+    .ab-item-kind { font-family: var(--ff-sans); font-weight: 300; font-size: .46rem; letter-spacing: .3em;
+      text-transform: uppercase; color: rgba(26,22,18,.42); display: block; margin-bottom: 12px; }
+    .ab-item-name { font-family: var(--ff-display); font-weight: 300; font-size: 1.42rem; letter-spacing: .03em;
+      line-height: 1.25; color: var(--c-text-dark); }
+    .ab-item-ref { display: block; margin-top: 12px; font-family: var(--ff-sans); font-weight: 300;
+      font-size: .46rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(26,22,18,.45); }
+
+    .ab-plus { display: flex; align-items: center; justify-content: center; padding: 0 26px;
+      font-family: var(--ff-display); font-weight: 300; font-size: 2rem; color: rgba(26,22,18,.28); }
+
+    @media (max-width: 760px) {
+      .ab-pair { grid-template-columns: 1fr; }
+      .ab-plus { padding: 18px 0; }
+    }
+
+    /* azioni */
+    .ab-actions { margin-top: 54px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+    .ab-btn { display: inline-flex; align-items: center; gap: 12px; font-family: var(--ff-sans); font-weight: 300;
+      font-size: .56rem; letter-spacing: .24em; text-transform: uppercase; text-decoration: none;
+      background: #2a231a; color: #f7f2e8; padding: 19px 46px; transition: gap .3s, background .3s; }
+    .ab-btn:hover { gap: 20px; background: #000; }
+    .ab-alt { font-family: var(--ff-sans); font-weight: 300; font-size: .5rem; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--c-text-mid); text-decoration: none; border-bottom: 1px solid rgba(26,22,18,.2);
+      padding-bottom: 4px; transition: color .25s, border-color .25s; }
+    .ab-alt:hover { color: var(--c-text-dark); border-color: var(--c-text-dark); }
+    .ab-note { margin-top: 8px; font-family: var(--ff-serif); font-style: italic; font-size: .95rem;
+      color: rgba(26,22,18,.5); text-align: center; max-width: 420px; }
+
+    /* stato vuoto */
+    .ab-empty { text-align: center; padding: 40px 0 0; }
+    .ab-empty p { font-family: var(--ff-serif); font-style: italic; font-size: 1.06rem; color: var(--c-text-mid); margin-bottom: 30px; }
+  </style>
+</head>
+<body>
+
+  <nav id="main-nav">
+    <a href="index.html" class="nav-brand">
+      <img class="nav-stork" src="logo-stork.png" alt="Logo Cereria Cicogna" width="32" height="32" loading="eager">
+      <div class="nav-logo">Cereria Cicogna<span>Industria F.lli Cicogna · Novate Milanese</span></div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li class="nav-has-drop">
+        <a href="home-collection.html" aria-haspopup="true" aria-expanded="false">Home Collection</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Home Collection">
+        <div class="mega-container"><div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="home-collection.html" class="mega-feat-title">Home Collection</a>
+            <p class="mega-feat-desc">Candele profumate per arredare e impreziosire ogni ambiente della casa.</p>
+          </div>
+          <div class="mega-col"><p class="mega-col-head">Prodotti</p><ul><li><a href="home-collection.html?c=sand">Sand</a></li><li><a href="home-collection.html?c=rock">Rock</a></li><li><a href="home-collection.html?c=glass">Glass</a></li><li><a href="home-collection.html?c=metallic">Metallic</a></li><li><a href="home-collection.html?c=ceri">Ceri</a></li></ul><a href="home-collection.html" class="mega-all">Vedi tutti</a></div><div class="mega-img-col"><a href="home-collection.html"><img src="images/hero-home-collection.webp" alt="Home Collection — Cereria Cicogna"></a></div>
+        </div></div>
+      </div>
+      </li>
+      <li class="nav-has-drop">
+        <a href="garden.html" aria-haspopup="true" aria-expanded="false">Garden</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Linea Garden">
+        <div class="mega-container"><div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="garden.html" class="mega-feat-title">Linea Garden</a>
+            <p class="mega-feat-desc">Candele per esterni e interni, pensate per ogni stagione all'aperto.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul>
+              <li><a href="garden.html?c=citronelle">Citronelle</a></li>
+              <li><a href="garden.html?c=cerabianca">Cera Bianca</a></li>
+              <li><a href="garden.html?c=ricariche">Ricariche</a></li>
+            </ul>
+            <a href="garden.html" class="mega-all">Vedi tutti</a>
+          </div><div class="mega-img-col"><a href="garden.html"><img src="images/hero-garden.webp" alt="Linea Garden — Cereria Cicogna"></a></div>
+        </div></div>
+      </div>
+      </li>
+      <li class="nav-has-drop">
+        <a href="liturgico.html" aria-haspopup="true" aria-expanded="false">Liturgico</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Articoli Liturgici">
+        <div class="mega-container"><div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="liturgico.html" class="mega-feat-title">Articoli Liturgici</a>
+            <p class="mega-feat-desc">Ceri, lumini e arredi sacri per chiese, santuari e cerimonie religiose.</p>
+          </div>
+          <div class="mega-col"><p class="mega-col-head">Prodotti</p><ul>
+            <li><a href="liturgico.html?c=lumini">Lumini da chiesa</a></li>
+            <li><a href="liturgico.html?c=accessori">Accessori</a></li>
+              <li><a href="liturgico.html?c=forniture">Forniture</a></li>
+          </ul><a href="liturgico.html" class="mega-all">Vedi tutti</a></div><div class="mega-img-col"><a href="liturgico.html"><img src="images/hero-liturgico.webp" alt="Articoli Liturgici — Cereria Cicogna"></a></div>
+        </div></div>
+      </div>
+      </li>
+      <li class="nav-sep" aria-hidden="true"></li>
+      <li>
+        <a href="private-label.html">Private Label</a>
+      </li>
+      <li><a href="fragrance-library.html">Fragrance Library</a></li>
+      <li><a href="personalizzazione.html">Collaborazioni</a></li>
+      <li><a href="chi-siamo.html">Chi Siamo</a></li>
+    </ul>
+    <a href="contatti.html" class="nav-cta">Contattaci</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Apri menu" aria-expanded="false">
+      <span class="hamburger-line"></span><span class="hamburger-line"></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true">
+    <ul class="mobile-menu-links" role="list">
+      <li class="mm-has-sub"><div class="mm-top"><a href="liturgico.html" class="mm-link">Liturgico</a><button class="mm-expand" aria-expanded="false" aria-label="Espandi Liturgico">+</button></div>
+        <ul class="mm-sub" hidden><li><a href="liturgico.html?c=lumini">Lumini da chiesa</a></li><li><a href="liturgico.html?c=accessori">Accessori</a></li>
+              <li><a href="liturgico.html?c=forniture">Forniture</a></li></ul></li>
+      <li class="mm-has-sub"><div class="mm-top"><a href="garden.html" class="mm-link">Garden</a><button class="mm-expand" aria-expanded="false" aria-label="Espandi Garden">+</button></div><ul class="mm-sub" hidden><li><a href="garden.html?c=citronelle">Citronelle</a></li><li><a href="garden.html?c=cerabianca">Cera Bianca</a></li><li><a href="garden.html?c=ricariche">Ricariche</a></li></ul></li>
+      <li class="mm-has-sub"><div class="mm-top"><a href="home-collection.html" class="mm-link">Home Collection</a><button class="mm-expand" aria-expanded="false" aria-label="Espandi Home Collection">+</button></div><ul class="mm-sub" hidden><li><a href="home-collection.html?c=sand">Sand</a></li><li><a href="home-collection.html?c=rock">Rock</a></li><li><a href="home-collection.html?c=glass">Glass</a></li><li><a href="home-collection.html?c=metallic">Metallic</a></li><li><a href="home-collection.html?c=ceri">Ceri</a></li></ul></li>
+      <li><a href="fragrance-library.html">Fragrance Library</a></li>
+      <li><a href="chi-siamo.html">Chi Siamo</a></li>
+      <li><a href="contatti.html">Contatti</a></li>
+      <li class="mobile-menu-sep" aria-hidden="true"></li>
+      <li><a href="private-label.html">Private Label</a></li>
+      <li><a href="personalizzazione.html">Collaborazioni</a></li>
+    </ul>
+    <div class="mobile-menu-rule" aria-hidden="true"></div>
+    <address class="mobile-menu-contact">
+      <a href="tel:+39023543707">02.35.43.707</a>&ensp;·&ensp;<a href="mailto:info@cerariacicogna.com">info@cerariacicogna.com</a>
+    </address>
+  </div>
+
+  <main class="ab-wrap">
+
+    <header class="ab-head">
+      <span class="ab-eyebrow">Il tuo abbinamento</span>
+      <h1 class="ab-title" id="ab-title">Candela e profumo</h1>
+      <p class="ab-sub" id="ab-sub">Ecco la combinazione che hai scelto. La alleghiamo noi alla tua richiesta: non dovrai reinserirla.</p>
+    </header>
+
+    <div id="ab-content"></div>
+
+  </main>
+
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-row">
+          <img class="footer-stork" src="logo-stork.png" alt="" width="40" height="40" aria-hidden="true">
+          <span class="footer-wordmark">Cereria Cicogna</span>
+        </div>
+        <p class="footer-tagline">Dal sacro al quotidiano,<br>la stessa luce da generazioni.</p>
+      </div>
+      <div class="footer-col"><p class="footer-col-title">Linee</p><ul>
+        <li><a href="home-collection.html">Home Collection</a></li>
+        <li><a href="garden.html">Linea Garden</a></li>
+        <li><a href="liturgico.html">Articoli Liturgici</a></li>
+        <li class="mobile-menu-sep" aria-hidden="true"></li>
+      <li><a href="private-label.html">Private Label</a></li>
+      </ul></div>
+      <div class="footer-col"><p class="footer-col-title">Azienda</p><ul>
+        <li><a href="chi-siamo.html">Chi Siamo</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul></div>
+      <div class="footer-col"><p class="footer-col-title">Contatti</p>
+        <address>Via Damiano Chiesa, 84<br>20026 Novate Milanese (MI)<br><br>
+          <a href="tel:+39023543707">02.35.43.707</a><br>
+          <a href="mailto:info@cerariacicogna.com">info@cerariacicogna.com</a>
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2025 Industria Ceraria F.lli Cicogna srl</span>
+      <span class="footer-legal">P.IVA 11980500158 &nbsp;&middot;&nbsp; <a href="privacy.html">Privacy</a></span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="js/main.js?v=8"></script>
+  <script src="js/selection.js?v=7"></script>
+  <script>
+  (function () {
+    const box  = document.getElementById('ab-content');
+    const voci = window.CCSel ? CCSel.voci() : [];
+
+    if (!voci.length) {
+      document.getElementById('ab-title').textContent = 'Nessun prodotto selezionato';
+      document.getElementById('ab-sub').textContent   = 'Scegli una candela dalla Home Collection e, se vuoi, abbinale uno dei nostri profumi.';
+      box.innerHTML = '<div class="ab-empty">'
+        + '<p>Non hai ancora scelto nulla.</p>'
+        + '<a class="ab-btn" href="home-collection.html">Parti dalle candele \u2192</a>'
+        + '</div>';
+      return;
+    }
+
+    const esc = s => String(s).replace(/[&<>"]/g, c =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+    const card = (it, kind) => '<div class="ab-item">'
+      + '<div class="ab-item-media">' + (it.img ? `<img src="${esc(it.img)}" alt="${esc(it.name)}">` : '') + '</div>'
+      + '<div class="ab-item-body">'
+      +   `<span class="ab-item-kind">${kind}</span>`
+      +   `<h2 class="ab-item-name">${esc(it.name)}</h2>`
+      +   (it.ref ? `<span class="ab-item-ref">Rif. ${esc(it.ref)}</span>` : '')
+      + '</div></div>';
+
+    if (voci.length === 1 && voci[0].tipo === 'prodotto') {
+      document.getElementById('ab-title').textContent = 'Il prodotto che hai scelto';
+    } else if (voci.length > 1) {
+      document.getElementById('ab-title').textContent = 'Le tue scelte';
+      document.getElementById('ab-sub').textContent =
+        'Ecco tutto quello che hai selezionato. Lo alleghiamo noi alla tua richiesta: non dovrai reinserirlo.';
+    }
+
+    let html = voci.map(v => v.tipo === 'abbinamento'
+      ? '<div class="ab-pair">'
+        + card(v.candela, 'Candela')
+        + '<div class="ab-plus" aria-hidden="true">+</div>'
+        + card(v.profumo, 'Profumo')
+        + '</div>'
+      : '<div class="ab-pair" style="grid-template-columns:minmax(0,420px);justify-content:center">'
+        + card(v.prodotto, 'Prodotto')
+        + '</div>'
+    ).join('<div style="height:26px"></div>');
+
+    html += '<div class="ab-actions">'
+         +   '<a class="ab-btn" href="contatti.html">Parla con noi \u2192</a>'
+         +   '<p class="ab-note">La tua selezione viene allegata automaticamente al modulo di contatto.</p>'
+         +   '<a class="ab-alt" href="home-collection.html">Aggiungi altri prodotti</a>'
+         + '</div>';
+
+    box.innerHTML = html;
+  })();
+  </script>
+
+  <script src="js/i18n-pages.js?v=3"></script>
+  <script src="js/i18n.js?v=7"></script>
+  <script src="js/link-personale.js?v=6" defer></script>
+  <script src="assistant/widget/cc-assistant.js?v=12" data-endpoint="http://localhost:8787/api/chat" data-privacy="privacy.html" defer></script>
+</body>
+</html>

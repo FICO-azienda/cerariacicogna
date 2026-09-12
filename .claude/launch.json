@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "//": "Si aggancia al server gia' in ascolto sulla 8900 invece di avviarne un altro: quello manda Cache-Control: no-store, indispensabile qui perche' il browser continuava a servire versioni vecchie di CSS e JS. La 8899 e' di un'altra sessione e non va toccata.",
+      "name": "ceraria-cicogna",
+      "url": "http://localhost:8900",
+      "port": 8900
+    }
+  ]
+}

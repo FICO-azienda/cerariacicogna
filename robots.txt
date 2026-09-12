@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# file di lavoro, non pagine del sito
+Disallow: /_
+Disallow: /assistant/
+Disallow: /api/
+
+Sitemap: https://www.cerariacicogna.com/sitemap.xml

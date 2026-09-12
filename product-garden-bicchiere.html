@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candela in Bicchiere Garden — Cereria Cicogna</title>
+  <meta name="description" content="Candele profumate in bicchiere di vetro colorato. 10 colori, 3 misure. Cera vegetale, produzione artigianale italiana. Linea Garden Cereria Cicogna.">
+  <!-- anteprime social e indirizzo canonico -->
+  <link rel="canonical" href="https://www.cerariacicogna.com/product-garden-bicchiere.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cereria Cicogna">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:url" content="https://www.cerariacicogna.com/product-garden-bicchiere.html">
+  <meta property="og:title" content="Candela in Bicchiere Garden — Cereria Cicogna">
+  <meta property="og:description" content="Candele profumate in bicchiere di vetro colorato. 10 colori, 3 misure. Cera vegetale, produzione artigianale italiana. Linea Garden Cereria Cicogna.">
+  <meta property="og:image" content="https://www.cerariacicogna.com/images/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Candela in Bicchiere Garden — Cereria Cicogna">
+  <meta name="twitter:description" content="Candele profumate in bicchiere di vetro colorato. 10 colori, 3 misure. Cera vegetale, produzione artigianale italiana. Linea Garden Cereria Cicogna.">
+  <meta name="twitter:image" content="https://www.cerariacicogna.com/images/og-cover.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/main.css?v=13">
+  <style>
+    body { background: var(--c-bg-light); color: var(--c-text-dark); }
+
+    /* Light nav */
+    nav:not(.scrolled) .nav-logo { color: var(--c-text-dark); }
+    nav:not(.scrolled) .nav-logo span { color: var(--c-text-mid); }
+    nav:not(.scrolled) .nav-links > li > a { color: var(--c-text-mid); }
+    nav:not(.scrolled) .nav-cta { color: var(--c-text-dark); border-color: rgba(26,22,18,.25); }
+    nav:not(.scrolled) .hamburger-line { background: var(--c-text-dark); }
+    nav:not(.scrolled) .nav-stork path { fill: var(--c-text-dark) !important; }
+    nav:not(.scrolled) .nav-stork circle { stroke: var(--c-text-dark) !important; }
+    nav.scrolled { background: rgba(250,250,248,.95); }
+    nav.scrolled .nav-logo { color: var(--c-text-dark); }
+    nav.scrolled .nav-links > li > a { color: var(--c-text-mid); }
+    nav.scrolled .nav-cta { color: var(--c-text-dark); border-color: rgba(26,22,18,.25); }
+
+    /* ── PRODUCT LAYOUT ─────────────────────── */
+    .pd-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+      padding-top: 72px;
+    }
+
+    /* ── IMAGE (left, sticky) ───────────────── */
+    .pd-gallery {
+      position: sticky;
+      top: 72px;
+      height: calc(100vh - 72px);
+      background: var(--c-bg-cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .pd-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .pd-img-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity .55s cubic-bezier(.4,0,.2,1);
+    }
+    .pd-img-slide.active { opacity: 1; }
+    .pd-img-slide img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* ── INFO (right) ───────────────────────── */
+    .pd-info {
+      padding: 72px 64px 80px;
+      overflow-y: auto;
+    }
+    .pd-breadcrumb {
+      font-family: var(--ff-sans); font-size: .44rem; font-weight: 300;
+      letter-spacing: .26em; text-transform: uppercase;
+      color: var(--c-text-mid); margin-bottom: 28px;
+    }
+    .pd-breadcrumb a { color: inherit; text-decoration: none; }
+    .pd-breadcrumb a:hover { color: var(--c-text-dark); }
+    .pd-title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.8rem, 2.8vw, 3rem);
+      font-weight: 300; letter-spacing: .04em;
+      color: var(--c-text-dark); line-height: 1.1;
+      margin-bottom: 36px;
+    }
+
+    /* ── COLOR SELECTOR ─────────────────────── */
+    .pd-option-label {
+      font-family: var(--ff-sans); font-size: .44rem; font-weight: 400;
+      letter-spacing: .24em; text-transform: uppercase;
+      color: var(--c-text-mid); margin-bottom: 10px;
+    }
+    .pd-color-name {
+      font-family: var(--ff-sans); font-size: .48rem; font-weight: 500;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--c-text-dark); margin-bottom: 14px;
+    }
+    .pd-colors {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-bottom: 32px;
+    }
+    .pd-color-dot {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(26,22,18,.18);
+      cursor: pointer;
+      transition: box-shadow .2s, transform .15s;
+    }
+    .pd-color-dot:hover { transform: scale(1.1); }
+    .pd-color-dot.active {
+      box-shadow: 0 0 0 2.5px var(--c-bg-light), 0 0 0 4.5px rgba(26,22,18,.55);
+    }
+
+    /* ── SIZE SELECTOR ──────────────────────── */
+    .pd-sizes {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .pd-size-btn {
+      padding: 11px 22px;
+      border: 1px solid rgba(26,22,18,.22);
+      background: none;
+      font-family: var(--ff-sans); font-size: .48rem;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--c-text-dark); cursor: pointer;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .pd-size-btn:hover { border-color: var(--c-text-dark); }
+    .pd-size-btn.active { background: var(--c-text-dark); color: var(--c-bg-light); border-color: var(--c-text-dark); }
+
+    /* ── TABS ───────────────────────────────── */
+    .pd-tabs {
+      display: flex; border-bottom: 1px solid rgba(26,22,18,.1);
+      margin-bottom: 32px; gap: 0;
+    }
+    .pd-tab {
+      font-family: var(--ff-sans); font-size: .44rem; font-weight: 400;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--c-text-mid); background: none; border: none;
+      border-bottom: 2px solid transparent;
+      padding: 12px 20px 12px 0; margin-right: 20px;
+      cursor: pointer; transition: color .25s, border-color .25s;
+      white-space: nowrap;
+    }
+    .pd-tab.active { color: var(--c-text-dark); border-bottom-color: var(--c-text-dark); }
+    .pd-tab:hover { color: var(--c-text-dark); }
+    .pd-panel { display: none; }
+    .pd-panel.active { display: block; }
+
+    .pd-intro {
+      font-family: var(--ff-serif); font-size: 1rem;
+      line-height: 1.85; color: var(--c-text-mid);
+      margin-bottom: 28px; max-width: 520px;
+    }
+    .pd-rule { border: none; border-top: 1px solid rgba(26,22,18,.09); margin: 28px 0; }
+    .pd-cols {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 24px; margin-bottom: 36px;
+    }
+    .pd-col-title {
+      font-family: var(--ff-sans); font-size: .42rem; font-weight: 500;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--c-text-dark); margin-bottom: 10px;
+    }
+    .pd-col-body {
+      font-family: var(--ff-serif); font-size: .92rem;
+      line-height: 1.75; color: var(--c-text-mid);
+    }
+    .pd-col-body b {
+      font-family: var(--ff-sans); font-size: .42rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--c-text-dark); display: block;
+      margin-top: 8px; margin-bottom: 1px;
+    }
+    .pd-col-body b:first-child { margin-top: 0; }
+    .pd-badges {
+      display: flex; gap: 24px; flex-wrap: wrap;
+      margin-bottom: 40px; padding-top: 4px;
+    }
+    .pd-badge { display: flex; align-items: flex-start; gap: 14px; }
+    .pd-badge-icon {
+      width: 42px; height: 42px;
+      border: 1px solid rgba(26,22,18,.18); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: var(--c-text-mid);
+    }
+    .pd-badge-icon svg { width: 17px; height: 17px; }
+    .pd-badge-name {
+      font-family: var(--ff-sans); font-size: .44rem; font-weight: 500;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--c-text-dark); display: block; margin-bottom: 3px;
+    }
+    .pd-badge-desc { font-family: var(--ff-serif); font-size: .85rem; color: var(--c-text-mid); }
+    .pd-cta {
+      display: block; width: 100%;
+      font-family: var(--ff-sans); font-size: .52rem; font-weight: 300;
+      letter-spacing: .26em; text-transform: uppercase;
+      color: var(--c-text-dark); border: 1px solid rgba(26,22,18,.28);
+      padding: 18px 32px; text-align: center; text-decoration: none;
+      transition: background .35s, border-color .35s, color .35s;
+    }
+    .pd-cta:hover { background: var(--c-text-dark); color: var(--c-bg-light); border-color: var(--c-text-dark); }
+
+    /* ── RESPONSIVE ─────────────────────────── */
+    @media (max-width: 960px) {
+      .pd-section { grid-template-columns: 1fr; padding-top: 72px; }
+      .pd-gallery { position: relative; top: auto; height: 55vw; min-height: 300px; }
+      .pd-info { padding: 40px var(--gutter) 60px; }
+      .pd-cols { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .pd-gallery { height: 72vw; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="main-nav" role="navigation" aria-label="Navigazione principale">
+    <a href="index.html" class="nav-brand" aria-label="Cereria Cicogna — Homepage">
+      <img class="nav-stork" src="logo-stork.png" alt="Logo Cereria Cicogna" width="32" height="32" loading="eager">
+      <div class="nav-logo">Cereria Cicogna<span>Industria F.lli Cicogna · Novate Milanese</span></div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li class="nav-has-drop">
+        <a href="home-collection.html" aria-haspopup="true" aria-expanded="false">Home Collection</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Home Collection">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="home-collection.html" class="mega-feat-title">Home Collection</a>
+            <p class="mega-feat-desc">Candele profumate per arredare e impreziosire ogni ambiente della casa.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul>
+              <li><a href="home-collection.html?c=sand">Sand</a></li>
+              <li><a href="home-collection.html?c=rock">Rock</a></li>
+              <li><a href="home-collection.html?c=glass">Glass</a></li>
+              <li><a href="home-collection.html?c=metallic">Metallic</a></li>
+              <li><a href="home-collection.html?c=ceri">Ceri</a></li>
+            </ul>
+            <a href="home-collection.html" class="mega-all">Vedi tutti</a>
+          </div><div class="mega-img-col"><a href="home-collection.html"><img src="images/hero-home-collection.webp" alt="Home Collection — Cereria Cicogna"></a></div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="nav-has-drop">
+        <a href="garden.html" aria-current="page" aria-haspopup="true" aria-expanded="false">Garden</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Linea Garden">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="garden.html" class="mega-feat-title">Linea Garden</a>
+            <p class="mega-feat-desc">Candele per esterni e interni, pensate per ogni stagione all'aperto.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul>
+              <li><a href="garden.html?c=citronelle">Citronelle</a></li>
+              <li><a href="garden.html?c=cerabianca">Cera Bianca</a></li>
+              <li><a href="garden.html?c=ricariche">Ricariche</a></li>
+            </ul>
+            <a href="garden.html" class="mega-all">Vedi tutti</a>
+          </div><div class="mega-img-col"><a href="garden.html"><img src="images/hero-garden.webp" alt="Linea Garden — Cereria Cicogna"></a></div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="nav-has-drop">
+        <a href="liturgico.html" aria-haspopup="true" aria-expanded="false">Liturgico</a>
+        <div class="nav-drop nav-mega" role="region" aria-label="Articoli Liturgici">
+        <div class="mega-container">
+        <div class="mega-inner">
+          <div class="mega-feat-col">
+            <a href="liturgico.html" class="mega-feat-title">Articoli Liturgici</a>
+            <p class="mega-feat-desc">Ceri, lumini e arredi sacri per chiese, santuari e cerimonie religiose.</p>
+          </div>
+          <div class="mega-col">
+            <p class="mega-col-head">Prodotti</p>
+            <ul>
+              <li><a href="liturgico.html?c=lumini">Lumini da chiesa</a></li>
+              <li><a href="liturgico.html?c=accessori">Accessori</a></li>
+              <li><a href="liturgico.html?c=forniture">Forniture</a></li>
+            </ul>
+            <a href="liturgico.html" class="mega-all">Vedi tutti</a>
+          </div><div class="mega-img-col"><a href="liturgico.html"><img src="images/hero-liturgico.webp" alt="Articoli Liturgici — Cereria Cicogna"></a></div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="nav-sep" aria-hidden="true"></li>
+      <li>
+        <a href="private-label.html">Private Label</a>
+      </li>
+      <li><a href="fragrance-library.html">Fragrance Library</a></li><li><a href="personalizzazione.html">Collaborazioni</a></li>
+      <li><a href="chi-siamo.html">Chi Siamo</a></li>
+    </ul>
+    <a href="contatti.html" class="nav-cta">Contattaci</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Apri menu" aria-expanded="false">
+      <span class="hamburger-line"></span><span class="hamburger-line"></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true">
+    <ul class="mobile-menu-links" role="list">
+      <li class="mm-has-sub">
+        <div class="mm-top">
+          <a href="liturgico.html" class="mm-link">Liturgico</a>
+          <button class="mm-expand" aria-expanded="false" aria-label="Espandi Liturgico">+</button>
+        </div>
+        <ul class="mm-sub" hidden>
+          <li><a href="liturgico.html?c=lumini">Lumini da chiesa</a></li>
+          <li><a href="liturgico.html?c=accessori">Accessori</a></li>
+              <li><a href="liturgico.html?c=forniture">Forniture</a></li>
+        </ul>
+      </li>
+      <li class="mm-has-sub"><div class="mm-top"><a href="garden.html" class="mm-link">Garden</a><button class="mm-expand" aria-expanded="false" aria-label="Espandi Garden">+</button></div><ul class="mm-sub" hidden><li><a href="garden.html?c=citronelle">Citronelle</a></li><li><a href="garden.html?c=cerabianca">Cera Bianca</a></li><li><a href="garden.html?c=ricariche">Ricariche</a></li></ul></li>
+      <li class="mm-has-sub"><div class="mm-top"><a href="home-collection.html" class="mm-link">Home Collection</a><button class="mm-expand" aria-expanded="false" aria-label="Espandi Home Collection">+</button></div><ul class="mm-sub" hidden><li><a href="home-collection.html?c=sand">Sand</a></li><li><a href="home-collection.html?c=rock">Rock</a></li><li><a href="home-collection.html?c=glass">Glass</a></li><li><a href="home-collection.html?c=metallic">Metallic</a></li><li><a href="home-collection.html?c=ceri">Ceri</a></li></ul></li>
+      <li><a href="chi-siamo.html">Chi Siamo</a></li>
+      <li><a href="contatti.html">Contatti</a></li>
+      <li class="mobile-menu-sep" aria-hidden="true"></li>
+      <li><a href="private-label.html">Private Label</a></li>
+      <li><a href="fragrance-library.html">Fragrance Library</a></li><li><a href="personalizzazione.html">Collaborazioni</a></li>
+    </ul>
+    <div class="mobile-menu-rule" aria-hidden="true"></div>
+    <address class="mobile-menu-contact">
+      <a href="tel:+39023543707">02.35.43.707</a>&ensp;·&ensp;<a href="mailto:info@cerariacicogna.com">info@cerariacicogna.com</a>
+    </address>
+  </div>
+
+  <main class="pd-section">
+
+    <!-- ── LEFT: COLOR IMAGE ─────────────────── -->
+    <section class="pd-gallery" aria-label="Immagine colore selezionato">
+      <div class="pd-img-wrap" id="pd-img-wrap">
+        <!-- slides injected by JS -->
+      </div>
+    </section>
+
+    <!-- ── RIGHT: PRODUCT INFO ───────────────── -->
+    <div class="pd-info">
+      <p class="pd-breadcrumb">
+        <a href="index.html">Cereria Cicogna</a>&ensp;·&ensp;<a href="garden.html">Garden</a>
+      </p>
+
+      <h1 class="pd-title">Candela in Bicchiere<br>Garden</h1>
+
+      <!-- COLOR SELECTOR -->
+      <p class="pd-option-label">Colore</p>
+      <p class="pd-color-name" id="pd-color-name">Verde</p>
+      <div class="pd-colors" id="pd-colors"></div>
+
+      <!-- SIZE SELECTOR -->
+      <p class="pd-option-label">Misura</p>
+      <div class="pd-sizes">
+        <button class="pd-size-btn active" data-size="S">S · Piccolo</button>
+        <button class="pd-size-btn" data-size="M">M · Medio</button>
+        <button class="pd-size-btn" data-size="L">L · Grande</button>
+      </div>
+
+      <!-- TABS -->
+      <div class="pd-tabs" role="navigation" aria-label="Sezioni prodotto">
+        <button class="pd-tab active" data-panel="0">Dettagli</button>
+        <button class="pd-tab" data-panel="1">Caratteristiche</button>
+        <button class="pd-tab" data-panel="2">Come si usa</button>
+      </div>
+
+      <!-- PANEL: DETTAGLI -->
+      <div class="pd-panel active" id="panel-0">
+        <p class="pd-intro">Un bicchiere in vetro soffiato, un colore scelto, una fragranza naturale. Le candele in bicchiere della linea Garden nascono per abitare spazi aperti e chiusi con la stessa eleganza discreta. Cera vegetale di soia, stoppino in cotone, disponibile in dieci colori.</p>
+        <hr class="pd-rule">
+        <div class="pd-cols">
+          <div>
+            <p class="pd-col-title">Misure disponibili</p>
+            <p class="pd-col-body">
+              <b>S · Piccolo</b>Ø 7 cm · h 8 cm · 150 g
+              <b>M · Medio</b>Ø 9 cm · h 10 cm · 300 g
+              <b>L · Grande</b>Ø 11 cm · h 13 cm · 600 g
+            </p>
+          </div>
+          <div>
+            <p class="pd-col-title">Durata</p>
+            <p class="pd-col-body">
+              <b>S · Piccolo</b>25–35 ore
+              <b>M · Medio</b>50–65 ore
+              <b>L · Grande</b>100–120 ore
+            </p>
+          </div>
+        </div>
+        <div class="pd-badges">
+          <div class="pd-badge">
+            <div class="pd-badge-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/>
+                <line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+              </svg>
+            </div>
+            <div>
+              <span class="pd-badge-name">Cera vegetale</span>
+              <span class="pd-badge-desc">100% soia naturale</span>
+            </div>
+          </div>
+          <div class="pd-badge">
+            <div class="pd-badge-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+              </svg>
+            </div>
+            <div>
+              <span class="pd-badge-name">Made in Italy</span>
+              <span class="pd-badge-desc">Produzione Novate Milanese</span>
+            </div>
+          </div>
+          <div class="pd-badge">
+            <div class="pd-badge-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+              </svg>
+            </div>
+            <div>
+              <span class="pd-badge-name">10 colori</span>
+              <span class="pd-badge-desc">Scegli il tuo preferito</span>
+            </div>
+          </div>
+        </div>
+        <a href="contatti.html" class="pd-cta" id="pd-cta-0">Richiedi informazioni</a>
+      </div>
+
+      <!-- PANEL: CARATTERISTICHE -->
+      <div class="pd-panel" id="panel-1">
+        <p class="pd-intro">Ogni bicchiere è realizzato in vetro borosilicato colorato in massa. Il colore non è una vernice: è parte del vetro stesso, stabile alla luce e al calore.</p>
+        <p class="pd-col-body">
+          Cera di soia naturale 100% vegetale · Stoppino in cotone naturale · Fragranza di grado profumistico · Bicchiere in vetro colorato in massa · Privo di paraffina · Senza coloranti aggiunti nella cera · Formulazione vegana.<br><br>
+          Disponibile nei colori: Verde · Blu · Blu Grande · Avorio · Bianco · Giallo · Arancio · Marrone · Ambra · Champagne.
+        </p>
+        <a href="contatti.html" class="pd-cta" style="margin-top:40px">Richiedi informazioni</a>
+      </div>
+
+      <!-- PANEL: COME SI USA -->
+      <div class="pd-panel" id="panel-2">
+        <p class="pd-intro">Semplici accorgimenti per prolungare la vita della candela e ottenere una combustione pulita.</p>
+        <ul style="font-family:var(--ff-serif);font-size:.95rem;line-height:1.85;color:var(--c-text-mid);padding-left:22px;margin-bottom:0">
+          <li>Prima accensione: lasciare bruciare finché tutta la superficie si è sciolta uniformemente (2–3 ore).</li>
+          <li>Accorciare lo stoppino a circa 5 mm prima di ogni accensione.</li>
+          <li>Non bruciare per più di 4 ore consecutive.</li>
+          <li>Spegnere prima che la fiamma raggiunga il fondo (lasciare almeno 1 cm di cera).</li>
+          <li>Tenere lontano da correnti d'aria, bambini e animali.</li>
+          <li>Il bicchiere si scalda durante l'uso: maneggiare con attenzione.</li>
+        </ul>
+        <a href="contatti.html" class="pd-cta" style="margin-top:40px">Richiedi informazioni</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-row">
+          <img class="footer-stork" src="logo-stork.png" alt="" width="40" height="40" aria-hidden="true">
+          <span class="footer-wordmark">Cereria Cicogna</span>
+        </div>
+        <p class="footer-tagline">Dal sacro al quotidiano,<br>la stessa luce da generazioni.</p>
+      </div>
+      <div class="footer-col"><p class="footer-col-title">Linee</p><ul>
+        <li><a href="home-collection.html">Home Collection</a></li>
+        <li><a href="garden.html">Linea Garden</a></li>
+        <li><a href="liturgico.html">Articoli Liturgici</a></li>
+      </ul></div>
+      <div class="footer-col"><p class="footer-col-title">Azienda</p><ul>
+        <li><a href="chi-siamo.html">Chi Siamo</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul></div>
+      <div class="footer-col"><p class="footer-col-title">Contatti</p>
+        <address>Via Damiano Chiesa, 84<br>20026 Novate Milanese (MI)<br><br>
+          <a href="tel:+39023543707">02.35.43.707</a><br>
+          <a href="mailto:info@cerariacicogna.com">info@cerariacicogna.com</a>
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2025 Industria Ceraria F.lli Cicogna srl</span>
+      <span class="footer-legal">P.IVA 11980500158 &nbsp;&middot;&nbsp; <a href="privacy.html">Privacy</a></span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="js/main.js?v=8"></script>
+  <script src="js/selection.js?v=7"></script>
+  <script>
+    const COLORS = [
+      { key:'verde',     css:'#5c8030', label:'Verde',      img:'images/menu-garden.webp' },
+      { key:'blu',       css:'#1a3a6b', label:'Blu',        img:'images/garden-candle-2.webp' },
+      { key:'blu-l',     css:'#1a3a6b', label:'Blu Grande', img:'images/garden-candle-3.webp' },
+      { key:'avorio',    css:'#d4c4a0', label:'Avorio',     img:'images/garden-candle-4.webp' },
+      { key:'bianco',    css:'#f0eeea', label:'Bianco',     img:'images/garden-candle-5.webp' },
+      { key:'giallo',    css:'#c9a227', label:'Giallo',     img:'images/garden-candle-6.webp' },
+      { key:'arancio',   css:'#c87620', label:'Arancio',    img:'images/garden-candle-7.webp' },
+      { key:'marrone',   css:'#6b3a1f', label:'Marrone',    img:'images/garden-candle-8.webp' },
+      { key:'ambra',     css:'#c9960a', label:'Ambra',      img:'images/garden-candle-9.webp' },
+      { key:'champagne', css:'#e0c99a', label:'Champagne',  img:'images/garden-candle-10.webp' },
+    ];
+
+    const imgWrap   = document.getElementById('pd-img-wrap');
+    const colorWrap = document.getElementById('pd-colors');
+    const colorName = document.getElementById('pd-color-name');
+    const sizeBtns  = document.querySelectorAll('.pd-size-btn');
+
+    /* Build image slides */
+    COLORS.forEach((c, i) => {
+      const div = document.createElement('div');
+      div.className = 'pd-img-slide' + (i === 0 ? ' active' : '');
+      div.innerHTML = `<img src="${c.img}" alt="Candela ${c.label}" loading="${i === 0 ? 'eager' : 'lazy'}">`;
+      imgWrap.appendChild(div);
+    });
+    const slides = Array.from(imgWrap.querySelectorAll('.pd-img-slide'));
+
+    /* Read initial color from URL hash (#colore) */
+    const hashColor = location.hash.replace('#', '');
+    let initIdx = COLORS.findIndex(c => c.key === hashColor);
+    if (initIdx < 0) initIdx = 0;
+
+    /* Build color dots */
+    let activeDot = null;
+    COLORS.forEach((c, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'pd-color-dot' + (i === initIdx ? ' active' : '');
+      dot.style.cssText = `background:${c.css};` + (c.css === '#f0eeea' ? 'border-color:rgba(26,22,18,.35)' : '');
+      dot.title = c.label;
+      dot.setAttribute('aria-label', c.label);
+      dot.addEventListener('click', () => selectColor(i, dot, c));
+      colorWrap.appendChild(dot);
+      if (i === initIdx) activeDot = dot;
+    });
+    const dots = Array.from(colorWrap.querySelectorAll('.pd-color-dot'));
+
+    function selectColor(idx, dot, c) {
+      slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+      dots.forEach(d => d.classList.remove('active'));
+      dot.classList.add('active');
+      colorName.textContent = c.label;
+    }
+
+    /* Apply initial color */
+    selectColor(initIdx, dots[initIdx], COLORS[initIdx]);
+
+    /* Size buttons */
+    sizeBtns.forEach(btn => btn.addEventListener('click', () => {
+      sizeBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }));
+
+    /* Tabs */
+    const tabs   = document.querySelectorAll('.pd-tab');
+    const panels = document.querySelectorAll('.pd-panel');
+    tabs.forEach(tab => tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
+    }));
+  </script>
+  <script src="js/i18n-pages.js?v=3"></script>
+  <script src="js/i18n.js?v=7"></script>
+  <script src="js/link-personale.js?v=6" defer></script>
+  <script src="assistant/widget/cc-assistant.js?v=12" data-endpoint="http://localhost:8787/api/chat" data-privacy="privacy.html" defer></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "cereria-cicogna-assistente",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Assistente di catalogo per il sito Cereria Cicogna",
+  "scripts": {
+    "start": "node assistant/server.mjs",
+    "catalogo": "node assistant/scripts/build-catalog.mjs",
+    "widget": "node assistant/scripts/install-widget.mjs",
+    "clienti": "node assistant/scripts/link-cliente.mjs",
+    "percorso": "node assistant/scripts/genera-percorso.mjs",
+    "colori-liturgico": "python3 assistant/scripts/genera-colori-liturgico.py"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.70.0"
+  }
+}
