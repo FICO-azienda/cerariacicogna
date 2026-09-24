@@ -1,0 +1,34 @@
+# Trigger di riserva per il ciclo giornaliero dei promemoria di riacquisto.
+# Indipendente dall'hosting del sito e del backend: gira sui server di
+# GitHub Actions, quindi funziona anche se il processo Node del backend si
+# riavvia o non resta acceso per conto suo (vedi assistant/src/scheduler.mjs,
+# che fa la stessa cosa da dentro il processo quando resta attivo).
+#
+# Servono due secret del repository (Settings → Secrets and variables →
+# Actions):
+#   PROMEMORIA_ENDPOINT   URL completo, es. https://<backend>/api/cron/promemoria
+#   CRON_SECRET           lo stesso valore di CC_CRON_SECRET sul backend
+name: Promemoria di riacquisto
+
+on:
+  schedule:
+    # 06:00 UTC ogni giorno — circa le 7-8 del mattino in Italia, a seconda
+    # dell'ora legale. GitHub Actions non gestisce il cambio d'ora.
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  chiama-endpoint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Richiama il ciclo promemoria
+        run: |
+          if [ -z "${{ secrets.PROMEMORIA_ENDPOINT }}" ]; then
+            echo "Secret PROMEMORIA_ENDPOINT non impostato: nulla da chiamare."
+            exit 1
+          fi
+          risposta=$(curl -sS -o /tmp/risposta.json -w "%{http_code}" \
+            "${{ secrets.PROMEMORIA_ENDPOINT }}?secret=${{ secrets.CRON_SECRET }}")
+          echo "HTTP $risposta"
+          cat /tmp/risposta.json
+          if [ "$risposta" != "200" ]; then exit 1; fi

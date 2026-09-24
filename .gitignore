@@ -4,6 +4,8 @@ conversazioni.jsonl
 assistant/data/richieste.jsonl
 assistant/data/clienti.json
 assistant/data/chat.log
+assistant/data/riordini.json
+assistant/data/promemoria-eventi.jsonl
 
 # anteprime e prospetti di lavoro: non vanno pubblicati
 _*.html

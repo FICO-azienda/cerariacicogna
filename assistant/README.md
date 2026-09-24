@@ -201,12 +201,91 @@ mailto:; se fallisce solo la conferma, la richiesta e' comunque arrivata.
 
 ---
 
+## Ordini e clienti su Google Sheets
+
+Ogni richiesta che arriva dal modulo Contatti diventa una riga in un foglio
+Google — niente file locali, niente database da amministrare. Due schede nel
+foglio, "Ordini" e "Clienti", tenute da un Web App di Apps Script pubblicato
+dentro il foglio stesso (`google-apps-script/Codice.gs`).
+
+Il backend non parla mai direttamente con Google: passa sempre da
+`assistant/src/ordini/index.mjs`, l'unico punto che sa che il database di
+oggi e' un foglio. Tutto il resto (modulo contatti, motore promemoria,
+pagina di riordino, dashboard admin) chiama queste funzioni senza sapere
+cosa c'e' dietro — se un domani Sheets diventasse un database vero, si
+riscrive solo `assistant/src/ordini/sheets.mjs`.
+
+**Stati ordine**: elenco fisso in `assistant/data/stati-ordine.json`
+("nuovo", "confermato", "pagamento", "pagato", "preparazione",
+"produzione", "pronto", "spedito", "consegnato", "annullato"). Chi ha
+`inviaEmail:true` manda un'email al cliente quando lo staff cambia lo
+Stato nel foglio — non prima. Prezzo, metodo/stato pagamento e note
+restano campi che lo staff compila **a mano**: il sito non vende online
+e non ha un fornitore di pagamenti collegato, quindi nessuno di questi
+dati puo' popolarsi da solo.
+
+**Setup, in breve** (dettagli nella guida che ti ho dato in chat):
+1. Crea un foglio Google Sheets vuoto.
+2. Estensioni → Apps Script, incolla `google-apps-script/Codice.gs`.
+3. Proprieta' dello script: `SEGRETO` (una stringa a caso) e `BACKEND_URL`
+   (`https://tuobackend/api/ordine-stato-cambiato`).
+4. Esegui una volta `installaTrigger` dall'editor (autorizza l'accesso):
+   e' quello che permette al cambio di stato di avvisare il backend.
+5. Distribuisci → Nuova implementazione → App web → "Chiunque abbia il
+   link" → copia l'URL: e' `CC_SHEETS_URL`. `CC_SHEETS_SECRET` e' lo
+   stesso valore di `SEGRETO` al punto 3.
+
+## Promemoria di riacquisto
+
+Un ciclo giornaliero guarda gli ordini (ora su Google Sheets, vedi sopra) e,
+per chi non ha ancora riordinato gli stessi prodotti, manda un'email con un
+collegamento per riordinare in pochi clic — senza account. La logica e' in
+`assistant/src/motore-promemoria.mjs`, l'orchestrazione in `scheduler.mjs`.
+
+**Serve un processo che resti acceso** (o un trigger esterno che lo richiami):
+un sito solo statico su GitHub Pages non basta. Due modi, non alternativi — meglio
+tenerli entrambi attivi:
+
+1. se `assistant/server.mjs` resta in esecuzione (Railway, Render, una VPS), fa
+   partire da solo un giro al giorno (`scheduler.avviaScheduler()`, stesso schema
+   di `pulizia.mjs`);
+2. `.github/workflows/promemoria.yml` chiama una volta al giorno l'endpoint
+   `/api/cron/promemoria?secret=…` da GitHub Actions — funziona anche se il
+   processo si riavvia o resta spento. Servono due secret del repository:
+   `PROMEMORIA_ENDPOINT` (l'URL completo dell'endpoint) e `CRON_SECRET` (uguale
+   a `CC_CRON_SECRET` sul server).
+
+**Prima di attivarlo**, oltre a `CC_RESEND_KEY`/`CC_MITTENTE` (gia' visti sopra),
+servono in `.env`: `CC_TOKEN_SECRET` (firma le sessioni del pannello admin),
+`CC_ADMIN_PASSWORD` (accesso a `/admin.html`) e `CC_CRON_SECRET` (protegge il
+trigger esterno) — vedi `.env.example`.
+
+**Pannello admin** (`/admin.html`, non indicizzato): regole di riacquisto per
+categoria (giorni, secondo promemoria, tetto, stagionalita', esclusioni) e una
+dashboard con inviati/aperti/cliccati/ordini generati e la tabella clienti.
+Nessun prezzo ne' fatturato: il sito non vende online e non ha un listino, quindi
+la conversione si misura in richieste generate, non in euro.
+
+**Prova rapida**: `npm run promemoria` esegue un ciclo a mano e stampa l'esito,
+senza aspettare il timer ne' il trigger esterno.
+
+---
+
 ## Deploy
 
-**Consiglio: Vercel.** Il sito è statico e ci sta già bene; `api/chat.js` diventa
-una funzione serverless senza configurazione, e il piano gratuito basta per il
-traffico di un sito vetrina. In alternativa Railway o una VPS, dove gira
-`server.mjs` come processo normale — ha senso se preferisci un server tuo.
+**Le pagine del sito** restano dove sono oggi (GitHub Pages secondo `privacy.html`,
+o l'hosting scelto). **Il backend** (`api/*`, l'assistente, il modulo contatti e i
+promemoria) e' un processo separato, e deve restare cosi': un hosting solo statico
+non puo' far girare ne' `api/chat.js` ne' lo scheduler dei promemoria.
+
+**Consiglio: Railway o Render (piano gratuito), oppure una VPS**, dove gira
+`server.mjs` come processo normale — la scelta piu' semplice se si vuole anche il
+timer interno dei promemoria oltre al trigger esterno di GitHub Actions.
+In alternativa Vercel: `api/chat.js` diventa una funzione serverless senza
+configurazione. Il vecchio problema del disco che non persiste su Vercel non
+riguarda piu' ordini e clienti (ora su Google Sheets, vedi sopra); riguarda
+ancora `assistant/data/riordini.json` (i token di riordino) e il registro
+conversazioni: su Vercel quei due restano piu' fragili, su Railway/Render/VPS no.
 
 Su Vercel:
 

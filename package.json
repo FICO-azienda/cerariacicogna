@@ -10,7 +10,9 @@
     "widget": "node assistant/scripts/install-widget.mjs",
     "clienti": "node assistant/scripts/link-cliente.mjs",
     "percorso": "node assistant/scripts/genera-percorso.mjs",
-    "colori-liturgico": "python3 assistant/scripts/genera-colori-liturgico.py"
+    "promemoria": "node assistant/scripts/esegui-promemoria.mjs",
+    "colori-liturgico": "python3 assistant/scripts/genera-colori-liturgico.py",
+    "test": "node --test \"tests/*.test.mjs\""
   },
   "engines": {
     "node": ">=20"

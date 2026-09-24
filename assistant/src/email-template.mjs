@@ -130,6 +130,33 @@ const L = {
     perAggiungere: 'Per aggiungere qualcosa scrivici a',
     oChiamaci: 'o chiamaci allo',
     linee: ['Home Collection', 'Garden', 'Liturgico'],
+    /* ── promemoria di riacquisto ── */
+    promemoriaOcchiello: 'Promemoria',
+    promemoriaOggetto: 'È il momento di fare rifornimento?',
+    promemoriaSaluto: nome => 'Ciao' + (nome ? ', ' + nome : ''),
+    promemoriaTesto: 'Qualche tempo fa hai richiesto questi prodotti a Cereria Cicogna. '
+      + 'Se ne hai bisogno, puoi riordinarli in pochi clic, con le stesse quantità di prima.',
+    promemoriaTestoRicorrente: 'È di nuovo il momento del tuo rifornimento abituale. '
+      + 'Un clic e ritrovi lo stesso ordine di sempre, pronto da confermare.',
+    riordinaCta: 'Riordina',
+    ripetiCta: 'Ripeti il tuo ultimo ordine',
+    promemoriaFooterNota: 'Ti scriviamo perché in passato ci hai contattato per questi prodotti. '
+      + 'Puoi smettere di ricevere questo tipo di promemoria in qualsiasi momento, senza che questo riguardi altre comunicazioni.',
+    disiscriviti: 'Non voglio più ricevere questi promemoria',
+    /* ── cambio stato ordine ── */
+    ordineOcchiello: n => 'Ordine ' + n,
+    statoTesto: {
+      confermato: 'Abbiamo ricevuto e confermato il tuo ordine.',
+      preparazione: 'Il tuo ordine è attualmente in preparazione.',
+      spedito: 'Il tuo ordine è stato spedito.',
+      annullato: 'Il tuo ordine è stato annullato. Se pensi sia un errore, scrivici pure.',
+    },
+    statoTitolo: {
+      confermato: 'Ordine confermato',
+      preparazione: 'In preparazione',
+      spedito: 'Spedito',
+      annullato: 'Ordine annullato',
+    },
   },
   en: {
     htmlLang: 'en',
@@ -159,9 +186,38 @@ const L = {
     perAggiungere: 'To add anything, write to us at',
     oChiamaci: 'or call us on',
     linee: ['Home Collection', 'Garden', 'Liturgical'],
+    /* ── reorder reminder ── */
+    promemoriaOcchiello: 'Reminder',
+    promemoriaOggetto: 'Time to restock?',
+    promemoriaSaluto: nome => 'Hi' + (nome ? ', ' + nome : ''),
+    promemoriaTesto: 'A while ago you requested these products from Cereria Cicogna. '
+      + 'If you need them again, you can reorder in a few clicks, with the same quantities as before.',
+    promemoriaTestoRicorrente: 'It is time again for your usual restock. '
+      + 'One click and you will find the same order as always, ready to confirm.',
+    riordinaCta: 'Reorder',
+    ripetiCta: 'Repeat your last order',
+    promemoriaFooterNota: 'We are writing because you previously contacted us about these products. '
+      + 'You can stop receiving this kind of reminder at any time, without affecting any other communication.',
+    disiscriviti: 'I no longer want these reminders',
+    /* ── order status change ── */
+    ordineOcchiello: n => 'Order ' + n,
+    statoTesto: {
+      confermato: 'We have received and confirmed your order.',
+      preparazione: 'Your order is currently being prepared.',
+      spedito: 'Your order has been shipped.',
+      annullato: 'Your order has been cancelled. If you think this is a mistake, please get in touch.',
+    },
+    statoTitolo: {
+      confermato: 'Order confirmed',
+      preparazione: 'Being prepared',
+      spedito: 'Shipped',
+      annullato: 'Order cancelled',
+    },
   },
 };
 export const lingua = v => (String(v || '').toLowerCase() === 'en' ? 'en' : 'it');
+export const oggettoPromemoria = v => L[lingua(v)].promemoriaOggetto;
+export const oggettoStatoOrdine = (v, stato, idOrdine) => (L[lingua(v)].statoTitolo[stato] || stato) + ' — ' + idOrdine;
 
 /* ── mattoni ──────────────────────────────────────────────── */
 const paragrafo = (t, extra = '') =>
@@ -436,4 +492,114 @@ export function htmlRichiesta(d) {
 
   return scheletro({ preheader: `Richiesta da ${d.nome || 'sito'}${d.azienda ? ' · ' + d.azienda : ''}`
     + (lingua(d.lingua) === 'en' ? ' · in inglese' : ''), contenuto });
+}
+
+/* ── 3. promemoria di riacquisto ─────────────────────────────
+   d = { nome, lingua, articoli:[{nome,img,imgProfumo,url,categoria,quantita,oltre}],
+         linkRiordino, linkDisiscrizione, ricorrente }
+   "ricorrente" viene dal rilevamento pattern B2B (archivio.rilevaPatternB2B):
+   cambia solo il testo e il pulsante, mai la logica di invio. */
+function bloccoRiordino(link, ricorrente, d = L.it) {
+  return `
+      <tr><td align="center" style="padding:34px 26px 8px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center">
+          <tr><td style="background:${C.scuro};">
+            <a href="${esc(link)}" style="display:inline-block;color:#ffffff;
+               font-family:${SANS};font-size:11px;letter-spacing:2.5px;text-transform:uppercase;
+               padding:16px 42px;text-decoration:none;">${esc(ricorrente ? d.ripetiCta : d.riordinaCta)}</a>
+          </td></tr>
+        </table>
+      </td></tr>`;
+}
+
+export function htmlPromemoria(d) {
+  const t = L[lingua(d.lingua)];
+  const nome = (d.nome || '').trim();
+  const contenuto = `
+      <tr><td align="center" style="padding:0 26px 6px;">
+        ${etichetta(t.promemoriaOcchiello, 'center')}
+        <p style="margin:0 0 20px;font-family:${SERIF};font-size:28px;line-height:1.3;color:${C.scuro};">
+          ${esc(t.promemoriaSaluto(nome))}
+        </p>
+        <p style="margin:0 auto 16px;max-width:420px;font-family:${SERIF};font-size:16px;line-height:1.8;color:${C.testo};">
+          ${d.ricorrente ? t.promemoriaTestoRicorrente : t.promemoriaTesto}
+        </p>
+      </td></tr>
+
+      ${filo(34)}
+
+      ${schedeArticoli(d.articoli, t)}
+
+      ${bloccoRiordino(d.linkRiordino, d.ricorrente, t)}
+
+      <tr><td align="center" style="padding:26px 26px 38px;">
+        <p style="margin:0 0 10px;font-family:${SERIF};font-size:13px;line-height:1.8;color:${C.tenue};">
+          ${t.promemoriaFooterNota}
+        </p>
+        <a href="${esc(d.linkDisiscrizione)}" style="font-family:${SANS};font-size:10px;letter-spacing:1.2px;
+           text-transform:uppercase;color:${C.tenue};text-decoration:underline;">${esc(t.disiscriviti)}</a>
+      </td></tr>
+      ${d.linkApertura ? `<tr><td style="line-height:0;font-size:0;">
+        <img src="${esc(urlAssoluto(d.linkApertura))}" width="1" height="1" alt="" style="display:block;border:0;">
+      </td></tr>` : ''}`;
+
+  return scheletro({ preheader: t.promemoriaOggetto, contenuto, d: t });
+}
+
+/* ── 4. cambio stato ordine ───────────────────────────────────
+   d = { nome, idOrdine, stato, articoli, lingua }. "stato" e' uno dei
+   codici con inviaEmail:true in assistant/data/stati-ordine.json —
+   chi chiama (ordini/stato-endpoint.mjs) ha gia' controllato che
+   esista un testo per quello stato prima di arrivare qui. */
+export function htmlStatoOrdine(d) {
+  const t = L[lingua(d.lingua)];
+  const nome = (d.nome || '').trim();
+  const contenuto = `
+      <tr><td align="center" style="padding:0 26px 6px;">
+        ${etichetta(t.ordineOcchiello(d.idOrdine), 'center')}
+        <p style="margin:0 0 20px;font-family:${SERIF};font-size:28px;line-height:1.3;color:${C.scuro};">
+          ${esc(t.statoTitolo[d.stato] || '')}
+        </p>
+        <p style="margin:0 auto 16px;max-width:420px;font-family:${SERIF};font-size:16px;line-height:1.8;color:${C.testo};">
+          ${esc((nome ? t.grazie(nome) + '. ' : '') + (t.statoTesto[d.stato] || ''))}
+        </p>
+      </td></tr>
+
+      ${filo(34)}
+
+      ${schedeArticoli(d.articoli, t)}`;
+
+  return scheletro({ preheader: t.statoTitolo[d.stato] || '', contenuto, d: t });
+}
+
+export function testoStatoOrdine(d) {
+  const t = L[lingua(d.lingua)];
+  const righe = [t.ordineOcchiello(d.idOrdine), '', t.statoTesto[d.stato] || ''];
+  if (d.articoli && d.articoli.length) {
+    righe.push('', '──────────', t.articoli.toUpperCase());
+    d.articoli.forEach((a, i) => righe.push('  ' + (i + 1) + '. ' + a.nome + (a.quantita ? ' — ' + a.quantita + ' ' + t.pezzi : '')));
+  }
+  righe.push('', '— — —', config.nomeAzienda, config.indirizzoAzienda, config.dominioSito);
+  return righe.join('\n');
+}
+
+/* versione testo semplice, per il client "text" accanto all'html — stesso
+   contenuto delle altre due email, stesso motivo (client senza html,
+   filtri antispam che penalizzano un'email senza parte testuale). */
+export function testoPromemoria(d) {
+  const t = L[lingua(d.lingua)];
+  const righe = [
+    t.promemoriaSaluto((d.nome || '').trim()),
+    '',
+    d.ricorrente ? t.promemoriaTestoRicorrente : t.promemoriaTesto,
+  ];
+  if (d.articoli && d.articoli.length) {
+    righe.push('', '──────────', t.articoli.toUpperCase());
+    d.articoli.forEach((a, i) => righe.push('  ' + (i + 1) + '. ' + a.nome + (a.quantita ? ' — ' + a.quantita + ' ' + t.pezzi : '')));
+  }
+  righe.push('', (d.ricorrente ? t.ripetiCta : t.riordinaCta) + ': ' + d.linkRiordino);
+  righe.push('', t.promemoriaFooterNota);
+  righe.push(t.disiscriviti + ': ' + d.linkDisiscrizione);
+  righe.push('', '— — —', config.nomeAzienda, config.indirizzoAzienda, config.dominioSito);
+  return righe.join('\n');
 }

@@ -18,9 +18,12 @@
      pagine portano un data-endpoint con l'indirizzo locale. In produzione
      stanno sulla stessa origine e quell'attributo va IGNORATO: se restasse
      buono, il sito pubblicato chiederebbe le risposte al computer di chi
-     lo sta guardando, e l'assistente sarebbe morto per tutti. */
+     lo sta guardando, e l'assistente sarebbe morto per tutti.
+     Se sito e backend sono su domini DIVERSI in produzione (vedi
+     js/cc-api.js), l'indirizzo da usare e' quello, non uno relativo. */
   var inLocale = /^(localhost|127\.|0\.0\.0\.0|\[::1\])/.test(location.hostname);
-  var ENDPOINT = (inLocale && script && script.dataset.endpoint) || '/api/chat';
+  var ENDPOINT = (inLocale && script && script.dataset.endpoint)
+    || (window.CC_API ? window.CC_API + '/api/chat' : '/api/chat');
   /* L'albero delle domande sta accanto a questo file: il widget lo legge
      da fermo, senza passare dal server e senza costare nulla. */
   var PERCORSO_URL = (script && script.dataset.percorso)

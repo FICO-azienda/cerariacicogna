@@ -7,44 +7,18 @@
    inesistente sia scaduto, revocato o mai esistito — una risposta
    diversa per ogni caso sarebbe un modo per esplorare il registro.
    ══════════════════════════════════════════════════════════════ */
-import { trovaPerCodice, versionePubblica } from './clienti.mjs';
+import { trovaPerCodice, versionePubblica } from './ordini/index.mjs';
 import { registra } from './log.mjs';
-import { config } from './config.mjs';
+import { creaLimitatore } from './tentativi.mjs';
+import { cors } from './cors.mjs';
 
-const ORA = 60 * 60 * 1000;
-const tentativi = new Map();
+/* Chi cerca di indovinare sbaglia sempre, quindi si blocca lo stesso; un
+   cliente vero che apre il suo link dieci volte in un pomeriggio non si
+   trova la porta chiusa in faccia — e nemmeno i suoi colleghi, che escono
+   tutti dallo stesso IP aziendale. */
+const { bloccato, segnaBuco } = creaLimitatore();
 
-/* Conto solo i tentativi ANDATI A VUOTO. Chi cerca di indovinare sbaglia
-   sempre, quindi si blocca lo stesso; un cliente vero che apre il suo link
-   dieci volte in un pomeriggio non si trova la porta chiusa in faccia —
-   e nemmeno i suoi colleghi, che escono tutti dallo stesso IP aziendale. */
-function bloccato(ip) {
-  const ora = Date.now();
-  const arr = (tentativi.get(ip) || []).filter(t => ora - t < ORA);
-  tentativi.set(ip, arr);
-  if (tentativi.size > 5000) tentativi.clear();
-  return arr.length >= 20;
-}
-
-function segnaBuco(ip) {
-  const arr = tentativi.get(ip) || [];
-  arr.push(Date.now());
-  tentativi.set(ip, arr);
-}
-
-/* In produzione sito e API stanno sulla stessa origine e questo non
-   servirebbe; in locale il sito e' su una porta e il server su un'altra. */
-function cors(req, res) {
-  const origine = req.headers.origin;
-  const lista = config.originiAmmesse;
-  if (!lista.length) res.setHeader('Access-Control-Allow-Origin', '*');
-  else if (origine && lista.includes(origine)) res.setHeader('Access-Control-Allow-Origin', origine);
-  res.setHeader('Vary', 'Origin');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
-}
-
-export function gestisciCliente(req, res, codice, ip) {
+export async function gestisciCliente(req, res, codice, ip) {
   cors(req, res);
   if (req.method === 'OPTIONS') { res.statusCode = 204; return res.end(); }
 
@@ -61,7 +35,7 @@ export function gestisciCliente(req, res, codice, ip) {
     return invia(429, { ok: false });
   }
 
-  const cliente = trovaPerCodice(codice);
+  const cliente = await trovaPerCodice(codice);
   if (!cliente) { segnaBuco(ip); return invia(404, { ok: false }); }
 
   registra({ ip, evento: 'link-personale', cliente: cliente.nome || cliente.azienda || '' });

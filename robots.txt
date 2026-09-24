@@ -5,5 +5,7 @@ Allow: /
 Disallow: /_
 Disallow: /assistant/
 Disallow: /api/
+Disallow: /admin.html
+Disallow: /riordino.html
 
 Sitemap: https://www.cerariacicogna.com/sitemap.xml

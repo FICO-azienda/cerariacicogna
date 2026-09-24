@@ -54,17 +54,9 @@
   };
   var t = function () { return T[lang()]; };
 
-  /* ── dove vive l'API ──
-     In sviluppo l'API sta su un'altra porta, e l'indirizzo e' scritto
-     sul tag del widget. Online no: quell'indirizzo e' "localhost", cioe'
-     il computer di chi guarda il sito, e la richiesta non arriverebbe
-     da nessuna parte — il link personale risulterebbe sempre scaduto.
-     Fuori dallo sviluppo si usa sempre la propria origine. */
+  /* ── dove vive l'API: vedi js/cc-api.js ── */
   function endpoint() {
-    var inLocale = /^(localhost|127\.|0\.0\.0\.0|\[::1\])/.test(location.hostname);
-    var s = document.querySelector('script[src*="cc-assistant.js"]');
-    var e = inLocale && s && s.dataset.endpoint;
-    return e ? e.replace(/\/api\/chat\/?$/, '/api/cliente') : '/api/cliente';
+    return (window.CC_API || '') + '/api/cliente';
   }
 
   function noindex() {

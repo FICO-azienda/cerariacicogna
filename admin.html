@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pannello riacquisto — Cereria Cicogna</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="css/main.css?v=13">
+  <script src="js/cc-api.js"></script>
+  <style>
+    body { background: #FAFAF8; }
+    .ad-shell { max-width: 1080px; margin: 0 auto; padding: 48px 20px 100px; }
+    .ad-login { max-width: 340px; margin: 140px auto; text-align: center; }
+    .ad-login input { width: 100%; box-sizing: border-box; padding: 12px 14px; font-family: var(--ff-serif); font-size: 1rem; border: 1px solid rgba(26,22,16,.25); margin-bottom: 14px; }
+    .ad-login button, .ad-btn { background: var(--c-dark); color: #fff; font-family: var(--ff-sans); font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; padding: 12px 26px; border: 0; cursor: pointer; }
+    .ad-login button:hover, .ad-btn:hover { background: #2C2416; }
+    .ad-errore { color: #a4401f; font-family: var(--ff-sans); font-size: .7rem; margin-bottom: 10px; }
+    .ad-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 34px; }
+    .ad-title { font-family: var(--ff-display); font-weight: 300; font-size: 1.7rem; color: var(--c-text-dark, #1a1610); }
+    .ad-logout { font-family: var(--ff-sans); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--c-text-mid, #6b6355); text-decoration: underline; background: none; border: 0; cursor: pointer; }
+    .ad-sezione { margin-bottom: 56px; }
+    .ad-sezione h2 { font-family: var(--ff-display); font-weight: 300; font-size: 1.2rem; margin-bottom: 18px; color: var(--c-text-dark, #1a1610); }
+    .ad-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; }
+    .ad-card { background: #fff; border: 1px solid rgba(26,22,16,.1); padding: 16px 18px; }
+    .ad-card .n { font-family: var(--ff-display); font-size: 1.7rem; font-weight: 300; color: var(--c-text-dark, #1a1610); }
+    .ad-card .l { font-family: var(--ff-sans); font-size: .52rem; letter-spacing: .1em; text-transform: uppercase; color: var(--c-text-mid, #6b6355); margin-top: 4px; }
+    .ad-nota-debole { font-size: .5rem; color: #a4401f; }
+    .ad-regola { background: #fff; border: 1px solid rgba(26,22,16,.1); padding: 18px 20px; margin-bottom: 14px; }
+    .ad-regola-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .ad-regola-head strong { font-family: var(--ff-serif); font-size: 1.05rem; }
+    .ad-campi { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+    .ad-campo label { display: block; font-family: var(--ff-sans); font-size: .5rem; letter-spacing: .08em; text-transform: uppercase; color: var(--c-text-mid, #6b6355); margin-bottom: 4px; }
+    .ad-campo input[type=text], .ad-campo input[type=number] { width: 100%; box-sizing: border-box; padding: 7px 9px; font-family: var(--ff-sans); font-size: .8rem; border: 1px solid rgba(26,22,16,.2); }
+    .ad-campo input[type=checkbox] { transform: scale(1.2); }
+    .ad-salva-riga { margin-top: 12px; text-align: right; }
+    .ad-ok { color: #2f6b3a; font-family: var(--ff-sans); font-size: .6rem; margin-right: 10px; }
+    table.ad-tabella { width: 100%; border-collapse: collapse; font-family: var(--ff-sans); font-size: .74rem; background: #fff; }
+    table.ad-tabella th, table.ad-tabella td { text-align: left; padding: 9px 10px; border-bottom: 1px solid rgba(26,22,16,.08); }
+    table.ad-tabella th { font-size: .5rem; letter-spacing: .08em; text-transform: uppercase; color: var(--c-text-mid, #6b6355); }
+    .stato-attivo { color: #2f6b3a; }
+    .stato-disiscritto, .stato-scaduto { color: #a4401f; }
+    .ad-filtri { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; align-items: flex-end; }
+    .ad-filtro label { display: block; font-family: var(--ff-sans); font-size: .48rem; letter-spacing: .08em; text-transform: uppercase; color: var(--c-text-mid, #6b6355); margin-bottom: 4px; }
+    .ad-filtro input, .ad-filtro select { padding: 7px 9px; font-family: var(--ff-sans); font-size: .74rem; border: 1px solid rgba(26,22,16,.2); }
+    .ad-filtro-reset { font-family: var(--ff-sans); font-size: .6rem; text-decoration: underline; color: var(--c-text-mid, #6b6355); background: none; border: 0; cursor: pointer; padding: 8px 0; }
+    .ad-card.avviso .n { color: #a4401f; }
+  </style>
+</head>
+<body class="light-page">
+  <div class="ad-shell">
+    <div id="ad-login" class="ad-login">
+      <p class="ad-title" style="margin-bottom:24px;">Pannello riacquisto</p>
+      <p id="ad-login-errore" class="ad-errore" hidden>Password non corretta.</p>
+      <input type="password" id="ad-password" placeholder="Password">
+      <button type="button" id="ad-entra">Entra</button>
+    </div>
+
+    <div id="ad-app" hidden>
+      <div class="ad-header">
+        <p class="ad-title">Automazioni riacquisto</p>
+        <button type="button" class="ad-logout" id="ad-esci">Esci</button>
+      </div>
+
+      <section class="ad-sezione">
+        <h2>Ordini</h2>
+        <div class="ad-filtri">
+          <div class="ad-filtro"><label>Dal</label><input type="date" id="f-da"></div>
+          <div class="ad-filtro"><label>Al</label><input type="date" id="f-a"></div>
+          <div class="ad-filtro"><label>Cliente</label><input type="text" id="f-cliente" placeholder="nome o email"></div>
+          <div class="ad-filtro"><label>Tipo</label><select id="f-tipo"><option value="">Tutti</option><option value="B2C">B2C</option><option value="B2B">B2B</option></select></div>
+          <div class="ad-filtro"><label>Stato</label><select id="f-stato"><option value="">Tutti</option></select></div>
+          <div class="ad-filtro"><label>Categoria</label><select id="f-categoria"><option value="">Tutte</option><option value="liturgico">Liturgico</option><option value="garden">Garden</option><option value="home-collection">Home Collection</option><option value="private-label">Private Label</option></select></div>
+          <button type="button" class="ad-filtro-reset" id="f-reset">Azzera filtri</button>
+        </div>
+        <div class="ad-cards" id="ad-metriche-ordini"></div>
+      </section>
+
+      <section class="ad-sezione">
+        <h2>Promemoria di riacquisto</h2>
+        <div class="ad-cards" id="ad-metriche"></div>
+      </section>
+
+      <section class="ad-sezione">
+        <h2>Regole per categoria</h2>
+        <div id="ad-regole"></div>
+      </section>
+
+      <section class="ad-sezione">
+        <h2>Clienti B2B principali</h2>
+        <div id="ad-b2b"></div>
+      </section>
+
+      <section class="ad-sezione">
+        <h2>Prodotti più ordinati</h2>
+        <div id="ad-prodotti"></div>
+      </section>
+
+      <section class="ad-sezione">
+        <h2>Clienti da ricontattare ora</h2>
+        <div id="ad-ricontattare"></div>
+      </section>
+
+      <section class="ad-sezione">
+        <h2>Clienti</h2>
+        <div style="overflow-x:auto;">
+          <table class="ad-tabella">
+            <thead><tr>
+              <th>Cliente</th><th>Ultimo ordine</th><th>Categoria</th><th>Ultimo acquisto</th>
+              <th>Prossimo reminder</th><th>Frequenza media</th><th>Stato</th>
+            </tr></thead>
+            <tbody id="ad-clienti"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="ad-sezione">
+        <h2>Clienti più frequenti</h2>
+        <div id="ad-top"></div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+      var BASE = window.CC_API || '';
+      var TOKEN_KEY = 'cc-admin-token';
+
+      var elLogin = document.getElementById('ad-login');
+      var elApp = document.getElementById('ad-app');
+
+      function token() { try { return sessionStorage.getItem(TOKEN_KEY) || ''; } catch (e) { return ''; } }
+      function salvaToken(t) { try { sessionStorage.setItem(TOKEN_KEY, t); } catch (e) {} }
+      function pulisciToken() { try { sessionStorage.removeItem(TOKEN_KEY); } catch (e) {} }
+
+      function chiamata(percorso, opzioni) {
+        opzioni = opzioni || {};
+        opzioni.headers = Object.assign({ 'Authorization': 'Bearer ' + token() }, opzioni.headers || {});
+        return fetch(BASE + percorso, opzioni).then(function (r) {
+          if (r.status === 401) { mostraLogin(); throw new Error('sessione scaduta'); }
+          return r.json();
+        });
+      }
+
+      function mostraLogin() { elLogin.hidden = false; elApp.hidden = true; }
+      function mostraApp() { elLogin.hidden = true; elApp.hidden = false; caricaTutto(); }
+
+      document.getElementById('ad-entra').addEventListener('click', function () {
+        var pw = document.getElementById('ad-password').value;
+        fetch(BASE + '/api/admin/login', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: pw }),
+        }).then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+          .then(function (res) {
+            if (!res.ok || !res.d.ok) { document.getElementById('ad-login-errore').hidden = false; return; }
+            salvaToken(res.d.token);
+            mostraApp();
+          }).catch(function () { document.getElementById('ad-login-errore').hidden = false; });
+      });
+      document.getElementById('ad-password').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') document.getElementById('ad-entra').click();
+      });
+      document.getElementById('ad-esci').addEventListener('click', function () { pulisciToken(); mostraLogin(); });
+
+      var esc = function (s) {
+        return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+        });
+      };
+      var dataBreve = function (iso) {
+        if (!iso) return '—';
+        return new Date(iso).toLocaleDateString('it-IT', { day: 'numeric', month: 'short', year: 'numeric' });
+      };
+
+      function euro(n) { return '€ ' + (Number(n) || 0).toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+
+      function queryFiltri() {
+        var periodo = '';
+        var da = document.getElementById('f-da').value, a = document.getElementById('f-a').value;
+        if (da || a) periodo = 'periodo=' + encodeURIComponent(da) + '..' + encodeURIComponent(a);
+        var parti = [periodo].filter(Boolean);
+        ['cliente', 'tipo', 'stato', 'categoria'].forEach(function (k) {
+          var v = document.getElementById('f-' + k).value;
+          if (v) parti.push(k + '=' + encodeURIComponent(v));
+        });
+        return parti.length ? '?' + parti.join('&') : '';
+      }
+
+      function caricaMetriche() {
+        return chiamata('/api/admin/dashboard' + queryFiltri()).then(function (d) {
+          var m = d.metriche;
+
+          var cardsOrdini = [
+            ['Ordini di oggi', m.ordiniOggi], ['Aperti', m.ordiniAperti], ['In preparazione', m.ordiniInPreparazione],
+            ['Da spedire', m.ordiniDaSpedire], ['Spediti', m.ordiniSpediti],
+            ['Pagamenti mancanti', m.pagamentiMancanti], ['Fatturato', euro(m.fatturato)], ['Valore medio ordine', euro(m.valoreMedio)],
+          ];
+          document.getElementById('ad-metriche-ordini').innerHTML = cardsOrdini.map(function (c, i) {
+            var avviso = (i === 5 && m.pagamentiMancanti > 0) ? ' avviso' : '';
+            return '<div class="ad-card' + avviso + '"><div class="n">' + esc(c[1]) + '</div><div class="l">' + esc(c[0]) + '</div></div>';
+          }).join('') + (m.fatturato ? '' : '<p class="ad-nota-debole">Fatturato e valore medio contano solo gli ordini con "Prezzo Totale" compilato a mano nel foglio.</p>');
+
+          var cardsPromemoria = [
+            ['Inviati', m.inviati], ['Programmati', m.programmati], ['Cliccati', m.click],
+            ['Aperti' + (m.apertureAttendibili ? '' : ' *'), m.aperti],
+            ['Ordini da promemoria', m.ordiniDaPromemoria], ['Conversion rate', m.conversionRate + '%'],
+          ];
+          document.getElementById('ad-metriche').innerHTML = cardsPromemoria.map(function (c) {
+            return '<div class="ad-card"><div class="n">' + esc(c[1]) + '</div><div class="l">' + esc(c[0]) + '</div></div>';
+          }).join('') + '<p class="ad-nota-debole">* le aperture sono una stima debole: molti client di posta bloccano o precaricano le immagini.</p>';
+
+          var selStato = document.getElementById('f-stato');
+          if (selStato.options.length <= 1) {
+            (d.stati || []).forEach(function (s) {
+              var o = document.createElement('option'); o.value = s.codice; o.textContent = s.etichetta;
+              selStato.appendChild(o);
+            });
+          }
+
+          document.getElementById('ad-b2b').innerHTML = d.clientiB2BPrincipali.length
+            ? '<table class="ad-tabella"><thead><tr><th>Cliente</th><th>Ordini</th><th>Totale</th></tr></thead><tbody>'
+              + d.clientiB2BPrincipali.map(function (c) {
+                  return '<tr><td>' + esc(c.azienda || c.nome) + '<br><span style="color:#9a9186;font-size:.65rem;">' + esc(c.email) + '</span></td>'
+                    + '<td>' + c.ordini + '</td><td>' + euro(c.totale) + '</td></tr>';
+                }).join('') + '</tbody></table>'
+            : '<p style="font-family:var(--ff-sans);font-size:.7rem;color:#9a9186;">Nessun ordine B2B nel periodo selezionato.</p>';
+
+          document.getElementById('ad-prodotti').innerHTML = d.prodottiPiuOrdinati.length
+            ? '<table class="ad-tabella"><thead><tr><th>Prodotto</th><th>Quantità totale</th><th>Ordini</th></tr></thead><tbody>'
+              + d.prodottiPiuOrdinati.map(function (p) {
+                  return '<tr><td>' + esc(p.nome) + '</td><td>' + p.quantita + '</td><td>' + p.ordini + '</td></tr>';
+                }).join('') + '</tbody></table>'
+            : '<p style="font-family:var(--ff-sans);font-size:.7rem;color:#9a9186;">Nessun prodotto nel periodo selezionato.</p>';
+
+          document.getElementById('ad-ricontattare').innerHTML = d.daRicontattare.length
+            ? '<table class="ad-tabella"><thead><tr><th>Cliente</th><th>Categoria</th><th>Da</th></tr></thead><tbody>'
+              + d.daRicontattare.map(function (c) {
+                  return '<tr><td>' + esc(c.nome) + '<br><span style="color:#9a9186;font-size:.65rem;">' + esc(c.email) + '</span></td>'
+                    + '<td>' + esc(c.categoria) + '</td><td>' + dataBreve(c.prossimoReminder) + '</td></tr>';
+                }).join('') + '</tbody></table>'
+            : '<p style="font-family:var(--ff-sans);font-size:.7rem;color:#9a9186;">Nessuno al momento.</p>';
+
+          document.getElementById('ad-clienti').innerHTML = d.clienti.map(function (c) {
+            return '<tr>'
+              + '<td>' + esc(c.nome) + '<br><span style="color:#9a9186;font-size:.65rem;">' + esc(c.email) + '</span></td>'
+              + '<td>' + dataBreve(c.ultimoOrdine) + '</td>'
+              + '<td>' + esc(c.categoria) + '</td>'
+              + '<td>' + esc(c.ultimoAcquisto) + '</td>'
+              + '<td>' + dataBreve(c.prossimoReminder) + '</td>'
+              + '<td>' + (c.frequenzaMediaGiorni ? c.frequenzaMediaGiorni + ' gg' : '—') + '</td>'
+              + '<td class="stato-' + esc(c.stato.replace(/\s+/g, '-')) + '">' + esc(c.stato) + '</td>'
+              + '</tr>';
+          }).join('');
+
+          document.getElementById('ad-top').innerHTML = d.topFrequenti.length
+            ? '<table class="ad-tabella"><tbody>' + d.topFrequenti.map(function (c) {
+                return '<tr><td>' + esc(c.nome) + '</td><td>' + c.frequenzaMediaGiorni + ' giorni</td></tr>';
+              }).join('') + '</tbody></table>'
+            : '<p style="font-family:var(--ff-sans);font-size:.7rem;color:#9a9186;">Nessun cliente ha ancora abbastanza ordini per calcolare una frequenza.</p>';
+        });
+      }
+
+      ['f-da', 'f-a', 'f-cliente', 'f-tipo', 'f-stato', 'f-categoria'].forEach(function (id) {
+        document.getElementById(id).addEventListener('change', caricaMetriche);
+      });
+      document.getElementById('f-reset').addEventListener('click', function () {
+        ['f-da', 'f-a', 'f-cliente', 'f-tipo', 'f-stato', 'f-categoria'].forEach(function (id) { document.getElementById(id).value = ''; });
+        caricaMetriche();
+      });
+
+      var CAMPI = [
+        { chiave: 'attivo', tipo: 'checkbox', etichetta: 'Attivo' },
+        { chiave: 'giorni', tipo: 'number', etichetta: 'Primo promemoria (giorni)' },
+        { chiave: 'secondoDopo', tipo: 'number', etichetta: 'Secondo dopo (+giorni, vuoto = off)' },
+        { chiave: 'maxPromemoria', tipo: 'number', etichetta: 'Numero massimo' },
+        { chiave: 'sogliaMinima', tipo: 'number', etichetta: 'Soglia minima pezzi' },
+      ];
+
+      function caricaRegole() {
+        return chiamata('/api/admin/regole').then(function (d) {
+          var html = '';
+          Object.keys(d.categorie).forEach(function (cat) {
+            var r = d.categorie[cat];
+            html += '<div class="ad-regola" data-cat="' + esc(cat) + '">'
+              + '<div class="ad-regola-head"><strong>' + esc(r.etichetta || cat) + '</strong></div>'
+              + '<div class="ad-campi">'
+              + CAMPI.map(function (f) {
+                  var v = r[f.chiave];
+                  if (f.tipo === 'checkbox') {
+                    return '<div class="ad-campo"><label>' + f.etichetta + '</label>'
+                      + '<input type="checkbox" data-campo="' + f.chiave + '" ' + (v ? 'checked' : '') + '></div>';
+                  }
+                  return '<div class="ad-campo"><label>' + f.etichetta + '</label>'
+                    + '<input type="number" data-campo="' + f.chiave + '" value="' + (v == null ? '' : v) + '"></div>';
+                }).join('')
+              + '<div class="ad-campo"><label>Stagionalità da (MM-DD, vuoto = tutto l\'anno)</label>'
+                + '<input type="text" data-campo="stagDa" value="' + (r.stagionalita ? esc(r.stagionalita.da) : '') + '" placeholder="04-01"></div>'
+              + '<div class="ad-campo"><label>Stagionalità a</label>'
+                + '<input type="text" data-campo="stagA" value="' + (r.stagionalita ? esc(r.stagionalita.a) : '') + '" placeholder="09-30"></div>'
+              + '<div class="ad-campo" style="grid-column:1/-1;"><label>Prodotti esclusi (separati da virgola)</label>'
+                + '<input type="text" data-campo="esclusi" value="' + esc((r.esclusi || []).join(', ')) + '"></div>'
+              + '</div>'
+              + '<div class="ad-salva-riga"><span class="ad-ok" data-ok hidden>Salvato</span>'
+              + '<button type="button" class="ad-btn" data-salva>Salva</button></div>'
+              + '</div>';
+          });
+          document.getElementById('ad-regole').innerHTML = html;
+
+          document.querySelectorAll('.ad-regola').forEach(function (box) {
+            box.querySelector('[data-salva]').addEventListener('click', function () {
+              var cat = box.dataset.cat;
+              var patch = {};
+              CAMPI.forEach(function (f) {
+                var input = box.querySelector('[data-campo="' + f.chiave + '"]');
+                if (f.tipo === 'checkbox') { patch[f.chiave] = input.checked; return; }
+                var val = input.value.trim();
+                patch[f.chiave] = (f.chiave === 'secondoDopo' && val === '') ? null : (val === '' ? null : Number(val));
+              });
+              var da = box.querySelector('[data-campo="stagDa"]').value.trim();
+              var a = box.querySelector('[data-campo="stagA"]').value.trim();
+              patch.stagionalita = (da && a) ? { da: da, a: a } : null;
+              patch.esclusi = box.querySelector('[data-campo="esclusi"]').value.split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+
+              chiamata('/api/admin/regole?categoria=' + encodeURIComponent(cat), {
+                method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(patch),
+              }).then(function () {
+                var ok = box.querySelector('[data-ok]');
+                ok.hidden = false;
+                setTimeout(function () { ok.hidden = true; }, 2000);
+              });
+            });
+          });
+        });
+      }
+
+      function caricaTutto() { caricaMetriche(); caricaRegole(); }
+
+      if (token()) mostraApp(); else mostraLogin();
+    })();
+  </script>
+</body>
+</html>
