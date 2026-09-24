@@ -13,12 +13,12 @@
 
    Questo file e' l'unico punto che li tocca: chi manda una email
    (mailer/scheduler) o riceve un modulo (contatto.mjs) passa sempre
-   di qui, mai da clienti.mjs direttamente — cosi' la regola "non si
-   scambiano" vive in un posto solo.
+   di qui, mai dall'adattatore ordini direttamente — cosi' la regola
+   "non si scambiano" vive in un posto solo.
    ══════════════════════════════════════════════════════════════ */
-import { impostaConsenso, impostaConsensoPerCodice, trovaPerEmail } from './clienti.mjs';
+import { impostaConsenso, impostaConsensoPerCodice, trovaPerEmail } from './ordini/index.mjs';
 
-export function registraConsensi(email, { newsletter, promemoriaRiacquisto } = {}) {
+export async function registraConsensi(email, { newsletter, promemoriaRiacquisto } = {}) {
   const patch = {};
   if (typeof newsletter === 'boolean') patch.newsletter = newsletter;
   /* il consenso al promemoria NON si spegne mai da qui: lo spegne solo
@@ -34,15 +34,15 @@ export function registraConsensi(email, { newsletter, promemoriaRiacquisto } = {
 /* Opposizione: da qui in poi quell'email non riceve piu' promemoria
    commerciali, qualunque cosa ordini in futuro — la newsletter (se mai
    attivata) resta un consenso a parte e non viene toccata. */
-export function opponiPromemoria(codice) {
+export async function opponiPromemoria(codice) {
   return impostaConsensoPerCodice(codice, { promemoriaRiacquisto: false });
 }
 
-export function opponiNewsletter(codice) {
+export async function opponiNewsletter(codice) {
   return impostaConsensoPerCodice(codice, { newsletter: false });
 }
 
-export function puoRiceverePromemoria(email) {
-  const c = trovaPerEmail(email);
+export async function puoRiceverePromemoria(email) {
+  const c = await trovaPerEmail(email);
   return Boolean(c && !c.revocato && c.consenso && c.consenso.promemoriaRiacquisto !== false);
 }

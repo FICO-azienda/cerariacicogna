@@ -201,10 +201,44 @@ mailto:; se fallisce solo la conferma, la richiesta e' comunque arrivata.
 
 ---
 
+## Ordini e clienti su Google Sheets
+
+Ogni richiesta che arriva dal modulo Contatti diventa una riga in un foglio
+Google — niente file locali, niente database da amministrare. Due schede nel
+foglio, "Ordini" e "Clienti", tenute da un Web App di Apps Script pubblicato
+dentro il foglio stesso (`google-apps-script/Codice.gs`).
+
+Il backend non parla mai direttamente con Google: passa sempre da
+`assistant/src/ordini/index.mjs`, l'unico punto che sa che il database di
+oggi e' un foglio. Tutto il resto (modulo contatti, motore promemoria,
+pagina di riordino, dashboard admin) chiama queste funzioni senza sapere
+cosa c'e' dietro — se un domani Sheets diventasse un database vero, si
+riscrive solo `assistant/src/ordini/sheets.mjs`.
+
+**Stati ordine**: elenco fisso in `assistant/data/stati-ordine.json`
+("nuovo", "confermato", "pagamento", "pagato", "preparazione",
+"produzione", "pronto", "spedito", "consegnato", "annullato"). Chi ha
+`inviaEmail:true` manda un'email al cliente quando lo staff cambia lo
+Stato nel foglio — non prima. Prezzo, metodo/stato pagamento e note
+restano campi che lo staff compila **a mano**: il sito non vende online
+e non ha un fornitore di pagamenti collegato, quindi nessuno di questi
+dati puo' popolarsi da solo.
+
+**Setup, in breve** (dettagli nella guida che ti ho dato in chat):
+1. Crea un foglio Google Sheets vuoto.
+2. Estensioni → Apps Script, incolla `google-apps-script/Codice.gs`.
+3. Proprieta' dello script: `SEGRETO` (una stringa a caso) e `BACKEND_URL`
+   (`https://tuobackend/api/ordine-stato-cambiato`).
+4. Esegui una volta `installaTrigger` dall'editor (autorizza l'accesso):
+   e' quello che permette al cambio di stato di avvisare il backend.
+5. Distribuisci → Nuova implementazione → App web → "Chiunque abbia il
+   link" → copia l'URL: e' `CC_SHEETS_URL`. `CC_SHEETS_SECRET` e' lo
+   stesso valore di `SEGRETO` al punto 3.
+
 ## Promemoria di riacquisto
 
-Un ciclo giornaliero guarda le richieste archiviate (`assistant/data/richieste.jsonl`)
-e, per chi non ha ancora riordinato gli stessi prodotti, manda un'email con un
+Un ciclo giornaliero guarda gli ordini (ora su Google Sheets, vedi sopra) e,
+per chi non ha ancora riordinato gli stessi prodotti, manda un'email con un
 collegamento per riordinare in pochi clic — senza account. La logica e' in
 `assistant/src/motore-promemoria.mjs`, l'orchestrazione in `scheduler.mjs`.
 
@@ -248,10 +282,10 @@ non puo' far girare ne' `api/chat.js` ne' lo scheduler dei promemoria.
 `server.mjs` come processo normale — la scelta piu' semplice se si vuole anche il
 timer interno dei promemoria oltre al trigger esterno di GitHub Actions.
 In alternativa Vercel: `api/chat.js` diventa una funzione serverless senza
-configurazione, ma **attenzione**: su Vercel il disco non persiste fra una
-chiamata e l'altra, quindi `assistant/data/*.json(l)` (clienti, richieste,
-regole, riordini) andrebbero spostati su un database vero prima di contare sui
-promemoria — oggi non lo sono. Su Railway/Render/VPS questo problema non c'e'.
+configurazione. Il vecchio problema del disco che non persiste su Vercel non
+riguarda piu' ordini e clienti (ora su Google Sheets, vedi sopra); riguarda
+ancora `assistant/data/riordini.json` (i token di riordino) e il registro
+conversazioni: su Vercel quei due restano piu' fragili, su Railway/Render/VPS no.
 
 Su Vercel:
 

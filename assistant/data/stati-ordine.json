@@ -1,0 +1,15 @@
+{
+  "_nota": "Elenco stati ordine. 'inviaEmail' dice se il cambio a QUESTO stato manda un'email automatica al cliente (mai al primo salvataggio dell'ordine, sempre e solo quando lo staff lo cambia nel foglio). Modificabile: aggiungere uno stato qui basta a farlo comparire nel menu a tendina del foglio (bisogna rigenerarlo, vedi assistant/scripts/genera-stati-sheet.mjs) e nel pannello admin.",
+  "stati": [
+    { "codice": "nuovo",          "etichetta": "Nuovo ordine",          "inviaEmail": false },
+    { "codice": "confermato",     "etichetta": "Confermato",            "inviaEmail": true },
+    { "codice": "pagamento",      "etichetta": "Pagamento da ricevere", "inviaEmail": false },
+    { "codice": "pagato",         "etichetta": "Pagato",                "inviaEmail": false },
+    { "codice": "preparazione",   "etichetta": "In preparazione",       "inviaEmail": true },
+    { "codice": "produzione",     "etichetta": "In produzione",         "inviaEmail": false },
+    { "codice": "pronto",         "etichetta": "Pronto per la spedizione", "inviaEmail": false },
+    { "codice": "spedito",        "etichetta": "Spedito",               "inviaEmail": true },
+    { "codice": "consegnato",     "etichetta": "Consegnato",            "inviaEmail": false },
+    { "codice": "annullato",      "etichetta": "Annullato",             "inviaEmail": true }
+  ]
+}

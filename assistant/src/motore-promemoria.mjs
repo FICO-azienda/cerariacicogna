@@ -124,13 +124,16 @@ export function prossimoPromemoria(cliente, storico, regole, oggi = new Date()) 
 }
 
 /* ── orchestrazione: prende TUTTI i clienti attivi e il loro storico.
-   Le funzioni che leggono da disco sono iniettate (non importate qui
-   dentro) cosi' questo file resta testabile senza filesystem: chi lo
-   usa per davvero (scheduler.mjs) passa le vere clienti.mjs/archivio.mjs. */
-export function promemoriaDovuti({ clientiAttivi, storicoPerEmail, regole, oggi = new Date() }) {
+   Le funzioni che leggono i dati sono iniettate (non importate qui
+   dentro) cosi' questo file resta testabile senza toccare ne' filesystem
+   ne' rete — chi lo usa per davvero (scheduler.mjs) passa le funzioni
+   dell'adattatore ordini (assistant/src/ordini/), che oggi parlano con
+   Google Sheets. Async perche' quell'adattatore fa chiamate di rete;
+   valutaCliente e candidatiCliente restano pure e sincrone. */
+export async function promemoriaDovuti({ clientiAttivi, storicoPerEmail, regole, oggi = new Date() }) {
   const risultati = [];
-  for (const cliente of clientiAttivi()) {
-    const storico = storicoPerEmail(cliente.email);
+  for (const cliente of await clientiAttivi()) {
+    const storico = await storicoPerEmail(cliente.email);
     risultati.push(...valutaCliente(cliente, storico, regole, oggi));
   }
   return risultati;

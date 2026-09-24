@@ -9,6 +9,14 @@
 
    ATTENZIONE: file con dati personali. Va dichiarato nella privacy,
    escluso dal controllo di versione, e ripulito dai codici scaduti.
+
+   NOTA: da quando i clienti vivono su Google Sheets (assistant/src/
+   ordini/sheets.mjs), questo file non e' piu' nel percorso live —
+   nessun endpoint lo chiama per leggere o scrivere su clienti.json.
+   Restano attivi solo nuovoCodice() e stessoCodice(), riusati da chi
+   genera altri codici opachi (token-riordino.mjs, admin/auth.mjs). Il
+   resto resta qui come riferimento e per un eventuale ripristino di un
+   adattatore a file locali, non e' piu' testato contro dati veri.
    ══════════════════════════════════════════════════════════════ */
 import fs from 'node:fs';
 import path from 'node:path';

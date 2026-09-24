@@ -143,6 +143,20 @@ const L = {
     promemoriaFooterNota: 'Ti scriviamo perché in passato ci hai contattato per questi prodotti. '
       + 'Puoi smettere di ricevere questo tipo di promemoria in qualsiasi momento, senza che questo riguardi altre comunicazioni.',
     disiscriviti: 'Non voglio più ricevere questi promemoria',
+    /* ── cambio stato ordine ── */
+    ordineOcchiello: n => 'Ordine ' + n,
+    statoTesto: {
+      confermato: 'Abbiamo ricevuto e confermato il tuo ordine.',
+      preparazione: 'Il tuo ordine è attualmente in preparazione.',
+      spedito: 'Il tuo ordine è stato spedito.',
+      annullato: 'Il tuo ordine è stato annullato. Se pensi sia un errore, scrivici pure.',
+    },
+    statoTitolo: {
+      confermato: 'Ordine confermato',
+      preparazione: 'In preparazione',
+      spedito: 'Spedito',
+      annullato: 'Ordine annullato',
+    },
   },
   en: {
     htmlLang: 'en',
@@ -185,10 +199,25 @@ const L = {
     promemoriaFooterNota: 'We are writing because you previously contacted us about these products. '
       + 'You can stop receiving this kind of reminder at any time, without affecting any other communication.',
     disiscriviti: 'I no longer want these reminders',
+    /* ── order status change ── */
+    ordineOcchiello: n => 'Order ' + n,
+    statoTesto: {
+      confermato: 'We have received and confirmed your order.',
+      preparazione: 'Your order is currently being prepared.',
+      spedito: 'Your order has been shipped.',
+      annullato: 'Your order has been cancelled. If you think this is a mistake, please get in touch.',
+    },
+    statoTitolo: {
+      confermato: 'Order confirmed',
+      preparazione: 'Being prepared',
+      spedito: 'Shipped',
+      annullato: 'Order cancelled',
+    },
   },
 };
 export const lingua = v => (String(v || '').toLowerCase() === 'en' ? 'en' : 'it');
 export const oggettoPromemoria = v => L[lingua(v)].promemoriaOggetto;
+export const oggettoStatoOrdine = (v, stato, idOrdine) => (L[lingua(v)].statoTitolo[stato] || stato) + ' — ' + idOrdine;
 
 /* ── mattoni ──────────────────────────────────────────────── */
 const paragrafo = (t, extra = '') =>
@@ -515,6 +544,43 @@ export function htmlPromemoria(d) {
       </td></tr>` : ''}`;
 
   return scheletro({ preheader: t.promemoriaOggetto, contenuto, d: t });
+}
+
+/* ── 4. cambio stato ordine ───────────────────────────────────
+   d = { nome, idOrdine, stato, articoli, lingua }. "stato" e' uno dei
+   codici con inviaEmail:true in assistant/data/stati-ordine.json —
+   chi chiama (ordini/stato-endpoint.mjs) ha gia' controllato che
+   esista un testo per quello stato prima di arrivare qui. */
+export function htmlStatoOrdine(d) {
+  const t = L[lingua(d.lingua)];
+  const nome = (d.nome || '').trim();
+  const contenuto = `
+      <tr><td align="center" style="padding:0 26px 6px;">
+        ${etichetta(t.ordineOcchiello(d.idOrdine), 'center')}
+        <p style="margin:0 0 20px;font-family:${SERIF};font-size:28px;line-height:1.3;color:${C.scuro};">
+          ${esc(t.statoTitolo[d.stato] || '')}
+        </p>
+        <p style="margin:0 auto 16px;max-width:420px;font-family:${SERIF};font-size:16px;line-height:1.8;color:${C.testo};">
+          ${esc((nome ? t.grazie(nome) + '. ' : '') + (t.statoTesto[d.stato] || ''))}
+        </p>
+      </td></tr>
+
+      ${filo(34)}
+
+      ${schedeArticoli(d.articoli, t)}`;
+
+  return scheletro({ preheader: t.statoTitolo[d.stato] || '', contenuto, d: t });
+}
+
+export function testoStatoOrdine(d) {
+  const t = L[lingua(d.lingua)];
+  const righe = [t.ordineOcchiello(d.idOrdine), '', t.statoTesto[d.stato] || ''];
+  if (d.articoli && d.articoli.length) {
+    righe.push('', '──────────', t.articoli.toUpperCase());
+    d.articoli.forEach((a, i) => righe.push('  ' + (i + 1) + '. ' + a.nome + (a.quantita ? ' — ' + a.quantita + ' ' + t.pezzi : '')));
+  }
+  righe.push('', '— — —', config.nomeAzienda, config.indirizzoAzienda, config.dominioSito);
+  return righe.join('\n');
 }
 
 /* versione testo semplice, per il client "text" accanto all'html — stesso

@@ -7,7 +7,7 @@
    inesistente sia scaduto, revocato o mai esistito — una risposta
    diversa per ogni caso sarebbe un modo per esplorare il registro.
    ══════════════════════════════════════════════════════════════ */
-import { trovaPerCodice, versionePubblica } from './clienti.mjs';
+import { trovaPerCodice, versionePubblica } from './ordini/index.mjs';
 import { registra } from './log.mjs';
 import { creaLimitatore } from './tentativi.mjs';
 import { cors } from './cors.mjs';
@@ -18,7 +18,7 @@ import { cors } from './cors.mjs';
    tutti dallo stesso IP aziendale. */
 const { bloccato, segnaBuco } = creaLimitatore();
 
-export function gestisciCliente(req, res, codice, ip) {
+export async function gestisciCliente(req, res, codice, ip) {
   cors(req, res);
   if (req.method === 'OPTIONS') { res.statusCode = 204; return res.end(); }
 
@@ -35,7 +35,7 @@ export function gestisciCliente(req, res, codice, ip) {
     return invia(429, { ok: false });
   }
 
-  const cliente = trovaPerCodice(codice);
+  const cliente = await trovaPerCodice(codice);
   if (!cliente) { segnaBuco(ip); return invia(404, { ok: false }); }
 
   registra({ ip, evento: 'link-personale', cliente: cliente.nome || cliente.azienda || '' });

@@ -9,8 +9,8 @@
 import { config, EMAIL_SUPPORTO } from './config.mjs';
 import { postaAttiva, emailValida, inviaRichiesta, inviaConferma } from './mailer.mjs';
 import { registra } from './log.mjs';
-import { registraRichiesta, storicoPerEmail, calcolaFrequenzaMedia } from './archivio.mjs';
-import { daRichiesta, aggiornaFrequenza } from './clienti.mjs';
+import { calcolaFrequenzaMedia, prossimaScadenza } from './archivio.mjs';
+import { daRichiesta, creaOrdine, ordiniPerEmail, aggiornaFrequenza } from './ordini/index.mjs';
 import { registraConsensi } from './consensi.mjs';
 import { linkSito } from './email-template.mjs';
 
@@ -107,7 +107,7 @@ export async function gestisciContatto(req, res, dati, ip) {
      (Vercel non ha un disco che duri) si prosegue senza link: la
      conferma deve partire lo stesso. */
   try {
-    const cliente = daRichiesta({
+    const cliente = await daRichiesta({
       nome: [d.nome, d.cognome].filter(Boolean).join(' '),
       email: d.email,
       azienda: d.azienda,
@@ -126,9 +126,9 @@ export async function gestisciContatto(req, res, dati, ip) {
     /* newsletter: solo se spuntata. Il promemoria di riacquisto resta
        quello che era (acceso di default, spento solo da un'opposizione
        esplicita) — non lo si tocca qui, vedi consensi.mjs. */
-    registraConsensi(d.email, { newsletter: d.newsletter });
+    await registraConsensi(d.email, { newsletter: d.newsletter });
   } catch (e) {
-    console.warn('[contatto] link personale non creato: ' + e.message);
+    console.warn('[contatto] scheda cliente non aggiornata (Google Sheets): ' + e.message);
   }
 
   /* La richiesta all'azienda e' quella che conta: se fallisce, il modulo
@@ -144,20 +144,32 @@ export async function gestisciContatto(req, res, dati, ip) {
   const conferma = await inviaConferma(d);
   if (!conferma.ok) console.warn('[contatto] conferma non inviata: ' + conferma.motivo);
 
-  /* la richiesta resta anche come dato, non solo dentro un'email */
-  const archiviata = registraRichiesta(d);
-
-  /* la frequenza si ricalcola DOPO aver archiviato, cosi' include anche
-     questa richiesta appena scritta — non solo le precedenti. */
+  /* l'ordine/richiesta resta come dato in Google Sheets, non solo
+     dentro un'email — e' li' che vive lo storico usato dai promemoria
+     e dal pannello admin. Se Sheets non risponde, la richiesta e'
+     comunque arrivata via email: non si blocca il visitatore per questo. */
+  let idOrdine = '';
   try {
-    const media = calcolaFrequenzaMedia(storicoPerEmail(d.email));
-    if (media) aggiornaFrequenza(d.email, media);
+    const ordine = await creaOrdine({
+      nome: d.nome, cognome: d.cognome, email: d.email, azienda: d.azienda,
+      linea: etichettaLinea(d.oggetto), articoli: d.articoli.map(a => ({
+        nome: a.nome, quantita: a.quantita, oltre: a.oltre, categoria: a.categoria,
+        immagine: a.img, imgProfumo: a.imgProfumo, pagina: paginaDi(a.url),
+      })),
+      fornitura: d.fornitura, messaggio: d.messaggio, lingua: d.lingua, promemoriaRif: d.promemoriaRif,
+    });
+    idOrdine = ordine.id;
+
+    /* la frequenza si ricalcola DOPO aver creato l'ordine, cosi' include
+       anche questo appena scritto — non solo i precedenti. */
+    const media = calcolaFrequenzaMedia(await ordiniPerEmail(d.email));
+    if (media) await aggiornaFrequenza(d.email, media);
   } catch (e) {
-    console.warn('[contatto] frequenza non aggiornata: ' + e.message);
+    console.warn('[contatto] ordine non registrato su Google Sheets: ' + e.message);
   }
 
-  registra({ ip, evento: 'contatto', oggetto: d.oggetto, conferma: conferma.ok,
+  registra({ ip, evento: 'contatto', oggetto: d.oggetto, conferma: conferma.ok, idOrdine,
              cadenza: d.fornitura ? d.fornitura.tipo : 'non indicata',
-             prossima: archiviata ? archiviata.prossima : '' });
-  return invia(200, { ok: true, conferma: conferma.ok });
+             prossima: prossimaScadenza(d.fornitura) });
+  return invia(200, { ok: true, conferma: conferma.ok, idOrdine });
 }

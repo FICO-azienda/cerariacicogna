@@ -21,8 +21,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { BASE } from './paths.mjs';
-import { clientiAttivi, registraPromemoriaInviato } from './clienti.mjs';
-import { storicoPerEmail, rilevaPatternB2B } from './archivio.mjs';
+import { clientiAttivi, registraPromemoriaInviato, ordiniPerEmail } from './ordini/index.mjs';
+import { rilevaPatternB2B } from './archivio.mjs';
 import { tutteLeRegole } from './regole-riacquisto.mjs';
 import { promemoriaDovuti } from './motore-promemoria.mjs';
 import { creaToken } from './token-riordino.mjs';
@@ -64,11 +64,11 @@ export async function eseguiCicloPromemoria({ oggi = new Date() } = {}) {
   }
 
   const regole = tutteLeRegole();
-  const dovuti = promemoriaDovuti({ clientiAttivi, storicoPerEmail, regole, oggi });
+  const dovuti = await promemoriaDovuti({ clientiAttivi, storicoPerEmail: ordiniPerEmail, regole, oggi });
 
   let inviati = 0, falliti = 0;
   for (const p of dovuti) {
-    const pattern = rilevaPatternB2B(storicoPerEmail(p.email));
+    const pattern = rilevaPatternB2B(await ordiniPerEmail(p.email));
     const id = idPromemoria(p.email, p.richiesta.ts, p.categoria, p.tipo);
 
     const token = creaToken({ email: p.email, richiestaTs: p.richiesta.ts, promemoriaId: id, categoria: p.categoria });
@@ -90,7 +90,7 @@ export async function eseguiCicloPromemoria({ oggi = new Date() } = {}) {
 
     if (esito.ok) {
       inviati++;
-      registraPromemoriaInviato(p.email, { richiestaTs: p.richiesta.ts, categoria: p.categoria, tipo: p.tipo, promemoriaId: id });
+      await registraPromemoriaInviato(p.email, { richiestaTs: p.richiesta.ts, categoria: p.categoria, tipo: p.tipo, promemoriaId: id });
       registraEvento({ tipo: 'inviato', email: p.email, categoria: p.categoria, richiestaTipo: p.tipo, promemoriaId: id, frequenzaUsata: p.frequenzaUsata });
     } else {
       falliti++;

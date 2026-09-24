@@ -91,9 +91,19 @@ const server = http.createServer(async (req, res) => {
     return gestisciRegole(req, res, url.searchParams.get('categoria') || '');
   }
 
+  if (url.pathname === '/api/ordine-stato-cambiato') {
+    const { gestisciStatoOrdine } = await import('./src/ordini/stato-endpoint.mjs');
+    return gestisciStatoOrdine(req, res);
+  }
+
   if (url.pathname === '/api/admin/dashboard') {
     const { gestisciDashboard } = await import('./src/admin/dashboard-endpoint.mjs');
-    return gestisciDashboard(req, res);
+    const [da, a] = (url.searchParams.get('periodo') || '').split('..');
+    return gestisciDashboard(req, res, {
+      da: da || '', a: a || '', cliente: url.searchParams.get('cliente') || '',
+      tipo: url.searchParams.get('tipo') || '', stato: url.searchParams.get('stato') || '',
+      categoria: url.searchParams.get('categoria') || '',
+    });
   }
 
   if (url.pathname === '/api/contatto') {

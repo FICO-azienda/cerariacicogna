@@ -9,7 +9,7 @@
    admin usa per il tasso di conversione dei promemoria.
    ══════════════════════════════════════════════════════════════ */
 import { trovaToken } from './token-riordino.mjs';
-import { storicoPerEmail } from './archivio.mjs';
+import { ordiniPerEmail } from './ordini/index.mjs';
 import { trova as prodottoInCatalogo } from './catalog.mjs';
 import { registra } from './log.mjs';
 import { registraEvento } from './scheduler.mjs';
@@ -18,7 +18,7 @@ import { cors } from './cors.mjs';
 
 const { bloccato, segnaBuco } = creaLimitatore();
 
-export function gestisciRiordino(req, res, codice, ip) {
+export async function gestisciRiordino(req, res, codice, ip) {
   cors(req, res);
   if (req.method === 'OPTIONS') { res.statusCode = 204; return res.end(); }
 
@@ -34,7 +34,7 @@ export function gestisciRiordino(req, res, codice, ip) {
   const voce = trovaToken(codice);
   if (!voce) { segnaBuco(ip); return invia(404, { ok: false }); }
 
-  const richiesta = storicoPerEmail(voce.email).find(r => r.ts === voce.richiestaTs);
+  const richiesta = (await ordiniPerEmail(voce.email)).find(r => r.ts === voce.richiestaTs);
   if (!richiesta) return invia(404, { ok: false });
 
   const articoli = (richiesta.articoli || []).map(a => ({

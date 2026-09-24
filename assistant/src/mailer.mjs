@@ -7,7 +7,8 @@
    comunque, anche prima che il servizio di posta sia collegato.
    ══════════════════════════════════════════════════════════════ */
 import { config, EMAIL_SUPPORTO } from './config.mjs';
-import { htmlConferma, htmlRichiesta, htmlPromemoria, testoPromemoria, oggettoPromemoria, etichettaInteresse, lingua } from './email-template.mjs';
+import { htmlConferma, htmlRichiesta, htmlPromemoria, testoPromemoria, oggettoPromemoria,
+         htmlStatoOrdine, testoStatoOrdine, oggettoStatoOrdine, etichettaInteresse, lingua } from './email-template.mjs';
 
 const API = 'https://api.resend.com/emails';
 
@@ -149,6 +150,17 @@ export function inviaPromemoria(d) {
     oggetto: oggettoPromemoria(d.lingua) + ' — ' + config.nomeAzienda,
     testo: testoPromemoria(d),
     corpoHtml: htmlPromemoria(d),
+    rispondiA: EMAIL_SUPPORTO,
+  });
+}
+
+/* ── 4. cambio stato ordine ──────────────────────────────────── */
+export function inviaStatoOrdine(d) {
+  return invia({
+    a: d.email,
+    oggetto: oggettoStatoOrdine(d.lingua, d.stato, d.idOrdine) + ' — ' + config.nomeAzienda,
+    testo: testoStatoOrdine(d),
+    corpoHtml: htmlStatoOrdine(d),
     rispondiA: EMAIL_SUPPORTO,
   });
 }

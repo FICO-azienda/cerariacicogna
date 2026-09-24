@@ -13,6 +13,13 @@
    ATTENZIONE (GDPR): contiene dati personali (nome, email). Va
    dichiarato nella privacy policy insieme al periodo di
    conservazione, e ripulito periodicamente.
+
+   NOTA: da quando gli ordini vivono su Google Sheets (assistant/src/
+   ordini/sheets.mjs), registraRichiesta/storicoPerEmail/leggiRichieste
+   non sono piu' nel percorso live. calcolaFrequenzaMedia,
+   rilevaPatternB2B e prossimaScadenza restano attive: sono funzioni
+   pure, e contatto.mjs/scheduler.mjs le richiamano contro i dati che
+   arrivano da Sheets, non da questo file.
    ══════════════════════════════════════════════════════════════ */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -21,8 +28,9 @@ import { BASE } from './paths.mjs';
 const FILE = process.env.CC_ARCHIVIO || path.join(BASE, 'data', 'richieste.jsonl');
 
 /* Quando ci si aspetta il prossimo rifornimento: un'indicazione, non una
-   promessa. Serve a chi guarda l'elenco per capire cosa scade prima. */
-function prossimaScadenza(fornitura, da = new Date()) {
+   promessa. Serve a chi guarda l'elenco per capire cosa scade prima.
+   Esportata: contatto.mjs la riusa per il log, senza duplicarla. */
+export function prossimaScadenza(fornitura, da = new Date()) {
   if (!fornitura || fornitura.tipo !== 'ricorrente' || !fornitura.ogniMesi) return '';
   const d = new Date(da.getTime());
   d.setMonth(d.getMonth() + fornitura.ogniMesi);

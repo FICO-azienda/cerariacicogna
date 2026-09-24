@@ -39,6 +39,11 @@
     table.ad-tabella th { font-size: .5rem; letter-spacing: .08em; text-transform: uppercase; color: var(--c-text-mid, #6b6355); }
     .stato-attivo { color: #2f6b3a; }
     .stato-disiscritto, .stato-scaduto { color: #a4401f; }
+    .ad-filtri { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; align-items: flex-end; }
+    .ad-filtro label { display: block; font-family: var(--ff-sans); font-size: .48rem; letter-spacing: .08em; text-transform: uppercase; color: var(--c-text-mid, #6b6355); margin-bottom: 4px; }
+    .ad-filtro input, .ad-filtro select { padding: 7px 9px; font-family: var(--ff-sans); font-size: .74rem; border: 1px solid rgba(26,22,16,.2); }
+    .ad-filtro-reset { font-family: var(--ff-sans); font-size: .6rem; text-decoration: underline; color: var(--c-text-mid, #6b6355); background: none; border: 0; cursor: pointer; padding: 8px 0; }
+    .ad-card.avviso .n { color: #a4401f; }
   </style>
 </head>
 <body class="light-page">
@@ -57,13 +62,42 @@
       </div>
 
       <section class="ad-sezione">
-        <h2>In sintesi</h2>
+        <h2>Ordini</h2>
+        <div class="ad-filtri">
+          <div class="ad-filtro"><label>Dal</label><input type="date" id="f-da"></div>
+          <div class="ad-filtro"><label>Al</label><input type="date" id="f-a"></div>
+          <div class="ad-filtro"><label>Cliente</label><input type="text" id="f-cliente" placeholder="nome o email"></div>
+          <div class="ad-filtro"><label>Tipo</label><select id="f-tipo"><option value="">Tutti</option><option value="B2C">B2C</option><option value="B2B">B2B</option></select></div>
+          <div class="ad-filtro"><label>Stato</label><select id="f-stato"><option value="">Tutti</option></select></div>
+          <div class="ad-filtro"><label>Categoria</label><select id="f-categoria"><option value="">Tutte</option><option value="liturgico">Liturgico</option><option value="garden">Garden</option><option value="home-collection">Home Collection</option><option value="private-label">Private Label</option></select></div>
+          <button type="button" class="ad-filtro-reset" id="f-reset">Azzera filtri</button>
+        </div>
+        <div class="ad-cards" id="ad-metriche-ordini"></div>
+      </section>
+
+      <section class="ad-sezione">
+        <h2>Promemoria di riacquisto</h2>
         <div class="ad-cards" id="ad-metriche"></div>
       </section>
 
       <section class="ad-sezione">
         <h2>Regole per categoria</h2>
         <div id="ad-regole"></div>
+      </section>
+
+      <section class="ad-sezione">
+        <h2>Clienti B2B principali</h2>
+        <div id="ad-b2b"></div>
+      </section>
+
+      <section class="ad-sezione">
+        <h2>Prodotti più ordinati</h2>
+        <div id="ad-prodotti"></div>
+      </section>
+
+      <section class="ad-sezione">
+        <h2>Clienti da ricontattare ora</h2>
+        <div id="ad-ricontattare"></div>
       </section>
 
       <section class="ad-sezione">
@@ -137,20 +171,73 @@
         return new Date(iso).toLocaleDateString('it-IT', { day: 'numeric', month: 'short', year: 'numeric' });
       };
 
+      function euro(n) { return '€ ' + (Number(n) || 0).toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+
+      function queryFiltri() {
+        var periodo = '';
+        var da = document.getElementById('f-da').value, a = document.getElementById('f-a').value;
+        if (da || a) periodo = 'periodo=' + encodeURIComponent(da) + '..' + encodeURIComponent(a);
+        var parti = [periodo].filter(Boolean);
+        ['cliente', 'tipo', 'stato', 'categoria'].forEach(function (k) {
+          var v = document.getElementById('f-' + k).value;
+          if (v) parti.push(k + '=' + encodeURIComponent(v));
+        });
+        return parti.length ? '?' + parti.join('&') : '';
+      }
+
       function caricaMetriche() {
-        return chiamata('/api/admin/dashboard').then(function (d) {
+        return chiamata('/api/admin/dashboard' + queryFiltri()).then(function (d) {
           var m = d.metriche;
-          var cards = [
-            ['Inviati', m.inviati],
-            ['Programmati', m.programmati],
-            ['Cliccati', m.click],
-            ['Aperti' + (m.apertureAttendibili ? '' : ' *'), m.aperti],
-            ['Ordini da promemoria', m.ordiniDaPromemoria],
-            ['Conversion rate', m.conversionRate + '%'],
+
+          var cardsOrdini = [
+            ['Ordini di oggi', m.ordiniOggi], ['Aperti', m.ordiniAperti], ['In preparazione', m.ordiniInPreparazione],
+            ['Da spedire', m.ordiniDaSpedire], ['Spediti', m.ordiniSpediti],
+            ['Pagamenti mancanti', m.pagamentiMancanti], ['Fatturato', euro(m.fatturato)], ['Valore medio ordine', euro(m.valoreMedio)],
           ];
-          document.getElementById('ad-metriche').innerHTML = cards.map(function (c) {
+          document.getElementById('ad-metriche-ordini').innerHTML = cardsOrdini.map(function (c, i) {
+            var avviso = (i === 5 && m.pagamentiMancanti > 0) ? ' avviso' : '';
+            return '<div class="ad-card' + avviso + '"><div class="n">' + esc(c[1]) + '</div><div class="l">' + esc(c[0]) + '</div></div>';
+          }).join('') + (m.fatturato ? '' : '<p class="ad-nota-debole">Fatturato e valore medio contano solo gli ordini con "Prezzo Totale" compilato a mano nel foglio.</p>');
+
+          var cardsPromemoria = [
+            ['Inviati', m.inviati], ['Programmati', m.programmati], ['Cliccati', m.click],
+            ['Aperti' + (m.apertureAttendibili ? '' : ' *'), m.aperti],
+            ['Ordini da promemoria', m.ordiniDaPromemoria], ['Conversion rate', m.conversionRate + '%'],
+          ];
+          document.getElementById('ad-metriche').innerHTML = cardsPromemoria.map(function (c) {
             return '<div class="ad-card"><div class="n">' + esc(c[1]) + '</div><div class="l">' + esc(c[0]) + '</div></div>';
           }).join('') + '<p class="ad-nota-debole">* le aperture sono una stima debole: molti client di posta bloccano o precaricano le immagini.</p>';
+
+          var selStato = document.getElementById('f-stato');
+          if (selStato.options.length <= 1) {
+            (d.stati || []).forEach(function (s) {
+              var o = document.createElement('option'); o.value = s.codice; o.textContent = s.etichetta;
+              selStato.appendChild(o);
+            });
+          }
+
+          document.getElementById('ad-b2b').innerHTML = d.clientiB2BPrincipali.length
+            ? '<table class="ad-tabella"><thead><tr><th>Cliente</th><th>Ordini</th><th>Totale</th></tr></thead><tbody>'
+              + d.clientiB2BPrincipali.map(function (c) {
+                  return '<tr><td>' + esc(c.azienda || c.nome) + '<br><span style="color:#9a9186;font-size:.65rem;">' + esc(c.email) + '</span></td>'
+                    + '<td>' + c.ordini + '</td><td>' + euro(c.totale) + '</td></tr>';
+                }).join('') + '</tbody></table>'
+            : '<p style="font-family:var(--ff-sans);font-size:.7rem;color:#9a9186;">Nessun ordine B2B nel periodo selezionato.</p>';
+
+          document.getElementById('ad-prodotti').innerHTML = d.prodottiPiuOrdinati.length
+            ? '<table class="ad-tabella"><thead><tr><th>Prodotto</th><th>Quantità totale</th><th>Ordini</th></tr></thead><tbody>'
+              + d.prodottiPiuOrdinati.map(function (p) {
+                  return '<tr><td>' + esc(p.nome) + '</td><td>' + p.quantita + '</td><td>' + p.ordini + '</td></tr>';
+                }).join('') + '</tbody></table>'
+            : '<p style="font-family:var(--ff-sans);font-size:.7rem;color:#9a9186;">Nessun prodotto nel periodo selezionato.</p>';
+
+          document.getElementById('ad-ricontattare').innerHTML = d.daRicontattare.length
+            ? '<table class="ad-tabella"><thead><tr><th>Cliente</th><th>Categoria</th><th>Da</th></tr></thead><tbody>'
+              + d.daRicontattare.map(function (c) {
+                  return '<tr><td>' + esc(c.nome) + '<br><span style="color:#9a9186;font-size:.65rem;">' + esc(c.email) + '</span></td>'
+                    + '<td>' + esc(c.categoria) + '</td><td>' + dataBreve(c.prossimoReminder) + '</td></tr>';
+                }).join('') + '</tbody></table>'
+            : '<p style="font-family:var(--ff-sans);font-size:.7rem;color:#9a9186;">Nessuno al momento.</p>';
 
           document.getElementById('ad-clienti').innerHTML = d.clienti.map(function (c) {
             return '<tr>'
@@ -171,6 +258,14 @@
             : '<p style="font-family:var(--ff-sans);font-size:.7rem;color:#9a9186;">Nessun cliente ha ancora abbastanza ordini per calcolare una frequenza.</p>';
         });
       }
+
+      ['f-da', 'f-a', 'f-cliente', 'f-tipo', 'f-stato', 'f-categoria'].forEach(function (id) {
+        document.getElementById(id).addEventListener('change', caricaMetriche);
+      });
+      document.getElementById('f-reset').addEventListener('click', function () {
+        ['f-da', 'f-a', 'f-cliente', 'f-tipo', 'f-stato', 'f-categoria'].forEach(function (id) { document.getElementById(id).value = ''; });
+        caricaMetriche();
+      });
 
       var CAMPI = [
         { chiave: 'attivo', tipo: 'checkbox', etichetta: 'Attivo' },

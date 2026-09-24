@@ -4,8 +4,8 @@
    Un clic, nessuna conferma via email, nessun login: e' quello che
    la legge chiede per l'opposizione a comunicazioni commerciali —
    "in modo agevole e gratuitamente" (art. 130 c.4 Codice Privacy).
-   Riusa il codice cliente gia' esistente (clienti.mjs): non serve un
-   terzo registro solo per questo.
+   Riusa il codice cliente gia' esistente (assistant/src/ordini/): non
+   serve un terzo registro solo per questo.
 
    tipo=promemoria spegne SOLO i promemoria di riacquisto.
    tipo=newsletter spegne SOLO la newsletter.
@@ -33,7 +33,7 @@ function pagina({ titolo, corpo }) {
 <p><a href="/">Torna al sito</a></p></div></body></html>`;
 }
 
-export function gestisciUnsubscribe(req, res, codice, tipo, ip) {
+export async function gestisciUnsubscribe(req, res, codice, tipo, ip) {
   const invia = (n, html) => {
     res.statusCode = n;
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
@@ -44,7 +44,7 @@ export function gestisciUnsubscribe(req, res, codice, tipo, ip) {
   if (bloccato(ip)) return invia(429, pagina({ titolo: 'Troppi tentativi', corpo: 'Riprova più tardi.' }));
 
   const azione = tipo === 'newsletter' ? opponiNewsletter : opponiPromemoria;
-  const esito = azione(codice);
+  const esito = await azione(codice);
 
   if (!esito) {
     segnaBuco(ip);
