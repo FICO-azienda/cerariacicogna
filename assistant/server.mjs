@@ -37,6 +37,11 @@ const { default: handler } = await import('./src/handler.mjs');
    e poi una volta al giorno. */
 const { avviaPulizia } = await import('./src/pulizia.mjs');
 avviaPulizia();
+/* Promemoria di riacquisto: un giro al giorno, finche' questo processo
+   resta acceso. Il trigger esterno (GitHub Actions) e' il paracadute se
+   non resta acceso — vedi scheduler.mjs. */
+const { avviaScheduler } = await import('./src/scheduler.mjs');
+avviaScheduler();
 const { config } = await import('./src/config.mjs');
 const { daCompilare, policiesVuote } = await import('./src/policies.mjs');
 const { quanti } = await import('./src/catalog.mjs');
@@ -51,6 +56,44 @@ const server = http.createServer(async (req, res) => {
     const { gestisciCliente } = await import('./src/cliente-endpoint.mjs');
     const ip = (req.socket && req.socket.remoteAddress) || 'sconosciuto';
     return gestisciCliente(req, res, url.searchParams.get('c') || '', ip);
+  }
+
+  if (url.pathname === '/api/cron/promemoria') {
+    const { gestisciCron } = await import('./src/cron-endpoint.mjs');
+    return gestisciCron(req, res, url.searchParams.get('secret') || '');
+  }
+
+  if (url.pathname === '/api/riordino') {
+    const { gestisciRiordino } = await import('./src/riordino-endpoint.mjs');
+    const ip = (req.socket && req.socket.remoteAddress) || 'sconosciuto';
+    return gestisciRiordino(req, res, url.searchParams.get('t') || '', ip);
+  }
+
+  if (url.pathname === '/api/unsubscribe') {
+    const { gestisciUnsubscribe } = await import('./src/unsubscribe-endpoint.mjs');
+    const ip = (req.socket && req.socket.remoteAddress) || 'sconosciuto';
+    return gestisciUnsubscribe(req, res, url.searchParams.get('c') || '', url.searchParams.get('tipo') || '', ip);
+  }
+
+  if (url.pathname === '/api/promemoria-aperto') {
+    const { gestisciApertura } = await import('./src/apertura-endpoint.mjs');
+    return gestisciApertura(req, res, url.searchParams.get('id') || '');
+  }
+
+  if (url.pathname === '/api/admin/login') {
+    const { gestisciLogin } = await import('./src/admin/login-endpoint.mjs');
+    const ip = (req.socket && req.socket.remoteAddress) || 'sconosciuto';
+    return gestisciLogin(req, res, ip);
+  }
+
+  if (url.pathname === '/api/admin/regole') {
+    const { gestisciRegole } = await import('./src/admin/regole-endpoint.mjs');
+    return gestisciRegole(req, res, url.searchParams.get('categoria') || '');
+  }
+
+  if (url.pathname === '/api/admin/dashboard') {
+    const { gestisciDashboard } = await import('./src/admin/dashboard-endpoint.mjs');
+    return gestisciDashboard(req, res);
   }
 
   if (url.pathname === '/api/contatto') {

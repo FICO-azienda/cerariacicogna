@@ -799,11 +799,19 @@
             <textarea class="form-textarea" id="messaggio" name="messaggio" placeholder="Descrivi la tua richiesta..." required rows="5"></textarea>
           </div>
 
+          <div class="form-group reveal-up" style="display:flex;align-items:flex-start;gap:10px;">
+            <input type="checkbox" id="newsletter" name="newsletter" style="margin-top:3px;flex:0 0 auto;">
+            <label class="form-label" for="newsletter" style="text-transform:none;letter-spacing:normal;font-weight:400;">
+              Desidero ricevere novità, nuove collezioni e offerte di Cereria Cicogna.
+              <span style="display:block;font-size:.9em;opacity:.7;">Facoltativo: non è necessario per inviare la richiesta.</span>
+            </label>
+          </div>
+
           <div class="reveal-up">
             <button type="submit" class="form-submit">Invia il messaggio</button>
             <p class="form-privacy">
               Inviando questo modulo accetti la nostra
-              <a href="#">Privacy Policy</a>.
+              <a href="privacy.html">Privacy Policy</a>.
               I tuoi dati non saranno ceduti a terzi.
             </p>
           </div>
@@ -1234,11 +1242,8 @@
         /* Endpoint del backend. Se non risponde (o la posta non e' ancora
            collegata) si torna al mailto: di sempre, senza che il visitatore
            veda errori: la richiesta parte comunque dal suo programma di posta. */
-        /* come per l'assistente: l'indirizzo locale vale solo in sviluppo.
-           Online il modulo deve parlare con la propria origine, altrimenti
-           ogni richiesta finirebbe verso il computer del visitatore. */
-        const inLocale = /^(localhost|127\.|0\.0\.0\.0|\[::1\])/.test(location.hostname);
-        const API_CONTATTO = (inLocale && form.dataset.endpoint) || '/api/contatto';
+        /* dove sta il backend: vedi js/cc-api.js (vuoto = stessa origine del sito) */
+        const API_CONTATTO = (window.CC_API || '') + '/api/contatto';
 
         form.addEventListener('submit', async e => {
           e.preventDefault();
@@ -1267,6 +1272,11 @@
               body: JSON.stringify({ nome, cognome, email, azienda, oggetto, messaggio: msg,
                 selezione: selTesto,
                 fornitura: (() => { try { return JSON.parse(sessionStorage.getItem('cc-fornitura') || 'null'); } catch (e) { return null; } })(),
+                newsletter: !!form.newsletter?.checked,
+                /* presente solo se si arriva da un clic su "Riordina" in un'email
+                   di promemoria (vedi riordino.html): serve solo a misurare quanti
+                   ordini nascono davvero dai promemoria, nella dashboard admin. */
+                promemoriaRif: (() => { try { return sessionStorage.getItem('cc-promemoria-rif') || ''; } catch (e) { return ''; } })(),
                 /* la lingua in cui sta navigando: decide in che lingua gli
                    arriva la conferma. In cereria la richiesta resta italiana */
                 lingua: (window.CCI18n && CCI18n.get() === 'en') ? 'en' : 'it',
@@ -1292,6 +1302,7 @@
           if (!inviatoDalSito) window.location.href = mailto;
           if (inviatoDalSito && window.CCSel) CCSel.svuota();
           if (inviatoDalSito) azzeraBozza();
+          if (inviatoDalSito) { try { sessionStorage.removeItem('cc-promemoria-rif'); } catch (e) {} }
 
           formCol.innerHTML = inviatoDalSito ? `
             <div style="display:flex;flex-direction:column;justify-content:center;height:100%;padding:40px 0;">
@@ -1310,6 +1321,7 @@
   </script>
   <script src="js/i18n-pages.js?v=3"></script>
   <script src="js/i18n.js?v=7"></script>
+  <script src="js/cc-api.js"></script>
   <script src="js/link-personale.js?v=6" defer></script>
   <script src="assistant/widget/cc-assistant.js?v=12" data-endpoint="http://localhost:8787/api/chat" data-privacy="privacy.html" defer></script>
 </body>

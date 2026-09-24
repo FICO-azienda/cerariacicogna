@@ -1,0 +1,45 @@
+{
+  "_nota": "Automazioni di riacquisto per categoria. Modificabile dal pannello admin (admin.html) senza toccare il codice. Le chiavi corrispondono alle uniche categorie che il sito assegna davvero ai prodotti (vedi js/selection.js): liturgico, garden, home-collection, private-label. Non esistono sottocategorie piu' fini (es. 'ostie', 'lumini') finche' le pagine prodotto non vengono marcate con una categoria piu' precisa. giorni = primo promemoria dalla data della richiesta; secondoDopo = giorni aggiuntivi per un eventuale secondo promemoria (null = disattivato); stagionalita = finestra dell'anno in cui i promemoria possono partire (null = tutto l'anno), formato MM-DD; esclusi = nomi prodotto (sottostringa, case-insensitive) che non generano mai un promemoria in questa categoria.",
+  "categorie": {
+    "liturgico": {
+      "etichetta": "Articoli Liturgici (ceri, lumini, accessori)",
+      "attivo": true,
+      "giorni": 45,
+      "secondoDopo": 15,
+      "maxPromemoria": 2,
+      "sogliaMinima": 0,
+      "stagionalita": null,
+      "esclusi": []
+    },
+    "home-collection": {
+      "etichetta": "Home Collection",
+      "attivo": true,
+      "giorni": 75,
+      "secondoDopo": 20,
+      "maxPromemoria": 2,
+      "sogliaMinima": 0,
+      "stagionalita": null,
+      "esclusi": []
+    },
+    "garden": {
+      "etichetta": "Garden / Outdoor",
+      "attivo": true,
+      "giorni": 60,
+      "secondoDopo": null,
+      "maxPromemoria": 1,
+      "sogliaMinima": 0,
+      "stagionalita": { "da": "04-01", "a": "09-30" },
+      "esclusi": []
+    },
+    "private-label": {
+      "etichetta": "Private Label / B2B",
+      "attivo": true,
+      "giorni": 60,
+      "secondoDopo": 20,
+      "maxPromemoria": 2,
+      "sogliaMinima": 0,
+      "stagionalita": null,
+      "esclusi": []
+    }
+  }
+}

@@ -251,7 +251,7 @@
   <main class="pv-body">
     <div class="pv-wrap">
 
-      <p class="pv-updated">Ultimo aggiornamento: <time datetime="2026-09-12">12 settembre 2026</time></p>
+      <p class="pv-updated">Ultimo aggiornamento: <time datetime="2026-09-24">24 settembre 2026</time></p>
 
       <h2>Chi tratta i tuoi dati</h2>
       <p>Il titolare del trattamento e' <strong>Industria Ceraria F.lli Cicogna srl</strong>,
@@ -279,6 +279,48 @@
         solo per risponderti e per gestire la richiesta commerciale.</p>
       <p><strong>Base giuridica:</strong> esecuzione di misure precontrattuali su tua
         richiesta (art. 6.1.b GDPR).</p>
+
+      <h3>Promemoria di riacquisto</h3>
+      <p>Se ci scrivi per richiedere dei prodotti, in seguito potremmo mandarti <strong>un
+        promemoria</strong> quando, in base alla categoria di quei prodotti o alla tua
+        frequenza di richiesta abituale, potrebbe essere il momento di rifornirtene.
+        L'email contiene solo i prodotti che avevi già richiesto e un collegamento per
+        riordinarli in pochi clic, con le stesse quantità di prima — nessuna registrazione,
+        nessuna password.</p>
+      <p>Il collegamento di riordino usa un codice temporaneo che <strong>scade dopo 30
+        giorni</strong> e non contiene dati leggibili: da solo non dice nulla a chi lo
+        intercetta, e va verificato sul nostro server per aprire qualcosa.</p>
+      <p><strong>Base giuridica:</strong> l'articolo 130, comma 4 del Codice Privacy (il
+        cosiddetto "soft spam"), che permette di scrivere via email, senza un consenso
+        separato, a chi ci ha già contattato per un prodotto o servizio, per proporre
+        prodotti analoghi — a condizione di poterti opporre in modo semplice e gratuito
+        in ogni comunicazione, cosa che facciamo:</p>
+      <ul>
+        <li>ogni email di promemoria indica chiaramente che viene da Cereria Cicogna;</li>
+        <li>contiene un collegamento <strong>"Non voglio più ricevere questi
+          promemoria"</strong> che disattiva l'invio immediatamente, senza bisogno di
+          risponderci o di accedere a nulla;</li>
+        <li>se hai già riordinato nel frattempo gli stessi prodotti, il promemoria non
+          parte.</li>
+      </ul>
+      <p>Puoi opporti in qualsiasi momento anche scrivendo a
+        <a href="mailto:info@cerariacicogna.com">info@cerariacicogna.com</a>. L'opposizione
+        riguarda solo questo tipo di email: non tocca le conferme delle richieste che invii
+        tu, né altre comunicazioni dirette con noi.</p>
+      <p>L'email contiene anche un'immagine di 1 pixel che ci dice, quando il tuo programma
+        di posta la carica, che l'email è stata aperta. È una misura debole: molti programmi
+        di posta bloccano le immagini o le caricano comunque per proteggere la tua privacy,
+        quindi non ne ricaviamo un dato su cui contare, solo un'indicazione approssimativa
+        per capire se questo servizio è utile o va rivisto.</p>
+
+      <h3>Newsletter</h3>
+      <p>Nel modulo Contatti trovi una casella <strong>facoltativa</strong> per ricevere
+        novità, nuove collezioni e offerte. Non è mai richiesta per inviare una richiesta:
+        se non la spunti, la tua richiesta parte comunque, esattamente allo stesso modo.</p>
+      <p><strong>Base giuridica:</strong> consenso esplicito (art. 6.1.a GDPR), che puoi
+        revocare in qualsiasi momento dal collegamento di disiscrizione in ogni email o
+        scrivendoci. È un consenso indipendente dal promemoria di riacquisto qui sopra:
+        disattivarne uno non disattiva l'altro.</p>
 
       <h3>Assistente automatico ("Parla con noi")</h3>
       <p>Se apri la chat, il testo che scrivi viene inviato a un nostro server e da li'
@@ -364,11 +406,21 @@
           </tr>
           <tr>
             <td>GitHub, Inc. (Stati Uniti)</td>
-            <td>Ospita il sito tramite GitHub Pages e riceve le richieste</td>
+            <td>Ospita le pagine del sito tramite GitHub Pages e riceve le richieste</td>
             <td>Indirizzo IP, log tecnici del server</td>
+          </tr>
+          <tr>
+            <td>Resend</td>
+            <td>Invia le email che partono dal sito: conferme di richiesta e promemoria di riacquisto</td>
+            <td>Il tuo indirizzo email e il contenuto dell'email inviata</td>
           </tr>
         </tbody>
       </table>
+      <div class="pv-nota">
+        <p>Il modulo di contatto, i promemoria e il pannello di gestione interno girano su
+          un secondo server, separato da quello che ospita le pagine del sito. <span class="pv-todo">DA COMPILARE</span>
+          il nome del fornitore, non appena scelto e attivato.</p>
+      </div>
       <p>Il trattamento da parte di Anthropic puo' comportare un <strong>trasferimento di dati
         fuori dall'Unione Europea</strong>, effettuato sulla base delle clausole contrattuali
         tipo approvate dalla Commissione Europea. I contenuti inviati tramite l'API non
@@ -390,6 +442,9 @@
           registrazione. Il collegamento <strong>scade dopo dodici mesi</strong> e puoi
           chiederci di disattivarlo prima, in qualsiasi momento: da quel momento non apre
           piu' nulla. Trattandolo come una chiave, ti chiediamo di non inoltrarlo a terzi.</li>
+        <li><strong>Collegamento di un'email di promemoria:</strong> il codice che porta
+          alla pagina di riordino di un singolo promemoria <strong>scade dopo 30
+          giorni</strong>, molto prima del collegamento riservato di cui sopra.</li>
         <li><strong>Preferenze sul tuo dispositivo:</strong> i tempi indicati nella tabella sopra;
           le cancelli tu quando vuoi.</li>
       </ul>
@@ -452,6 +507,7 @@
   <script src="js/selection.js?v=7"></script>
   <script src="js/i18n-pages.js?v=3"></script>
   <script src="js/i18n.js?v=7"></script>
+  <script src="js/cc-api.js"></script>
   <script src="js/link-personale.js?v=6" defer></script>
   <script src="assistant/widget/cc-assistant.js?v=12" data-endpoint="http://localhost:8787/api/chat" data-privacy="privacy.html" defer></script>
 </body>

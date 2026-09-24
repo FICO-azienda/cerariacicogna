@@ -11,6 +11,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { BASE } from './paths.mjs';
 import { config } from './config.mjs';
+import { pulisciScaduti as pulisciRiordini } from './token-riordino.mjs';
 
 const GIORNO = 24 * 60 * 60 * 1000;
 
@@ -107,11 +108,13 @@ export function pulisci() {
       process.env.CC_ARCHIVIO || path.join(BASE, 'data', 'richieste.jsonl'), TERMINI.richieste),
     clienti: pulisciClienti(
       process.env.CC_CLIENTI || path.join(BASE, 'data', 'clienti.json'), TERMINI.clientiScaduti),
+    riordini: pulisciRiordini(),
   };
-  const tot = esito.conversazioni + esito.richieste + esito.clienti;
+  const tot = esito.conversazioni + esito.richieste + esito.clienti + esito.riordini;
   if (tot) {
     console.log('[pulizia] cancellati: ' + esito.conversazioni + ' righe di conversazione, '
-      + esito.richieste + ' richieste, ' + esito.clienti + ' link spenti');
+      + esito.richieste + ' richieste, ' + esito.clienti + ' link spenti, '
+      + esito.riordini + ' link di riordino scaduti');
   }
   return esito;
 }

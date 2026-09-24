@@ -54,11 +54,9 @@
   };
   var t = function () { return T[lang()]; };
 
-  /* ── dove vive l'API: la stessa origine del widget ── */
+  /* ── dove vive l'API: vedi js/cc-api.js ── */
   function endpoint() {
-    var s = document.querySelector('script[src*="cc-assistant.js"]');
-    var e = s && s.dataset.endpoint;
-    return e ? e.replace(/\/api\/chat\/?$/, '/api/cliente') : '/api/cliente';
+    return (window.CC_API || '') + '/api/cliente';
   }
 
   function noindex() {

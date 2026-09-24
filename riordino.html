@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il tuo riordino — Cereria Cicogna</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/main.css?v=13">
+  <style>
+    .rd-hero { padding: 160px var(--gutter) 40px; background: var(--c-dark); color: var(--c-vellum); text-align: center; }
+    .rd-eyebrow { font-family: var(--ff-sans); font-size: .5rem; font-weight: 400; letter-spacing: .32em; text-transform: uppercase; color: var(--c-gold); margin-bottom: 18px; }
+    .rd-title { font-family: var(--ff-display); font-size: clamp(1.8rem, 4.4vw, 3rem); font-weight: 300; letter-spacing: .03em; line-height: 1.15; }
+    .rd-sub { font-family: var(--ff-serif); font-style: italic; font-size: 1rem; color: var(--c-stone); max-width: 56ch; margin: 18px auto 0; line-height: 1.7; }
+    .rd-body { background: var(--c-light-bg, #FAFAF8); padding: 60px var(--gutter) 100px; min-height: 40vh; }
+    .rd-wrap { max-width: 640px; margin: 0 auto; }
+    .rd-stato { text-align: center; font-family: var(--ff-serif); font-size: 1.05rem; color: var(--c-text-mid, #4a443b); padding: 40px 0; }
+    .rd-riga { display: flex; gap: 18px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid rgba(26,22,16,.1); }
+    .rd-riga img { width: 68px; height: 86px; object-fit: cover; background: var(--c-cream, #F5EEE2); flex: 0 0 auto; }
+    .rd-riga-txt { flex: 1; min-width: 0; }
+    .rd-riga-nome { font-family: var(--ff-serif); font-size: 1.05rem; color: var(--c-text-dark, #1a1610); margin: 0 0 6px; }
+    .rd-riga-qta { font-family: var(--ff-sans); font-size: .68rem; letter-spacing: .06em; color: var(--c-text-mid, #6b6355); }
+    .rd-non-disp { display: inline-block; margin-top: 6px; font-family: var(--ff-sans); font-size: .5rem; letter-spacing: .14em; text-transform: uppercase; color: #a4401f; }
+    .rd-cta-wrap { text-align: center; margin-top: 44px; }
+    .rd-cta { display: inline-block; background: var(--c-dark); color: #fff; font-family: var(--ff-sans); font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; padding: 16px 44px; text-decoration: none; border: 0; cursor: pointer; }
+    .rd-cta:hover { background: #2C2416; }
+    .rd-nota { text-align: center; font-family: var(--ff-sans); font-size: .5rem; letter-spacing: .1em; text-transform: uppercase; color: var(--c-text-mid, #6b6355); margin-top: 16px; }
+    .rd-home { display: inline-block; margin-top: 26px; font-family: var(--ff-sans); font-size: .5rem; letter-spacing: .14em; text-transform: uppercase; color: var(--c-text-dark, #1a1610); text-decoration: underline; }
+  </style>
+</head>
+<body class="light-page">
+  <nav id="main-nav" style="position:static;background:var(--c-dark);">
+    <a href="index.html" class="nav-brand">
+      <img class="nav-stork" src="logo-stork.png" alt="Logo Cereria Cicogna" width="32" height="32" loading="eager">
+      <div class="nav-logo">Cereria Cicogna<span>Industria F.lli Cicogna · Novate Milanese</span></div>
+    </a>
+  </nav>
+
+  <header class="rd-hero">
+    <p class="rd-eyebrow">Il tuo riordino</p>
+    <h1 class="rd-title" id="rd-titolo">Un attimo, stiamo recuperando il tuo ordine…</h1>
+    <p class="rd-sub" id="rd-sottotitolo"></p>
+  </header>
+
+  <main class="rd-body">
+    <div class="rd-wrap">
+      <div id="rd-contenuto"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2025 Industria Ceraria F.lli Cicogna srl</span>
+      <span class="footer-legal">P.IVA 11980500158 &nbsp;&middot;&nbsp; <a href="privacy.html">Privacy</a></span>
+    </div>
+  </footer>
+
+  <script src="js/cc-api.js"></script>
+  <script src="js/selection.js?v=7"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      var API = (window.CC_API || '') + '/api/riordino';
+
+      var esc = function (s) {
+        return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+        });
+      };
+
+      var titolo = document.getElementById('rd-titolo');
+      var sotto = document.getElementById('rd-sottotitolo');
+      var contenuto = document.getElementById('rd-contenuto');
+
+      function statoErrore() {
+        titolo.textContent = 'Questo collegamento non è più valido';
+        sotto.textContent = 'Può essere scaduto, oppure il promemoria non esiste più.';
+        contenuto.innerHTML = '<p class="rd-stato">Se hai bisogno di riordinare, scrivici pure dalla pagina '
+          + '<a href="contatti.html">Contatti</a>: sarà un attimo.</p>';
+      }
+
+      var token = new URL(location.href).searchParams.get('t');
+      if (!token || !/^[a-f0-9]{32}$/.test(token)) { statoErrore(); return; }
+
+      fetch(API + '?t=' + encodeURIComponent(token), {
+        headers: { Accept: 'application/json' }, referrerPolicy: 'no-referrer', cache: 'no-store',
+      })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) {
+          if (!d || !d.ok) return statoErrore();
+
+          var nome = d.cliente && d.cliente.nome ? d.cliente.nome.split(/\s+/)[0] : '';
+          titolo.textContent = nome ? 'Bentornato, ' + nome : 'Il tuo ordine precedente';
+          var data = d.dataOrdine ? new Date(d.dataOrdine).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
+          sotto.textContent = data
+            ? 'Ecco cosa avevi richiesto il ' + data + '. Puoi modificare le quantità o toglierne alcuni prima di inviare.'
+            : 'Ecco i prodotti del tuo ultimo ordine.';
+
+          var articoli = d.articoli || [];
+          var righe = articoli.map(function (a) {
+            return '<div class="rd-riga">'
+              + (a.immagine ? '<img src="' + esc(a.immagine) + '" alt="">' : '')
+              + '<div class="rd-riga-txt">'
+              + '<p class="rd-riga-nome">' + esc(a.nome) + '</p>'
+              + '<p class="rd-riga-qta">' + (a.quantita ? a.quantita + ' pz' : '') + '</p>'
+              + (a.disponibile ? '' : '<span class="rd-non-disp">Non più disponibile</span>')
+              + '</div></div>';
+          }).join('');
+
+          contenuto.innerHTML = righe
+            + '<div class="rd-cta-wrap">'
+            + '<button type="button" class="rd-cta" id="rd-riordina">Modifica e invia la richiesta</button>'
+            + '<p class="rd-nota">Ti portiamo al modulo di contatto, con tutto già pronto: potrai ancora cambiare quantità o togliere articoli.</p>'
+            + '</div>';
+
+          document.getElementById('rd-riordina').addEventListener('click', function () {
+            if (!window.CCSel) return;
+            articoli.filter(function (a) { return a.disponibile; }).forEach(function (a) {
+              CCSel.aggiungiProdotto({
+                name: a.nome, img: a.immagine || '', imgProfumo: a.imgProfumo || '',
+                qta: a.quantita || 0, oltre: !!a.oltre, cat: a.categoria || '', url: a.pagina || '',
+              });
+            });
+            try {
+              if (d.promemoriaId) sessionStorage.setItem('cc-promemoria-rif', d.promemoriaId);
+            } catch (e) {}
+            location.href = 'contatti.html';
+          });
+        })
+        .catch(statoErrore);
+    })();
+  </script>
+</body>
+</html>

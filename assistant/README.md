@@ -201,12 +201,57 @@ mailto:; se fallisce solo la conferma, la richiesta e' comunque arrivata.
 
 ---
 
+## Promemoria di riacquisto
+
+Un ciclo giornaliero guarda le richieste archiviate (`assistant/data/richieste.jsonl`)
+e, per chi non ha ancora riordinato gli stessi prodotti, manda un'email con un
+collegamento per riordinare in pochi clic — senza account. La logica e' in
+`assistant/src/motore-promemoria.mjs`, l'orchestrazione in `scheduler.mjs`.
+
+**Serve un processo che resti acceso** (o un trigger esterno che lo richiami):
+un sito solo statico su GitHub Pages non basta. Due modi, non alternativi — meglio
+tenerli entrambi attivi:
+
+1. se `assistant/server.mjs` resta in esecuzione (Railway, Render, una VPS), fa
+   partire da solo un giro al giorno (`scheduler.avviaScheduler()`, stesso schema
+   di `pulizia.mjs`);
+2. `.github/workflows/promemoria.yml` chiama una volta al giorno l'endpoint
+   `/api/cron/promemoria?secret=…` da GitHub Actions — funziona anche se il
+   processo si riavvia o resta spento. Servono due secret del repository:
+   `PROMEMORIA_ENDPOINT` (l'URL completo dell'endpoint) e `CRON_SECRET` (uguale
+   a `CC_CRON_SECRET` sul server).
+
+**Prima di attivarlo**, oltre a `CC_RESEND_KEY`/`CC_MITTENTE` (gia' visti sopra),
+servono in `.env`: `CC_TOKEN_SECRET` (firma le sessioni del pannello admin),
+`CC_ADMIN_PASSWORD` (accesso a `/admin.html`) e `CC_CRON_SECRET` (protegge il
+trigger esterno) — vedi `.env.example`.
+
+**Pannello admin** (`/admin.html`, non indicizzato): regole di riacquisto per
+categoria (giorni, secondo promemoria, tetto, stagionalita', esclusioni) e una
+dashboard con inviati/aperti/cliccati/ordini generati e la tabella clienti.
+Nessun prezzo ne' fatturato: il sito non vende online e non ha un listino, quindi
+la conversione si misura in richieste generate, non in euro.
+
+**Prova rapida**: `npm run promemoria` esegue un ciclo a mano e stampa l'esito,
+senza aspettare il timer ne' il trigger esterno.
+
+---
+
 ## Deploy
 
-**Consiglio: Vercel.** Il sito è statico e ci sta già bene; `api/chat.js` diventa
-una funzione serverless senza configurazione, e il piano gratuito basta per il
-traffico di un sito vetrina. In alternativa Railway o una VPS, dove gira
-`server.mjs` come processo normale — ha senso se preferisci un server tuo.
+**Le pagine del sito** restano dove sono oggi (GitHub Pages secondo `privacy.html`,
+o l'hosting scelto). **Il backend** (`api/*`, l'assistente, il modulo contatti e i
+promemoria) e' un processo separato, e deve restare cosi': un hosting solo statico
+non puo' far girare ne' `api/chat.js` ne' lo scheduler dei promemoria.
+
+**Consiglio: Railway o Render (piano gratuito), oppure una VPS**, dove gira
+`server.mjs` come processo normale — la scelta piu' semplice se si vuole anche il
+timer interno dei promemoria oltre al trigger esterno di GitHub Actions.
+In alternativa Vercel: `api/chat.js` diventa una funzione serverless senza
+configurazione, ma **attenzione**: su Vercel il disco non persiste fra una
+chiamata e l'altra, quindi `assistant/data/*.json(l)` (clienti, richieste,
+regole, riordini) andrebbero spostati su un database vero prima di contare sui
+promemoria — oggi non lo sono. Su Railway/Render/VPS questo problema non c'e'.
 
 Su Vercel:
 

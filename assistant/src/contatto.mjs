@@ -9,8 +9,9 @@
 import { config, EMAIL_SUPPORTO } from './config.mjs';
 import { postaAttiva, emailValida, inviaRichiesta, inviaConferma } from './mailer.mjs';
 import { registra } from './log.mjs';
-import { registraRichiesta } from './archivio.mjs';
-import { daRichiesta } from './clienti.mjs';
+import { registraRichiesta, storicoPerEmail, calcolaFrequenzaMedia } from './archivio.mjs';
+import { daRichiesta, aggiornaFrequenza } from './clienti.mjs';
+import { registraConsensi } from './consensi.mjs';
 import { linkSito } from './email-template.mjs';
 
 const ORA = 60 * 60 * 1000;
@@ -82,6 +83,12 @@ export async function gestisciContatto(req, res, dati, ip) {
       note:     testo(dati.fornitura.note, 200),
       descrizione: testo(dati.fornitura.descrizione, 300),
     } : null,
+    /* newsletter: consenso a parte, mai obbligatorio (vedi consensi.mjs) */
+    newsletter: Boolean(dati.newsletter),
+    /* presente solo se la richiesta nasce da un clic su "Riordina" in
+       un'email di promemoria — vedi riordino.html. Serve solo a misurare
+       la conversione dei promemoria, non e' un dato personale. */
+    promemoriaRif: testo(dati.promemoriaRif, 40),
   };
 
   if (!d.nome || !d.messaggio) return invia(400, { ok: false, errore: 'dati mancanti' });
@@ -105,6 +112,7 @@ export async function gestisciContatto(req, res, dati, ip) {
       email: d.email,
       azienda: d.azienda,
       linea: etichettaLinea(d.oggetto),
+      lingua: d.lingua,
       prodotti: d.articoli.map(a => ({
         nome: a.nome, quantita: a.quantita, oltre: a.oltre,
         immagine: a.img, imgProfumo: a.imgProfumo,
@@ -115,6 +123,10 @@ export async function gestisciContatto(req, res, dati, ip) {
       d.linkPersonale = linkSito('index.html') + '?c=' + cliente.codice;
       d.clienteNuovo = cliente.nuovo;
     }
+    /* newsletter: solo se spuntata. Il promemoria di riacquisto resta
+       quello che era (acceso di default, spento solo da un'opposizione
+       esplicita) — non lo si tocca qui, vedi consensi.mjs. */
+    registraConsensi(d.email, { newsletter: d.newsletter });
   } catch (e) {
     console.warn('[contatto] link personale non creato: ' + e.message);
   }
@@ -134,6 +146,15 @@ export async function gestisciContatto(req, res, dati, ip) {
 
   /* la richiesta resta anche come dato, non solo dentro un'email */
   const archiviata = registraRichiesta(d);
+
+  /* la frequenza si ricalcola DOPO aver archiviato, cosi' include anche
+     questa richiesta appena scritta — non solo le precedenti. */
+  try {
+    const media = calcolaFrequenzaMedia(storicoPerEmail(d.email));
+    if (media) aggiornaFrequenza(d.email, media);
+  } catch (e) {
+    console.warn('[contatto] frequenza non aggiornata: ' + e.message);
+  }
 
   registra({ ip, evento: 'contatto', oggetto: d.oggetto, conferma: conferma.ok,
              cadenza: d.fornitura ? d.fornitura.tipo : 'non indicata',

@@ -14,6 +14,7 @@ import { daCompilare, policiesVuote } from './policies.mjs';
 import { quanti, generato } from './catalog.mjs';
 import { gestisciContatto } from './contatto.mjs';
 import { postaAttiva } from './mailer.mjs';
+import { corpoJSON } from './corpo-richiesta.mjs';
 
 const CORTESIA =
   'Mi scusi, in questo momento non riesco a rispondere. ' +
@@ -27,21 +28,6 @@ function cors(req, res) {
   res.setHeader('Vary', 'Origin');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-}
-
-function corpo(req) {
-  if (req.body !== undefined && req.body !== null) {       /* Vercel lo ha gia' letto */
-    return Promise.resolve(typeof req.body === 'string' ? JSON.parse(req.body || '{}') : req.body);
-  }
-  return new Promise((risolvi, rifiuta) => {
-    let dati = '';
-    req.on('data', c => {
-      dati += c;
-      if (dati.length > 100_000) { rifiuta(new Error('richiesta troppo grande')); req.destroy(); }
-    });
-    req.on('end', () => { try { risolvi(JSON.parse(dati || '{}')); } catch (e) { rifiuta(e); } });
-    req.on('error', rifiuta);
-  });
 }
 
 /* distingue la chiave vera dal segnaposto di .env.example */
@@ -74,7 +60,7 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') { res.statusCode = 405; return res.end('Metodo non ammesso'); }
 
   let dati;
-  try { dati = await corpo(req); }
+  try { dati = await corpoJSON(req); }
   catch (e) { res.statusCode = 400; return res.end('Richiesta non valida'); }
 
   const testo = String(dati.messaggio || '').trim();

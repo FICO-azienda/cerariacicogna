@@ -35,8 +35,10 @@ export function elenco() { return leggi().clienti; }
 
 /* Confronto a tempo costante: un confronto normale esce al primo carattere
    diverso, e quella differenza di tempo si puo' misurare per indovinare il
-   codice un pezzo alla volta. */
-function stessoCodice(a, b) {
+   codice un pezzo alla volta. Esportata perche' token-riordino.mjs genera
+   un secondo registro di codici opachi con la stessa identica esigenza:
+   meglio un confronto solo, riusato, che due copie da mantenere allineate. */
+export function stessoCodice(a, b) {
   const ba = Buffer.from(String(a)), bb = Buffer.from(String(b));
   if (ba.length !== bb.length) return false;
   return crypto.timingSafeEqual(ba, bb);
@@ -68,6 +70,14 @@ export function versionePubblica(cliente) {
   };
 }
 
+/* Consenso di default per un cliente appena creato: il promemoria di
+   riacquisto e' acceso di default (si basa sul soft spam: chi ci scrive
+   per una richiesta commerciale puo' ricevere, su prodotti analoghi, un
+   promemoria facile da rifiutare — vedi privacy.html). La newsletter resta
+   sempre spenta finche' non la spunta esplicitamente nel modulo: sono due
+   consensi diversi, con basi giuridiche diverse, e non si scambiano mai. */
+const consensoIniziale = () => ({ newsletter: false, promemoriaRiacquisto: true, aggiornato: new Date().toISOString() });
+
 export function aggiungi(cliente) {
   const dati = leggi();
   const voce = {
@@ -77,6 +87,9 @@ export function aggiungi(cliente) {
        dove non dovrebbe: dodici mesi, rinnovabili */
     scadenza: new Date(Date.now() + 365 * 24 * 3600 * 1000).toISOString(),
     revocato: false,
+    consenso: consensoIniziale(),
+    frequenzaMediaGiorni: null,
+    promemoria: [],
     ...cliente,
   };
   dati.clienti.push(voce);
@@ -100,7 +113,7 @@ export const MESI_VALIDITA = 12;
 const fraUnAnno = () =>
   new Date(Date.now() + MESI_VALIDITA * 30.44 * 24 * 3600 * 1000).toISOString();
 
-export function daRichiesta({ nome, email, azienda, linea, prodotti }) {
+export function daRichiesta({ nome, email, azienda, linea, prodotti, lingua }) {
   const mail = normalizzaEmail(email);
   if (!mail) return null;
 
@@ -111,6 +124,9 @@ export function daRichiesta({ nome, email, azienda, linea, prodotti }) {
     esistente.nome = nome || esistente.nome;
     esistente.azienda = azienda || esistente.azienda;
     esistente.linea = linea || esistente.linea;
+    /* la lingua in cui ha scritto l'ULTIMA volta: e' quella in cui gli
+       arrivano i promemoria, come per la conferma di richiesta. */
+    if (lingua) esistente.lingua = lingua;
     /* i prodotti sono quelli dell'ultimo ordine: e' cio' che il cliente
        si aspetta di ritrovare aprendo il link, non un archivio storico */
     if (prodotti && prodotti.length) esistente.prodotti = prodotti;
@@ -125,7 +141,7 @@ export function daRichiesta({ nome, email, azienda, linea, prodotti }) {
     return { ...esistente, nuovo: false };
   }
 
-  const creato = aggiungi({ nome, email: mail, azienda, linea, prodotti: prodotti || [],
+  const creato = aggiungi({ nome, email: mail, azienda, linea, prodotti: prodotti || [], lingua: lingua || 'it',
                             scadenza: fraUnAnno(), ultimoOrdine: new Date().toISOString() });
   return { ...creato, nuovo: true };
 }
@@ -136,6 +152,74 @@ export function revoca(codice) {
   if (!c) return false;
   c.revocato = true;
   c.revocatoIl = new Date().toISOString();
+  scrivi(dati);
+  return true;
+}
+
+/* ══ Automazioni di riacquisto: le funzioni che servono solo a quello ══
+   Tutte a valle di daRichiesta: il cliente esiste gia' quando le si chiama. */
+
+export function trovaPerEmail(email) {
+  const mail = normalizzaEmail(email);
+  if (!mail) return null;
+  return leggi().clienti.find(c => normalizzaEmail(c.email) === mail) || null;
+}
+
+/* Un cliente NON revocato e NON scaduto: e' la platea a cui i promemoria
+   possono rivolgersi. Un link scaduto non apre piu' nulla, quindi non ha
+   senso invitarlo a usarlo. */
+export function clientiAttivi() {
+  const ora = new Date();
+  return leggi().clienti.filter(c => !c.revocato && (!c.scadenza || new Date(c.scadenza) >= ora));
+}
+
+/* Consenso newsletter e consenso promemoria sono due interruttori distinti,
+   mai scambiati: patch prende solo le chiavi passate, l'altra resta com'era. */
+export function impostaConsenso(email, patch) {
+  const mail = normalizzaEmail(email);
+  const dati = leggi();
+  const c = dati.clienti.find(x => normalizzaEmail(x.email) === mail);
+  if (!c) return null;
+  c.consenso = { ...consensoIniziale(), ...c.consenso, ...patch, aggiornato: new Date().toISOString() };
+  scrivi(dati);
+  return c.consenso;
+}
+
+/* Per il link di disiscrizione: stesso codice del link personale, che il
+   cliente ha gia' in una vecchia email — non serve inventarne un altro. */
+export function impostaConsensoPerCodice(codice, patch) {
+  const dati = leggi();
+  const c = dati.clienti.find(x => stessoCodice(x.codice, codice));
+  if (!c) return null;
+  c.consenso = { ...consensoIniziale(), ...c.consenso, ...patch, aggiornato: new Date().toISOString() };
+  scrivi(dati);
+  return { consenso: c.consenso, email: c.email };
+}
+
+/* Frequenza media ricalcolata dallo storico reale (archivio.mjs la calcola,
+   qui la si registra sulla scheda cliente): e' il valore che il motore usa
+   al posto di quello di categoria dal terzo ordine in poi. */
+export function aggiornaFrequenza(email, frequenzaMediaGiorni) {
+  const mail = normalizzaEmail(email);
+  const dati = leggi();
+  const c = dati.clienti.find(x => normalizzaEmail(x.email) === mail);
+  if (!c) return false;
+  c.frequenzaMediaGiorni = frequenzaMediaGiorni;
+  scrivi(dati);
+  return true;
+}
+
+/* Traccia dei promemoria gia' mandati: serve al motore per non rimandare lo
+   stesso promemoria due volte e per rispettare il tetto massimo per ordine.
+   Tiene solo gli ultimi 20: e' uno storico di servizio, non un registro. */
+export function registraPromemoriaInviato(email, voce) {
+  const mail = normalizzaEmail(email);
+  const dati = leggi();
+  const c = dati.clienti.find(x => normalizzaEmail(x.email) === mail);
+  if (!c) return false;
+  if (!Array.isArray(c.promemoria)) c.promemoria = [];
+  c.promemoria.push({ ts: new Date().toISOString(), ...voce });
+  if (c.promemoria.length > 20) c.promemoria = c.promemoria.slice(-20);
   scrivi(dati);
   return true;
 }
