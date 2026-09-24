@@ -38,7 +38,7 @@
   </nav>
 
   <header class="rd-hero">
-    <p class="rd-eyebrow">Il tuo riordino</p>
+    <p class="rd-eyebrow" id="rd-eyebrow">Il tuo riordino</p>
     <h1 class="rd-title" id="rd-titolo">Un attimo, stiamo recuperando il tuo ordine…</h1>
     <p class="rd-sub" id="rd-sottotitolo"></p>
   </header>
@@ -58,9 +58,57 @@
 
   <script src="js/cc-api.js"></script>
   <script src="js/selection.js?v=7"></script>
+  <script src="js/i18n-pages.js?v=3"></script>
+  <script src="js/i18n.js?v=7"></script>
   <script>
     (function () {
       'use strict';
+
+      /* ── due lingue, stesso schema di js/link-personale.js: il contenuto
+         di questa pagina è tutto costruito da JS con dati del cliente
+         (nome, date, prodotti), quindi non basta il dizionario testo-per-
+         testo di js/i18n.js — ogni stringa dinamica si sceglie da qui. */
+      var T = {
+        it: {
+          eyebrow: 'Il tuo riordino',
+          caricamento: 'Un attimo, stiamo recuperando il tuo ordine…',
+          erroreTitolo: 'Questo collegamento non è più valido',
+          erroreSotto: 'Può essere scaduto, oppure il promemoria non esiste più.',
+          erroreCorpo: function (a) { return 'Se hai bisogno di riordinare, scrivici pure dalla pagina ' + a + ': sarà un attimo.'; },
+          contatti: 'Contatti',
+          bentornato: function (nome) { return nome ? 'Bentornato, ' + nome : 'Il tuo ordine precedente'; },
+          conData: function (data) { return 'Ecco cosa avevi richiesto il ' + data + '. Puoi modificare le quantità o toglierne alcuni prima di inviare.'; },
+          senzaData: 'Ecco i prodotti del tuo ultimo ordine.',
+          pezzi: 'pz',
+          nonDisponibile: 'Non più disponibile',
+          cta: 'Modifica e invia la richiesta',
+          nota: 'Ti portiamo al modulo di contatto, con tutto già pronto: potrai ancora cambiare quantità o togliere articoli.',
+          dataLocale: 'it-IT',
+        },
+        en: {
+          eyebrow: 'Your reorder',
+          caricamento: 'One moment, we are retrieving your order…',
+          erroreTitolo: 'This link is no longer valid',
+          erroreSotto: 'It may have expired, or the reminder no longer exists.',
+          erroreCorpo: function (a) { return 'If you need to reorder, just write to us from the ' + a + ' page: it will only take a moment.'; },
+          contatti: 'Contact',
+          bentornato: function (nome) { return nome ? 'Welcome back, ' + nome : 'Your previous order'; },
+          conData: function (data) { return 'Here is what you requested on ' + data + '. You can still change quantities or remove items before sending.'; },
+          senzaData: 'Here are the products from your last order.',
+          pezzi: 'pcs',
+          nonDisponibile: 'No longer available',
+          cta: 'Edit and send the request',
+          nota: 'We will take you to the contact form, already filled in: you can still change quantities or remove items.',
+          dataLocale: 'en-GB',
+        },
+      };
+      function lang() {
+        try {
+          if (window.CCI18n && typeof window.CCI18n.get === 'function') return window.CCI18n.get() === 'en' ? 'en' : 'it';
+          return localStorage.getItem('cc-lang') === 'en' ? 'en' : 'it';
+        } catch (e) { return 'it'; }
+      }
+      var t = function () { return T[lang()]; };
 
       var API = (window.CC_API || '') + '/api/riordino';
 
@@ -70,16 +118,26 @@
         });
       };
 
+      var eyebrow = document.getElementById('rd-eyebrow');
       var titolo = document.getElementById('rd-titolo');
       var sotto = document.getElementById('rd-sottotitolo');
       var contenuto = document.getElementById('rd-contenuto');
 
+      /* la pagina si ridisegna da sola se la lingua cambia mentre è aperta
+         (toggle IT/EN nel menu), rieseguendo l'ultima cosa disegnata */
+      var ultimoDisegno = function () { eyebrow.textContent = t().eyebrow; titolo.textContent = t().caricamento; };
+
       function statoErrore() {
-        titolo.textContent = 'Questo collegamento non è più valido';
-        sotto.textContent = 'Può essere scaduto, oppure il promemoria non esiste più.';
-        contenuto.innerHTML = '<p class="rd-stato">Se hai bisogno di riordinare, scrivici pure dalla pagina '
-          + '<a href="contatti.html">Contatti</a>: sarà un attimo.</p>';
+        var d = t();
+        titolo.textContent = d.erroreTitolo;
+        sotto.textContent = d.erroreSotto;
+        var link = '<a href="contatti.html">' + esc(d.contatti) + '</a>';
+        contenuto.innerHTML = '<p class="rd-stato">' + d.erroreCorpo(link) + '</p>';
+        ultimoDisegno = statoErrore;
       }
+
+      eyebrow.textContent = t().eyebrow;
+      titolo.textContent = t().caricamento;
 
       var token = new URL(location.href).searchParams.get('t');
       if (!token || !/^[a-f0-9]{32}$/.test(token)) { statoErrore(); return; }
@@ -90,46 +148,54 @@
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (d) {
           if (!d || !d.ok) return statoErrore();
-
-          var nome = d.cliente && d.cliente.nome ? d.cliente.nome.split(/\s+/)[0] : '';
-          titolo.textContent = nome ? 'Bentornato, ' + nome : 'Il tuo ordine precedente';
-          var data = d.dataOrdine ? new Date(d.dataOrdine).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
-          sotto.textContent = data
-            ? 'Ecco cosa avevi richiesto il ' + data + '. Puoi modificare le quantità o toglierne alcuni prima di inviare.'
-            : 'Ecco i prodotti del tuo ultimo ordine.';
-
-          var articoli = d.articoli || [];
-          var righe = articoli.map(function (a) {
-            return '<div class="rd-riga">'
-              + (a.immagine ? '<img src="' + esc(a.immagine) + '" alt="">' : '')
-              + '<div class="rd-riga-txt">'
-              + '<p class="rd-riga-nome">' + esc(a.nome) + '</p>'
-              + '<p class="rd-riga-qta">' + (a.quantita ? a.quantita + ' pz' : '') + '</p>'
-              + (a.disponibile ? '' : '<span class="rd-non-disp">Non più disponibile</span>')
-              + '</div></div>';
-          }).join('');
-
-          contenuto.innerHTML = righe
-            + '<div class="rd-cta-wrap">'
-            + '<button type="button" class="rd-cta" id="rd-riordina">Modifica e invia la richiesta</button>'
-            + '<p class="rd-nota">Ti portiamo al modulo di contatto, con tutto già pronto: potrai ancora cambiare quantità o togliere articoli.</p>'
-            + '</div>';
-
-          document.getElementById('rd-riordina').addEventListener('click', function () {
-            if (!window.CCSel) return;
-            articoli.filter(function (a) { return a.disponibile; }).forEach(function (a) {
-              CCSel.aggiungiProdotto({
-                name: a.nome, img: a.immagine || '', imgProfumo: a.imgProfumo || '',
-                qta: a.quantita || 0, oltre: !!a.oltre, cat: a.categoria || '', url: a.pagina || '',
-              });
-            });
-            try {
-              if (d.promemoriaId) sessionStorage.setItem('cc-promemoria-rif', d.promemoriaId);
-            } catch (e) {}
-            location.href = 'contatti.html';
-          });
+          disegna(d);
+          ultimoDisegno = function () { disegna(d); };
         })
         .catch(statoErrore);
+
+      function disegna(d) {
+        var d18 = t();
+        eyebrow.textContent = d18.eyebrow;
+
+        var nome = d.cliente && d.cliente.nome ? d.cliente.nome.split(/\s+/)[0] : '';
+        titolo.textContent = d18.bentornato(nome);
+        var data = d.dataOrdine ? new Date(d.dataOrdine).toLocaleDateString(d18.dataLocale, { day: 'numeric', month: 'long', year: 'numeric' }) : '';
+        sotto.textContent = data ? d18.conData(data) : d18.senzaData;
+
+        var articoli = d.articoli || [];
+        var righe = articoli.map(function (a) {
+          return '<div class="rd-riga">'
+            + (a.immagine ? '<img src="' + esc(a.immagine) + '" alt="">' : '')
+            + '<div class="rd-riga-txt">'
+            + '<p class="rd-riga-nome">' + esc(a.nome) + '</p>'
+            + '<p class="rd-riga-qta">' + (a.quantita ? a.quantita + ' ' + d18.pezzi : '') + '</p>'
+            + (a.disponibile ? '' : '<span class="rd-non-disp">' + esc(d18.nonDisponibile) + '</span>')
+            + '</div></div>';
+        }).join('');
+
+        contenuto.innerHTML = righe
+          + '<div class="rd-cta-wrap">'
+          + '<button type="button" class="rd-cta" id="rd-riordina">' + esc(d18.cta) + '</button>'
+          + '<p class="rd-nota">' + esc(d18.nota) + '</p>'
+          + '</div>';
+
+        document.getElementById('rd-riordina').addEventListener('click', function () {
+          if (!window.CCSel) return;
+          articoli.filter(function (a) { return a.disponibile; }).forEach(function (a) {
+            CCSel.aggiungiProdotto({
+              name: a.nome, img: a.immagine || '', imgProfumo: a.imgProfumo || '',
+              qta: a.quantita || 0, oltre: !!a.oltre, cat: a.categoria || '', url: a.pagina || '',
+            });
+          });
+          try {
+            if (d.promemoriaId) sessionStorage.setItem('cc-promemoria-rif', d.promemoriaId);
+          } catch (e) {}
+          location.href = 'contatti.html';
+        });
+      }
+
+      window.addEventListener('cc-lang:change', function () { ultimoDisegno(); });
+      window.addEventListener('storage', function (e) { if (e.key === 'cc-lang') ultimoDisegno(); });
     })();
   </script>
 </body>
