@@ -48,6 +48,12 @@ import('./assistant/src/pulizia.mjs')
   .then(m => m.avviaPulizia())
   .catch(e => console.error('[avvio] pulizia non avviata: ' + e.message));
 
+/* Il ciclo giornaliero dei promemoria di riacquisto. Come sopra:
+   niente await, o Passenger non riesce a caricare questo file. */
+import('./assistant/src/scheduler.mjs')
+  .then(m => m.avviaScheduler())
+  .catch(e => console.error('[avvio] promemoria non avviati: ' + e.message));
+
 /* ── tipi di file ── */
 const TIPI = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8',
@@ -97,6 +103,10 @@ const ipDi = req =>
   (req.headers['x-forwarded-for'] || '').split(',')[0].trim()
   || (req.socket && req.socket.remoteAddress) || 'sconosciuto';
 
+/* Nota sul perche' ogni gestore e' chiamato con "await": senza, l'errore
+   non passa dal try/catch qui sotto ma diventa un rifiuto non gestito, e
+   Node chiude il processo. Una singola richiesta sbagliata porterebbe giu'
+   tutto il sito, pagine comprese. */
 const server = http.createServer(async (req, res) => {
   let url;
   try { url = new URL(req.url, 'http://x'); }
@@ -105,12 +115,61 @@ const server = http.createServer(async (req, res) => {
   try {
     if (url.pathname === '/api/chat') {
       const { default: handler } = await import('./assistant/src/handler.mjs');
-      return handler(req, res);
+      return await handler(req, res);
     }
 
     if (url.pathname === '/api/cliente') {
       const { gestisciCliente } = await import('./assistant/src/cliente-endpoint.mjs');
-      return gestisciCliente(req, res, url.searchParams.get('c') || '', ipDi(req));
+      return await gestisciCliente(req, res, url.searchParams.get('c') || '', ipDi(req));
+    }
+
+    /* ── promemoria di riacquisto, riordino, pannello ──
+       Le stesse rotte del server di sviluppo (assistant/server.mjs):
+       qui vanno ripetute perche' online e' questo il file che risponde. */
+    if (url.pathname === '/api/cron/promemoria') {
+      const { gestisciCron } = await import('./assistant/src/cron-endpoint.mjs');
+      return await gestisciCron(req, res, url.searchParams.get('secret') || '');
+    }
+
+    if (url.pathname === '/api/riordino') {
+      const { gestisciRiordino } = await import('./assistant/src/riordino-endpoint.mjs');
+      return await gestisciRiordino(req, res, url.searchParams.get('t') || '', ipDi(req));
+    }
+
+    if (url.pathname === '/api/unsubscribe') {
+      const { gestisciUnsubscribe } = await import('./assistant/src/unsubscribe-endpoint.mjs');
+      return await gestisciUnsubscribe(req, res, url.searchParams.get('c') || '',
+                                 url.searchParams.get('tipo') || '', ipDi(req));
+    }
+
+    if (url.pathname === '/api/promemoria-aperto') {
+      const { gestisciApertura } = await import('./assistant/src/apertura-endpoint.mjs');
+      return await gestisciApertura(req, res, url.searchParams.get('id') || '');
+    }
+
+    if (url.pathname === '/api/admin/login') {
+      const { gestisciLogin } = await import('./assistant/src/admin/login-endpoint.mjs');
+      return await gestisciLogin(req, res, ipDi(req));
+    }
+
+    if (url.pathname === '/api/admin/regole') {
+      const { gestisciRegole } = await import('./assistant/src/admin/regole-endpoint.mjs');
+      return await gestisciRegole(req, res, url.searchParams.get('categoria') || '');
+    }
+
+    if (url.pathname === '/api/ordine-stato-cambiato') {
+      const { gestisciStatoOrdine } = await import('./assistant/src/ordini/stato-endpoint.mjs');
+      return await gestisciStatoOrdine(req, res);
+    }
+
+    if (url.pathname === '/api/admin/dashboard') {
+      const { gestisciDashboard } = await import('./assistant/src/admin/dashboard-endpoint.mjs');
+      const [da, a] = (url.searchParams.get('periodo') || '').split('..');
+      return await gestisciDashboard(req, res, {
+        da: da || '', a: a || '', cliente: url.searchParams.get('cliente') || '',
+        tipo: url.searchParams.get('tipo') || '', stato: url.searchParams.get('stato') || '',
+        categoria: url.searchParams.get('categoria') || '',
+      });
     }
 
     if (url.pathname === '/api/contatto') {
@@ -123,7 +182,7 @@ const server = http.createServer(async (req, res) => {
         try { dati = JSON.parse(grezzo || '{}'); }
         catch (e) { res.statusCode = 400; return res.end('Richiesta non valida'); }
         const { gestisciContatto } = await import('./assistant/src/contatto.mjs');
-        return gestisciContatto(req, res, dati, ipDi(req));
+        return await gestisciContatto(req, res, dati, ipDi(req));
       });
       return;
     }
