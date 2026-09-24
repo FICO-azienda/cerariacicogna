@@ -30,14 +30,14 @@ var FOGLIO_CLIENTI = 'Clienti';
 var COLONNE_ORDINI = [
   'ID Ordine', 'Data Ordine', 'Nome', 'Cognome', 'Email', 'Azienda', 'Telefono', 'Indirizzo',
   'Tipo Cliente', 'Linea', 'Prodotti', 'Articoli (JSON)', 'Prezzo Totale', 'Metodo Pagamento',
-  'Stato Pagamento', 'Stato', 'Data Prevista Spedizione', 'Data Spedizione', 'Data Consegna',
-  'Note', 'Messaggio Cliente', 'Lingua', 'Promemoria Rif',
+  'Stato Pagamento', 'Stato', 'Data Prevista', 'Data Spedizione', 'Data Consegna',
+  'Note', 'Messaggio', 'Lingua', 'Promemoria Rif',
 ];
 
 var COLONNE_CLIENTI = [
   'Codice', 'Email', 'Nome', 'Azienda', 'Telefono', 'Indirizzo', 'Linea', 'Lingua',
-  'Creato', 'Scadenza', 'Revocato', 'Revocato Il', 'Ultimo Ordine', 'Frequenza Media Giorni',
-  'Consenso (JSON)', 'Prodotti Ultimo Ordine (JSON)', 'Promemoria (JSON)', 'Note Interne',
+  'Creato', 'Scadenza', 'Revocato', 'Revocato Il', 'Ultimo Ordine', 'Frequenza (gg)',
+  'Consenso (JSON)', 'Prodotti Abituali (JSON)', 'Promemoria (JSON)', 'Note Interne',
 ];
 
 var STATI_ORDINE = ['nuovo', 'confermato', 'pagamento', 'pagato', 'preparazione', 'produzione',
@@ -102,8 +102,8 @@ function rigaAOrdine(r) {
     azienda: r['Azienda'], telefono: r['Telefono'], indirizzo: r['Indirizzo'], tipoCliente: r['Tipo Cliente'],
     linea: r['Linea'], articoli: jsonSicuro(r['Articoli (JSON)'], []),
     prezzoTotale: r['Prezzo Totale'], metodoPagamento: r['Metodo Pagamento'], statoPagamento: r['Stato Pagamento'],
-    stato: r['Stato'], dataPrevistaSpedizione: r['Data Prevista Spedizione'], dataSpedizione: r['Data Spedizione'],
-    dataConsegna: r['Data Consegna'], note: r['Note'], messaggio: r['Messaggio Cliente'], lingua: r['Lingua'],
+    stato: r['Stato'], dataPrevistaSpedizione: r['Data Prevista'], dataSpedizione: r['Data Spedizione'],
+    dataConsegna: r['Data Consegna'], note: r['Note'], messaggio: r['Messaggio'], lingua: r['Lingua'],
     promemoriaRif: r['Promemoria Rif'],
   };
 }
@@ -115,8 +115,8 @@ function ordineARiga(o) {
     'Linea': o.linea, 'Prodotti': (o.articoli || []).map(function (a) { return a.nome + (a.quantita ? ' x' + a.quantita : ''); }).join(', '),
     'Articoli (JSON)': JSON.stringify(o.articoli || []), 'Prezzo Totale': o.prezzoTotale || '',
     'Metodo Pagamento': o.metodoPagamento || '', 'Stato Pagamento': o.statoPagamento || '', 'Stato': o.stato,
-    'Data Prevista Spedizione': o.dataPrevistaSpedizione || '', 'Data Spedizione': o.dataSpedizione || '',
-    'Data Consegna': o.dataConsegna || '', 'Note': o.note || '', 'Messaggio Cliente': o.messaggio || '',
+    'Data Prevista': o.dataPrevistaSpedizione || '', 'Data Spedizione': o.dataSpedizione || '',
+    'Data Consegna': o.dataConsegna || '', 'Note': o.note || '', 'Messaggio': o.messaggio || '',
     'Lingua': o.lingua || 'it', 'Promemoria Rif': o.promemoriaRif || '',
   };
 }
@@ -127,9 +127,9 @@ function rigaACliente(r) {
     codice: r['Codice'], email: r['Email'], nome: r['Nome'], azienda: r['Azienda'], telefono: r['Telefono'],
     indirizzo: r['Indirizzo'], linea: r['Linea'], lingua: r['Lingua'], creato: r['Creato'], scadenza: r['Scadenza'],
     revocato: Boolean(r['Revocato']), revocatoIl: r['Revocato Il'], ultimoOrdine: r['Ultimo Ordine'],
-    frequenzaMediaGiorni: r['Frequenza Media Giorni'] || null,
+    frequenzaMediaGiorni: r['Frequenza (gg)'] || null,
     consenso: jsonSicuro(r['Consenso (JSON)'], { newsletter: false, promemoriaRiacquisto: true }),
-    prodotti: jsonSicuro(r['Prodotti Ultimo Ordine (JSON)'], []),
+    prodotti: jsonSicuro(r['Prodotti Abituali (JSON)'], []),
     promemoria: jsonSicuro(r['Promemoria (JSON)'], []),
     noteInterne: r['Note Interne'],
     _riga: r._riga,
@@ -141,8 +141,8 @@ function clienteARiga(c) {
     'Codice': c.codice, 'Email': c.email, 'Nome': c.nome || '', 'Azienda': c.azienda || '',
     'Telefono': c.telefono || '', 'Indirizzo': c.indirizzo || '', 'Linea': c.linea || '', 'Lingua': c.lingua || 'it',
     'Creato': c.creato, 'Scadenza': c.scadenza, 'Revocato': c.revocato ? 'VERO' : '', 'Revocato Il': c.revocatoIl || '',
-    'Ultimo Ordine': c.ultimoOrdine || '', 'Frequenza Media Giorni': c.frequenzaMediaGiorni || '',
-    'Consenso (JSON)': JSON.stringify(c.consenso || {}), 'Prodotti Ultimo Ordine (JSON)': JSON.stringify(c.prodotti || []),
+    'Ultimo Ordine': c.ultimoOrdine || '', 'Frequenza (gg)': c.frequenzaMediaGiorni || '',
+    'Consenso (JSON)': JSON.stringify(c.consenso || {}), 'Prodotti Abituali (JSON)': JSON.stringify(c.prodotti || []),
     'Promemoria (JSON)': JSON.stringify(c.promemoria || []), 'Note Interne': c.noteInterne || '',
   };
 }
