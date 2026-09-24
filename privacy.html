@@ -2,6 +2,10 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy — Cereria Cicogna</title>
   <meta name="description" content="Informativa sul trattamento dei dati personali del sito Cereria Cicogna: quali dati raccogliamo, perche', per quanto tempo e quali diritti hai.">
@@ -23,7 +27,7 @@
   <meta name="robots" content="index, follow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="css/main.css?v=13">
+  <link rel="stylesheet" href="css/main.css?v=22">
   <style>
     .pv-hero {
       padding: 180px var(--gutter) 64px;
@@ -251,7 +255,7 @@
   <main class="pv-body">
     <div class="pv-wrap">
 
-      <p class="pv-updated">Ultimo aggiornamento: <time datetime="2026-09-12">12 settembre 2026</time></p>
+      <p class="pv-updated">Ultimo aggiornamento: <time datetime="2026-09-18">18 settembre 2026</time></p>
 
       <h2>Chi tratta i tuoi dati</h2>
       <p>Il titolare del trattamento e' <strong>Industria Ceraria F.lli Cicogna srl</strong>,
@@ -272,11 +276,15 @@
       <h2>Che dati raccogliamo, e perche'</h2>
 
       <h3>Modulo contatti</h3>
-      <p>Il modulo della pagina Contatti <strong>non invia nulla a un nostro server</strong>:
-        prepara un messaggio e lo apre nel programma di posta del tuo dispositivo.
-        Sei tu a premere invio. I dati che scrivi (nome, email, messaggio, eventuali
-        prodotti selezionati) ci arrivano quindi come una normale email, e li usiamo
-        solo per risponderti e per gestire la richiesta commerciale.</p>
+      <p>Quando invii il modulo della pagina Contatti, i dati che scrivi (nome, email,
+        ente o azienda, messaggio, eventuali prodotti selezionati) arrivano a un nostro
+        server, che ci inoltra la richiesta via email e ti manda una <strong>conferma
+        automatica</strong> all'indirizzo che hai indicato. Se l'invio dal server non
+        riesce, il modulo prepara invece un messaggio e lo apre nel programma di posta
+        del tuo dispositivo: in quel caso sei tu a premere invio.</p>
+      <p>Usiamo questi dati solo per risponderti e per gestire la richiesta commerciale.
+        Se nella richiesta indichi dei prodotti, li conserviamo per prepararti il
+        collegamento riservato con cui riordinarli, descritto piu' sotto.</p>
       <p><strong>Base giuridica:</strong> esecuzione di misure precontrattuali su tua
         richiesta (art. 6.1.b GDPR).</p>
 
@@ -363,13 +371,18 @@
             <td>Indirizzo IP e dati tecnici del browser</td>
           </tr>
           <tr>
-            <td>GitHub, Inc. (Stati Uniti)</td>
-            <td>Ospita il sito tramite GitHub Pages e riceve le richieste</td>
-            <td>Indirizzo IP, log tecnici del server</td>
+            <td>Resend (Stati Uniti, server in Irlanda)</td>
+            <td>Spedisce la tua richiesta a noi e la conferma a te</td>
+            <td>Il tuo nome, indirizzo email e il contenuto della richiesta</td>
+          </tr>
+          <tr>
+            <td>Libra S.r.l. (Lecco)</td>
+            <td>Ospita il sito e l'applicazione che riceve le richieste dal modulo e dall'assistente</td>
+            <td>Indirizzo IP, log tecnici del server, i dati inviati tramite il modulo</td>
           </tr>
         </tbody>
       </table>
-      <p>Il trattamento da parte di Anthropic puo' comportare un <strong>trasferimento di dati
+      <p>Il trattamento da parte di Anthropic e di Resend puo' comportare un <strong>trasferimento di dati
         fuori dall'Unione Europea</strong>, effettuato sulla base delle clausole contrattuali
         tipo approvate dalla Commissione Europea. I contenuti inviati tramite l'API non
         vengono usati per addestrare i modelli.</p>
@@ -450,9 +463,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="js/main.js?v=8"></script>
   <script src="js/selection.js?v=7"></script>
-  <script src="js/i18n-pages.js?v=3"></script>
+  <script src="js/i18n-pages.js?v=5"></script>
   <script src="js/i18n.js?v=7"></script>
-  <script src="js/link-personale.js?v=6" defer></script>
+  <script src="js/link-personale.js?v=7" defer></script>
   <script src="assistant/widget/cc-assistant.js?v=12" data-endpoint="http://localhost:8787/api/chat" data-privacy="privacy.html" defer></script>
 </body>
 </html>

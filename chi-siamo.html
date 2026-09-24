@@ -2,6 +2,10 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chi Siamo — Cereria Cicogna</title>
   <meta name="description" content="Tre generazioni di cerai a Novate Milanese. Filippo e Fabio Cicogna portano avanti una tradizione liturgica e artigianale costruita nel tempo, tra le chiese dell'Italia del Nord e i tavoli dei migliori ristoranti.">
@@ -22,7 +26,7 @@
   <meta name="twitter:image" content="https://www.cerariacicogna.com/images/og-cover.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="css/main.css?v=13">
+  <link rel="stylesheet" href="css/main.css?v=22">
   <style>
 
     /* ══ CHI SIAMO — beige, Cormorant SC, oro (coerente col sito) ══ */
@@ -87,6 +91,12 @@
     .cs-value-name{ font-family:var(--ff-display); font-weight:300; font-size:1.35rem; letter-spacing:.1em; color:#2a231a; margin:12px 0 14px; }
     .cs-value p{ font-family:var(--ff-serif); font-style:italic; font-size:.97rem; line-height:1.85; color:#6d6252; }
     @media(max-width:768px){ .cs-values-grid{ grid-template-columns:1fr; gap:38px; } .cs-value + .cs-value{ border-left:none; border-top:1px solid rgba(42,35,26,.14); padding-top:38px; } }
+
+    /* ritratto dei titolari — chiude la pagina prima della CTA */
+    .cs-ritratto{ background:var(--c-bg-cream); padding:0 var(--gutter) clamp(70px,9vw,110px); }
+    .cs-ritratto-fig{ margin:0 auto; max-width:1180px; text-align:center; }
+    .cs-ritratto-fig img{ width:100%; height:auto; display:block; }
+    .cs-ritratto-fig .cs-proc-caption{ text-align:center; }
 
     /* cta finale — scuro come l'header */
     .cs-cta{ background:var(--c-dark); text-align:center; padding:clamp(84px,11vw,140px) var(--gutter); }
@@ -374,6 +384,16 @@
         </div>
       </div>
     </section>
+
+    <!-- RITRATTO -->
+    <section class="cs-ritratto">
+      <figure class="cs-ritratto-fig reveal-up">
+        <img src="images/chi-siamo-fabio-filippo.webp"
+             alt="Filippo e Fabio Cicogna accanto ad alcune sculture in cera"
+             width="1536" height="1024" loading="lazy">
+        <figcaption class="cs-proc-caption">Filippo e Fabio Cicogna · terza generazione</figcaption>
+      </figure>
+    </section>
   </main>
 
   <!-- CTA FINALE -->
@@ -430,9 +450,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="js/main.js?v=8"></script>
   <script src="js/selection.js?v=7"></script>
-  <script src="js/i18n-pages.js?v=3"></script>
+  <script src="js/i18n-pages.js?v=5"></script>
   <script src="js/i18n.js?v=7"></script>
-  <script src="js/link-personale.js?v=6" defer></script>
+  <script src="js/link-personale.js?v=7" defer></script>
   <script src="assistant/widget/cc-assistant.js?v=12" data-endpoint="http://localhost:8787/api/chat" data-privacy="privacy.html" defer></script>
 </body>
 </html>

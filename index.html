@@ -2,6 +2,10 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cereria Cicogna — Industria Ceraria, Novate Milanese</title>
   <meta name="description" content="Industria Ceraria F.lli Cicogna. Oltre 50 anni di artigianalità. Articoli liturgici, linea Garden, Home Collection e private label per ristoranti ed eventi.">
@@ -22,7 +26,7 @@
   <meta name="twitter:image" content="https://www.cerariacicogna.com/images/og-cover.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="css/main.css?v=13">
+  <link rel="stylesheet" href="css/main.css?v=22">
   <style>
 
     /* ═══════════════════════════════════════════════════
@@ -244,6 +248,48 @@
       .v-hero-poster { animation-duration: 14s; }
       .v-hero-title  { letter-spacing: .12em; line-height: .98; }
       .v-hero-title-sub { letter-spacing: .28em; }
+    }
+
+    /* ── Hero sul telefono ──────────────────────────────────────
+       Il video e' orizzontale (1280x720), lo schermo del telefono e'
+       verticale. Riempiendo tutta l'altezza il browser lo ingrandisce
+       finche' copre: se ne vede solo il 26% della larghezza, sgranato,
+       e quel che resta e' una macchia scura.
+       Qui il video tiene una fascia centrale — se ne vede molta piu'
+       inquadratura — e i suoi bordi sfumano nel fondo scuro, cosi' lo
+       stacco non si vede e sembra voluto. */
+    @media (max-width: 768px) and (orientation: portrait) {
+      .v-hero-media video {
+        top: 62%;
+        bottom: auto;
+        height: 62%;
+        transform: translateY(-50%);
+        -webkit-mask-image: linear-gradient(to bottom,
+          transparent 0%, #000 15%, #000 85%, transparent 100%);
+        mask-image: linear-gradient(to bottom,
+          transparent 0%, #000 15%, #000 85%, transparent 100%);
+      }
+
+      /* Il titolo e la frase cadono sopra il video: dove l'inquadratura
+         schiarisce diventavano illeggibili. Il testo sale sopra la parte
+         scura, la fiamma resta libera sotto, e un'ombra morbida tiene la
+         frase staccata dal fondo qualunque fotogramma passi. */
+      .v-hero-content   { padding-bottom: 34vh; }
+
+      .v-hero-title,
+      .v-hero-title-sub { text-shadow: 0 2px 34px rgba(16,10,4,.7); }
+      .v-hero-tagline   { text-shadow: 0 1px 14px rgba(16,10,4,.95),
+                                       0 0 42px rgba(16,10,4,.85); }
+      .v-hero-media video { filter: brightness(.82); }
+
+      /* Il pulsante finisce sopra la candela, dove l'immagine e' chiara:
+         un velo scuro dietro la scritta lo tiene leggibile qualunque
+         fotogramma stia passando. */
+      .v-hero-enter-label {
+        background: rgba(16,10,4,.46);
+        -webkit-backdrop-filter: blur(3px);
+        backdrop-filter: blur(3px);
+      }
     }
 
     /* ═══════════════════════════════════════════════════
@@ -2052,9 +2098,9 @@
   })();
   </script>
 
-  <script src="js/i18n-pages.js?v=3"></script>
+  <script src="js/i18n-pages.js?v=5"></script>
   <script src="js/i18n.js?v=7"></script>
-  <script src="js/link-personale.js?v=6" defer></script>
+  <script src="js/link-personale.js?v=7" defer></script>
   <script src="assistant/widget/cc-assistant.js?v=12" data-endpoint="http://localhost:8787/api/chat" data-privacy="privacy.html" defer></script>
 </body>
 </html>

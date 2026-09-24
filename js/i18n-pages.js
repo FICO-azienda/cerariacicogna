@@ -34,6 +34,7 @@ window.CC_DICT_PAGES = {
   "si tramandano": "are handed down",
   "Dallo stampo alla candela: il momento in cui la forma si stacca e si vede se il lavoro è stato fatto bene. Stampi dedicati, forme esclusive, produzioni continuative — lo stesso approccio che offriamo ai brand con cui collaboriamo.": "From mould to candle: the moment the shape is released and you see whether the work was done well. Dedicated moulds, exclusive shapes, ongoing production — the same approach we offer the brands we work with.",
   "Apertura dello stampo · Lavorazione a mano": "Opening the mould · Handcrafted work",
+  "Filippo e Fabio Cicogna · terza generazione": "Filippo and Fabio Cicogna · third generation",
   "Materia prima": "Raw material",
   "Cere selezionate": "Selected waxes",
   "La selezione delle cere e il controllo del prodotto finito non si delegano: li fanno ancora le persone, lotto per lotto.": "The selection of waxes and the inspection of the finished product are not delegated: people still do them, batch by batch.",
@@ -287,6 +288,11 @@ window.CC_DICT_PAGES = {
 
   /* ───────────── CONFERMA INVIO MODULO ───────────── */
   "Messaggio inviato": "Message sent",
+  "Ultimo passo": "One last step",
+  "Premi Invia": "Press Send",
+  "nella tua email.": "in your email.",
+  "Si è aperto il tuo programma di posta con il messaggio già scritto: la richiesta ci arriva quando lo invii.": "Your email program has opened with the message already written: your enquiry reaches us once you send it.",
+  "Se non si è aperto, scrivici direttamente a": "If it did not open, write to us directly at",
   "Grazie,": "Thank you,",
   "ti risponderemo presto.": "we will reply soon.",
   "Il tuo messaggio è stato preparato per l'invio.": "Your message has been prepared for sending.",

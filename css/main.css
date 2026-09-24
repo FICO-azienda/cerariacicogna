@@ -550,6 +550,22 @@ nav.nav-light:not(.scrolled) .nav-links a { color: var(--c-text-mid); }
 nav.nav-light:not(.scrolled) .nav-cta { color: var(--c-text-dark); border-color: rgba(26,22,18,0.25); }
 nav.nav-light:not(.scrolled) .hamburger-line { background: var(--c-text-dark); }
 
+/* Selettore lingua: l'oro del sito (#C89830) su fondo avorio da' 2,4:1,
+   sotto la soglia di leggibilita'. Sulle barre chiare si usa un grigio
+   caldo per la lingua spenta e un oro piu' scuro per quella attiva
+   (4,8:1). I selettori partono da "nav" perche' lo stile di base del
+   selettore viene iniettato da i18n.js a pagina gia' caricata, e a
+   parita' di peso vincerebbe lui. Niente ":not(.scrolled)": su chi-siamo
+   la barra e' avorio anche da scrollata, e le regole non entravano mai. */
+nav.nav-light .cc-lang-btn     { color: #6d6252; opacity: .92; }
+nav.nav-light .cc-lang-btn.on  { color: #8a661c; opacity: 1; }
+nav.nav-light .cc-lang-sep     { color: #6d6252; opacity: .5; }
+
+/* sulle barre scure l'oro chiaro si legge, ma la lingua spenta era
+   troppo sbiadita: era al 50% di opacita' */
+nav .cc-lang-btn    { opacity: .66; }
+nav .cc-lang-btn.on { opacity: 1; }
+
 /* ── LINES NAV ────────────────────────────────────── */
 .lines-nav {
   position: fixed;
@@ -710,6 +726,47 @@ nav.nav-light:not(.scrolled) .hamburger-line { background: var(--c-text-dark); }
 
 .mobile-menu.open .mobile-menu-contact { opacity: 1; }
 .mobile-menu-contact a { color: var(--c-gold); }
+
+/* ── Menu' a tendina in versione chiara ──────────────────────────
+   Fondo avorio, lo stesso delle pagine, testo inchiostro e un corpo
+   piu' contenuto: prima le voci erano cosi' grandi che "Home
+   Collection" occupava tutta la larghezza dello schermo.
+   L'oro chiaro del resto del sito su avorio non si leggerebbe:
+   qui si usa un oro piu' scuro. */
+.mobile-menu { background: rgba(246,240,227,.985); }
+
+.mobile-menu-links { gap: 2px; }
+.mobile-menu-links a {
+  font-size: clamp(1.45rem, 6.2vw, 2.2rem);
+  letter-spacing: .09em;
+  color: #1A1612;
+  padding: 11px 0;
+}
+.mobile-menu-links a:hover,
+.mobile-menu-links a:focus-visible { color: #9a7424; }
+
+.mm-expand { color: #8a7a62; font-weight: 300; }
+.mm-sub a { color: #6d6252 !important; }
+.mm-sub a:hover { color: #9a7424 !important; }
+
+.mobile-menu-sep { background: rgba(26,22,18,.12); margin: 14px 0; }
+.mobile-menu-rule { background: linear-gradient(to bottom, transparent, #b8923e, transparent); }
+.mobile-menu-contact { color: #6d6252; }
+.mobile-menu-contact a { color: #8a661c; }
+
+/* La barra resta sopra il menu' aperto: sul fondo chiaro logo, lingua e
+   la X devono diventare scuri, e la fascia scura della barra "scrollata"
+   non deve restare come una striscia sopra l'avorio. */
+html body:has(.mobile-menu.open) nav,
+html body:has(.mobile-menu.open) nav.scrolled {
+  background: transparent;
+  border-bottom-color: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+html body:has(.mobile-menu.open) nav .hamburger-line { background: #1A1612 !important; }
+html body:has(.mobile-menu.open) nav .cc-lang { color: #1A1612; }
+html body:has(.mobile-menu.open) nav .cc-lang-btn.on { color: #9a7424; }
 
 
 /* ═══════════════════════════════════════════════════
@@ -905,7 +962,19 @@ footer {
 .cimg-hero-text { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 24px; }
 .cimg-hero-eyebrow { font-family: var(--ff-sans); font-weight: 300; font-size: .54rem; letter-spacing: .42em; text-transform: uppercase; color: #e6bd6a; margin-bottom: 22px; }
 .cimg-hero-title { font-family: var(--ff-display); font-weight: 300; font-size: clamp(2.6rem, 6.5vw, 5.6rem); letter-spacing: .04em; line-height: 1; color: #f8f3ea; margin: 0; }
-@media (max-width: 768px) { .cimg-hero { height: 50vh; min-height: 340px; } }
+/* Testata delle pagine di categoria sul telefono.
+   Le foto sono molto orizzontali (da 1.78 a 2.67 di rapporto). Con un
+   riquadro alto mezzo schermo — quasi quadrato — il browser le ingrandiva
+   fino a mostrarne poco piu' della meta' della larghezza: su Home
+   Collection si vedeva una candela sola, gigante. Qui il riquadro segue
+   la forma della foto, cosi' l'inquadratura resta quasi intera. */
+@media (max-width: 768px) {
+  .cimg-hero { height: auto; aspect-ratio: 16 / 9; min-height: 250px; }
+  /* la barra del menu' sta sopra la testata: senza questo margine
+     l'occhiello finiva mezzo nascosto sotto il logo */
+  .cimg-hero-text { padding-top: 54px; }
+  .cimg-hero-eyebrow { margin-bottom: 14px; }
+}
 /* nav chiara sopra l'hero-immagine; torna scura una volta scrollati */
 body.cimg-page nav:not(.scrolled) .nav-logo { color: #f8f3ea !important; }
 body.cimg-page nav:not(.scrolled) .nav-logo span { color: rgba(248,243,234,.7) !important; }
@@ -1454,11 +1523,32 @@ body.cimg-page nav:not(.scrolled) .nav-stork circle { stroke: #f8f3ea !important
   .about-values-grid { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 420px) {
+/* Soglia del menù a panino.
+   Era a 420px: ma i telefoni di oggi arrivano a 430 (iPhone Pro Max), e
+   sopra quella soglia comparivano gli otto link della barra da computer,
+   che a quelle larghezze uscivano dallo schermo e finivano sopra IT/EN.
+   Ora il panino vale fino a 800px e dai 801 in su restano i link con i
+   loro menu' a tendina. La soglia non e' scelta a occhio: misurando la
+   barra, gli otto link entrano senza accavallarsi solo da ~760px in su. */
+@media (max-width: 800px) {
   nav           { padding: 20px var(--gutter); }
   nav.scrolled  { padding: 14px var(--gutter); }
   .nav-links    { display: none; }
   .nav-hamburger{ display: flex; }
+
+  /* Senza i link centrali niente riempiva piu' lo spazio, e logo, lingua
+     e menu' si accalcavano tutti a sinistra — con la cicogna appiccicata
+     alla "I" di IT. Questo margine elastico li rimanda ai due lati. */
+  .nav-brand    { margin-right: auto; }
+  .cc-lang      { margin-left: 14px; }
+}
+
+/* Fra i 601 e i 1100px i link ci sono tutti e otto ma lo spazio e' poco:
+   si stringono, invece di sovrapporsi al selettore della lingua. */
+@media (max-width: 1100px) {
+  .nav-links   { gap: clamp(8px, 1.1vw, 16px); padding: 0 clamp(10px, 1.4vw, 24px); }
+  .nav-links a { font-size: .52rem; letter-spacing: .12em; }
+}
 }
 
 @media (max-width: 480px) {

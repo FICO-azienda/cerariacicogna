@@ -1,0 +1,27 @@
+# ══════════════════════════════════════════════════════════════
+# Chiude l'accesso diretto ai file interni dell'applicazione.
+#
+# Serve perche' le pagine non vengono servite dall'applicazione
+# Node: il server web le legge dal disco per conto suo, quindi la
+# lista di file riservati scritta in app.js non le riguarda.
+# Senza queste righe chiunque puo' scaricare il codice sorgente
+# e — appena il sito verra' usato — le conversazioni, le richieste
+# dei clienti e i codici dei link personali.
+#
+# assistant/widget/ resta apposta fuori dall'elenco: e' l'unica
+# cartella che il browser deve poter leggere davvero.
+# ══════════════════════════════════════════════════════════════
+
+# cartelle interne
+RedirectMatch 404 ^/assistant/(data|src|scripts|config)(/|$)
+RedirectMatch 404 ^/node_modules(/|$)
+RedirectMatch 404 ^/tmp(/|$)
+
+# file interni nella cartella principale
+RedirectMatch 404 ^/app\.js$
+RedirectMatch 404 ^/package(-lock)?\.json$
+RedirectMatch 404 ^/_[^/]*\.html$
+
+# file nascosti (.env, .git, ...), lasciando passare la verifica
+# del certificato Let's Encrypt, che usa /.well-known/
+RedirectMatch 404 ^/\.(?!well-known)
