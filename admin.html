@@ -86,9 +86,40 @@
     .az.urgente .az-n, .az.urgente .az-t { color: #8d3518; }
     .az.novita { border-top-color: #2f6b3a; }
     .az.calmo .az-n { color: #a09685; }
+    .pieghevole { border: 1px solid rgba(26,22,16,.16); background: #fff; }
+    .pieghevole > summary { list-style: none; cursor: pointer; padding: 12px 14px; display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline; }
+    .pieghevole > summary::-webkit-details-marker { display: none; }
+    .pieghevole > summary::after { content: '▾'; margin-left: auto; color: #6b6355; font-size: .8rem; }
+    .pieghevole[open] > summary::after { content: '▴'; }
+    .pieghevole > summary:hover { background: #faf7f0; }
+    .p-tit { font-family: var(--ff-sans); font-size: .5rem; letter-spacing: .08em; text-transform: uppercase; color: #6b6355; }
+    .p-val { font-family: var(--ff-serif); font-style: italic; font-size: .9rem; color: #26211a; flex-basis: 100%; }
+    .pieghevole .mesi-lista, .pieghevole .esclusi-lista { border: 0; border-top: 1px solid rgba(26,22,16,.12); max-height: 230px; }
+    .pieghevole .esclusi-cerca { border: 0; border-top: 1px solid rgba(26,22,16,.12); }
+    .link-cliente { color: #26211a; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+    .link-cliente:hover { color: #8a661c; }
+    .ord-filtro { background: #f3efe6; border: 1px solid rgba(26,22,16,.12); padding: 11px 14px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-family: var(--ff-sans); font-size: .78rem; color: #26211a; }
+    .ord-filtro button { background: none; border: 0; text-decoration: underline; cursor: pointer; font-family: var(--ff-sans); font-size: .7rem; color: #6b6355; }
+    .esclusi-scelti { font-family: var(--ff-serif); font-style: italic; font-size: .9rem; color: #5a4a38; margin: 2px 0 8px; }
+    .esclusi-cerca { width: 100%; box-sizing: border-box; padding: 9px 11px; font-family: var(--ff-sans); font-size: .8rem; border: 1px solid rgba(26,22,16,.18); border-bottom: 0; }
+    .esclusi-lista { max-height: 210px; overflow-y: auto; border: 1px solid rgba(26,22,16,.18); background: #fff; }
+    .esclusi-gruppo { font-family: var(--ff-sans); font-size: .5rem; letter-spacing: .12em; text-transform: uppercase; color: #6b6355; background: #f7f4ee; padding: 7px 12px; position: sticky; top: 0; }
+    .esclusi-voce { padding: 8px 12px; border-bottom: 1px solid rgba(26,22,16,.05); }
+    .esclusi-voce:hover { background: #faf7f0; }
+    .esclusi-voce input { transform: scale(1.2); margin: 0; }
+    .esclusi-voce.escluso { color: #8d3518; }
+    .esclusi-vuoto { padding: 14px 12px; font-family: var(--ff-serif); font-style: italic; color: #6b6355; font-size: .85rem; }
     .mesi-riassunto { font-family: var(--ff-serif); font-style: italic; font-size: .9rem; color: #5a4a38; margin: 2px 0 8px; }
     .mesi-lista { max-height: 168px; overflow-y: auto; border: 1px solid rgba(26,22,16,.18); background: #fff; }
-    .mese { display: flex; align-items: center; gap: 12px; padding: 9px 12px; cursor: pointer; border-bottom: 1px solid rgba(26,22,16,.06); font-family: var(--ff-sans); font-size: .82rem; color: #26211a; }
+    /* Sono <label> dentro .ad-campo, dove una regola piu' specifica le rende
+       blocchi in maiuscoletto minuscolo: senza rialzare la specificita' la
+       casella finiva sopra al testo. */
+    .ad-campo label.mese, .ad-campo label.esclusi-voce {
+      display: flex; align-items: center; gap: 12px; margin: 0;
+      font-size: .82rem; letter-spacing: normal; text-transform: none; color: #26211a;
+      font-family: var(--ff-sans); cursor: pointer;
+    }
+    .mese { padding: 9px 12px; border-bottom: 1px solid rgba(26,22,16,.06); }
     .mese:last-child { border-bottom: 0; }
     .mese:hover { background: #faf7f0; }
     .mese input { transform: scale(1.25); margin: 0; }
@@ -362,7 +393,8 @@
 
           document.getElementById('ad-clienti').innerHTML = d.clienti.map(function (c) {
             return '<tr>'
-              + '<td>' + esc(c.nome) + '<br><span style="color:#9a9186;font-size:.65rem;">' + esc(c.email) + '</span></td>'
+              + '<td><a href="#" class="link-cliente" data-cliente="' + esc(c.email) + '">' + esc(c.nome) + '</a>'
+                + '<br><span style="color:#9a9186;font-size:.65rem;">' + esc(c.email) + '</span></td>'
               + '<td>' + dataBreve(c.ultimoOrdine) + '</td>'
               + '<td>' + esc(c.categoria) + '</td>'
               + '<td>' + esc(c.ultimoAcquisto) + '</td>'
@@ -399,8 +431,10 @@
       function caricaRegole() {
         return chiamata('/api/admin/regole').then(function (d) {
           var html = '';
+          var esclusiSalvati = {};
           Object.keys(d.categorie).forEach(function (cat) {
             var r = d.categorie[cat];
+            esclusiSalvati[cat] = r.esclusi || [];
             html += '<div class="ad-regola" data-cat="' + esc(cat) + '">'
               + '<div class="ad-regola-head"><strong>' + esc(r.etichetta || cat) + '</strong></div>'
               + '<div class="ad-campi">'
@@ -413,17 +447,22 @@
                   return '<div class="ad-campo"><label>' + f.etichetta + '</label>'
                     + '<input type="number" data-campo="' + f.chiave + '" value="' + (v == null ? '' : v) + '"></div>';
                 }).join('')
-              + '<div class="ad-campo" style="grid-column:1/-1;"><label>In quali mesi possono partire i promemoria</label>'
-                + '<p class="mesi-riassunto" data-riassunto></p>'
+              + '<div class="ad-campo" style="grid-column:1/-1;">'
+                + '<details class="pieghevole"><summary><span class="p-tit">In quali mesi possono partire i promemoria</span>'
+                + '<span class="p-val" data-riassunto></span></summary>'
                 + '<div class="mesi-lista">' + MESI.map(function (nome, i) {
                     var num = i + 1;
                     var acceso = !r.mesi || !r.mesi.length || r.mesi.indexOf(num) !== -1;
                     return '<label class="mese' + (acceso ? '' : ' spento') + '">'
                       + '<input type="checkbox" data-mese="' + num + '"' + (acceso ? ' checked' : '') + '>'
                       + '<span class="etichetta">' + nome + '</span></label>';
-                  }).join('') + '</div></div>'
-              + '<div class="ad-campo" style="grid-column:1/-1;"><label>Prodotti esclusi (separati da virgola)</label>'
-                + '<input type="text" data-campo="esclusi" value="' + esc((r.esclusi || []).join(', ')) + '"></div>'
+                  }).join('') + '</div></details></div>'
+              + '<div class="ad-campo" style="grid-column:1/-1;">'
+                + '<details class="pieghevole"><summary><span class="p-tit">Prodotti da non ricordare mai</span>'
+                + '<span class="p-val" data-scelti></span></summary>'
+                + '<input type="search" class="esclusi-cerca" data-cerca placeholder="Cerca un prodotto…">'
+                + '<div class="esclusi-lista" data-lista><p class="esclusi-vuoto">Carico i prodotti…</p></div>'
+                + '</details></div>'
               + '</div>'
               + '<div class="ad-salva-riga"><span class="ad-ok" data-ok hidden>Salvato</span>'
               + '<button type="button" class="ad-btn" data-salva>Salva</button></div>'
@@ -433,8 +472,16 @@
 
           document.querySelectorAll('.ad-regola').forEach(function (box) {
             aggiornaRiassunto(box);
+            box.dataset.esclusiIniziali = JSON.stringify(esclusiSalvati[box.dataset.cat] || []);
+            disegnaEsclusi(box, box.dataset.cat, '');
+            var cerca = box.querySelector('[data-cerca]');
+            if (cerca) cerca.addEventListener('input', function () { disegnaEsclusi(box, box.dataset.cat, cerca.value); });
             box.addEventListener('change', function (e) {
               if (e.target.hasAttribute('data-mese')) aggiornaRiassunto(box);
+              if (e.target.hasAttribute('data-escluso')) {
+                e.target.closest('.esclusi-voce').classList.toggle('escluso', e.target.checked);
+                aggiornaScelti(box);
+              }
             });
             box.querySelector('[data-salva]').addEventListener('click', function () {
               var cat = box.dataset.cat;
@@ -449,7 +496,9 @@
                 .filter(function (c) { return c.checked; })
                 .map(function (c) { return Number(c.getAttribute('data-mese')); });
               patch.stagionalita = null;
-              patch.esclusi = box.querySelector('[data-campo="esclusi"]').value.split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+              patch.esclusi = [].slice.call(box.querySelectorAll('[data-escluso]'))
+                .filter(function (c) { return c.checked; })
+                .map(function (c) { return c.getAttribute('data-escluso'); });
 
               chiamata('/api/admin/regole?categoria=' + encodeURIComponent(cat), {
                 method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(patch),
@@ -523,6 +572,10 @@
       function caricaProdotti() {
         chiamata('/api/admin/ordini/prodotti').then(function (d) {
           if (!d.ok) return;
+          prodottiPerCategoria = d.perCategoria || {};
+          document.querySelectorAll('.ad-regola').forEach(function (box) {
+            disegnaEsclusi(box, box.dataset.cat, '');
+          });
           opzioniProdotti = '<option value="">Scegli il prodotto…</option>' + d.gruppi.map(function (g) {
             return '<optgroup label="' + esc(g.linea) + '">'
               + g.prodotti.map(function (n) { return '<option value="' + esc(n) + '">' + esc(n) + '</option>'; }).join('')
@@ -534,18 +587,105 @@
         }).catch(function () {});
       }
 
+      /* ── i prodotti da non ricordare mai ──────────────────────
+         Un elenco cercabile, diviso per gruppo, con SOLO i prodotti
+         della categoria di quella regola: nel riquadro del liturgico
+         non compaiono candele della Home, e viceversa. */
+      var prodottiPerCategoria = {};
+
+      function disegnaEsclusi(box, cat, filtro) {
+        var lista = box.querySelector('[data-lista]');
+        if (!lista) return;
+        var gruppi = prodottiPerCategoria[cat] || [];
+        var scelti = {};
+        [].slice.call(box.querySelectorAll('[data-escluso]')).forEach(function (c) {
+          if (c.checked) scelti[c.getAttribute('data-escluso')] = true;
+        });
+        if (box.dataset.esclusiIniziali && !Object.keys(scelti).length) {
+          JSON.parse(box.dataset.esclusiIniziali).forEach(function (n) { scelti[n] = true; });
+        }
+        var cerca = String(filtro || '').trim().toLowerCase();
+        var html = '';
+        gruppi.forEach(function (g) {
+          var voci = g.prodotti.filter(function (n) { return !cerca || n.toLowerCase().indexOf(cerca) !== -1; });
+          if (!voci.length) return;
+          html += '<div class="esclusi-gruppo">' + esc(g.gruppo) + '</div>';
+          html += voci.map(function (n) {
+            return '<label class="esclusi-voce' + (scelti[n] ? ' escluso' : '') + '">'
+              + '<input type="checkbox" data-escluso="' + esc(n) + '"' + (scelti[n] ? ' checked' : '') + '>'
+              + '<span>' + esc(n) + '</span></label>';
+          }).join('');
+        });
+        if (!html) {
+          html = '<p class="esclusi-vuoto">' + (gruppi.length
+            ? 'Nessun prodotto trovato con «' + esc(cerca) + '».'
+            : 'Per questa categoria non ci sono prodotti a catalogo.') + '</p>';
+        }
+        /* le scelte fatte ma nascoste dalla ricerca non vanno perse */
+        Object.keys(scelti).forEach(function (n) {
+          if (html.indexOf('data-escluso="' + n.replace(/"/g, '&quot;') + '"') === -1) {
+            html += '<input type="checkbox" data-escluso="' + esc(n) + '" checked hidden>';
+          }
+        });
+        lista.innerHTML = html;
+        aggiornaScelti(box);
+      }
+
+      function aggiornaScelti(box) {
+        var p = box.querySelector('[data-scelti]'); if (!p) return;
+        var nomi = [].slice.call(box.querySelectorAll('[data-escluso]'))
+          .filter(function (c) { return c.checked; })
+          .map(function (c) { return c.getAttribute('data-escluso'); });
+        p.textContent = nomi.length
+          ? 'Non verranno mai ricordati: ' + nomi.join(', ') + '.'
+          : 'Nessuna esclusione: tutti i prodotti di questa categoria possono generare un promemoria.';
+      }
+
+      var ordiniCaricati = [];
+      var clienteMostrato = '';
+
+      function disegnaOrdini() {
+        var box = document.getElementById('ad-ordini');
+        var lista = clienteMostrato
+          ? ordiniCaricati.filter(function (o) { return (o.email || '').toLowerCase() === clienteMostrato.toLowerCase(); })
+          : ordiniCaricati;
+        var n = lista.length;
+
+        var intestazione = '';
+        if (clienteMostrato) {
+          var chi = (lista[0] && lista[0].nome) || clienteMostrato;
+          var quanti = n === 1 ? 'un solo ordine' : n + ' ordini';
+          intestazione = '<div class="ord-filtro"><span><strong>' + esc(chi) + '</strong> — ' + quanti +
+            ' in archivio</span><button type="button" data-tutti>mostra tutti gli ordini</button></div>';
+        }
+        document.getElementById('ord-conteggio').textContent = clienteMostrato ? '' :
+          (n === 0 ? 'Nessun ordine ancora registrato.'
+                   : (n === 1 ? '1 ordine registrato.' : n + ' ordini registrati, dal più recente.'));
+        box.innerHTML = intestazione + (lista.map(schedaOrdine).join('') ||
+          '<p class="ad-aiuto">Quando arriverà la prima richiesta dal sito comparirà qui.</p>');
+      }
+
       function caricaOrdini() {
-        chiamata('/api/admin/ordini?limite=100').then(function (d) {
+        return chiamata('/api/admin/ordini?limite=500').then(function (d) {
           if (!d.ok) return;
-          var box = document.getElementById('ad-ordini');
-          var n = d.ordini.length;
-          document.getElementById('ord-conteggio').textContent =
-            n === 0 ? 'Nessun ordine ancora registrato.'
-                    : (n === 1 ? '1 ordine registrato.' : n + ' ordini registrati, dal più recente.');
-          box.innerHTML = d.ordini.map(schedaOrdine).join('') ||
-            '<p class="ad-aiuto">Quando arriverà la prima richiesta dal sito comparirà qui.</p>';
+          ordiniCaricati = d.ordini;
+          disegnaOrdini();
         }).catch(function () {});
       }
+
+      /* Cliccando il nome di un cliente si vedono tutti i suoi ordini: e'
+         il modo per capire se uno compra una volta o torna ogni stagione. */
+      document.addEventListener('click', function (e) {
+        var link = e.target.closest('.link-cliente');
+        if (link) {
+          e.preventDefault();
+          clienteMostrato = link.getAttribute('data-cliente');
+          disegnaOrdini();
+          document.getElementById('ord-conteggio').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          return;
+        }
+        if (e.target.closest('[data-tutti]')) { clienteMostrato = ''; disegnaOrdini(); }
+      });
 
       function salvaOrdine(riga, patch, messaggio) {
         var esito = riga.querySelector('.ord-esito');

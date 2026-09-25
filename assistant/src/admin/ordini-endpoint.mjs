@@ -43,17 +43,53 @@ export async function gestisciOrdiniAdmin(req, res, azione, filtri = {}) {
      categorie e i nomi. Scegliendo da un elenco il nome e' sempre lo stesso. */
   if (azione === 'prodotti' && req.method === 'GET') {
     const { prodotti } = await import('../catalog.mjs');
-    const gruppi = new Map();
-    prodotti().forEach(p => {
+
+    /* Il pannello ragiona per categoria di regola (liturgico, garden...),
+       il catalogo per linea commerciale: questa e' la corrispondenza. Serve
+       perche' nel riquadro del liturgico si possano escludere soltanto
+       prodotti liturgici. */
+    const PER_REGOLA = {
+      'liturgico': 'Articoli Liturgici',
+      'garden': 'Linea Garden',
+      'home-collection': 'Home Collection',
+    };
+    const ETICHETTE = {
+      lumini: 'Lumini', angelo: 'Linea Angelo', papa: 'Linea Papa', aure: 'Linea Aure',
+      elettriche: 'Candele elettriche', 'accessori-candele': 'Accessori per candele',
+      'accessori-altri': 'Altri accessori', cerabianca: 'Cera bianca', citronelle: 'Citronelle',
+      ricariche: 'Ricariche', ceri: 'Ceri', glass: 'Glass', sand: 'Sand', rock: 'Rock', metallic: 'Metallic',
+    };
+
+    const tutti = prodotti();
+    const perLinea = new Map();
+    tutti.forEach(p => {
       const linea = p.linea || 'Altro';
-      if (!gruppi.has(linea)) gruppi.set(linea, []);
-      gruppi.get(linea).push(p.nome);
+      if (!perLinea.has(linea)) perLinea.set(linea, new Map());
+      const sotto = perLinea.get(linea);
+      const g = ETICHETTE[p.categoria] || p.categoria || 'Altro';
+      if (!sotto.has(g)) sotto.set(g, new Set());
+      sotto.get(g).add(p.nome);
     });
+
+    const impacchetta = linea => {
+      const sotto = perLinea.get(linea);
+      if (!sotto) return [];
+      return [...sotto.entries()]
+        .map(([gruppo, nomi]) => ({ gruppo, prodotti: [...nomi].sort((a, b) => a.localeCompare(b, 'it')) }))
+        .sort((a, b) => a.gruppo.localeCompare(b.gruppo, 'it'));
+    };
+
     return invia(200, {
       ok: true,
-      gruppi: [...gruppi.entries()].map(([linea, nomi]) => ({
-        linea, prodotti: [...new Set(nomi)].sort((a, b) => a.localeCompare(b, 'it')),
+      /* per il menu del modulo "ordine preso a voce": tutte le linee */
+      gruppi: [...perLinea.keys()].map(linea => ({
+        linea, prodotti: impacchetta(linea).reduce((acc, g) => acc.concat(g.prodotti), []),
       })),
+      /* per le esclusioni: solo i prodotti della categoria di quella regola */
+      perCategoria: Object.keys(PER_REGOLA).reduce((acc, chiave) => {
+        acc[chiave] = impacchetta(PER_REGOLA[chiave]);
+        return acc;
+      }, {}),
     });
   }
 
