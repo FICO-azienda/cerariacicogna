@@ -149,6 +149,33 @@
     if (node.nodeValue !== val) node.nodeValue = val;
   }
 
+  /* Anche i testi dentro gli attributi: il suggerimento grigio dei campi
+     ("Descrivi la tua richiesta…"), le etichette per i lettori di schermo,
+     i tooltip. Restavano in italiano con il sito in inglese, perche' non
+     sono nodi di testo e il traduttore non li vedeva. */
+  var ATTRIBUTI = ['placeholder', 'aria-label', 'title', 'alt'];
+
+  function translateAttrs(el) {
+    if (!el || el.nodeType !== 1 || !el.getAttribute) return;
+    for (var i = 0; i < ATTRIBUTI.length; i++) {
+      var nome = ATTRIBUTI[i];
+      var raw = el.getAttribute(nome);
+      if (!raw) continue;
+      var key = norm(raw);
+      if (!key) continue;
+      var target = (LANG === 'en') ? IT2EN[key] : EN2IT[key];
+      if (target != null && raw !== target) el.setAttribute(nome, target);
+    }
+  }
+
+  function walkAttrs(root) {
+    if (!root || !root.querySelectorAll) return;
+    translateAttrs(root);
+    var sel = ATTRIBUTI.map(function (a) { return '[' + a + ']'; }).join(',');
+    var nodi = root.querySelectorAll(sel);
+    for (var i = 0; i < nodi.length; i++) translateAttrs(nodi[i]);
+  }
+
   function walk(root) {
     if (!root) return;
     var tw = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
@@ -168,7 +195,7 @@
     if (mo) mo.disconnect();
     if (origTitle === null) { origTitle = document.title; enTitle = IT2EN[norm(origTitle)] || origTitle; }
     document.title = (LANG === 'en') ? enTitle : origTitle;
-    if (document.body) walk(document.body);
+    if (document.body) { walk(document.body); walkAttrs(document.body); }
     document.documentElement.lang = LANG;
     if (mo && document.body) mo.observe(document.body, { subtree: true, childList: true, characterData: true });
     updateToggle();
@@ -183,7 +210,7 @@
         if (m.type === 'characterData') translateNode(m.target);
         else if (m.type === 'childList') m.addedNodes.forEach(function (nd) {
           if (nd.nodeType === 3) translateNode(nd);
-          else if (nd.nodeType === 1) walk(nd);
+          else if (nd.nodeType === 1) { walk(nd); walkAttrs(nd); }
         });
       });
       mo.takeRecords();
