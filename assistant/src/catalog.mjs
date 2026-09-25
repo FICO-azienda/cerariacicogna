@@ -114,5 +114,8 @@ export function trovaProfumo(nome) {
 }
 
 export const azienda = catalogo.azienda;
+
+/* l'elenco grezzo: serve al pannello per il menu a tendina dei prodotti */
+export function prodotti() { return catalogo.prodotti || []; }
 export const generato = catalogo.generato;
 export const quanti = tutti.length;

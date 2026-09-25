@@ -26,7 +26,12 @@
 /* ── stagionalita': la finestra puo' attraversare il capodanno
    (es. "11-01" -> "02-28"), quindi il confronto non e' un semplice
    "fra due date" ma "fra due punti su un anno che si ripete". ── */
-function dentroStagione(stagionalita, oggi) {
+function dentroStagione(stagionalita, oggi, mesi) {
+  /* I mesi spuntati nel pannello hanno la precedenza: sono il modo in cui
+     l'azienda ragiona davvero ("in agosto, settembre e ottobre no, siamo
+     gia' pieni"). La vecchia finestra continua a funzionare per chi l'aveva
+     gia' impostata. */
+  if (Array.isArray(mesi) && mesi.length) return mesi.indexOf(oggi.getMonth() + 1) !== -1;
   if (!stagionalita) return true;
   const mmgg = d => (d.getMonth() + 1).toString().padStart(2, '0') + '-' + d.getDate().toString().padStart(2, '0');
   const x = mmgg(oggi), da = stagionalita.da, a = stagionalita.a;
@@ -92,7 +97,7 @@ function candidatiCliente(cliente, storico, regole, oggi) {
 
     candidati.push({
       categoria, tipo, richiesta, articoli, dataStimata,
-      dovutoOra: giorniTra(richiesta.ts, oggi) >= sogliaGiorni && dentroStagione(regola.stagionalita, oggi),
+      dovutoOra: giorniTra(richiesta.ts, oggi) >= sogliaGiorni && dentroStagione(regola.stagionalita, oggi, regola.mesi),
       frequenzaUsata: cliente.frequenzaMediaGiorni ? 'personale' : 'categoria',
     });
   }

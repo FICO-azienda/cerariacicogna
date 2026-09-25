@@ -36,6 +36,27 @@ export async function gestisciOrdiniAdmin(req, res, azione, filtri = {}) {
 
   if (!sessioneValida(tokenDaRichiesta(req))) return invia(401, { ok: false });
 
+  /* ── il catalogo, diviso per linea ──
+     Serve al menu a tendina del modulo "ordine preso a voce": scrivere il
+     nome a mano porta a "Cero pasquale", "cero pasquale", "Cero Pasq." —
+     tre prodotti diversi per il motore dei promemoria, che confronta le
+     categorie e i nomi. Scegliendo da un elenco il nome e' sempre lo stesso. */
+  if (azione === 'prodotti' && req.method === 'GET') {
+    const { prodotti } = await import('../catalog.mjs');
+    const gruppi = new Map();
+    prodotti().forEach(p => {
+      const linea = p.linea || 'Altro';
+      if (!gruppi.has(linea)) gruppi.set(linea, []);
+      gruppi.get(linea).push(p.nome);
+    });
+    return invia(200, {
+      ok: true,
+      gruppi: [...gruppi.entries()].map(([linea, nomi]) => ({
+        linea, prodotti: [...new Set(nomi)].sort((a, b) => a.localeCompare(b, 'it')),
+      })),
+    });
+  }
+
   /* ── elenco ── */
   if (azione === '' && req.method === 'GET') {
     const limite = Math.min(parseInt(filtri.limite, 10) || 100, 500);

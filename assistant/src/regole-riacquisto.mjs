@@ -54,6 +54,17 @@ function normalizza(patch, precedente) {
     out.stagionalita = (s && /^\d{2}-\d{2}$/.test(s.da) && /^\d{2}-\d{2}$/.test(s.a))
       ? { da: s.da, a: s.a } : null;
   }
+  /* I mesi in cui i promemoria possono partire, 1 = gennaio. Sostituisce
+     la vecchia finestra "dal ... al ...", che obbligava a un solo periodo
+     continuo e si scriveva a mano in formato MM-DD: nel pannello ora sono
+     dodici caselle da spuntare. Elenco vuoto o tutti e dodici = nessun
+     vincolo. */
+  if ('mesi' in patch) {
+    const m = Array.isArray(patch.mesi)
+      ? [...new Set(patch.mesi.map(v => parseInt(v, 10)).filter(n => n >= 1 && n <= 12))].sort((a, b) => a - b)
+      : [];
+    out.mesi = (m.length === 0 || m.length === 12) ? null : m;
+  }
   if ('esclusi' in patch) {
     out.esclusi = Array.isArray(patch.esclusi)
       ? patch.esclusi.map(v => String(v).trim().slice(0, 80)).filter(Boolean).slice(0, 50)

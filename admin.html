@@ -77,6 +77,23 @@
     .art-riga { display: grid; grid-template-columns: 1fr 110px 40px; gap: 10px; margin-bottom: 8px; align-items: end; }
     .art-togli { background: none; border: 0; color: #a4401f; cursor: pointer; font-size: 1.1rem; padding: 6px; }
     .lega { font-family: var(--ff-serif); font-style: italic; font-size: .85rem; color: #6b6355; margin-top: 4px; }
+    .ad-azioni { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .az { background: #fff; border: 1px solid rgba(26,22,16,.12); border-top: 4px solid #c9c2b4; padding: 22px 24px; }
+    .az-n { font-family: var(--ff-display); font-size: 3.2rem; line-height: 1; font-weight: 300; color: #26211a; }
+    .az-t { font-family: var(--ff-sans); font-size: .82rem; letter-spacing: .04em; color: #26211a; margin-top: 10px; font-weight: 500; }
+    .az-f { font-family: var(--ff-serif); font-style: italic; font-size: .86rem; color: #6b6355; margin-top: 2px; }
+    .az.urgente { border-top-color: #a4401f; background: #fdf7f4; }
+    .az.urgente .az-n, .az.urgente .az-t { color: #8d3518; }
+    .az.novita { border-top-color: #2f6b3a; }
+    .az.calmo .az-n { color: #a09685; }
+    .mesi-riassunto { font-family: var(--ff-serif); font-style: italic; font-size: .9rem; color: #5a4a38; margin: 2px 0 8px; }
+    .mesi-lista { max-height: 168px; overflow-y: auto; border: 1px solid rgba(26,22,16,.18); background: #fff; }
+    .mese { display: flex; align-items: center; gap: 12px; padding: 9px 12px; cursor: pointer; border-bottom: 1px solid rgba(26,22,16,.06); font-family: var(--ff-sans); font-size: .82rem; color: #26211a; }
+    .mese:last-child { border-bottom: 0; }
+    .mese:hover { background: #faf7f0; }
+    .mese input { transform: scale(1.25); margin: 0; }
+    .mese.spento { color: #a09685; }
+    .mese.spento .etichetta::after { content: ' — nessun promemoria'; font-style: italic; font-size: .74rem; }
   </style>
 </head>
 <body class="light-page">
@@ -105,7 +122,7 @@
           <div class="ad-filtro"><label>Categoria</label><select id="f-categoria"><option value="">Tutte</option><option value="liturgico">Liturgico</option><option value="garden">Garden</option><option value="home-collection">Home Collection</option><option value="private-label">Private Label</option></select></div>
           <button type="button" class="ad-filtro-reset" id="f-reset">Azzera filtri</button>
         </div>
-        <div class="ad-cards" id="ad-metriche-ordini"></div>
+        <div id="ad-metriche-ordini"></div>
       </section>
 
       <!-- GESTIONE ORDINI -->
@@ -144,7 +161,7 @@
           <label>Cosa ha ordinato *</label>
           <div id="n-articoli">
             <div class="art-riga">
-              <div><input type="text" class="a-nome" placeholder="Nome del prodotto"></div>
+              <div><select class="a-nome"><option value="">Scegli il prodotto…</option></select></div>
               <div><input type="number" class="a-qta" min="1" value="1" placeholder="Quantità"></div>
               <button type="button" class="art-togli" title="Togli questa riga">&times;</button>
             </div>
@@ -278,15 +295,30 @@
         return chiamata('/api/admin/dashboard' + queryFiltri()).then(function (d) {
           var m = d.metriche;
 
-          var cardsOrdini = [
-            ['Ordini di oggi', m.ordiniOggi], ['Aperti', m.ordiniAperti], ['In preparazione', m.ordiniInPreparazione],
-            ['Da spedire', m.ordiniDaSpedire], ['Spediti', m.ordiniSpediti],
-            ['Pagamenti mancanti', m.pagamentiMancanti], ['Fatturato', euro(m.fatturato)], ['Valore medio ordine', euro(m.valoreMedio)],
+          /* Tre riquadri grandi per le cose da FARE, e sotto, piu' piccoli,
+             i numeri che si guardano e basta. Chi apre il pannello la
+             mattina deve capire in tre secondi cosa lo aspetta. */
+          var daFare = [
+            { n: m.pagamentiMancanti, titolo: 'Da incassare', frase: 'ordini ancora non pagati', urgente: m.pagamentiMancanti > 0 },
+            { n: m.ordiniDaSpedire + m.ordiniInPreparazione, titolo: 'Da preparare e spedire', frase: 'ordini in lavorazione', urgente: (m.ordiniDaSpedire + m.ordiniInPreparazione) > 0 },
+            { n: m.ordiniOggi, titolo: 'Arrivati oggi', frase: m.ordiniOggi === 1 ? 'nuova richiesta' : 'nuove richieste', urgente: false },
           ];
-          document.getElementById('ad-metriche-ordini').innerHTML = cardsOrdini.map(function (c, i) {
-            var avviso = (i === 5 && m.pagamentiMancanti > 0) ? ' avviso' : '';
-            return '<div class="ad-card' + avviso + '"><div class="n">' + esc(c[1]) + '</div><div class="l">' + esc(c[0]) + '</div></div>';
-          }).join('') + (m.fatturato ? '' : '<p class="ad-nota-debole">Fatturato e valore medio contano solo gli ordini in cui hai scritto l\'importo qui sotto.</p>');
+          var html = '<div class="ad-azioni">' + daFare.map(function (c) {
+            return '<div class="az' + (c.urgente ? ' urgente' : (c.n ? ' novita' : ' calmo')) + '">'
+              + '<div class="az-n">' + esc(c.n) + '</div>'
+              + '<div class="az-t">' + esc(c.titolo) + '</div>'
+              + '<div class="az-f">' + esc(c.frase) + '</div></div>';
+          }).join('') + '</div>';
+
+          var minori = [
+            ['Spediti', m.ordiniSpediti], ['Ordini in tutto', m.ordiniTotali],
+            ['Incassato', euro(m.fatturato)], ['Valore medio', euro(m.valoreMedio)],
+          ];
+          html += '<div class="ad-cards" style="margin-top:14px;">' + minori.map(function (c) {
+            return '<div class="ad-card"><div class="n">' + esc(c[1]) + '</div><div class="l">' + esc(c[0]) + '</div></div>';
+          }).join('') + '</div>';
+          html += m.fatturato ? '' : '<p class="ad-nota-debole">L\'incassato conta solo gli ordini in cui hai scritto l\'importo, qui sotto.</p>';
+          document.getElementById('ad-metriche-ordini').innerHTML = html;
 
           var cardsPromemoria = [
             ['Inviati', m.inviati], ['Programmati', m.programmati], ['Cliccati', m.click],
@@ -381,10 +413,15 @@
                   return '<div class="ad-campo"><label>' + f.etichetta + '</label>'
                     + '<input type="number" data-campo="' + f.chiave + '" value="' + (v == null ? '' : v) + '"></div>';
                 }).join('')
-              + '<div class="ad-campo"><label>Stagionalità da (MM-DD, vuoto = tutto l\'anno)</label>'
-                + '<input type="text" data-campo="stagDa" value="' + (r.stagionalita ? esc(r.stagionalita.da) : '') + '" placeholder="04-01"></div>'
-              + '<div class="ad-campo"><label>Stagionalità a</label>'
-                + '<input type="text" data-campo="stagA" value="' + (r.stagionalita ? esc(r.stagionalita.a) : '') + '" placeholder="09-30"></div>'
+              + '<div class="ad-campo" style="grid-column:1/-1;"><label>In quali mesi possono partire i promemoria</label>'
+                + '<p class="mesi-riassunto" data-riassunto></p>'
+                + '<div class="mesi-lista">' + MESI.map(function (nome, i) {
+                    var num = i + 1;
+                    var acceso = !r.mesi || !r.mesi.length || r.mesi.indexOf(num) !== -1;
+                    return '<label class="mese' + (acceso ? '' : ' spento') + '">'
+                      + '<input type="checkbox" data-mese="' + num + '"' + (acceso ? ' checked' : '') + '>'
+                      + '<span class="etichetta">' + nome + '</span></label>';
+                  }).join('') + '</div></div>'
               + '<div class="ad-campo" style="grid-column:1/-1;"><label>Prodotti esclusi (separati da virgola)</label>'
                 + '<input type="text" data-campo="esclusi" value="' + esc((r.esclusi || []).join(', ')) + '"></div>'
               + '</div>'
@@ -395,6 +432,10 @@
           document.getElementById('ad-regole').innerHTML = html;
 
           document.querySelectorAll('.ad-regola').forEach(function (box) {
+            aggiornaRiassunto(box);
+            box.addEventListener('change', function (e) {
+              if (e.target.hasAttribute('data-mese')) aggiornaRiassunto(box);
+            });
             box.querySelector('[data-salva]').addEventListener('click', function () {
               var cat = box.dataset.cat;
               var patch = {};
@@ -404,9 +445,10 @@
                 var val = input.value.trim();
                 patch[f.chiave] = (f.chiave === 'secondoDopo' && val === '') ? null : (val === '' ? null : Number(val));
               });
-              var da = box.querySelector('[data-campo="stagDa"]').value.trim();
-              var a = box.querySelector('[data-campo="stagA"]').value.trim();
-              patch.stagionalita = (da && a) ? { da: da, a: a } : null;
+              patch.mesi = [].slice.call(box.querySelectorAll('[data-mese]'))
+                .filter(function (c) { return c.checked; })
+                .map(function (c) { return Number(c.getAttribute('data-mese')); });
+              patch.stagionalita = null;
               patch.esclusi = box.querySelector('[data-campo="esclusi"]').value.split(',').map(function (s) { return s.trim(); }).filter(Boolean);
 
               chiamata('/api/admin/regole?categoria=' + encodeURIComponent(cat), {
@@ -424,6 +466,23 @@
       /* ── GLI ORDINI, UNO PER UNO ─────────────────────────────
          Scritta per chi non ha mai usato un pannello: ogni modifica
          parte da sola e lo dice ("salvato"), niente pulsanti nascosti. */
+      var MESI = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno',
+                  'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+
+      /* Il riepilogo sopra l'elenco: dice a parole cosa succede, cosi' non
+         serve contare le caselle spuntate per capirlo. */
+      function aggiornaRiassunto(box) {
+        var caselle = [].slice.call(box.querySelectorAll('[data-mese]'));
+        var spenti = caselle.filter(function (c) { return !c.checked; })
+                            .map(function (c) { return MESI[Number(c.getAttribute('data-mese')) - 1]; });
+        var p = box.querySelector('[data-riassunto]');
+        if (!p) return;
+        if (!spenti.length) p.textContent = 'Partono tutto l\'anno.';
+        else if (spenti.length === 12) p.textContent = 'Non partono mai: nessun mese selezionato.';
+        else p.textContent = 'Niente promemoria in ' + spenti.join(', ') + '.';
+        caselle.forEach(function (c) { c.closest('.mese').classList.toggle('spento', !c.checked); });
+      }
+
       var STATI_ORDINE = [
         ['', 'Da lavorare'], ['confermato', 'Confermato'], ['preparazione', 'In preparazione'],
         ['spedito', 'Spedito'], ['consegnato', 'Consegnato'], ['annullato', 'Annullato'],
@@ -456,6 +515,23 @@
             '<div><label>Importo €</label><input type="text" data-azione="prezzo" value="' + esc(o.prezzoTotale || '') + '" placeholder="es. 240,00" size="8"></div>' +
             '<span class="ord-esito"></span>' +
           '</div></div>';
+      }
+
+      /* Il menu dei prodotti, diviso per linea: scegliendo da qui il nome e'
+         sempre identico, e nel liturgico non finiscono prodotti della Home. */
+      var opzioniProdotti = '<option value="">Scegli il prodotto…</option>';
+      function caricaProdotti() {
+        chiamata('/api/admin/ordini/prodotti').then(function (d) {
+          if (!d.ok) return;
+          opzioniProdotti = '<option value="">Scegli il prodotto…</option>' + d.gruppi.map(function (g) {
+            return '<optgroup label="' + esc(g.linea) + '">'
+              + g.prodotti.map(function (n) { return '<option value="' + esc(n) + '">' + esc(n) + '</option>'; }).join('')
+              + '</optgroup>';
+          }).join('');
+          [].slice.call(document.querySelectorAll('.a-nome')).forEach(function (sel) {
+            var scelto = sel.value; sel.innerHTML = opzioniProdotti; sel.value = scelto;
+          });
+        }).catch(function () {});
       }
 
       function caricaOrdini() {
@@ -507,6 +583,7 @@
       document.getElementById('n-annulla').addEventListener('click', function () { form.hidden = true; });
       document.getElementById('n-aggiungi-art').addEventListener('click', function () {
         var r = document.querySelector('#n-articoli .art-riga').cloneNode(true);
+        r.querySelector('.a-nome').innerHTML = opzioniProdotti;
         r.querySelector('.a-nome').value = ''; r.querySelector('.a-qta').value = 1;
         document.getElementById('n-articoli').appendChild(r);
       });
@@ -549,7 +626,7 @@
         }).catch(function () { esito.style.color = '#a4401f'; esito.textContent = 'non registrato'; });
       });
 
-      function caricaTutto() { caricaMetriche(); caricaRegole(); caricaOrdini(); }
+      function caricaTutto() { caricaMetriche(); caricaRegole(); caricaOrdini(); caricaProdotti(); }
 
       if (token()) mostraApp(); else mostraLogin();
     })();
