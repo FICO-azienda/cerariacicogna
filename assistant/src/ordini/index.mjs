@@ -19,6 +19,16 @@ export const ordiniPerEmail           = (...a) => adattatore().ordiniPerEmail(..
 export const tuttiOrdini              = (...a) => adattatore().tuttiOrdini(...a);
 export const aggiornaStatoOrdine      = (...a) => adattatore().aggiornaStatoOrdine(...a);
 
+/* Solo l'adattatore su file sa tenere i campi che lo staff scrive dal
+   pannello. Con Google Sheets quei valori si scrivono nel foglio, quindi
+   qui si ricade sul cambio di stato che il foglio gia' conosce. */
+export const impostaDatiOrdine        = (...a) => {
+  const a1 = adattatore();
+  if (a1.impostaDatiOrdine) return a1.impostaDatiOrdine(...a);
+  const [id, patch = {}] = a;
+  return a1.aggiornaStatoOrdine(id, patch.stato || '');
+};
+
 export const daRichiesta              = (...a) => adattatore().daRichiesta(...a);
 export const trovaPerEmail            = (...a) => adattatore().trovaPerEmail(...a);
 export const trovaPerCodice           = (...a) => adattatore().trovaPerCodice(...a);

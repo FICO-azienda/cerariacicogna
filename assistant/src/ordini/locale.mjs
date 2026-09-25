@@ -29,13 +29,36 @@ function leggiStati() {
 }
 
 function conStato(ordine, stati) {
+  const extra = stati[ordine.ts] || {};
   return {
     ...ordine,
     id: ordine.ts,
-    stato: (stati[ordine.ts] && stati[ordine.ts].stato) || '',
-    statoPagamento: (stati[ordine.ts] && stati[ordine.ts].statoPagamento) || '',
-    dataStimata: (stati[ordine.ts] && stati[ordine.ts].dataStimata) || '',
+    stato: extra.stato || '',
+    statoPagamento: extra.statoPagamento || '',
+    dataStimata: extra.dataStimata || '',
+    prezzoTotale: extra.prezzoTotale || '',
+    note: extra.note || '',
   };
+}
+
+/* Scrive i campi che lo staff aggiorna a mano dal pannello. Restano in un
+   file a parte e non toccano la richiesta originale: quella e' il documento
+   di cio' che il cliente ha chiesto, e non va riscritta. */
+export async function impostaDatiOrdine(id, patch = {}) {
+  const stati = leggiStati();
+  const ammessi = ['stato', 'statoPagamento', 'dataStimata', 'prezzoTotale', 'note'];
+  const voce = { ...(stati[id] || {}) };
+  ammessi.forEach(k => { if (patch[k] !== undefined) voce[k] = String(patch[k]); });
+  voce.aggiornato = new Date().toISOString();
+  stati[id] = voce;
+  try {
+    fs.mkdirSync(path.dirname(FILE_STATI), { recursive: true });
+    fs.writeFileSync(FILE_STATI, JSON.stringify(stati, null, 2));
+  } catch (e) {
+    console.warn('[ordini] stato non salvato: ' + e.message);
+    return null;
+  }
+  return trovaOrdine(id);
 }
 
 /* ── ordini ── */

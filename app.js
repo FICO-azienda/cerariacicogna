@@ -162,6 +162,12 @@ const server = http.createServer(async (req, res) => {
       return await gestisciStatoOrdine(req, res);
     }
 
+    if (url.pathname === '/api/admin/ordini' || url.pathname.startsWith('/api/admin/ordini/')) {
+      const { gestisciOrdiniAdmin } = await import('./assistant/src/admin/ordini-endpoint.mjs');
+      const azione = url.pathname.replace('/api/admin/ordini', '').replace(/^\//, '');
+      return await gestisciOrdiniAdmin(req, res, azione, { limite: url.searchParams.get('limite') || '' });
+    }
+
     if (url.pathname === '/api/admin/dashboard') {
       const { gestisciDashboard } = await import('./assistant/src/admin/dashboard-endpoint.mjs');
       const [da, a] = (url.searchParams.get('periodo') || '').split('..');

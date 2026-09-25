@@ -8,7 +8,12 @@
   <link rel="stylesheet" href="css/main.css?v=13">
   <script src="js/cc-api.js"></script>
   <style>
-    body { background: #FAFAF8; }
+    /* Il colore di testo del sito e' l'avorio delle pagine scure: qui il
+       fondo e' bianco, e senza questa riga le tabelle risultavano scritte
+       in crema su bianco — 1,22 di contrasto, cioe' illeggibili. */
+    body { background: #FAFAF8; color: #26211a; }
+    table.ad-tabella td { color: #26211a; }
+    .ad-vuoto, .ad-sezione p { color: #5a4a38; }
     .ad-shell { max-width: 1080px; margin: 0 auto; padding: 48px 20px 100px; }
     .ad-login { max-width: 340px; margin: 140px auto; text-align: center; }
     .ad-login input { width: 100%; box-sizing: border-box; padding: 12px 14px; font-family: var(--ff-serif); font-size: 1rem; border: 1px solid rgba(26,22,16,.25); margin-bottom: 14px; }
@@ -44,6 +49,34 @@
     .ad-filtro input, .ad-filtro select { padding: 7px 9px; font-family: var(--ff-sans); font-size: .74rem; border: 1px solid rgba(26,22,16,.2); }
     .ad-filtro-reset { font-family: var(--ff-sans); font-size: .6rem; text-decoration: underline; color: var(--c-text-mid, #6b6355); background: none; border: 0; cursor: pointer; padding: 8px 0; }
     .ad-card.avviso .n { color: #a4401f; }
+
+    /* ── gestione ordini: deve capirsi senza spiegazioni ── */
+    .ad-aiuto { font-family: var(--ff-serif); font-style: italic; font-size: .95rem; color: #6b6355; margin: -6px 0 18px; line-height: 1.6; }
+    .ord { background: #fff; border: 1px solid rgba(26,22,16,.12); border-left: 3px solid #c9c2b4; padding: 16px 18px; margin-bottom: 12px; }
+    .ord.pagato { border-left-color: #2f6b3a; }
+    .ord.attesa { border-left-color: #c58a1e; }
+    .ord-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; flex-wrap: wrap; }
+    .ord-chi { font-family: var(--ff-serif); font-size: 1.05rem; color: #1a1610; }
+    .ord-meta { font-family: var(--ff-sans); font-size: .62rem; color: #6b6355; margin-top: 3px; }
+    .ord-art { font-family: var(--ff-sans); font-size: .76rem; color: #3a352c; margin: 10px 0 14px; }
+    .badge { font-family: var(--ff-sans); font-size: .56rem; letter-spacing: .1em; text-transform: uppercase; padding: 5px 10px; white-space: nowrap; }
+    .badge.si { background: #e7f0e8; color: #2f6b3a; }
+    .badge.no { background: #fbf0dc; color: #8a5c10; }
+    .ord-azioni { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+    .ord-azioni label { display: block; font-family: var(--ff-sans); font-size: .5rem; letter-spacing: .08em; text-transform: uppercase; color: #6b6355; margin-bottom: 4px; }
+    .ord-azioni select, .ord-azioni input { padding: 8px 10px; font-family: var(--ff-sans); font-size: .78rem; border: 1px solid rgba(26,22,16,.2); background: #fff; }
+    .btn-paga { background: #2f6b3a; color: #fff; border: 0; cursor: pointer; font-family: var(--ff-sans); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; padding: 11px 18px; }
+    .btn-paga.annulla { background: #fff; color: #8a5c10; border: 1px solid #d8c9a6; }
+    .ord-esito { font-family: var(--ff-sans); font-size: .6rem; color: #2f6b3a; align-self: center; }
+    .ad-barra { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+    .btn-nuovo { background: var(--c-dark); color: #fff; border: 0; cursor: pointer; font-family: var(--ff-sans); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; padding: 12px 20px; }
+    .ad-form { background: #fff; border: 1px solid rgba(26,22,16,.12); padding: 20px 22px; margin-bottom: 18px; }
+    .ad-form .riga { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 12px; }
+    .ad-form label { display: block; font-family: var(--ff-sans); font-size: .5rem; letter-spacing: .08em; text-transform: uppercase; color: #6b6355; margin-bottom: 4px; }
+    .ad-form input, .ad-form select { width: 100%; box-sizing: border-box; padding: 9px 10px; font-family: var(--ff-sans); font-size: .8rem; border: 1px solid rgba(26,22,16,.2); }
+    .art-riga { display: grid; grid-template-columns: 1fr 110px 40px; gap: 10px; margin-bottom: 8px; align-items: end; }
+    .art-togli { background: none; border: 0; color: #a4401f; cursor: pointer; font-size: 1.1rem; padding: 6px; }
+    .lega { font-family: var(--ff-serif); font-style: italic; font-size: .85rem; color: #6b6355; margin-top: 4px; }
   </style>
 </head>
 <body class="light-page">
@@ -73,6 +106,62 @@
           <button type="button" class="ad-filtro-reset" id="f-reset">Azzera filtri</button>
         </div>
         <div class="ad-cards" id="ad-metriche-ordini"></div>
+      </section>
+
+      <!-- GESTIONE ORDINI -->
+      <section class="ad-sezione">
+        <h2>Gli ordini, uno per uno</h2>
+        <p class="ad-aiuto">Qui segni chi ha pagato e a che punto è ogni ordine. Le modifiche
+          si salvano da sole: non c'è nessun pulsante "salva" da ricordarsi. Se un ordine
+          arriva per telefono o in negozio, aggiungilo con il pulsante qui a destra —
+          altrimenti per il sito quel cliente non esiste e non riceverà mai un promemoria.</p>
+
+        <div class="ad-barra">
+          <span class="ad-aiuto" style="margin:0;" id="ord-conteggio"></span>
+          <button type="button" class="btn-nuovo" id="ord-apri-nuovo">+ Aggiungi un ordine preso a voce</button>
+        </div>
+
+        <div class="ad-form" id="ord-form" hidden>
+          <div class="riga">
+            <div><label>Nome e cognome del cliente *</label><input type="text" id="n-nome" placeholder="Es. Don Paolo Rossi"></div>
+            <div><label>Email</label><input type="email" id="n-email" placeholder="serve per i promemoria"></div>
+            <div><label>Parrocchia o azienda</label><input type="text" id="n-azienda" placeholder="facoltativo"></div>
+          </div>
+          <div class="riga">
+            <div><label>Linea di prodotto</label>
+              <select id="n-linea">
+                <option value="Liturgica">Liturgico</option>
+                <option value="Garden">Garden</option>
+                <option value="Home Collection">Home Collection</option>
+                <option value="Private Label">Private Label</option>
+                <option value="Collaborazioni">Collaborazioni</option>
+              </select></div>
+            <div><label>Importo in euro</label><input type="text" id="n-prezzo" placeholder="facoltativo, es. 240,00"></div>
+            <div><label>È già stato pagato?</label>
+              <select id="n-pagato"><option value="da ricevere">No, da incassare</option><option value="pagato">Sì, pagato</option></select></div>
+          </div>
+
+          <label>Cosa ha ordinato *</label>
+          <div id="n-articoli">
+            <div class="art-riga">
+              <div><input type="text" class="a-nome" placeholder="Nome del prodotto"></div>
+              <div><input type="number" class="a-qta" min="1" value="1" placeholder="Quantità"></div>
+              <button type="button" class="art-togli" title="Togli questa riga">&times;</button>
+            </div>
+          </div>
+          <button type="button" class="ad-filtro-reset" id="n-aggiungi-art">+ aggiungi un altro prodotto</button>
+
+          <p class="lega">Senza email l'ordine viene registrato lo stesso, ma quel cliente
+            non potrà ricevere né la conferma né i promemoria di riacquisto.</p>
+
+          <div class="ad-salva-riga">
+            <span class="ad-ok" id="n-esito"></span>
+            <button type="button" class="ad-filtro-reset" id="n-annulla">annulla</button>
+            <button type="button" class="ad-btn" id="n-salva">Registra l'ordine</button>
+          </div>
+        </div>
+
+        <div id="ad-ordini"></div>
       </section>
 
       <section class="ad-sezione">
@@ -197,7 +286,7 @@
           document.getElementById('ad-metriche-ordini').innerHTML = cardsOrdini.map(function (c, i) {
             var avviso = (i === 5 && m.pagamentiMancanti > 0) ? ' avviso' : '';
             return '<div class="ad-card' + avviso + '"><div class="n">' + esc(c[1]) + '</div><div class="l">' + esc(c[0]) + '</div></div>';
-          }).join('') + (m.fatturato ? '' : '<p class="ad-nota-debole">Fatturato e valore medio contano solo gli ordini con "Prezzo Totale" compilato a mano nel foglio.</p>');
+          }).join('') + (m.fatturato ? '' : '<p class="ad-nota-debole">Fatturato e valore medio contano solo gli ordini in cui hai scritto l\'importo qui sotto.</p>');
 
           var cardsPromemoria = [
             ['Inviati', m.inviati], ['Programmati', m.programmati], ['Cliccati', m.click],
@@ -332,7 +421,135 @@
         });
       }
 
-      function caricaTutto() { caricaMetriche(); caricaRegole(); }
+      /* ── GLI ORDINI, UNO PER UNO ─────────────────────────────
+         Scritta per chi non ha mai usato un pannello: ogni modifica
+         parte da sola e lo dice ("salvato"), niente pulsanti nascosti. */
+      var STATI_ORDINE = [
+        ['', 'Da lavorare'], ['confermato', 'Confermato'], ['preparazione', 'In preparazione'],
+        ['spedito', 'Spedito'], ['consegnato', 'Consegnato'], ['annullato', 'Annullato'],
+      ];
+
+      function pagato(o) { return String(o.statoPagamento || '').toLowerCase() === 'pagato'; }
+
+      function schedaOrdine(o) {
+        var si = pagato(o);
+        var articoli = (o.articoli || []).map(function (a) {
+          return (a.quantita ? a.quantita + ' × ' : '') + esc(a.nome);
+        }).join(' · ') || '—';
+        var opzioni = STATI_ORDINE.map(function (st) {
+          return '<option value="' + st[0] + '"' + (String(o.stato || '') === st[0] ? ' selected' : '') + '>' + st[1] + '</option>';
+        }).join('');
+        return '<div class="ord ' + (si ? 'pagato' : 'attesa') + '" data-id="' + esc(o.id) + '">' +
+          '<div class="ord-top">' +
+            '<div><div class="ord-chi">' + esc(o.nome || 'Senza nome') +
+              (o.azienda ? ' <span style="color:#6b6355">· ' + esc(o.azienda) + '</span>' : '') + '</div>' +
+              '<div class="ord-meta">' + dataBreve(o.ts) + (o.linea ? ' · ' + esc(o.linea) : '') +
+              (o.email ? ' · ' + esc(o.email) : ' · nessuna email') +
+              (o.origine === 'manuale' ? ' · preso a voce' : '') + '</div></div>' +
+            '<span class="badge ' + (si ? 'si' : 'no') + '">' + (si ? 'Pagato' : 'Da incassare') + '</span>' +
+          '</div>' +
+          '<div class="ord-art">' + articoli + '</div>' +
+          '<div class="ord-azioni">' +
+            '<button type="button" class="btn-paga' + (si ? ' annulla' : '') + '" data-azione="paga">' +
+              (si ? 'Segna come NON pagato' : 'Segna come pagato') + '</button>' +
+            '<div><label>A che punto è</label><select data-azione="stato">' + opzioni + '</select></div>' +
+            '<div><label>Importo €</label><input type="text" data-azione="prezzo" value="' + esc(o.prezzoTotale || '') + '" placeholder="es. 240,00" size="8"></div>' +
+            '<span class="ord-esito"></span>' +
+          '</div></div>';
+      }
+
+      function caricaOrdini() {
+        chiamata('/api/admin/ordini?limite=100').then(function (d) {
+          if (!d.ok) return;
+          var box = document.getElementById('ad-ordini');
+          var n = d.ordini.length;
+          document.getElementById('ord-conteggio').textContent =
+            n === 0 ? 'Nessun ordine ancora registrato.'
+                    : (n === 1 ? '1 ordine registrato.' : n + ' ordini registrati, dal più recente.');
+          box.innerHTML = d.ordini.map(schedaOrdine).join('') ||
+            '<p class="ad-aiuto">Quando arriverà la prima richiesta dal sito comparirà qui.</p>';
+        }).catch(function () {});
+      }
+
+      function salvaOrdine(riga, patch, messaggio) {
+        var esito = riga.querySelector('.ord-esito');
+        esito.textContent = 'salvo…';
+        patch.id = riga.getAttribute('data-id');
+        chiamata('/api/admin/ordini/stato', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(patch),
+        }).then(function (d) {
+          if (!d.ok) { esito.textContent = 'non salvato'; return; }
+          esito.textContent = messaggio || 'salvato';
+          setTimeout(function () { esito.textContent = ''; }, 2500);
+          if (patch.statoPagamento !== undefined) { caricaOrdini(); caricaMetriche(); }
+        }).catch(function () { esito.textContent = 'non salvato'; });
+      }
+
+      document.getElementById('ad-ordini').addEventListener('click', function (e) {
+        var b = e.target.closest('[data-azione="paga"]'); if (!b) return;
+        var riga = b.closest('.ord');
+        var eraPagato = riga.classList.contains('pagato');
+        salvaOrdine(riga, { statoPagamento: eraPagato ? 'da ricevere' : 'pagato' });
+      });
+      document.getElementById('ad-ordini').addEventListener('change', function (e) {
+        var riga = e.target.closest('.ord'); if (!riga) return;
+        var a = e.target.getAttribute('data-azione');
+        if (a === 'stato') salvaOrdine(riga, { stato: e.target.value });
+        if (a === 'prezzo') salvaOrdine(riga, { prezzoTotale: e.target.value });
+      });
+
+      /* ── ordine preso a voce ── */
+      var form = document.getElementById('ord-form');
+      document.getElementById('ord-apri-nuovo').addEventListener('click', function () {
+        form.hidden = !form.hidden;
+        if (!form.hidden) document.getElementById('n-nome').focus();
+      });
+      document.getElementById('n-annulla').addEventListener('click', function () { form.hidden = true; });
+      document.getElementById('n-aggiungi-art').addEventListener('click', function () {
+        var r = document.querySelector('#n-articoli .art-riga').cloneNode(true);
+        r.querySelector('.a-nome').value = ''; r.querySelector('.a-qta').value = 1;
+        document.getElementById('n-articoli').appendChild(r);
+      });
+      document.getElementById('n-articoli').addEventListener('click', function (e) {
+        if (!e.target.classList.contains('art-togli')) return;
+        var righe = document.querySelectorAll('#n-articoli .art-riga');
+        if (righe.length > 1) e.target.closest('.art-riga').remove();
+      });
+
+      document.getElementById('n-salva').addEventListener('click', function () {
+        var esito = document.getElementById('n-esito');
+        var articoli = [].slice.call(document.querySelectorAll('#n-articoli .art-riga')).map(function (r) {
+          return { nome: r.querySelector('.a-nome').value, quantita: r.querySelector('.a-qta').value };
+        }).filter(function (a) { return String(a.nome).trim(); });
+        var corpo = {
+          nome: document.getElementById('n-nome').value,
+          email: document.getElementById('n-email').value,
+          azienda: document.getElementById('n-azienda').value,
+          linea: document.getElementById('n-linea').value,
+          prezzoTotale: document.getElementById('n-prezzo').value,
+          statoPagamento: document.getElementById('n-pagato').value,
+          articoli: articoli,
+        };
+        if (!String(corpo.nome).trim()) { esito.style.color = '#a4401f'; esito.textContent = 'Manca il nome del cliente.'; return; }
+        if (!articoli.length) { esito.style.color = '#a4401f'; esito.textContent = 'Scrivi almeno un prodotto.'; return; }
+        esito.style.color = ''; esito.textContent = 'registro…';
+        chiamata('/api/admin/ordini/nuovo', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(corpo),
+        }).then(function (d) {
+          if (!d.ok) { esito.style.color = '#a4401f'; esito.textContent = d.errore || 'non registrato'; return; }
+          esito.style.color = '';
+          esito.textContent = d.promemoriaAttivi ? 'Registrato. Riceverà i promemoria.' : 'Registrato (senza email: niente promemoria).';
+          document.getElementById('n-nome').value = ''; document.getElementById('n-email').value = '';
+          document.getElementById('n-azienda').value = ''; document.getElementById('n-prezzo').value = '';
+          [].slice.call(document.querySelectorAll('#n-articoli .art-riga')).forEach(function (r, i) {
+            if (i) r.remove(); else { r.querySelector('.a-nome').value = ''; r.querySelector('.a-qta').value = 1; }
+          });
+          caricaOrdini(); caricaMetriche();
+          setTimeout(function () { esito.textContent = ''; form.hidden = true; }, 3000);
+        }).catch(function () { esito.style.color = '#a4401f'; esito.textContent = 'non registrato'; });
+      });
+
+      function caricaTutto() { caricaMetriche(); caricaRegole(); caricaOrdini(); }
 
       if (token()) mostraApp(); else mostraLogin();
     })();
