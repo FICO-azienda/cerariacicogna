@@ -136,6 +136,8 @@
       <button type="button" id="ad-entra">Entra</button>
     </div>
 
+    <datalist id="clienti-noti"></datalist>
+
     <div id="ad-app" hidden>
       <div class="ad-header">
         <p class="ad-title">Automazioni riacquisto</p>
@@ -147,7 +149,7 @@
         <div class="ad-filtri">
           <div class="ad-filtro"><label>Dal</label><input type="date" id="f-da"></div>
           <div class="ad-filtro"><label>Al</label><input type="date" id="f-a"></div>
-          <div class="ad-filtro"><label>Cliente</label><input type="text" id="f-cliente" placeholder="nome o email"></div>
+          <div class="ad-filtro"><label>Cliente</label><input type="text" id="f-cliente" list="clienti-noti" placeholder="scrivi o scegli…"></div>
           <div class="ad-filtro"><label>Tipo</label><select id="f-tipo"><option value="">Tutti</option><option value="B2C">B2C</option><option value="B2B">B2B</option></select></div>
           <div class="ad-filtro"><label>Stato</label><select id="f-stato"><option value="">Tutti</option></select></div>
           <div class="ad-filtro"><label>Categoria</label><select id="f-categoria"><option value="">Tutte</option><option value="liturgico">Liturgico</option><option value="garden">Garden</option><option value="home-collection">Home Collection</option><option value="private-label">Private Label</option></select></div>
@@ -172,7 +174,7 @@
         <div class="ad-form" id="ord-form" hidden>
           <div class="riga">
             <div><label>Nome e cognome del cliente *</label><input type="text" id="n-nome" placeholder="Es. Don Paolo Rossi"></div>
-            <div><label>Email</label><input type="email" id="n-email" placeholder="serve per i promemoria"></div>
+            <div><label>Email</label><input type="email" id="n-email" list="clienti-noti" placeholder="scrivi o scegli un cliente…"></div>
             <div><label>Parrocchia o azienda</label><input type="text" id="n-azienda" placeholder="facoltativo"></div>
           </div>
           <div class="riga">
@@ -390,6 +392,13 @@
                     + '<td>' + esc(c.categoria) + '</td><td>' + dataBreve(c.prossimoReminder) + '</td></tr>';
                 }).join('') + '</tbody></table>'
             : '<p style="font-family:var(--ff-sans);font-size:.7rem;color:#9a9186;">Nessuno al momento.</p>';
+
+          /* L'elenco dei suggerimenti: si rifa' a ogni caricamento, quindi
+             appena registri un cliente nuovo compare anche qui. */
+          clientiNoti = d.clienti;
+          document.getElementById('clienti-noti').innerHTML = d.clienti.map(function (c) {
+            return '<option value="' + esc(c.email) + '">' + esc(c.nome || c.email) + '</option>';
+          }).join('');
 
           document.getElementById('ad-clienti').innerHTML = d.clienti.map(function (c) {
             return '<tr>'
@@ -641,6 +650,7 @@
           : 'Nessuna esclusione: tutti i prodotti di questa categoria possono generare un promemoria.';
       }
 
+      var clientiNoti = [];
       var ordiniCaricati = [];
       var clienteMostrato = '';
 
@@ -731,6 +741,21 @@
         if (!e.target.classList.contains('art-togli')) return;
         var righe = document.querySelectorAll('#n-articoli .art-riga');
         if (righe.length > 1) e.target.closest('.art-riga').remove();
+      });
+
+      /* Scelta un'email gia' nota, nome e azienda si compilano da soli:
+         digitarli di nuovo a mano porterebbe a due schede per la stessa
+         persona, e i promemoria si calcolano per email. */
+      document.getElementById('n-email').addEventListener('change', function () {
+        var email = this.value.trim().toLowerCase();
+        if (!email) return;
+        var noto = (clientiNoti || []).filter(function (c) { return (c.email || '').toLowerCase() === email; })[0];
+        if (!noto) return;
+        var nome = document.getElementById('n-nome');
+        if (!nome.value.trim()) nome.value = noto.nome || '';
+        var esito = document.getElementById('n-esito');
+        esito.style.color = ''; esito.textContent = 'Cliente già in archivio: i suoi ordini si sommano.';
+        setTimeout(function () { esito.textContent = ''; }, 4000);
       });
 
       document.getElementById('n-salva').addEventListener('click', function () {
