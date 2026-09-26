@@ -5,142 +5,214 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pannello riacquisto — Cereria Cicogna</title>
   <meta name="robots" content="noindex, nofollow">
-  <link rel="stylesheet" href="css/main.css?v=13">
+
   <script src="js/cc-api.js"></script>
   <style>
-    /* Il colore di testo del sito e' l'avorio delle pagine scure: qui il
-       fondo e' bianco, e senza questa riga le tabelle risultavano scritte
-       in crema su bianco — 1,22 di contrasto, cioe' illeggibili. */
-    body { background: #FAFAF8; color: #26211a; }
-    table.ad-tabella td { color: #26211a; }
-    .ad-vuoto, .ad-sezione p { color: #5a4a38; }
-    .ad-shell { max-width: 1080px; margin: 0 auto; padding: 48px 20px 100px; }
-    .ad-login { max-width: 340px; margin: 140px auto; text-align: center; }
-    .ad-login input { width: 100%; box-sizing: border-box; padding: 12px 14px; font-family: var(--ff-serif); font-size: 1rem; border: 1px solid rgba(26,22,16,.25); margin-bottom: 14px; }
-    .ad-login button, .ad-btn { background: var(--c-dark); color: #fff; font-family: var(--ff-sans); font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; padding: 12px 26px; border: 0; cursor: pointer; }
-    .ad-login button:hover, .ad-btn:hover { background: #2C2416; }
-    .ad-errore { color: #a4401f; font-family: var(--ff-sans); font-size: .7rem; margin-bottom: 10px; }
-    .ad-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 34px; }
-    .ad-title { font-family: var(--ff-display); font-weight: 300; font-size: 1.7rem; color: var(--c-text-dark, #1a1610); }
-    .ad-logout { font-family: var(--ff-sans); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--c-text-mid, #6b6355); text-decoration: underline; background: none; border: 0; cursor: pointer; }
-    .ad-sezione { margin-bottom: 56px; }
-    .ad-sezione h2 { font-family: var(--ff-display); font-weight: 300; font-size: 1.2rem; margin-bottom: 18px; color: var(--c-text-dark, #1a1610); }
-    .ad-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; }
-    .ad-card { background: #fff; border: 1px solid rgba(26,22,16,.1); padding: 16px 18px; }
-    .ad-card .n { font-family: var(--ff-display); font-size: 1.7rem; font-weight: 300; color: var(--c-text-dark, #1a1610); }
-    .ad-card .l { font-family: var(--ff-sans); font-size: .52rem; letter-spacing: .1em; text-transform: uppercase; color: var(--c-text-mid, #6b6355); margin-top: 4px; }
-    .ad-nota-debole { font-size: .5rem; color: #a4401f; }
-    .ad-regola { background: #fff; border: 1px solid rgba(26,22,16,.1); padding: 18px 20px; margin-bottom: 14px; }
-    .ad-regola-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-    .ad-regola-head strong { font-family: var(--ff-serif); font-size: 1.05rem; }
-    .ad-campi { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
-    .ad-campo label { display: block; font-family: var(--ff-sans); font-size: .5rem; letter-spacing: .08em; text-transform: uppercase; color: var(--c-text-mid, #6b6355); margin-bottom: 4px; }
-    .ad-campo input[type=text], .ad-campo input[type=number] { width: 100%; box-sizing: border-box; padding: 7px 9px; font-family: var(--ff-sans); font-size: .8rem; border: 1px solid rgba(26,22,16,.2); }
-    .ad-campo input[type=checkbox] { transform: scale(1.2); }
-    .ad-salva-riga { margin-top: 12px; text-align: right; }
-    .ad-ok { color: #2f6b3a; font-family: var(--ff-sans); font-size: .6rem; margin-right: 10px; }
-    table.ad-tabella { width: 100%; border-collapse: collapse; font-family: var(--ff-sans); font-size: .74rem; background: #fff; }
-    table.ad-tabella th, table.ad-tabella td { text-align: left; padding: 9px 10px; border-bottom: 1px solid rgba(26,22,16,.08); }
-    table.ad-tabella th { font-size: .5rem; letter-spacing: .08em; text-transform: uppercase; color: var(--c-text-mid, #6b6355); }
-    .stato-attivo { color: #2f6b3a; }
-    .stato-disiscritto, .stato-scaduto { color: #a4401f; }
-    .ad-filtri { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; align-items: flex-end; }
-    .ad-filtro label { display: block; font-family: var(--ff-sans); font-size: .48rem; letter-spacing: .08em; text-transform: uppercase; color: var(--c-text-mid, #6b6355); margin-bottom: 4px; }
-    .ad-filtro input, .ad-filtro select { padding: 7px 9px; font-family: var(--ff-sans); font-size: .74rem; border: 1px solid rgba(26,22,16,.2); }
-    .ad-filtro-reset { font-family: var(--ff-sans); font-size: .6rem; text-decoration: underline; color: var(--c-text-mid, #6b6355); background: none; border: 0; cursor: pointer; padding: 8px 0; }
-    .ad-card.avviso .n { color: #a4401f; }
+    /* ══════════════════════════════════════════════════════════
+       Questo pannello NON usa il foglio di stile del sito.
+       Il sito deve essere bello; questo deve essere chiaro.
+       Caratteri di sistema, testo grande, colori che dicono
+       subito di cosa si sta parlando:
+         blu = ordini · verde = clienti · viola = promemoria
+         rosso = una cosa da fare adesso · grigio = tutto a posto
+       ══════════════════════════════════════════════════════════ */
+    :root {
+      --ff-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --ff-serif: var(--ff-sans);
+      --ff-display: var(--ff-sans);
+      --blu: #1d4ed8; --blu-chiaro: #eef3ff;
+      --verde: #15803d; --verde-chiaro: #edf7ef;
+      --viola: #6d28d9; --viola-chiaro: #f3eeff;
+      --rosso: #c0271e; --rosso-chiaro: #fdf0ef;
+      --ambra: #b45309; --ambra-chiaro: #fdf4e3;
+      --testo: #1f2937; --grigio: #56606f; --bordo: #d8dde5; --fondo: #eef1f6;
+      --c-dark: #1f2937; --c-text-dark: #1f2937; --c-text-mid: #56606f;
+    }
+    * { box-sizing: border-box; }
+    body { background: var(--fondo); color: var(--testo); font-family: var(--ff-sans); font-size: 16px; line-height: 1.55; margin: 0; }
+    .ad-shell { max-width: 1120px; margin: 0 auto; padding: 0 16px 90px; }
 
-    /* ── gestione ordini: deve capirsi senza spiegazioni ── */
-    .ad-aiuto { font-family: var(--ff-serif); font-style: italic; font-size: .95rem; color: #6b6355; margin: -6px 0 18px; line-height: 1.6; }
-    .ord { background: #fff; border: 1px solid rgba(26,22,16,.12); border-left: 3px solid #c9c2b4; padding: 16px 18px; margin-bottom: 12px; }
-    .ord.pagato { border-left-color: #2f6b3a; }
-    .ord.attesa { border-left-color: #c58a1e; }
+    /* ── entrata ── */
+    .ad-login { max-width: 380px; margin: 90px auto; background: #fff; border: 1px solid var(--bordo); border-radius: 14px; padding: 34px 30px; text-align: center; box-shadow: 0 1px 3px rgba(20,30,50,.07); }
+    .ad-login input { width: 100%; padding: 13px 14px; font-family: var(--ff-sans); font-size: 16px; border: 2px solid var(--bordo); border-radius: 8px; margin-bottom: 14px; }
+    .ad-login input:focus { outline: 0; border-color: var(--blu); }
+    .ad-login button, .ad-btn { background: var(--blu); color: #fff; font-family: var(--ff-sans); font-size: 15px; font-weight: 600; padding: 13px 26px; border: 0; border-radius: 8px; cursor: pointer; }
+    .ad-login button { width: 100%; }
+    .ad-login button:hover, .ad-btn:hover { background: #1740ad; }
+    .ad-errore { color: var(--rosso); font-size: 14px; margin: 0 0 12px; font-weight: 600; }
+
+    /* ── testata e tre pagine ── */
+    .ad-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 22px 0 14px; }
+    .ad-title { font-size: 20px; font-weight: 700; margin: 0; color: var(--testo); }
+    .ad-logout { font-family: var(--ff-sans); font-size: 14px; color: var(--grigio); background: #fff; border: 1px solid var(--bordo); border-radius: 8px; padding: 8px 16px; cursor: pointer; }
+    .ad-logout:hover { border-color: var(--rosso); color: var(--rosso); }
+
+    /* Le tre schede: grandi, con un colore ciascuna. Si capisce dove si e'
+       anche guardando di sfuggita, senza leggere. */
+    .ad-tab { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 26px; }
+    .tab { background: #fff; border: 2px solid var(--bordo); border-radius: 12px; padding: 16px 14px; cursor: pointer;
+      font-family: var(--ff-sans); text-align: left; display: flex; gap: 12px; align-items: center; }
+    .tab:hover { border-color: #b6becb; }
+    .tab-ico { font-size: 24px; line-height: 1; }
+    .tab-t { font-size: 16px; font-weight: 700; color: var(--testo); }
+    .tab-s { font-size: 13px; color: var(--grigio); }
+    .tab.on { color: #fff; }
+    .tab.on .tab-t, .tab.on .tab-s { color: #fff; }
+    .tab.on .tab-s { opacity: .88; }
+    .tab-ordini.on { background: var(--blu); border-color: var(--blu); }
+    .tab-clienti.on { background: var(--verde); border-color: var(--verde); }
+    .tab-promemoria.on { background: var(--viola); border-color: var(--viola); }
+    .pagina[hidden] { display: none; }
+
+    /* ── blocchi ── */
+    .ad-sezione { background: #fff; border: 1px solid var(--bordo); border-radius: 14px; padding: 22px 24px; margin-bottom: 20px; }
+    .ad-sezione h2 { font-size: 18px; font-weight: 700; margin: 0 0 6px; color: var(--testo); }
+    .ad-aiuto { font-size: 14.5px; color: var(--grigio); margin: 0 0 16px; line-height: 1.6; }
+    .ad-sezione p { color: var(--grigio); }
+    .ad-vuoto, .vuoto { font-size: 14.5px; color: var(--grigio); margin: 0; }
+    .ad-nota-debole { font-size: 13px; color: var(--grigio); margin: 10px 0 0; }
+
+    /* ── i tre riquadri delle cose da fare ── */
+    .ad-azioni { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
+    .az { background: #fff; border: 2px solid var(--bordo); border-radius: 12px; padding: 20px 22px; }
+    .az-n { font-size: 46px; line-height: 1; font-weight: 700; color: var(--testo); }
+    .az-t { font-size: 16px; font-weight: 700; color: var(--testo); margin-top: 8px; }
+    .az-f { font-size: 14px; color: var(--grigio); }
+    .az.urgente { border-color: var(--rosso); background: var(--rosso-chiaro); }
+    .az.urgente .az-n, .az.urgente .az-t { color: var(--rosso); }
+    .az.novita { border-color: var(--verde); background: var(--verde-chiaro); }
+    .az.novita .az-n, .az.novita .az-t { color: var(--verde); }
+    .az.calmo .az-n { color: #9aa3b0; }
+
+    /* ── numeri piccoli ── */
+    .ad-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+    .ad-card { background: #f7f9fc; border: 1px solid var(--bordo); border-radius: 10px; padding: 14px 16px; }
+    .ad-card .n { font-size: 24px; font-weight: 700; color: var(--testo); }
+    .ad-card .l { font-size: 13px; color: var(--grigio); margin-top: 2px; }
+    .ad-card.avviso .n { color: var(--rosso); }
+
+    /* ── tabelle ── */
+    table.ad-tabella { width: 100%; border-collapse: collapse; font-family: var(--ff-sans); font-size: 14.5px; background: #fff; }
+    table.ad-tabella th, table.ad-tabella td { text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--bordo); }
+    table.ad-tabella td { color: var(--testo); }
+    table.ad-tabella th { font-size: 12.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--grigio); background: #f7f9fc; }
+    table.ad-tabella tr:hover td { background: #f9fbfe; }
+    .mail { color: var(--grigio); font-size: 12.5px; }
+    .stato-attivo { color: var(--verde); font-weight: 600; }
+    .stato-disiscritto, .stato-scaduto, .stato-link-revocato, .stato-link-scaduto { color: var(--rosso); font-weight: 600; }
+
+    /* ── filtri ── */
+    .ad-filtri { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+    .ad-filtro label { display: block; font-size: 12.5px; color: var(--grigio); margin-bottom: 4px; }
+    .ad-filtro input, .ad-filtro select { padding: 9px 11px; font-family: var(--ff-sans); font-size: 14.5px; border: 1px solid var(--bordo); border-radius: 8px; background: #fff; }
+    .ad-filtro-reset { font-family: var(--ff-sans); font-size: 14px; color: var(--blu); background: none; border: 0; cursor: pointer; padding: 9px 0; text-decoration: underline; }
+
+    /* ── un ordine ── */
+    .ord { background: #fff; border: 1px solid var(--bordo); border-left: 6px solid #c5ccd6; border-radius: 10px; padding: 16px 18px; margin-bottom: 12px; }
+    .ord.pagato { border-left-color: var(--verde); }
+    .ord.attesa { border-left-color: var(--ambra); }
     .ord-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; flex-wrap: wrap; }
-    .ord-chi { font-family: var(--ff-serif); font-size: 1.05rem; color: #1a1610; }
-    .ord-meta { font-family: var(--ff-sans); font-size: .62rem; color: #6b6355; margin-top: 3px; }
-    .ord-art { font-family: var(--ff-sans); font-size: .76rem; color: #3a352c; margin: 10px 0 14px; }
-    .badge { font-family: var(--ff-sans); font-size: .56rem; letter-spacing: .1em; text-transform: uppercase; padding: 5px 10px; white-space: nowrap; }
-    .badge.si { background: #e7f0e8; color: #2f6b3a; }
-    .badge.no { background: #fbf0dc; color: #8a5c10; }
+    .ord-chi { font-size: 17px; font-weight: 700; color: var(--testo); }
+    .ord-meta { font-size: 13px; color: var(--grigio); margin-top: 2px; }
+    .ord-art { font-size: 15px; color: var(--testo); margin: 10px 0 14px; }
+    .badge { font-size: 12.5px; font-weight: 700; padding: 6px 12px; border-radius: 20px; white-space: nowrap; }
+    .badge.si { background: var(--verde-chiaro); color: var(--verde); }
+    .badge.no { background: var(--ambra-chiaro); color: var(--ambra); }
     .ord-azioni { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
-    .ord-azioni label { display: block; font-family: var(--ff-sans); font-size: .5rem; letter-spacing: .08em; text-transform: uppercase; color: #6b6355; margin-bottom: 4px; }
-    .ord-azioni select, .ord-azioni input { padding: 8px 10px; font-family: var(--ff-sans); font-size: .78rem; border: 1px solid rgba(26,22,16,.2); background: #fff; }
-    .btn-paga { background: #2f6b3a; color: #fff; border: 0; cursor: pointer; font-family: var(--ff-sans); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; padding: 11px 18px; }
-    .btn-paga.annulla { background: #fff; color: #8a5c10; border: 1px solid #d8c9a6; }
-    .ord-esito { font-family: var(--ff-sans); font-size: .6rem; color: #2f6b3a; align-self: center; }
+    .ord-azioni label { display: block; font-size: 12.5px; color: var(--grigio); margin-bottom: 4px; }
+    .ord-azioni select, .ord-azioni input { padding: 10px 11px; font-family: var(--ff-sans); font-size: 14.5px; border: 1px solid var(--bordo); border-radius: 8px; background: #fff; }
+    .btn-paga { background: var(--verde); color: #fff; border: 0; border-radius: 8px; cursor: pointer; font-family: var(--ff-sans); font-size: 14.5px; font-weight: 600; padding: 12px 18px; }
+    .btn-paga:hover { background: #10682f; }
+    .btn-paga.annulla { background: #fff; color: var(--ambra); border: 1px solid #e3c894; }
+    .ord-esito { font-size: 13.5px; color: var(--verde); font-weight: 600; align-self: center; }
     /* Nascondi: volutamente sottotono e ultimo, non deve competere con "pagato" */
-    .btn-nascondi { background: none; border: 1px solid rgba(26,22,16,.18); color: #6b6355; cursor: pointer;
-      font-family: var(--ff-sans); font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; padding: 10px 14px; align-self: center; }
-    .btn-nascondi:hover { border-color: #a4401f; color: #a4401f; }
-    .ord-nascosti { margin-top: 22px; }
-    .ord-nascosti > summary { color: #6b6355; }
-    .ord.nascosto { opacity: .72; border-left-color: #c9c2b4; background: #faf8f4; }
-    .ord.nascosto .ord-chi { color: #6b6355; }
-    .btn-rimetti { background: #fff; border: 1px solid #b9a978; color: #6b5420; cursor: pointer;
-      font-family: var(--ff-sans); font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; padding: 9px 14px; white-space: nowrap; }
+    .btn-nascondi { background: #fff; border: 1px solid var(--bordo); border-radius: 8px; color: var(--grigio); cursor: pointer;
+      font-family: var(--ff-sans); font-size: 14px; padding: 11px 15px; align-self: center; }
+    .btn-nascondi:hover { border-color: var(--rosso); color: var(--rosso); }
+    .ord-nascosti { margin-top: 18px; }
+    .ord.nascosto { opacity: .8; border-left-color: #c5ccd6; background: #f7f9fc; }
+    .ord.nascosto .ord-chi { color: var(--grigio); }
+    .btn-rimetti { background: #fff; border: 1px solid var(--blu); border-radius: 8px; color: var(--blu); cursor: pointer;
+      font-family: var(--ff-sans); font-size: 14px; font-weight: 600; padding: 10px 15px; white-space: nowrap; }
+    .btn-rimetti:hover { background: var(--blu-chiaro); }
+    .ord-filtro { background: var(--verde-chiaro); border: 1px solid #bfe0c8; border-radius: 10px; padding: 12px 15px; margin-bottom: 12px;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 15px; color: var(--testo); }
+    .ord-filtro button { background: none; border: 0; text-decoration: underline; cursor: pointer; font-family: var(--ff-sans); font-size: 14px; color: var(--verde); font-weight: 600; }
+    .link-cliente { color: var(--blu); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; font-weight: 600; }
+    .link-cliente:hover { color: #1740ad; }
+
+    /* ── barra e modulo "preso a voce" ── */
     .ad-barra { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
-    .btn-nuovo { background: var(--c-dark); color: #fff; border: 0; cursor: pointer; font-family: var(--ff-sans); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; padding: 12px 20px; }
-    .ad-form { background: #fff; border: 1px solid rgba(26,22,16,.12); padding: 20px 22px; margin-bottom: 18px; }
-    .ad-form .riga { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 12px; }
-    .ad-form label { display: block; font-family: var(--ff-sans); font-size: .5rem; letter-spacing: .08em; text-transform: uppercase; color: #6b6355; margin-bottom: 4px; }
-    .ad-form input, .ad-form select { width: 100%; box-sizing: border-box; padding: 9px 10px; font-family: var(--ff-sans); font-size: .8rem; border: 1px solid rgba(26,22,16,.2); }
-    .art-riga { display: grid; grid-template-columns: 1fr 110px 40px; gap: 10px; margin-bottom: 8px; align-items: end; }
-    .art-togli { background: none; border: 0; color: #a4401f; cursor: pointer; font-size: 1.1rem; padding: 6px; }
-    .lega { font-family: var(--ff-serif); font-style: italic; font-size: .85rem; color: #6b6355; margin-top: 4px; }
-    .ad-azioni { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-    .az { background: #fff; border: 1px solid rgba(26,22,16,.12); border-top: 4px solid #c9c2b4; padding: 22px 24px; }
-    .az-n { font-family: var(--ff-display); font-size: 3.2rem; line-height: 1; font-weight: 300; color: #26211a; }
-    .az-t { font-family: var(--ff-sans); font-size: .82rem; letter-spacing: .04em; color: #26211a; margin-top: 10px; font-weight: 500; }
-    .az-f { font-family: var(--ff-serif); font-style: italic; font-size: .86rem; color: #6b6355; margin-top: 2px; }
-    .az.urgente { border-top-color: #a4401f; background: #fdf7f4; }
-    .az.urgente .az-n, .az.urgente .az-t { color: #8d3518; }
-    .az.novita { border-top-color: #2f6b3a; }
-    .az.calmo .az-n { color: #a09685; }
-    .pieghevole { border: 1px solid rgba(26,22,16,.16); background: #fff; }
-    .pieghevole > summary { list-style: none; cursor: pointer; padding: 12px 14px; display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline; }
+    .btn-nuovo { background: var(--blu); color: #fff; border: 0; border-radius: 8px; cursor: pointer; font-family: var(--ff-sans); font-size: 15px; font-weight: 600; padding: 13px 20px; }
+    .btn-nuovo:hover { background: #1740ad; }
+    .ad-form { background: var(--blu-chiaro); border: 1px solid #c9d8fb; border-radius: 12px; padding: 20px 22px; margin-bottom: 18px; }
+    .ad-form .riga { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin-bottom: 14px; }
+    .ad-form label { display: block; font-size: 13px; font-weight: 600; color: var(--testo); margin-bottom: 5px; }
+    .ad-form input, .ad-form select { width: 100%; padding: 11px 12px; font-family: var(--ff-sans); font-size: 15px; border: 1px solid var(--bordo); border-radius: 8px; background: #fff; }
+    .art-riga { display: grid; grid-template-columns: 1fr 120px 44px; gap: 10px; margin-bottom: 9px; align-items: end; }
+    .art-togli { background: none; border: 0; color: var(--rosso); cursor: pointer; font-size: 22px; padding: 6px; }
+    .lega { font-size: 14px; color: var(--grigio); margin-top: 8px; }
+    .ad-salva-riga { margin-top: 14px; text-align: right; }
+    .ad-ok { color: var(--verde); font-size: 14px; font-weight: 600; margin-right: 10px; }
+
+    /* ── regole ── */
+    .ad-regola { background: #fff; border: 1px solid var(--bordo); border-left: 6px solid var(--viola); border-radius: 10px; padding: 18px 20px; margin-bottom: 14px; }
+    .ad-regola-head { margin-bottom: 14px; }
+    .ad-regola-head strong { font-size: 17px; }
+    .ad-campi { display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 14px; }
+    .ad-campo label { display: block; font-size: 13px; font-weight: 600; color: var(--testo); margin-bottom: 5px; }
+    .ad-campo input[type=text], .ad-campo input[type=number] { width: 100%; padding: 10px 11px; font-family: var(--ff-sans); font-size: 15px; border: 1px solid var(--bordo); border-radius: 8px; }
+    .ad-campo input[type=checkbox] { transform: scale(1.35); }
+
+    /* ── tendine chiuse ── */
+    .pieghevole { border: 1px solid var(--bordo); border-radius: 10px; background: #fff; }
+    .pieghevole > summary { list-style: none; cursor: pointer; padding: 13px 15px; display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline; font-size: 14.5px; }
     .pieghevole > summary::-webkit-details-marker { display: none; }
-    .pieghevole > summary::after { content: '▾'; margin-left: auto; color: #6b6355; font-size: .8rem; }
+    .pieghevole > summary::after { content: '▾'; margin-left: auto; color: var(--grigio); }
     .pieghevole[open] > summary::after { content: '▴'; }
-    .pieghevole > summary:hover { background: #faf7f0; }
-    .p-tit { font-family: var(--ff-sans); font-size: .5rem; letter-spacing: .08em; text-transform: uppercase; color: #6b6355; }
-    .p-val { font-family: var(--ff-serif); font-style: italic; font-size: .9rem; color: #26211a; flex-basis: 100%; }
-    .pieghevole .mesi-lista, .pieghevole .esclusi-lista { border: 0; border-top: 1px solid rgba(26,22,16,.12); max-height: 230px; }
-    .pieghevole .esclusi-cerca { border: 0; border-top: 1px solid rgba(26,22,16,.12); }
-    .link-cliente { color: #26211a; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
-    .link-cliente:hover { color: #8a661c; }
-    .ord-filtro { background: #f3efe6; border: 1px solid rgba(26,22,16,.12); padding: 11px 14px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-family: var(--ff-sans); font-size: .78rem; color: #26211a; }
-    .ord-filtro button { background: none; border: 0; text-decoration: underline; cursor: pointer; font-family: var(--ff-sans); font-size: .7rem; color: #6b6355; }
-    .esclusi-scelti { font-family: var(--ff-serif); font-style: italic; font-size: .9rem; color: #5a4a38; margin: 2px 0 8px; }
-    .esclusi-cerca { width: 100%; box-sizing: border-box; padding: 9px 11px; font-family: var(--ff-sans); font-size: .8rem; border: 1px solid rgba(26,22,16,.18); border-bottom: 0; }
-    .esclusi-lista { max-height: 210px; overflow-y: auto; border: 1px solid rgba(26,22,16,.18); background: #fff; }
-    .esclusi-gruppo { font-family: var(--ff-sans); font-size: .5rem; letter-spacing: .12em; text-transform: uppercase; color: #6b6355; background: #f7f4ee; padding: 7px 12px; position: sticky; top: 0; }
-    .esclusi-voce { padding: 8px 12px; border-bottom: 1px solid rgba(26,22,16,.05); }
-    .esclusi-voce:hover { background: #faf7f0; }
-    .esclusi-voce input { transform: scale(1.2); margin: 0; }
-    .esclusi-voce.escluso { color: #8d3518; }
-    .esclusi-vuoto { padding: 14px 12px; font-family: var(--ff-serif); font-style: italic; color: #6b6355; font-size: .85rem; }
-    .mesi-riassunto { font-family: var(--ff-serif); font-style: italic; font-size: .9rem; color: #5a4a38; margin: 2px 0 8px; }
-    .mesi-lista { max-height: 168px; overflow-y: auto; border: 1px solid rgba(26,22,16,.18); background: #fff; }
+    .pieghevole > summary:hover { background: #f7f9fc; }
+    .p-tit { font-size: 13px; font-weight: 600; color: var(--grigio); }
+    .p-val { font-size: 14.5px; color: var(--testo); flex-basis: 100%; }
+    .pieghevole .mesi-lista, .pieghevole .esclusi-lista { border: 0; border-top: 1px solid var(--bordo); border-radius: 0; max-height: 240px; }
+    .pieghevole .esclusi-cerca { border: 0; border-top: 1px solid var(--bordo); border-radius: 0; }
+    .esclusi-scelti { font-size: 14.5px; color: var(--grigio); margin: 2px 0 8px; }
+    .esclusi-cerca { width: 100%; padding: 11px 12px; font-family: var(--ff-sans); font-size: 15px; border: 1px solid var(--bordo); border-bottom: 0; }
+    .esclusi-lista { max-height: 220px; overflow-y: auto; border: 1px solid var(--bordo); background: #fff; }
+    .esclusi-gruppo { font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--grigio); background: #f1f4f9; padding: 8px 13px; position: sticky; top: 0; }
+    .esclusi-voce { padding: 9px 13px; border-bottom: 1px solid #eef1f6; }
+    .esclusi-voce:hover { background: #f7f9fc; }
+    .esclusi-voce input { transform: scale(1.3); margin: 0; }
+    .esclusi-voce.escluso { color: var(--rosso); font-weight: 600; }
+    .esclusi-vuoto { padding: 15px 13px; color: var(--grigio); font-size: 14.5px; }
+    .mesi-riassunto { font-size: 14.5px; color: var(--grigio); margin: 2px 0 8px; }
+    .mesi-lista { max-height: 200px; overflow-y: auto; border: 1px solid var(--bordo); background: #fff; }
     /* Sono <label> dentro .ad-campo, dove una regola piu' specifica le rende
-       blocchi in maiuscoletto minuscolo: senza rialzare la specificita' la
-       casella finiva sopra al testo. */
+       blocchi in grassetto: senza rialzare la specificita' la casella
+       finiva sopra al testo. */
     .ad-campo label.mese, .ad-campo label.esclusi-voce {
       display: flex; align-items: center; gap: 12px; margin: 0;
-      font-size: .82rem; letter-spacing: normal; text-transform: none; color: #26211a;
-      font-family: var(--ff-sans); cursor: pointer;
+      font-size: 15px; font-weight: 400; color: var(--testo); font-family: var(--ff-sans); cursor: pointer;
     }
-    .mese { padding: 9px 12px; border-bottom: 1px solid rgba(26,22,16,.06); }
+    .mese { padding: 10px 13px; border-bottom: 1px solid #eef1f6; }
     .mese:last-child { border-bottom: 0; }
-    .mese:hover { background: #faf7f0; }
-    .mese input { transform: scale(1.25); margin: 0; }
-    .mese.spento { color: #a09685; }
-    .mese.spento .etichetta::after { content: ' — nessun promemoria'; font-style: italic; font-size: .74rem; }
+    .mese:hover { background: #f7f9fc; }
+    .mese input { transform: scale(1.3); margin: 0; }
+    .mese.spento { color: #98a1ae; }
+    .mese.spento .etichetta::after { content: ' — nessun promemoria'; font-size: 13.5px; }
+
+    @media (max-width: 720px) {
+      .ad-tab { grid-template-columns: 1fr; }
+      .tab { padding: 13px 14px; }
+      .ad-sezione { padding: 18px 16px; }
+      .art-riga { grid-template-columns: 1fr 90px 40px; }
+    }
   </style>
 </head>
-<body class="light-page">
+<body>
   <div class="ad-shell">
     <div id="ad-login" class="ad-login">
-      <p class="ad-title" style="margin-bottom:24px;">Pannello riacquisto</p>
+      <p class="ad-title" style="margin-bottom:6px;">Cereria Cicogna</p>
+      <p class="ad-aiuto" style="margin-bottom:22px;">Pannello di gestione</p>
       <p id="ad-login-errore" class="ad-errore" hidden>Password non corretta.</p>
       <input type="password" id="ad-password" placeholder="Password">
       <button type="button" id="ad-entra">Entra</button>
@@ -150,135 +222,188 @@
 
     <div id="ad-app" hidden>
       <div class="ad-header">
-        <p class="ad-title">Automazioni riacquisto</p>
+        <p class="ad-title">Cereria Cicogna — pannello</p>
         <button type="button" class="ad-logout" id="ad-esci">Esci</button>
       </div>
 
-      <section class="ad-sezione">
-        <h2>Ordini</h2>
-        <div class="ad-filtri">
-          <div class="ad-filtro"><label>Dal</label><input type="date" id="f-da"></div>
-          <div class="ad-filtro"><label>Al</label><input type="date" id="f-a"></div>
-          <div class="ad-filtro"><label>Cliente</label><input type="text" id="f-cliente" list="clienti-noti" placeholder="scrivi o scegli…"></div>
-          <div class="ad-filtro"><label>Tipo</label><select id="f-tipo"><option value="">Tutti</option><option value="B2C">B2C</option><option value="B2B">B2B</option></select></div>
-          <div class="ad-filtro"><label>Stato</label><select id="f-stato"><option value="">Tutti</option></select></div>
-          <div class="ad-filtro"><label>Categoria</label><select id="f-categoria"><option value="">Tutte</option><option value="liturgico">Liturgico</option><option value="garden">Garden</option><option value="home-collection">Home Collection</option><option value="private-label">Private Label</option></select></div>
-          <button type="button" class="ad-filtro-reset" id="f-reset">Azzera filtri</button>
-        </div>
-        <div id="ad-metriche-ordini"></div>
-      </section>
+      <!-- Tre schede, tre colori. Ognuna risponde a una domanda sola, cosi'
+           non serve ricordare dove sta una cosa: si sceglie la domanda. -->
+      <div class="ad-tab">
+        <button type="button" class="tab tab-ordini on" data-pagina="ordini">
+          <span class="tab-ico">📦</span>
+          <span><span class="tab-t">Ordini</span><br><span class="tab-s">Cosa c'è da fare oggi</span></span>
+        </button>
+        <button type="button" class="tab tab-clienti" data-pagina="clienti">
+          <span class="tab-ico">👥</span>
+          <span><span class="tab-t">Clienti</span><br><span class="tab-s">Chi compra, e cosa</span></span>
+        </button>
+        <button type="button" class="tab tab-promemoria" data-pagina="promemoria">
+          <span class="tab-ico">🔔</span>
+          <span><span class="tab-t">Promemoria</span><br><span class="tab-s">Le email automatiche</span></span>
+        </button>
+      </div>
 
-      <!-- GESTIONE ORDINI -->
-      <section class="ad-sezione">
-        <h2>Gli ordini, uno per uno</h2>
-        <p class="ad-aiuto">Qui segni chi ha pagato e a che punto è ogni ordine. Le modifiche
-          si salvano da sole: non c'è nessun pulsante "salva" da ricordarsi. Se un ordine
-          arriva per telefono o in negozio, aggiungilo con il pulsante qui a destra —
-          altrimenti per il sito quel cliente non esiste e non riceverà mai un promemoria.</p>
+      <!-- ══════════ PAGINA 1 · ORDINI ══════════ -->
+      <div class="pagina" id="pag-ordini">
 
-        <div class="ad-barra">
-          <span class="ad-aiuto" style="margin:0;" id="ord-conteggio"></span>
-          <button type="button" class="btn-nuovo" id="ord-apri-nuovo">+ Aggiungi un ordine preso a voce</button>
-        </div>
+        <section class="ad-sezione">
+          <h2>Cosa c'è da fare</h2>
+          <p class="ad-aiuto">I tre numeri qui sotto sono la giornata. Se sono tutti e tre grigi, non c'è niente in sospeso.</p>
+          <div id="ad-metriche-ordini"></div>
+        </section>
 
-        <div class="ad-form" id="ord-form" hidden>
-          <div class="riga">
-            <div><label>Nome e cognome del cliente *</label><input type="text" id="n-nome" placeholder="Es. Don Paolo Rossi"></div>
-            <div><label>Email</label><input type="email" id="n-email" list="clienti-noti" placeholder="scrivi o scegli un cliente…"></div>
-            <div><label>Parrocchia o azienda</label><input type="text" id="n-azienda" placeholder="facoltativo"></div>
-          </div>
-          <div class="riga">
-            <div><label>Linea di prodotto</label>
-              <select id="n-linea">
-                <option value="Liturgica">Liturgico</option>
-                <option value="Garden">Garden</option>
-                <option value="Home Collection">Home Collection</option>
-                <option value="Private Label">Private Label</option>
-                <option value="Collaborazioni">Collaborazioni</option>
-              </select></div>
-            <div><label>Importo in euro</label><input type="text" id="n-prezzo" placeholder="facoltativo, es. 240,00"></div>
-            <div><label>È già stato pagato?</label>
-              <select id="n-pagato"><option value="da ricevere">No, da incassare</option><option value="pagato">Sì, pagato</option></select></div>
+        <section class="ad-sezione">
+          <h2>Gli ordini, uno per uno</h2>
+          <p class="ad-aiuto">Qui segni chi ha pagato e a che punto è ogni ordine. <strong>Le modifiche si salvano da sole:</strong>
+            non c'è nessun pulsante "salva" da ricordarsi. Se un ordine arriva per telefono o in negozio,
+            aggiungilo col pulsante blu — altrimenti per il sito quel cliente non esiste e non riceverà mai un promemoria.</p>
+
+          <div class="ad-barra">
+            <span class="ad-aiuto" style="margin:0;" id="ord-conteggio"></span>
+            <button type="button" class="btn-nuovo" id="ord-apri-nuovo">+ Aggiungi un ordine preso a voce</button>
           </div>
 
-          <label>Cosa ha ordinato *</label>
-          <div id="n-articoli">
-            <div class="art-riga">
-              <div><select class="a-nome"><option value="">Scegli il prodotto…</option></select></div>
-              <div><input type="number" class="a-qta" min="1" value="1" placeholder="Quantità"></div>
-              <button type="button" class="art-togli" title="Togli questa riga">&times;</button>
+          <div class="ad-form" id="ord-form" hidden>
+            <div class="riga">
+              <div><label>Nome e cognome del cliente *</label><input type="text" id="n-nome" placeholder="Es. Don Paolo Rossi"></div>
+              <div><label>Email</label><input type="email" id="n-email" list="clienti-noti" placeholder="scrivi o scegli un cliente…"></div>
+              <div><label>Parrocchia o azienda</label><input type="text" id="n-azienda" placeholder="facoltativo"></div>
+            </div>
+            <div class="riga">
+              <div><label>Linea di prodotto</label>
+                <select id="n-linea">
+                  <option value="Liturgica">Liturgico</option>
+                  <option value="Garden">Garden</option>
+                  <option value="Home Collection">Home Collection</option>
+                  <option value="Private Label">Private Label</option>
+                  <option value="Collaborazioni">Collaborazioni</option>
+                </select></div>
+              <div><label>Importo in euro</label><input type="text" id="n-prezzo" placeholder="facoltativo, es. 240,00"></div>
+              <div><label>È già stato pagato?</label>
+                <select id="n-pagato"><option value="da ricevere">No, da incassare</option><option value="pagato">Sì, pagato</option></select></div>
+            </div>
+
+            <label>Cosa ha ordinato *</label>
+            <div id="n-articoli">
+              <div class="art-riga">
+                <div><select class="a-nome"><option value="">Scegli il prodotto…</option></select></div>
+                <div><input type="number" class="a-qta" min="1" value="1" placeholder="Quantità"></div>
+                <button type="button" class="art-togli" title="Togli questa riga">&times;</button>
+              </div>
+            </div>
+            <button type="button" class="ad-filtro-reset" id="n-aggiungi-art">+ aggiungi un altro prodotto</button>
+
+            <p class="lega">Senza email l'ordine viene registrato lo stesso, ma quel cliente
+              non potrà ricevere né la conferma né i promemoria di riacquisto.</p>
+
+            <div class="ad-salva-riga">
+              <span class="ad-ok" id="n-esito"></span>
+              <button type="button" class="ad-filtro-reset" id="n-annulla">annulla</button>
+              <button type="button" class="ad-btn" id="n-salva">Registra l'ordine</button>
             </div>
           </div>
-          <button type="button" class="ad-filtro-reset" id="n-aggiungi-art">+ aggiungi un altro prodotto</button>
 
-          <p class="lega">Senza email l'ordine viene registrato lo stesso, ma quel cliente
-            non potrà ricevere né la conferma né i promemoria di riacquisto.</p>
+          <div id="ad-ordini"></div>
 
-          <div class="ad-salva-riga">
-            <span class="ad-ok" id="n-esito"></span>
-            <button type="button" class="ad-filtro-reset" id="n-annulla">annulla</button>
-            <button type="button" class="ad-btn" id="n-salva">Registra l'ordine</button>
+          <!-- Gli ordini tolti dall'elenco. Restano qui, si rimettono quando si
+               vuole: niente in questo pannello cancella qualcosa per sempre. -->
+          <details class="pieghevole ord-nascosti" id="ord-box-nascosti" hidden>
+            <summary>Ordini nascosti <span id="ord-n-nascosti"></span></summary>
+            <div style="padding:0 15px 15px;">
+              <p class="ad-aiuto" style="margin:0 0 12px;">Non compaiono nell'elenco, non contano nei riquadri in alto
+                e non fanno partire promemoria. Non sono cancellati: con "Rimetti nell'elenco"
+                tornano dov'erano, con tutto quello che avevi scritto.</p>
+              <div id="ad-ordini-nascosti"></div>
+            </div>
+          </details>
+        </section>
+
+        <!-- I filtri restano in fondo e chiusi: servono per cercare qualcosa
+             di preciso, non per il lavoro di tutti i giorni. -->
+        <details class="pieghevole" style="margin-bottom:20px;">
+          <summary><span class="tab-t" style="font-size:15px;">Cerca fra gli ordini</span>
+            <span class="p-val" style="margin:0;">per data, cliente, stato o categoria — cambia anche i numeri qui sopra</span></summary>
+          <div style="padding:4px 15px 16px;">
+            <div class="ad-filtri">
+              <div class="ad-filtro"><label>Dal</label><input type="date" id="f-da"></div>
+              <div class="ad-filtro"><label>Al</label><input type="date" id="f-a"></div>
+              <div class="ad-filtro"><label>Cliente</label><input type="text" id="f-cliente" list="clienti-noti" placeholder="scrivi o scegli…"></div>
+              <div class="ad-filtro"><label>Tipo</label><select id="f-tipo"><option value="">Tutti</option><option value="B2C">B2C</option><option value="B2B">B2B</option></select></div>
+              <div class="ad-filtro"><label>Stato</label><select id="f-stato"><option value="">Tutti</option></select></div>
+              <div class="ad-filtro"><label>Categoria</label><select id="f-categoria"><option value="">Tutte</option><option value="liturgico">Liturgico</option><option value="garden">Garden</option><option value="home-collection">Home Collection</option><option value="private-label">Private Label</option></select></div>
+              <button type="button" class="ad-filtro-reset" id="f-reset">Azzera filtri</button>
+            </div>
           </div>
-        </div>
-
-        <div id="ad-ordini"></div>
-
-        <!-- Gli ordini tolti dall'elenco. Restano qui, si rimettono quando si
-             vuole: niente in questo pannello cancella qualcosa per sempre. -->
-        <details class="pieghevole ord-nascosti" id="ord-box-nascosti" hidden>
-          <summary>Ordini nascosti <span id="ord-n-nascosti"></span></summary>
-          <p class="ad-aiuto">Non compaiono nell'elenco, non contano nei riquadri in alto
-            e non fanno partire promemoria. Non sono cancellati: con "Rimetti nell'elenco"
-            tornano dov'erano, con tutto quello che avevi scritto.</p>
-          <div id="ad-ordini-nascosti"></div>
         </details>
-      </section>
+      </div>
 
-      <section class="ad-sezione">
-        <h2>Promemoria di riacquisto</h2>
-        <div class="ad-cards" id="ad-metriche"></div>
-      </section>
+      <!-- ══════════ PAGINA 2 · CLIENTI ══════════ -->
+      <div class="pagina" id="pag-clienti" hidden>
 
-      <section class="ad-sezione">
-        <h2>Regole per categoria</h2>
-        <div id="ad-regole"></div>
-      </section>
+        <section class="ad-sezione">
+          <h2>Tutti i clienti</h2>
+          <p class="ad-aiuto"><strong>Clicca un nome</strong> per vedere tutti gli ordini di quella persona:
+            si apre l'elenco nella pagina "Ordini". L'elenco si aggiorna da solo a ogni nuovo ordine.</p>
+          <div style="overflow-x:auto;">
+            <table class="ad-tabella">
+              <thead><tr>
+                <th>Cliente</th><th>Ultimo ordine</th><th>Categoria</th><th>Ultimo acquisto</th>
+                <th>Prossimo promemoria</th><th>Ogni quanto ordina</th><th>Stato</th>
+              </tr></thead>
+              <tbody id="ad-clienti"></tbody>
+            </table>
+          </div>
+        </section>
 
-      <section class="ad-sezione">
-        <h2>Clienti B2B principali</h2>
-        <div id="ad-b2b"></div>
-      </section>
+        <section class="ad-sezione">
+          <h2>Parrocchie e aziende che spendono di più</h2>
+          <p class="ad-aiuto">Conta solo gli ordini in cui hai scritto l'importo.</p>
+          <div id="ad-b2b"></div>
+        </section>
 
-      <section class="ad-sezione">
-        <h2>Prodotti più ordinati</h2>
-        <div id="ad-prodotti"></div>
-      </section>
+        <section class="ad-sezione">
+          <h2>Chi ordina più spesso</h2>
+          <p class="ad-aiuto">Servono almeno tre ordini per capire ogni quanto un cliente torna.</p>
+          <div id="ad-top"></div>
+        </section>
 
-      <section class="ad-sezione">
-        <h2>Clienti da ricontattare ora</h2>
-        <div id="ad-ricontattare"></div>
-      </section>
+        <section class="ad-sezione">
+          <h2>I prodotti più venduti</h2>
+          <div id="ad-prodotti"></div>
+        </section>
+      </div>
 
-      <section class="ad-sezione">
-        <h2>Clienti</h2>
-        <div style="overflow-x:auto;">
-          <table class="ad-tabella">
-            <thead><tr>
-              <th>Cliente</th><th>Ultimo ordine</th><th>Categoria</th><th>Ultimo acquisto</th>
-              <th>Prossimo reminder</th><th>Frequenza media</th><th>Stato</th>
-            </tr></thead>
-            <tbody id="ad-clienti"></tbody>
-          </table>
-        </div>
-      </section>
+      <!-- ══════════ PAGINA 3 · PROMEMORIA ══════════ -->
+      <div class="pagina" id="pag-promemoria" hidden>
 
-      <section class="ad-sezione">
-        <h2>Clienti più frequenti</h2>
-        <div id="ad-top"></div>
-      </section>
+        <section class="ad-sezione">
+          <h2>Come funzionano</h2>
+          <p class="ad-aiuto">Il sito manda da solo una email a chi ha comprato tempo fa, per chiedere
+            se gli serve altro. Tu non devi fare niente: qui decidi solo <strong>dopo quanti giorni</strong>
+            parte, <strong>in quali mesi</strong> e <strong>quali prodotti non ricordare mai</strong>.
+            Chi riceve l'email può dire di no con un clic, e non ne riceve più.</p>
+        </section>
+
+        <section class="ad-sezione">
+          <h2>Chi va ricontattato adesso</h2>
+          <p class="ad-aiuto">Il promemoria a queste persone parte al prossimo giro automatico.</p>
+          <div id="ad-ricontattare"></div>
+        </section>
+
+        <section class="ad-sezione">
+          <h2>Le regole, categoria per categoria</h2>
+          <p class="ad-aiuto">Ricordati di premere <strong>Salva</strong> in fondo al riquadro dopo ogni modifica:
+            qui, al contrario degli ordini, non si salva da solo.</p>
+          <div id="ad-regole"></div>
+        </section>
+
+        <section class="ad-sezione">
+          <h2>Quanti ne sono partiti</h2>
+          <div class="ad-cards" id="ad-metriche"></div>
+        </section>
+      </div>
     </div>
   </div>
-
   <script>
     (function () {
       'use strict';
@@ -301,8 +426,31 @@
         });
       }
 
+      /* ── le tre pagine ──
+         Sono tre sezioni della stessa pagina, non tre file: cosi' si passa
+         dall'una all'altra senza ricaricare niente e senza rifare l'accesso.
+         Quale fosse aperta si ricorda, cosi' chi usa soprattutto gli ordini
+         riapre sempre li'. */
+      var PAGINE = ['ordini', 'clienti', 'promemoria'];
+      function apriPagina(quale) {
+        if (PAGINE.indexOf(quale) < 0) quale = 'ordini';
+        PAGINE.forEach(function (p) {
+          document.getElementById('pag-' + p).hidden = (p !== quale);
+          document.querySelector('.tab-' + p).classList.toggle('on', p === quale);
+        });
+        try { localStorage.setItem('cc-admin-pagina', quale); } catch (e) {}
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      [].slice.call(document.querySelectorAll('.tab')).forEach(function (b) {
+        b.addEventListener('click', function () { apriPagina(b.getAttribute('data-pagina')); });
+      });
+      function pagineRipristina() {
+        var q = ''; try { q = localStorage.getItem('cc-admin-pagina') || ''; } catch (e) {}
+        apriPagina(q);
+      }
+
       function mostraLogin() { elLogin.hidden = false; elApp.hidden = true; }
-      function mostraApp() { elLogin.hidden = true; elApp.hidden = false; caricaTutto(); }
+      function mostraApp() { elLogin.hidden = true; elApp.hidden = false; pagineRipristina(); caricaTutto(); }
 
       document.getElementById('ad-entra').addEventListener('click', function () {
         var pw = document.getElementById('ad-password').value;
@@ -393,25 +541,25 @@
           document.getElementById('ad-b2b').innerHTML = d.clientiB2BPrincipali.length
             ? '<table class="ad-tabella"><thead><tr><th>Cliente</th><th>Ordini</th><th>Totale</th></tr></thead><tbody>'
               + d.clientiB2BPrincipali.map(function (c) {
-                  return '<tr><td>' + esc(c.azienda || c.nome) + '<br><span style="color:#9a9186;font-size:.65rem;">' + esc(c.email) + '</span></td>'
+                  return '<tr><td>' + esc(c.azienda || c.nome) + '<br><span class="mail">' + esc(c.email) + '</span></td>'
                     + '<td>' + c.ordini + '</td><td>' + euro(c.totale) + '</td></tr>';
                 }).join('') + '</tbody></table>'
-            : '<p style="font-family:var(--ff-sans);font-size:.7rem;color:#9a9186;">Nessun ordine B2B nel periodo selezionato.</p>';
+            : '<p class="vuoto">Nessun ordine B2B nel periodo selezionato.</p>';
 
           document.getElementById('ad-prodotti').innerHTML = d.prodottiPiuOrdinati.length
             ? '<table class="ad-tabella"><thead><tr><th>Prodotto</th><th>Quantità totale</th><th>Ordini</th></tr></thead><tbody>'
               + d.prodottiPiuOrdinati.map(function (p) {
                   return '<tr><td>' + esc(p.nome) + '</td><td>' + p.quantita + '</td><td>' + p.ordini + '</td></tr>';
                 }).join('') + '</tbody></table>'
-            : '<p style="font-family:var(--ff-sans);font-size:.7rem;color:#9a9186;">Nessun prodotto nel periodo selezionato.</p>';
+            : '<p class="vuoto">Nessun prodotto nel periodo selezionato.</p>';
 
           document.getElementById('ad-ricontattare').innerHTML = d.daRicontattare.length
             ? '<table class="ad-tabella"><thead><tr><th>Cliente</th><th>Categoria</th><th>Da</th></tr></thead><tbody>'
               + d.daRicontattare.map(function (c) {
-                  return '<tr><td>' + esc(c.nome) + '<br><span style="color:#9a9186;font-size:.65rem;">' + esc(c.email) + '</span></td>'
+                  return '<tr><td>' + esc(c.nome) + '<br><span class="mail">' + esc(c.email) + '</span></td>'
                     + '<td>' + esc(c.categoria) + '</td><td>' + dataBreve(c.prossimoReminder) + '</td></tr>';
                 }).join('') + '</tbody></table>'
-            : '<p style="font-family:var(--ff-sans);font-size:.7rem;color:#9a9186;">Nessuno al momento.</p>';
+            : '<p class="vuoto">Nessuno al momento.</p>';
 
           /* L'elenco dei suggerimenti: si rifa' a ogni caricamento, quindi
              appena registri un cliente nuovo compare anche qui. */
@@ -423,7 +571,7 @@
           document.getElementById('ad-clienti').innerHTML = d.clienti.map(function (c) {
             return '<tr>'
               + '<td><a href="#" class="link-cliente" data-cliente="' + esc(c.email) + '">' + esc(c.nome) + '</a>'
-                + '<br><span style="color:#9a9186;font-size:.65rem;">' + esc(c.email) + '</span></td>'
+                + '<br><span class="mail">' + esc(c.email) + '</span></td>'
               + '<td>' + dataBreve(c.ultimoOrdine) + '</td>'
               + '<td>' + esc(c.categoria) + '</td>'
               + '<td>' + esc(c.ultimoAcquisto) + '</td>'
@@ -437,7 +585,7 @@
             ? '<table class="ad-tabella"><tbody>' + d.topFrequenti.map(function (c) {
                 return '<tr><td>' + esc(c.nome) + '</td><td>' + c.frequenzaMediaGiorni + ' giorni</td></tr>';
               }).join('') + '</tbody></table>'
-            : '<p style="font-family:var(--ff-sans);font-size:.7rem;color:#9a9186;">Nessun cliente ha ancora abbastanza ordini per calcolare una frequenza.</p>';
+            : '<p class="vuoto">Nessun cliente ha ancora abbastanza ordini per calcolare una frequenza.</p>';
         });
       }
 
@@ -737,6 +885,9 @@
           e.preventDefault();
           clienteMostrato = link.getAttribute('data-cliente');
           disegnaOrdini();
+          /* i nomi si cliccano dalla pagina "Clienti", ma gli ordini stanno
+             nell'altra: senza questo salto il clic sembrerebbe non fare nulla */
+          apriPagina('ordini');
           document.getElementById('ord-conteggio').scrollIntoView({ behavior: 'smooth', block: 'start' });
           return;
         }
