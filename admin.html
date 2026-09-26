@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pannello riacquisto — Cereria Cicogna</title>
   <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;600&display=swap">
 
   <script src="js/cc-api.js"></script>
   <style>
@@ -18,9 +21,14 @@
        distinguere, non a decorare.
        ══════════════════════════════════════════════════════════ */
     :root {
-      --ff-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      --ff-serif: var(--ff-sans);
-      --ff-display: var(--ff-sans);
+      /* Plex Sans per quello che si usa, Plex Serif per i titoli e i numeri
+         grandi: sono disegnati insieme, quindi non stonano, e danno alla
+         pagina l'aria di un documento stampato invece che di un pannello
+         qualunque. Se il carattere non arriva, si scende a quello di
+         sistema senza che si sposti niente. */
+      --ff-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      --ff-serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+      --ff-display: var(--ff-serif);
       /* marrone su bianco: 8,1 di contrasto — terracotta: 5,4. Entrambi
          oltre il minimo per il testo, anche stampati o al sole. */
       --marrone: #6b4423; --marrone-scuro: #4a2e15; --marrone-chiaro: #f4ece2;
@@ -29,6 +37,12 @@
       --c-dark: #2b2118; --c-text-dark: #2b2118; --c-text-mid: #6b6054;
     }
     * { box-sizing: border-box; }
+    /* anche le caselle di spunta e il cursore nei campi: erano l'ultimo blu
+       rimasto, quello che mette il sistema operativo */
+    input, select, textarea, button { accent-color: var(--marrone); }
+    input:focus-visible, select:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 2px solid var(--marrone); outline-offset: 2px;
+    }
     body { background: var(--fondo); color: var(--testo); font-family: var(--ff-sans); font-size: 16px; line-height: 1.55; margin: 0; }
     .ad-shell { max-width: 1120px; margin: 0 auto; padding: 0 16px 90px; }
 
@@ -43,20 +57,24 @@
 
     /* ── testata e tre pagine ── */
     .ad-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 22px 0 14px; }
-    .ad-title { font-size: 20px; font-weight: 700; margin: 0; color: var(--testo); }
+    .ad-title { font-family: var(--ff-serif); font-size: 21px; font-weight: 600; margin: 0; color: var(--testo); }
     .ad-logout { font-family: var(--ff-sans); font-size: 14px; color: var(--grigio); background: #fff; border: 1px solid var(--bordo); border-radius: 8px; padding: 8px 16px; cursor: pointer; }
     .ad-logout:hover { border-color: var(--terra); color: var(--terra); }
 
     /* Le tre schede: grandi, con un colore ciascuna. Si capisce dove si e'
        anche guardando di sfuggita, senza leggere. */
+    /* Sempre tre, sempre affiancate, anche sul telefono: e' cosi' che si
+       vede a colpo d'occhio che il pannello ha tre parti e non una sola
+       lunga. Quando lo spazio manca sparisce la frase sotto, non la scheda. */
     .ad-tab { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 26px; }
-    .tab { background: #fff; border: 2px solid var(--bordo); border-radius: 12px; padding: 16px 14px; cursor: pointer;
-      font-family: var(--ff-sans); text-align: left; display: flex; gap: 12px; align-items: center; }
+    .tab { background: #fff; border: 2px solid var(--bordo); border-radius: 12px; padding: 14px 14px; cursor: pointer;
+      font-family: var(--ff-sans); text-align: left; display: flex; gap: 11px; align-items: center; min-width: 0; }
     .tab:hover { border-color: #c9bba8; }
     .tab-ico { display: flex; }
     .tab-ico svg { width: 26px; height: 26px; }
-    .tab-t { font-size: 16px; font-weight: 700; color: var(--testo); }
-    .tab-s { font-size: 13px; color: var(--grigio); }
+    .tab-testo { min-width: 0; }
+    .tab-t { display: block; font-family: var(--ff-serif); font-size: 16.5px; font-weight: 600; color: var(--testo); line-height: 1.25; }
+    .tab-s { display: block; font-size: 13px; color: var(--grigio); line-height: 1.3; }
     .tab.on { color: #fff; }
     .tab.on .tab-t, .tab.on .tab-s { color: #fff; }
     .tab.on .tab-s { opacity: .88; }
@@ -67,7 +85,7 @@
 
     /* ── blocchi ── */
     .ad-sezione { background: #fff; border: 1px solid var(--bordo); border-radius: 14px; padding: 22px 24px; margin-bottom: 20px; }
-    .ad-sezione h2 { font-size: 18px; font-weight: 700; margin: 0 0 6px; color: var(--testo); }
+    .ad-sezione h2 { font-family: var(--ff-serif); font-size: 19px; font-weight: 600; margin: 0 0 6px; color: var(--testo); }
     .ad-aiuto { font-size: 14.5px; color: var(--grigio); margin: 0 0 16px; line-height: 1.6; }
     .ad-sezione p { color: var(--grigio); }
     .ad-vuoto, .vuoto { font-size: 14.5px; color: var(--grigio); margin: 0; }
@@ -79,8 +97,8 @@
     /* ── i tre riquadri delle cose da fare ── */
     .ad-azioni { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
     .az { background: #fff; border: 2px solid var(--bordo); border-radius: 12px; padding: 20px 22px; }
-    .az-n { font-size: 46px; line-height: 1; font-weight: 700; color: var(--testo); }
-    .az-t { font-size: 16px; font-weight: 700; color: var(--testo); margin-top: 8px; }
+    .az-n { font-family: var(--ff-serif); font-size: 46px; line-height: 1; font-weight: 600; color: var(--testo); }
+    .az-t { font-size: 15.5px; font-weight: 600; color: var(--testo); margin-top: 8px; }
     .az-f { font-size: 14px; color: var(--grigio); }
     .az.urgente { border-color: var(--terra); background: var(--terra-chiaro); }
     .az.urgente .az-n, .az.urgente .az-t { color: var(--terra); }
@@ -91,7 +109,7 @@
     /* ── numeri piccoli ── */
     .ad-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
     .ad-card { background: #fbf8f3; border: 1px solid var(--bordo); border-radius: 10px; padding: 14px 16px; }
-    .ad-card .n { font-size: 24px; font-weight: 700; color: var(--testo); }
+    .ad-card .n { font-family: var(--ff-serif); font-size: 25px; font-weight: 600; color: var(--testo); }
     .ad-card .l { font-size: 13px; color: var(--grigio); margin-top: 2px; }
     .ad-card.avviso .n { color: var(--terra); }
 
@@ -116,10 +134,10 @@
     .ord.pagato { border-left-color: var(--marrone); }
     .ord.attesa { border-left-color: var(--terra); }
     .ord-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; flex-wrap: wrap; }
-    .ord-chi { font-size: 17px; font-weight: 700; color: var(--testo); }
+    .ord-chi { font-family: var(--ff-serif); font-size: 17.5px; font-weight: 600; color: var(--testo); }
     .ord-meta { font-size: 13px; color: var(--grigio); margin-top: 2px; }
     .ord-art { font-size: 15px; color: var(--testo); margin: 10px 0 14px; }
-    .badge { font-size: 12.5px; font-weight: 700; padding: 6px 12px; border-radius: 20px; white-space: nowrap; }
+    .badge { font-size: 12.5px; font-weight: 600; padding: 6px 12px; border-radius: 20px; white-space: nowrap; }
     .badge.si { background: var(--marrone-chiaro); color: var(--marrone); }
     .badge.no { background: var(--terra-chiaro); color: var(--terra); }
     .ord-azioni { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
@@ -162,7 +180,7 @@
     /* ── regole ── */
     .ad-regola { background: #fff; border: 1px solid var(--bordo); border-left: 6px solid var(--marrone); border-radius: 10px; padding: 18px 20px; margin-bottom: 14px; }
     .ad-regola-head { margin-bottom: 14px; }
-    .ad-regola-head strong { font-size: 17px; }
+    .ad-regola-head strong { font-family: var(--ff-serif); font-size: 18px; font-weight: 600; }
     .ad-campi { display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 14px; }
     .ad-campo label { display: block; font-size: 13px; font-weight: 600; color: var(--testo); margin-bottom: 5px; }
     .ad-campo input[type=text], .ad-campo input[type=number] { width: 100%; padding: 10px 11px; font-family: var(--ff-sans); font-size: 15px; border: 1px solid var(--bordo); border-radius: 8px; }
@@ -182,7 +200,7 @@
     .esclusi-scelti { font-size: 14.5px; color: var(--grigio); margin: 2px 0 8px; }
     .esclusi-cerca { width: 100%; padding: 11px 12px; font-family: var(--ff-sans); font-size: 15px; border: 1px solid var(--bordo); border-bottom: 0; }
     .esclusi-lista { max-height: 220px; overflow-y: auto; border: 1px solid var(--bordo); background: #fff; }
-    .esclusi-gruppo { font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--grigio); background: #f2ebe1; padding: 8px 13px; position: sticky; top: 0; }
+    .esclusi-gruppo { font-size: 12.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--grigio); background: #f2ebe1; padding: 8px 13px; position: sticky; top: 0; }
     .esclusi-voce { padding: 9px 13px; border-bottom: 1px solid #efe8de; }
     .esclusi-voce:hover { background: #fbf8f3; }
     .esclusi-voce input { transform: scale(1.3); margin: 0; }
@@ -204,11 +222,18 @@
     .mese.spento { color: #a99e8d; }
     .mese.spento .etichetta::after { content: ' — nessun promemoria'; font-size: 13.5px; }
 
-    @media (max-width: 720px) {
-      .ad-tab { grid-template-columns: 1fr; }
-      .tab { padding: 13px 14px; }
+    @media (max-width: 760px) {
+      .tab { flex-direction: column; gap: 7px; text-align: center; padding: 13px 8px; }
+      .tab-s { display: none; }
+      .tab-t { font-size: 15px; }
       .ad-sezione { padding: 18px 16px; }
       .art-riga { grid-template-columns: 1fr 90px 40px; }
+    }
+    @media (max-width: 420px) {
+      .ad-tab { gap: 7px; }
+      .tab { padding: 11px 5px; }
+      .tab-t { font-size: 13.5px; }
+      .tab-ico svg { width: 22px; height: 22px; }
     }
   </style>
 </head>
@@ -235,15 +260,15 @@
       <div class="ad-tab">
         <button type="button" class="tab tab-ordini on" data-pagina="ordini">
           <span class="tab-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="m3 8 9 5 9-5"/><path d="M12 13v8"/></svg></span>
-          <span><span class="tab-t">Ordini</span><br><span class="tab-s">Cosa c'è da fare oggi</span></span>
+          <span class="tab-testo"><span class="tab-t">Ordini</span><span class="tab-s">Cosa c'è da fare oggi</span></span>
         </button>
         <button type="button" class="tab tab-clienti" data-pagina="clienti">
           <span class="tab-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16.5 5.4a3.2 3.2 0 0 1 0 5.2"/><path d="M18 14.2A6.5 6.5 0 0 1 21.5 20"/></svg></span>
-          <span><span class="tab-t">Clienti</span><br><span class="tab-s">Chi compra, e cosa</span></span>
+          <span class="tab-testo"><span class="tab-t">Clienti</span><span class="tab-s">Chi compra, e cosa</span></span>
         </button>
         <button type="button" class="tab tab-promemoria" data-pagina="promemoria">
           <span class="tab-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 5-2 6-2 6h16s-2-1-2-6"/><path d="M13.7 20a2 2 0 0 1-3.4 0"/></svg></span>
-          <span><span class="tab-t">Promemoria</span><br><span class="tab-s">Le email automatiche</span></span>
+          <span class="tab-testo"><span class="tab-t">Promemoria</span><span class="tab-s">Le email automatiche</span></span>
         </button>
       </div>
 
