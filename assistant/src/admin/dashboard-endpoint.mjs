@@ -29,7 +29,7 @@ import { cors } from '../cors.mjs';
 function statoCliente(c, oggi) {
   if (c.revocato) return 'link revocato';
   if (c.scadenza && new Date(c.scadenza) < oggi) return 'link scaduto';
-  if (!c.consenso || c.consenso.promemoriaRiacquisto === false) return 'disiscritto';
+  if (c.consenso && c.consenso.promemoriaRiacquisto === false) return 'disiscritto';
   return 'attivo';
 }
 

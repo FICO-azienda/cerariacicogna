@@ -30,8 +30,16 @@ const FILE = process.env.CC_CLIENTI || path.join(BASE, 'data', 'clienti.json');
 export const nuovoCodice = () => crypto.randomBytes(16).toString('hex');
 
 function leggi() {
-  try { return JSON.parse(fs.readFileSync(FILE, 'utf8')); }
-  catch (e) { return { clienti: [] }; }
+  try {
+    const dati = JSON.parse(fs.readFileSync(FILE, 'utf8'));
+    /* Le schede create prima che il consenso esistesse non hanno il campo.
+       Senza questo, chi ha scritto dal modulo nei primi giorni risulterebbe
+       disiscritto pur non essendosi mai opposto, e non riceverebbe nulla.
+       Il valore e' quello di partenza di chi scrive per una richiesta
+       commerciale, lo stesso che riceve chi scrive oggi. */
+    (dati.clienti || []).forEach(c => { if (!c.consenso) c.consenso = consensoIniziale(); });
+    return dati;
+  } catch (e) { return { clienti: [] }; }
 }
 
 function scrivi(dati) {
@@ -84,7 +92,7 @@ export function versionePubblica(cliente) {
    promemoria facile da rifiutare — vedi privacy.html). La newsletter resta
    sempre spenta finche' non la spunta esplicitamente nel modulo: sono due
    consensi diversi, con basi giuridiche diverse, e non si scambiano mai. */
-const consensoIniziale = () => ({ newsletter: false, promemoriaRiacquisto: true, aggiornato: new Date().toISOString() });
+function consensoIniziale() { return { newsletter: false, promemoriaRiacquisto: true, aggiornato: new Date().toISOString() }; }
 
 export function aggiungi(cliente) {
   const dati = leggi();

@@ -70,7 +70,9 @@ function categorieDelCliente(storico) {
    allineate a mano. */
 function candidatiCliente(cliente, storico, regole, oggi) {
   const candidati = [];
-  if (!cliente || !cliente.consenso || cliente.consenso.promemoriaRiacquisto === false) return candidati;
+  /* Si blocca solo chi si e' opposto davvero: consenso assente significa
+     scheda vecchia, non opposizione. */
+  if (!cliente || (cliente.consenso && cliente.consenso.promemoriaRiacquisto === false)) return candidati;
   if (!storico || !storico.length) return candidati;
 
   for (const categoria of categorieDelCliente(storico)) {
