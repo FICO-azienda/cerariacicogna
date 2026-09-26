@@ -38,17 +38,26 @@ function conStato(ordine, stati) {
     dataStimata: extra.dataStimata || '',
     prezzoTotale: extra.prezzoTotale || '',
     note: extra.note || '',
+    origine: extra.origine || ordine.origine || 'sito',
+    /* Nascosto: la richiesta resta sul disco — e' la prova di cio' che il
+       cliente ha chiesto e non si cancella — ma sparisce dagli elenchi,
+       dai conti e dai promemoria, come se non ci fosse. Si rimette. */
+    archiviato: extra.archiviato === '1',
   };
 }
+
+const visibili = elenco => elenco.filter(o => !o.archiviato);
 
 /* Scrive i campi che lo staff aggiorna a mano dal pannello. Restano in un
    file a parte e non toccano la richiesta originale: quella e' il documento
    di cio' che il cliente ha chiesto, e non va riscritta. */
 export async function impostaDatiOrdine(id, patch = {}) {
   const stati = leggiStati();
-  const ammessi = ['stato', 'statoPagamento', 'dataStimata', 'prezzoTotale', 'note'];
+  const ammessi = ['stato', 'statoPagamento', 'dataStimata', 'prezzoTotale', 'note', 'origine'];
   const voce = { ...(stati[id] || {}) };
   ammessi.forEach(k => { if (patch[k] !== undefined) voce[k] = String(patch[k]); });
+  /* il nascondi/ripristina passa di qui: si salva come interruttore, non come testo */
+  if (patch.archiviato !== undefined) voce.archiviato = patch.archiviato ? '1' : '';
   voce.aggiornato = new Date().toISOString();
   stati[id] = voce;
   try {
@@ -80,16 +89,24 @@ export async function creaOrdine(d) {
 
 export async function ordiniPerEmail(email) {
   const stati = leggiStati();
-  return storicoPerEmail(email).map(o => conStato(o, stati));
+  return visibili(storicoPerEmail(email).map(o => conStato(o, stati)));
 }
 
 export async function tuttiOrdini() {
   const stati = leggiStati();
-  return leggiRichieste().map(o => conStato(o, stati));
+  return visibili(leggiRichieste().map(o => conStato(o, stati)));
 }
 
+/* Solo quelli nascosti, per il riquadro del pannello da cui si rimettono. */
+export async function ordiniNascosti() {
+  const stati = leggiStati();
+  return leggiRichieste().map(o => conStato(o, stati)).filter(o => o.archiviato);
+}
+
+/* Cerca anche fra i nascosti: serve a poterli rimettere nell'elenco. */
 export async function trovaOrdine(id) {
-  return (await tuttiOrdini()).find(o => o.id === id) || null;
+  const stati = leggiStati();
+  return leggiRichieste().map(o => conStato(o, stati)).find(o => o.id === id) || null;
 }
 
 export async function aggiornaStatoOrdine(id, stato) {

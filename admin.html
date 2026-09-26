@@ -68,6 +68,16 @@
     .btn-paga { background: #2f6b3a; color: #fff; border: 0; cursor: pointer; font-family: var(--ff-sans); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; padding: 11px 18px; }
     .btn-paga.annulla { background: #fff; color: #8a5c10; border: 1px solid #d8c9a6; }
     .ord-esito { font-family: var(--ff-sans); font-size: .6rem; color: #2f6b3a; align-self: center; }
+    /* Nascondi: volutamente sottotono e ultimo, non deve competere con "pagato" */
+    .btn-nascondi { background: none; border: 1px solid rgba(26,22,16,.18); color: #6b6355; cursor: pointer;
+      font-family: var(--ff-sans); font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; padding: 10px 14px; align-self: center; }
+    .btn-nascondi:hover { border-color: #a4401f; color: #a4401f; }
+    .ord-nascosti { margin-top: 22px; }
+    .ord-nascosti > summary { color: #6b6355; }
+    .ord.nascosto { opacity: .72; border-left-color: #c9c2b4; background: #faf8f4; }
+    .ord.nascosto .ord-chi { color: #6b6355; }
+    .btn-rimetti { background: #fff; border: 1px solid #b9a978; color: #6b5420; cursor: pointer;
+      font-family: var(--ff-sans); font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; padding: 9px 14px; white-space: nowrap; }
     .ad-barra { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
     .btn-nuovo { background: var(--c-dark); color: #fff; border: 0; cursor: pointer; font-family: var(--ff-sans); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; padding: 12px 20px; }
     .ad-form { background: #fff; border: 1px solid rgba(26,22,16,.12); padding: 20px 22px; margin-bottom: 18px; }
@@ -212,6 +222,16 @@
         </div>
 
         <div id="ad-ordini"></div>
+
+        <!-- Gli ordini tolti dall'elenco. Restano qui, si rimettono quando si
+             vuole: niente in questo pannello cancella qualcosa per sempre. -->
+        <details class="pieghevole ord-nascosti" id="ord-box-nascosti" hidden>
+          <summary>Ordini nascosti <span id="ord-n-nascosti"></span></summary>
+          <p class="ad-aiuto">Non compaiono nell'elenco, non contano nei riquadri in alto
+            e non fanno partire promemoria. Non sono cancellati: con "Rimetti nell'elenco"
+            tornano dov'erano, con tutto quello che avevi scritto.</p>
+          <div id="ad-ordini-nascosti"></div>
+        </details>
       </section>
 
       <section class="ad-sezione">
@@ -549,6 +569,7 @@
       function pagato(o) { return String(o.statoPagamento || '').toLowerCase() === 'pagato'; }
 
       function schedaOrdine(o) {
+        if (o.archiviato) return schedaNascosta(o);
         var si = pagato(o);
         var articoli = (o.articoli || []).map(function (a) {
           return (a.quantita ? a.quantita + ' × ' : '') + esc(a.nome);
@@ -571,8 +592,20 @@
               (si ? 'Segna come NON pagato' : 'Segna come pagato') + '</button>' +
             '<div><label>A che punto è</label><select data-azione="stato">' + opzioni + '</select></div>' +
             '<div><label>Importo €</label><input type="text" data-azione="prezzo" value="' + esc(o.prezzoTotale || '') + '" placeholder="es. 240,00" size="8"></div>' +
+            '<button type="button" class="btn-nascondi" data-azione="nascondi" title="Lo toglie dall\'elenco. Si può rimettere.">Nascondi</button>' +
             '<span class="ord-esito"></span>' +
           '</div></div>';
+      }
+
+      /* La stessa riga, ma spenta: qui serve solo sapere chi era e rimetterla. */
+      function schedaNascosta(o) {
+        return '<div class="ord nascosto" data-id="' + esc(o.id) + '">' +
+          '<div class="ord-top"><div><div class="ord-chi">' + esc(o.nome || 'Senza nome') +
+            (o.azienda ? ' <span style="color:#6b6355">· ' + esc(o.azienda) + '</span>' : '') + '</div>' +
+            '<div class="ord-meta">' + dataBreve(o.ts) + (o.linea ? ' · ' + esc(o.linea) : '') +
+            (o.email ? ' · ' + esc(o.email) : ' · nessuna email') + '</div></div>' +
+            '<button type="button" class="btn-rimetti" data-azione="rimetti">Rimetti nell\'elenco</button>' +
+          '</div><span class="ord-esito"></span></div>';
       }
 
       /* Il menu dei prodotti, diviso per linea: scegliendo da qui il nome e'
@@ -680,6 +713,19 @@
           if (!d.ok) return;
           ordiniCaricati = d.ordini;
           disegnaOrdini();
+        }).then(caricaNascosti).catch(function () {});
+      }
+
+      /* Il riquadro dei nascosti si mostra solo se ce n'e' almeno uno: chi non
+         nasconde mai niente non deve nemmeno vederlo. */
+      function caricaNascosti() {
+        return chiamata('/api/admin/ordini?limite=500&nascosti=1').then(function (d) {
+          if (!d.ok) return;
+          var box = document.getElementById('ord-box-nascosti');
+          box.hidden = !d.ordini.length;
+          document.getElementById('ord-n-nascosti').textContent =
+            d.ordini.length ? '(' + d.ordini.length + ')' : '';
+          document.getElementById('ad-ordini-nascosti').innerHTML = d.ordini.map(schedaNascosta).join('');
         }).catch(function () {});
       }
 
@@ -712,11 +758,36 @@
       }
 
       document.getElementById('ad-ordini').addEventListener('click', function (e) {
+        var n = e.target.closest('[data-azione="nascondi"]');
+        if (n) {
+          var r = n.closest('.ord');
+          var chi = (r.querySelector('.ord-chi') || {}).textContent || 'questo ordine';
+          if (!confirm('Nascondere l\'ordine di ' + chi.trim() + '?\n\nSparisce dall\'elenco e dai conti, ma non viene cancellato: lo trovi in "Ordini nascosti" e puoi rimetterlo quando vuoi.')) return;
+          nascondi(r, true);
+          return;
+        }
         var b = e.target.closest('[data-azione="paga"]'); if (!b) return;
         var riga = b.closest('.ord');
         var eraPagato = riga.classList.contains('pagato');
         salvaOrdine(riga, { statoPagamento: eraPagato ? 'da ricevere' : 'pagato' });
       });
+
+      document.getElementById('ad-ordini-nascosti').addEventListener('click', function (e) {
+        var b = e.target.closest('[data-azione="rimetti"]'); if (!b) return;
+        nascondi(b.closest('.ord'), false);
+      });
+
+      function nascondi(riga, valore) {
+        var esito = riga.querySelector('.ord-esito');
+        if (esito) esito.textContent = 'salvo\u2026';
+        chiamata('/api/admin/ordini/stato', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: riga.getAttribute('data-id'), archiviato: valore }),
+        }).then(function (d) {
+          if (!d.ok) { if (esito) esito.textContent = 'non salvato'; return; }
+          caricaOrdini(); caricaMetriche();
+        }).catch(function () { if (esito) esito.textContent = 'non salvato'; });
+      }
       document.getElementById('ad-ordini').addEventListener('change', function (e) {
         var riga = e.target.closest('.ord'); if (!riga) return;
         var a = e.target.getAttribute('data-azione');

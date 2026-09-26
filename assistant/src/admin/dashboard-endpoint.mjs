@@ -19,7 +19,7 @@
    cliente=(email o pezzo di nome), tipo=B2C|B2B, stato=codice, categoria=…
    ══════════════════════════════════════════════════════════════ */
 import { sessioneValida, tokenDaRichiesta } from './auth.mjs';
-import { elencoClienti, ordiniPerEmail, tuttiOrdini } from '../ordini/index.mjs';
+import { elencoClienti, ordiniPerEmail, tuttiOrdini, ordiniNascosti } from '../ordini/index.mjs';
 import { tutteLeRegole } from '../regole-riacquisto.mjs';
 import { prossimoPromemoria } from '../motore-promemoria.mjs';
 import { leggiEventi } from '../scheduler.mjs';
@@ -105,9 +105,17 @@ export async function calcolaDashboard(oggi = new Date(), filtri = {}) {
 
   const regole = tutteLeRegole();
   const clienti = await elencoClienti();
+
+  /* Chi ha SOLO ordini nascosti sparisce anche da qui: nascondere una prova
+     e ritrovarsela fra i clienti non servirebbe a niente. Si guardano gli
+     ordini nascosti invece di limitarsi a "storico vuoto", cosi' un archivio
+     illeggibile non fa sparire l'intera tabella senza dire perche'. */
+  const emailNascoste = new Set((await ordiniNascosti()).map(o => String(o.email || '').toLowerCase()).filter(Boolean));
+
   const tabella = [];
   for (const c of clienti) {
     const storico = await ordiniPerEmail(c.email);
+    if (!storico.length && emailNascoste.has(String(c.email || '').toLowerCase())) continue;
     const ultima = storico[storico.length - 1] || null;
     const prossimo = prossimoPromemoria(c, storico, regole, oggi);
     tabella.push({

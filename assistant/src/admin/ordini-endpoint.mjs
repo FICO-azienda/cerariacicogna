@@ -17,7 +17,7 @@ import { sessioneValida, tokenDaRichiesta } from './auth.mjs';
 import { corpoJSON } from '../corpo-richiesta.mjs';
 import { cors } from '../cors.mjs';
 import { registra } from '../log.mjs';
-import { creaOrdine, tuttiOrdini, impostaDatiOrdine, daRichiesta, aggiornaFrequenza } from '../ordini/index.mjs';
+import { creaOrdine, tuttiOrdini, ordiniNascosti, impostaDatiOrdine, daRichiesta, aggiornaFrequenza } from '../ordini/index.mjs';
 import { calcolaFrequenzaMedia } from '../archivio.mjs';
 import { emailValida } from '../mailer.mjs';
 
@@ -93,10 +93,13 @@ export async function gestisciOrdiniAdmin(req, res, azione, filtri = {}) {
     });
   }
 
-  /* ── elenco ── */
+  /* ── elenco ──
+     Con nascosti=1 arriva il rovescio: solo quelli tolti dall'elenco, per
+     il riquadro da cui si rimettono. Non si cancella mai niente. */
   if (azione === '' && req.method === 'GET') {
     const limite = Math.min(parseInt(filtri.limite, 10) || 100, 500);
-    const ordini = (await tuttiOrdini())
+    const fonte = String(filtri.nascosti) === '1' ? await ordiniNascosti() : await tuttiOrdini();
+    const ordini = fonte
       .slice()
       .sort((a, b) => String(b.ts).localeCompare(String(a.ts)))
       .slice(0, limite)
@@ -106,6 +109,7 @@ export async function gestisciOrdiniAdmin(req, res, azione, filtri = {}) {
         articoli: (o.articoli || []).map(a => ({ nome: a.nome, quantita: a.quantita || 0 })),
         stato: o.stato || '', statoPagamento: o.statoPagamento || '',
         prezzoTotale: o.prezzoTotale || '', note: o.note || '',
+        archiviato: Boolean(o.archiviato),
       }));
     return invia(200, { ok: true, ordini });
   }
@@ -123,6 +127,8 @@ export async function gestisciOrdiniAdmin(req, res, azione, filtri = {}) {
     ['stato', 'statoPagamento', 'note'].forEach(k => {
       if (dati[k] !== undefined) patch[k] = testo(dati[k], 200);
     });
+    /* nascondi / rimetti nell'elenco */
+    if (dati.archiviato !== undefined) patch.archiviato = dati.archiviato === true || dati.archiviato === 'true' || dati.archiviato === 1;
     if (dati.prezzoTotale !== undefined) {
       /* si accetta sia "1.234,50" sia "1234.50": chi scrive a mano usa la virgola */
       const grezzo = testo(dati.prezzoTotale, 20).replace(/[^0-9,.\-]/g, '').replace(/\.(?=\d{3}\b)/g, '').replace(',', '.');

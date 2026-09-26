@@ -19,6 +19,13 @@ export const ordiniPerEmail           = (...a) => adattatore().ordiniPerEmail(..
 export const tuttiOrdini              = (...a) => adattatore().tuttiOrdini(...a);
 export const aggiornaStatoOrdine      = (...a) => adattatore().aggiornaStatoOrdine(...a);
 
+/* Gli ordini nascosti dal pannello. Con Google Sheets non esistono: li' si
+   cancella o si archivia una riga a mano, quindi l'elenco e' vuoto. */
+export const ordiniNascosti           = (...a) => {
+  const a1 = adattatore();
+  return a1.ordiniNascosti ? a1.ordiniNascosti(...a) : Promise.resolve([]);
+};
+
 /* Solo l'adattatore su file sa tenere i campi che lo staff scrive dal
    pannello. Con Google Sheets quei valori si scrivono nel foglio, quindi
    qui si ricade sul cambio di stato che il foglio gia' conosce. */

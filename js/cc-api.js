@@ -26,5 +26,14 @@
      relativi da sole. */
   var PRODUZIONE = '';
 
-  window.CC_API = inLocale ? 'http://localhost:8787' : PRODUZIONE;
+  /* Solo in locale si puo' dirottare il backend con ?api=... — serve a provare
+     una copia su un'altra porta. Fuori da localhost e' ignorato di proposito:
+     un link con ?api= truccato, mandato a chi gestisce il pannello, spedirebbe
+     la password a un server altrui. */
+  var forzato = '';
+  if (inLocale) {
+    try { forzato = new URLSearchParams(location.search).get('api') || ''; } catch (e) { forzato = ''; }
+  }
+
+  window.CC_API = forzato || (inLocale ? 'http://localhost:8787' : PRODUZIONE);
 })();
