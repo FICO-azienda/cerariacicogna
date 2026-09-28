@@ -61,6 +61,12 @@
     }
     .v-hero-media video.is-playing { opacity: 1; }
 
+    /* La ripresa e' girata molto scura e la vignettatura qui sopra toglie
+       altra luce: senza questo la cera resta nera e si vede solo la fiamma.
+       Si alza la luminosita' e si abbassa appena il contrasto, altrimenti
+       la fiamma si brucia e diventa una macchia bianca senza forma. */
+    .v-hero-media video { filter: brightness(1.22) contrast(.96) saturate(1.04); }
+
     /* Poster — shown while video loads or when prefers-reduced-motion is set */
     .v-hero-poster {
       position: absolute; inset: 0;
@@ -280,7 +286,7 @@
       .v-hero-title-sub { text-shadow: 0 2px 34px rgba(16,10,4,.7); }
       .v-hero-tagline   { text-shadow: 0 1px 14px rgba(16,10,4,.95),
                                        0 0 42px rgba(16,10,4,.85); }
-      .v-hero-media video { filter: brightness(.82); }
+      .v-hero-media video { filter: brightness(1.02) contrast(.96) saturate(1.04); }
 
       /* Il pulsante finisce sopra la candela, dove l'immagine e' chiara:
          un velo scuro dietro la scritta lo tiene leggibile qualunque
@@ -1587,10 +1593,11 @@
     if (hv) {
       const revealVideo = () => hv.classList.add('is-playing');
       hv.addEventListener('playing', revealVideo, { once: true });
-      /* taglia il primo secondo: l'intro parte dal punto in cui la scena entra davvero.
-         Va applicato anche quando il video arriva già pronto dalla cache
-         (in quel caso 'loadeddata' non scatta e riprenderebbe dove era rimasto). */
-      const START_AT = 1.00;
+      /* Il file parte gia' dal primo piano dello stoppino: la ripresa larga
+         della candela e' stata tolta dal video, non saltata qui. Resta il
+         riavvolgimento perche' un video ripreso dalla cache ripartirebbe da
+         dove era rimasto ('loadeddata' non scatta) e si vedrebbe la fine. */
+      const START_AT = 0;
       const rewind = () => { try { if (hv.currentTime < START_AT || hv.currentTime > START_AT + 0.5) hv.currentTime = START_AT; } catch (e) {} };
       hv.addEventListener('loadeddata', rewind);
       if (hv.readyState >= 1) rewind();
@@ -1650,20 +1657,20 @@
         heroVideo.style.display = 'none';
       } else {
         heroVideo.playbackRate = 1.825;   /* velocità iniziale: +15% due volte (~+32% dal video originale) */
-        try { if (heroVideo.currentTime < 1.00) heroVideo.currentTime = 1.00; } catch (e) {}
+        try { if (heroVideo.currentTime > 0.5) heroVideo.currentTime = 0; } catch (e) {}
         heroVideo.play().catch(() => {});
-        // At second 10, return to normal speed for the rest of the first take
-        // (9.15 e non 10: dal file sono stati tagliati in tutto 0.85s, il punto della scena e' lo stesso)
+        // Poco prima che si torni a vedere la candela intera, velocita' normale.
+        // Il numero e' basso perche' dal file sono stati tolti i primi 2,67s
+        // (la ripresa larga iniziale): il punto della scena e' sempre quello.
         heroVideo.addEventListener('timeupdate', function normalSpeed() {
-          if (heroVideo.currentTime >= 9.15) {
+          if (heroVideo.currentTime >= 6.48) {
             heroVideo.playbackRate = 1.0;
             heroVideo.removeEventListener('timeupdate', normalSpeed);
           }
         });
-        // Loop from 5.45s (0.5s before the wood wick close-up) at half speed
-        // (era 6.3 prima che venissero tagliati in tutto i primi 0.85s del file)
+        // Riparte poco prima del primo piano dello stoppino, piu' lentamente.
         heroVideo.addEventListener('ended', () => {
-          heroVideo.currentTime = 5.45;
+          heroVideo.currentTime = 2.78;
           heroVideo.playbackRate = 0.9;
           heroVideo.play().catch(() => {});
         });
