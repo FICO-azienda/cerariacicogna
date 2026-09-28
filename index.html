@@ -258,18 +258,40 @@
 
     /* ── Hero sul telefono ──────────────────────────────────────
        Il video e' orizzontale (1280x720), lo schermo del telefono e'
-       verticale. Riempiendo tutta l'altezza il browser lo ingrandisce
-       finche' copre: se ne vede solo il 26% della larghezza, sgranato,
-       e quel che resta e' una macchia scura.
-       Qui il video tiene una fascia centrale — se ne vede molta piu'
-       inquadratura — e i suoi bordi sfumano nel fondo scuro, cosi' lo
-       stacco non si vede e sembra voluto. */
+       verticale: qualunque fascia piu' alta della sua forma costringe il
+       browser a ingrandirlo finche' copre, e ai lati taglia. Con una
+       fascia bassa restava visibile il 42% della larghezza — lo stoppino
+       arrivava fino ai bordi e la scena intorno spariva.
+       Qui la fascia prende esattamente la forma del video (16:9 su tutta
+       la larghezza), quindi non si taglia niente: si vede il fotogramma
+       intero. I bordi sopra e sotto sfumano nel fondo scuro, cosi' lo
+       stacco non si vede e la striscia sembra voluta. */
     @media (max-width: 768px) and (orientation: portrait) {
+      .v-hero {
+        /* 56,25vw e' l'altezza di un 16:9 largo quanto lo schermo: la
+           striscia prende tutta la larghezza, quindi non ha bordi laterali
+           da nascondere — il nero del filmato non e' il nero della pagina,
+           e un riquadro piu' stretto si vedrebbe come una macchia chiara. */
+        --striscia-giu: 6vh;
+        --striscia-alta: 56.25vw;
+      }
+
       .v-hero-media video {
-        top: 62%;
-        bottom: auto;
-        height: 62%;
-        transform: translateY(-50%);
+        /* La striscia sta in basso e il testo si ferma sopra: le due misure
+           sono legate dalla stessa formula (vedi .v-hero-content qui sotto),
+           cosi' su ogni telefono restano staccate invece di sovrapporsi.
+           Sui telefoni bassi si stringe il titolo, non la striscia: vedi
+           il blocco max-height piu' sotto. */
+        top: auto;
+        bottom: var(--striscia-giu);
+        left: 0;
+        width: 100%;
+        height: var(--striscia-alta);
+        aspect-ratio: 16 / 9;  /* stessa forma del filmato: non si taglia niente */
+        object-fit: contain;   /* rete di sicurezza: mai ritagliare */
+        transform: none;
+        /* I bordi sopra e sotto sfumano nel fondo scuro: lo stacco non si
+           vede e la striscia sembra voluta. */
         -webkit-mask-image: linear-gradient(to bottom,
           transparent 0%, #000 15%, #000 85%, transparent 100%);
         mask-image: linear-gradient(to bottom,
@@ -280,7 +302,11 @@
          schiarisce diventavano illeggibili. Il testo sale sopra la parte
          scura, la fiamma resta libera sotto, e un'ombra morbida tiene la
          frase staccata dal fondo qualunque fotogramma passi. */
-      .v-hero-content   { padding-bottom: 34vh; }
+      .v-hero-content   { padding-bottom: calc(var(--striscia-giu) + var(--striscia-alta) + 18px); }
+      /* il titolo non deve finire sotto il logo in alto: su uno schermo
+         corto il blocco di testo, spinto in su dalla striscia, arrivava a
+         toccare l'intestazione */
+      .v-hero-content   { padding-top: 76px; }
 
       .v-hero-title,
       .v-hero-title-sub { text-shadow: 0 2px 34px rgba(16,10,4,.7); }
@@ -296,6 +322,18 @@
         -webkit-backdrop-filter: blur(3px);
         backdrop-filter: blur(3px);
       }
+    }
+
+    /* Telefoni bassi (SE, 8, e chi tiene la barra del browser aperta):
+       testo a misura piena piu' striscia non ci stanno. Si stringe un po'
+       il titolo e le distanze, non la striscia: il video e' la cosa che
+       si e' venuti a vedere. */
+    @media (max-width: 768px) and (orientation: portrait) and (max-height: 720px) {
+      .v-hero-title     { font-size: clamp(3rem, 8.6vw, 10rem); }
+      .v-hero-title-sub { font-size: clamp(1.35rem, 3.9vw, 4.6rem); margin-bottom: 18px; }
+      .v-hero-rule      { margin-bottom: 16px; }
+      .v-hero-tagline   { margin-bottom: 30px; line-height: 1.6; }
+      .v-hero-content   { padding-top: 68px; }
     }
 
     /* ═══════════════════════════════════════════════════
