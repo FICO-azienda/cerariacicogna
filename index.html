@@ -25,6 +25,227 @@
   <link rel="stylesheet" href="css/main.css?v=13">
   <style>
 
+    /* ═══════════════════════════════════════════════════
+       VIDEO HERO  —  position:fixed overlay, z:100
+       Dismissed on "Entra" click, scroll/touch, or after
+       the clip has played through twice (auto-entrata)
+    ═══════════════════════════════════════════════════ */
+
+    .v-hero {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      overflow: hidden;
+      background: #100C06;
+    }
+
+    /* ── Media layer (video + CSS poster) ── */
+    .v-hero-media {
+      position: absolute;
+      inset: 0;
+    }
+
+    .v-hero-media video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      /* z-index above poster once it plays */
+      z-index: 1;
+      /* invisibile finché non parte davvero da 0: evita il flash
+         dell'ultimo frame rimasto in cache */
+      opacity: 0;
+      transition: opacity .45s ease;
+    }
+    .v-hero-media video.is-playing { opacity: 1; }
+
+    /* Poster — shown while video loads or when prefers-reduced-motion is set */
+    .v-hero-poster {
+      position: absolute; inset: 0;
+      background-image: url('video/hero-poster.jpg');
+      background-size: cover;
+      background-position: center center;
+      z-index: 0;
+      display: none;   /* nascosto di default: il video sfuma dal fondo scuro, niente flash del poster */
+    }
+
+    /* prefers-reduced-motion: hide video, show static poster fallback */
+    @media (prefers-reduced-motion: reduce) {
+      #hero-video { display: none !important; }
+      .v-hero-poster { display: block; }
+      .v-hero-content * { animation: none !important; transition: none !important; }
+    }
+
+    /* Warm vignette — espresso, not cold void */
+    .v-hero-vignette {
+      position: absolute; inset: 0; z-index: 2;
+      background:
+        radial-gradient(ellipse 72% 58% at 50% 50%,
+          transparent 18%, rgba(16,10,4,.44) 68%, rgba(16,10,4,.86) 100%),
+        linear-gradient(to top,
+          rgba(16,10,4,.88) 0%, transparent 42%, transparent 100%),
+        linear-gradient(to bottom,
+          rgba(16,10,4,.55) 0%, transparent 28%, transparent 100%);
+    }
+
+    /* ── Content ── */
+    .v-hero-content {
+      position: absolute; inset: 0; z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 var(--gutter);
+      padding-top: 80px;
+      padding-bottom: 22vh;
+    }
+
+    .v-hero-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .5rem; font-weight: 300;
+      letter-spacing: .44em; text-transform: uppercase;
+      color: rgba(232,165,48,.95);
+      margin-bottom: 28px;
+      opacity: 0;
+      text-shadow: 0 1px 12px rgba(16,10,4,.7);
+    }
+
+    .v-hero-title {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(4rem, 10.5vw, 10rem);
+      font-weight: 300;
+      letter-spacing: .20em;
+      line-height: .92;
+      color: #F0EAD8;
+      margin-bottom: 6px;
+      opacity: 0;
+      text-shadow: 0 2px 32px rgba(16,10,4,.65), 0 4px 80px rgba(16,10,4,.45);
+    }
+
+    .v-hero-title-sub {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(1.7rem, 4.6vw, 4.6rem);
+      font-weight: 300;
+      letter-spacing: .55em;
+      color: rgba(240,234,216,.92);
+      margin-bottom: 28px;
+      opacity: 0;
+      text-shadow: 0 2px 24px rgba(16,10,4,.6);
+    }
+
+    .v-hero-rule {
+      width: 32px; height: 1px;
+      background: rgba(232,165,48,.55);
+      margin-bottom: 24px;
+      opacity: 0;
+    }
+
+    .v-hero-tagline {
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      font-size: clamp(.92rem, 2.2vw, 1.4rem);
+      font-weight: 300;
+      letter-spacing: .1em;
+      color: rgba(220,205,175,.90);
+      line-height: 1.8;
+      margin-bottom: 54px;
+      opacity: 0;
+      text-shadow: 0 1px 16px rgba(16,10,4,.65);
+    }
+
+    /* "Entra" button */
+    .v-hero-enter {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: inherit;
+      padding: 8px 16px;
+      opacity: 0;
+    }
+
+    .v-hero-enter-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .62rem; font-weight: 300;
+      letter-spacing: .40em; text-transform: uppercase;
+      color: rgba(232,165,48,.98);
+      border: 1px solid rgba(232,165,48,.60);
+      padding: 14px 44px;
+      transition: border-color .45s, color .45s, background .45s;
+    }
+    .v-hero-enter:hover .v-hero-enter-label {
+      border-color: rgba(232,165,48,.55);
+      color: rgba(232,165,48,1);
+      background: rgba(232,165,48,.05);
+    }
+
+    .v-hero-enter-arrow {
+      display: block;
+      width: 1px; height: 36px;
+      background: linear-gradient(to bottom, rgba(232,165,48,.45), transparent);
+      transition: height .45s;
+    }
+    .v-hero-enter:hover .v-hero-enter-arrow { height: 50px; }
+
+    /* Bottom scroll cue */
+    .v-scroll-cue {
+      position: absolute;
+      bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+    }
+
+    .v-scroll-cue span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .44rem; font-weight: 300;
+      letter-spacing: .40em; text-transform: uppercase;
+      color: rgba(191,174,140,.75);
+    }
+
+    .v-scroll-line {
+      width: 1px; height: 44px;
+      background: linear-gradient(to bottom, rgba(232,165,48,.38), transparent);
+      animation: drip 2.8s ease-in-out infinite;
+    }
+
+    @keyframes drip {
+      0%   { transform: scaleY(0); transform-origin: top;    opacity:0; }
+      45%  { transform: scaleY(1); transform-origin: top;    opacity:1; }
+      55%  { transform: scaleY(1); transform-origin: bottom; opacity:1; }
+      100% { transform: scaleY(0); transform-origin: bottom; opacity:0; }
+    }
+
+    /* ── Skip link (accessibility) ── */
+    .v-hero-skip {
+      position: absolute;
+      bottom: 36px; right: clamp(24px, 5vw, 80px);
+      z-index: 3;
+      font-family: 'Montserrat', sans-serif;
+      font-size: .44rem; font-weight: 300;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: rgba(191,174,140,.65);
+      text-decoration: none;
+      cursor: pointer;
+      background: none; border: none;
+      transition: color .3s;
+      opacity: 0;
+    }
+    .v-hero-skip:hover { color: rgba(191,174,140,.95); }
+
+    /* ── Mobile adjustments ── */
+    @media (max-width: 768px) {
+      .v-hero-poster { animation-duration: 14s; }
+      .v-hero-title  { letter-spacing: .12em; line-height: .98; }
+      .v-hero-title-sub { letter-spacing: .28em; }
+    }
 
     /* ═══════════════════════════════════════════════════
        MARQUEE STRIP
@@ -888,7 +1109,7 @@
 }
   </script>
 </head>
-<body class="hx-entered">
+<body>
 
   <!-- ── NAV ─────────────────────────────────────── -->
   <nav id="main-nav" role="navigation" aria-label="Navigazione principale">
@@ -1011,7 +1232,54 @@
   </div>
 
   <!-- ════════════════════════════════════════════════
-       MAIN CONTENT
+       VIDEO HERO  (fixed overlay)
+  ═════════════════════════════════════════════════ -->
+  <section class="v-hero" id="v-hero" aria-label="Intro Cereria Cicogna">
+
+    <!-- Media -->
+    <div class="v-hero-media" aria-hidden="true">
+      <video id="hero-video" autoplay muted playsinline preload="auto">
+        <source src="video/hero.mp4" type="video/mp4">
+      </video>
+      <div class="v-hero-poster"></div>
+      <div class="v-hero-vignette"></div>
+    </div>
+
+    <!-- Text content -->
+    <div class="v-hero-content" id="v-hero-content">
+
+      <span class="v-hero-eyebrow" id="vh-ey">Novate Milanese (MI)</span>
+
+      <h1 class="v-hero-title" id="vh-t1">Cereria</h1>
+      <p  class="v-hero-title-sub" id="vh-t2">Cicogna</p>
+
+      <div class="v-hero-rule" id="vh-rule" aria-hidden="true"></div>
+
+      <p class="v-hero-tagline" id="vh-tag">
+        La stessa luce, da generazioni.<br>
+        Dal sacro al quotidiano.
+      </p>
+
+      <button class="v-hero-enter" id="hero-enter" aria-label="Entra nel sito">
+        <span class="v-hero-enter-label">Entra</span>
+        <span class="v-hero-enter-arrow" aria-hidden="true"></span>
+      </button>
+
+    </div>
+
+    <!-- Scroll cue -->
+    <div class="v-scroll-cue" id="v-scroll-cue" aria-hidden="true">
+      <span>Scorri</span>
+      <div class="v-scroll-line"></div>
+    </div>
+
+    <!-- Skip for keyboard / accessibility -->
+    <button class="v-hero-skip" id="hero-skip" aria-label="Salta l'intro">Salta ↓</button>
+
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       MAIN CONTENT  (sits behind the fixed hero)
   ═════════════════════════════════════════════════ -->
   <main id="main-content">
 
@@ -1257,6 +1525,168 @@
   <script src="js/main.js?v=8"></script>
   <script src="js/selection.js?v=7"></script>
   <script>
+
+    /* ═══════════════════════════════════════════════
+       VIDEO HERO  —  entrance + exit logic
+    ═══════════════════════════════════════════════ */
+    const vHero    = document.getElementById('v-hero');
+    const heroEnter = document.getElementById('hero-enter');
+    const heroSkip  = document.getElementById('hero-skip');
+
+    /* Lock scroll while hero is visible */
+    document.body.style.overflow = 'hidden';
+
+    /* Video d'ingresso: mostralo solo quando riparte davvero da 0,
+       così non lampeggia l'ultimo frame rimasto in cache */
+    const hv = document.getElementById('hero-video');
+    if (hv) {
+      const revealVideo = () => hv.classList.add('is-playing');
+      hv.addEventListener('playing', revealVideo, { once: true });
+      /* si parte sempre dall'inizio vero del file: candela spenta,
+         poi l'accensione. Va applicato anche quando il video arriva
+         già pronto dalla cache (in quel caso 'loadeddata' non scatta
+         e riprenderebbe dal punto in cui era rimasto). */
+      const rewind = () => { try { if (hv.currentTime > 0.5) hv.currentTime = 0; } catch (e) {} };
+      hv.addEventListener('loadeddata', rewind);
+      if (hv.readyState >= 1) rewind();
+      /* se il frame è già disponibile e in play, mostralo subito */
+      if (hv.readyState >= 3 && !hv.paused) revealVideo();
+      /* fallback: se autoplay è bloccato, dopo 1.2s mostra comunque il video
+         (resta sotto il poster identico, nessun salto visibile) */
+      setTimeout(revealVideo, 1200);
+    }
+
+    /* Exit: registered FIRST so the gate can always be dismissed,
+       even if GSAP fails to load or an error occurs later on */
+    let heroExited = false;
+    function exitHero() {
+      if (heroExited) return;
+      heroExited = true;
+
+      const done = () => {
+        vHero.style.display = 'none';
+        document.body.style.overflow = '';
+        document.body.classList.add('hx-entered');   /* nav scura sul nuovo ingresso chiaro */
+        /* Trigger ScrollTrigger refresh now that hero is gone */
+        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+      };
+
+      if (typeof gsap !== 'undefined') {
+        gsap.to(vHero, {
+          opacity: 0,
+          scale: 1.06,
+          duration: 1.0,
+          ease: 'power2.in',
+          onComplete: done
+        });
+      } else {
+        done();
+      }
+    }
+
+    heroEnter.addEventListener('click', exitHero);
+    if (heroSkip) heroSkip.addEventListener('click', exitHero);
+    vHero.addEventListener('click', exitHero);
+
+    /* Scroll wheel o touch swipe → esce subito, per chi non vuole aspettare */
+    window.addEventListener('wheel',     exitHero, { once: true, passive: true });
+    window.addEventListener('touchmove', exitHero, { once: true, passive: true });
+
+    /* Keyboard: Enter / Space / Escape / ArrowDown
+       (persistent listener: a Tab or any other key must not consume it) */
+    window.addEventListener('keydown', e => {
+      if (['Enter','Space','Escape','ArrowDown'].includes(e.code)) exitHero();
+    });
+
+    /* Video: dalla candela spenta all'accensione, a velocità normale.
+       Due passaggi completi del filmato, poi si entra nel sito da soli,
+       senza bisogno di cliccare "Entra". */
+    const heroVideo = document.getElementById('hero-video');
+    if (heroVideo) {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        heroVideo.style.display = 'none';
+      } else {
+        heroVideo.currentTime = 0;
+        heroVideo.play().catch(() => {});
+        let giriCompletati = 0;
+        heroVideo.addEventListener('ended', () => {
+          giriCompletati += 1;
+          if (giriCompletati < 2) {
+            heroVideo.currentTime = 0;
+            heroVideo.play().catch(() => {});
+          } else {
+            exitHero();   /* secondo giro finito: entrata automatica */
+          }
+        });
+      }
+    }
+
+    /* Staggered text entrance — with a no-GSAP fallback so the
+       hero text can never stay stuck invisible */
+    const heroItems = [
+      document.getElementById('vh-ey'),
+      document.getElementById('vh-t1'),
+      document.getElementById('vh-t2'),
+      document.getElementById('vh-rule'),
+      document.getElementById('vh-tag'),
+      heroEnter,
+      document.getElementById('v-scroll-cue'),
+      document.getElementById('hero-skip')
+    ].filter(Boolean);
+
+    /* Il testo entra quando si accende la fiamma: campioniamo la luminosità
+       del video e facciamo partire l'animazione al primo guizzo di luce.
+       Fallback temporale se il rilevamento non è possibile (autoplay bloccato,
+       canvas non disponibile, ecc.) così il testo non resta mai invisibile. */
+    (function () {
+      let fired = false;
+      function revealHero() {
+        if (fired) return;
+        fired = true;
+        if (typeof gsap !== 'undefined') {
+          gsap.fromTo(heroItems,
+            { opacity: 0, y: 22 },
+            { opacity: 1, y: 0, duration: 1.2, stagger: 0.14, ease: 'power3.out' }
+          );
+        } else {
+          heroItems.forEach(el => { el.style.opacity = '1'; });
+        }
+      }
+
+      if (typeof gsap !== 'undefined') gsap.set(heroItems, { opacity: 0, y: 22 });
+
+      const vid = document.getElementById('hero-video');
+      let watching = false;
+      if (vid && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        try {
+          const cv = document.createElement('canvas');
+          cv.width = 32; cv.height = 18;
+          const ctx = cv.getContext('2d', { willReadFrequently: true });
+          let base = null;
+          const sample = () => {
+            if (fired) return;
+            if (vid.readyState >= 2) {
+              try {
+                ctx.drawImage(vid, 0, 0, cv.width, cv.height);
+                const d = ctx.getImageData(0, 0, cv.width, cv.height).data;
+                let sum = 0;
+                for (let i = 0; i < d.length; i += 4) sum += (d[i] * 0.299 + d[i + 1] * 0.587 + d[i + 2] * 0.114);
+                const lum = sum / (d.length / 4);
+                if (base === null) base = lum;
+                else if (lum > base + 6) { revealHero(); return; }   /* guizzo della fiamma */
+                else base = Math.min(base, lum);
+              } catch (e) { revealHero(); return; }
+            }
+            requestAnimationFrame(sample);
+          };
+          watching = true;
+          requestAnimationFrame(sample);
+        } catch (e) { watching = false; }
+      }
+
+      /* rete di sicurezza: se la fiamma non viene rilevata, mostra comunque */
+      setTimeout(revealHero, watching ? 4200 : 1200);
+    })();
 
     /* ── LINE-ROW VIDEO: hover-to-play, resta sul primo frame a riposo ── */
     (function () {
