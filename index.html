@@ -1537,10 +1537,11 @@
     document.body.style.overflow = 'hidden';
 
     /* Segmento mostrato in home: dal primo piano sullo stoppino spento
-       (2.65s nel file) fino all'accensione (6.3s) — il resto del filmato
-       (fiamma che cresce, inquadratura larga) non viene mai mostrato qui. */
-    const HERO_SEG_START  = 2.65;
-    const HERO_SEG_IGNITE = 6.30;
+       (2.65s nel file), attraverso l'accensione, fino a un attimo prima
+       che l'inquadratura cambi (9.75s) — quel cambio di inquadratura
+       (candela vista più larga) non viene mai mostrato qui. */
+    const HERO_SEG_START = 2.65;
+    const HERO_SEG_END   = 9.75;
 
     /* Video d'ingresso: mostralo solo quando riparte davvero dall'inizio
        del segmento, così non lampeggia l'ultimo frame rimasto in cache */
@@ -1603,9 +1604,9 @@
       if (['Enter','Space','Escape','ArrowDown'].includes(e.code)) exitHero();
     });
 
-    /* Video: stoppino spento → accensione, a velocità normale; poi lo stesso
-       tratto si ripete una volta al rallentatore; poi si entra da soli nel
-       sito, senza bisogno di cliccare "Entra". */
+    /* Video: stoppino spento → accensione → fiamma che cresce, a velocità
+       normale; poi lo stesso tratto si ripete una volta al rallentatore;
+       poi si entra da soli nel sito, senza bisogno di cliccare "Entra". */
     const heroVideo = document.getElementById('hero-video');
     if (heroVideo) {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -1617,7 +1618,7 @@
 
         let passaggioLento = false;
         heroVideo.addEventListener('timeupdate', function alSegmento() {
-          if (heroVideo.currentTime < HERO_SEG_IGNITE) return;
+          if (heroVideo.currentTime < HERO_SEG_END) return;
           if (!passaggioLento) {
             /* primo passaggio finito: si riparte dall'inizio, stavolta lenti */
             passaggioLento = true;
