@@ -1538,10 +1538,11 @@
 
     /* Segmento mostrato in home: dal primo piano sullo stoppino spento
        (2.65s nel file), attraverso l'accensione, fino a un attimo prima
-       che l'inquadratura cambi (9.75s) — quel cambio di inquadratura
+       che l'inquadratura cambi (il cambio è tra 9.74s e 9.76s: teniamo
+       margine e ci fermiamo a 9.70s) — quel cambio di inquadratura
        (candela vista più larga) non viene mai mostrato qui. */
     const HERO_SEG_START = 2.65;
-    const HERO_SEG_END   = 9.75;
+    const HERO_SEG_END   = 9.70;
 
     /* Video d'ingresso: mostralo solo quando riparte davvero dall'inizio
        del segmento, così non lampeggia l'ultimo frame rimasto in cache */
