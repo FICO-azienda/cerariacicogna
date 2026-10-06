@@ -517,8 +517,16 @@
       b.className = 'cca-scelta'; b.type = 'button';
       if (v[3]) {
         var im = document.createElement('img');
-        im.src = v[3]; im.alt = ''; im.loading = 'lazy';
-        im.onerror = function () { im.remove(); };
+        im.alt = ''; im.loading = 'lazy';
+        /* Se la foto non si apre si ripiega su quella del prodotto invece
+           di sparire: un pulsante nudo in mezzo a pulsanti con la foto
+           sembra un prodotto senza immagine, non un file mancante. */
+        var ripiego = v[4] || '';
+        im.onerror = function () {
+          if (ripiego && im.src.indexOf(ripiego) < 0) { im.src = ripiego; return; }
+          im.remove(); b.classList.add('cca-scelta-senza-foto');
+        };
+        im.src = v[3];
         b.appendChild(im);
       }
       var txt = document.createElement('span');
@@ -607,7 +615,7 @@
     scelta(l.famiglie.map(function (f) {
       var quanti = f.prodotti.length;
       return [f.nome, et(f, 'nome'), quanti > 1 ? quanti + (lang() === 'en' ? ' models' : ' modelli') : '',
-              f.prodotti[0] && f.prodotti[0].immagine];
+              f.prodotti[0] && f.prodotti[0].immagine, f.prodotti[0] && f.prodotti[0].immagine];
     }), function (v) { scelte.famiglia = v; passoProdotto(); }, { griglia: true, indietro: inizio });
   });
 
@@ -619,7 +627,7 @@
     if (f.prodotti.length === 1) { scelte.prodotto = f.prodotti[0]; return passoColore(); }
     domanda(tp().prodotto);
     scelta(f.prodotti.map(function (p) {
-      return [p.nome, p.nome, et(p, 'descrizione').slice(0, 70), p.immagine];
+      return [p.nome, p.nome, et(p, 'descrizione').slice(0, 70), p.immagine, p.immagine];
     }), function (v) {
       scelte.prodotto = f.prodotti.find(function (p) { return p.nome === v; });
       passoColore();
@@ -631,7 +639,9 @@
     var p = scelte.prodotto;
     if (!p.varianti || !p.varianti.length) return passoMisura();
     domanda(tp().colore);
-    scelta(p.varianti.map(function (c, i) { return [c, etLista(p, 'varianti', i), '', fotoVariante(p, c, null)]; }),
+    scelta(p.varianti.map(function (c, i) {
+      return [c, etLista(p, 'varianti', i), '', fotoVariante(p, c, null), p.immagine];
+    }),
       function (v) { scelte.colore = v; passoMisura(); },
       { griglia: true, indietro: passoProdotto });
   });
@@ -641,7 +651,13 @@
     var p = scelte.prodotto;
     if (!p.misure || !p.misure.length) return passoProfumo();
     domanda(tp().misura);
-    scelta(p.misure.map(function (m, i) { return [m, etLista(p, 'misure', i)]; }),
+    /* Anche qui la foto: era l'unico passaggio sui prodotti senza, e
+       chi sceglie "piccolo / medio / grande" vuole vedere la differenza.
+       Si tiene conto del colore gia' scelto, cosi' la misura si vede
+       nel colore giusto. */
+    scelta(p.misure.map(function (m, i) {
+      return [m, etLista(p, 'misure', i), '', fotoVariante(p, scelte.colore, m), p.immagine];
+    }),
       function (v) { scelte.misura = v; passoProfumo(); },
       { indietro: p.varianti && p.varianti.length ? passoColore : passoProdotto });
   });

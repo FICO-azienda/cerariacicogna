@@ -547,18 +547,6 @@
    "immagine": "images/for-ang-40m-papa.webp"
   },
   {
-   "nome": "40 Coperchio Pioggia Angelo",
-   "linea": "Articoli Liturgici",
-   "categoria": "angelo",
-   "famiglia": "Linea Angelo",
-   "descrizione": "Candela con coperchio a pioggia · altezza 18 cm",
-   "varianti": [
-    "Rosso"
-   ],
-   "pagina": "forniture.html",
-   "immagine": "images/for-ang-40cp-rosso.webp"
-  },
-  {
    "nome": "50 Angelo",
    "linea": "Articoli Liturgici",
    "categoria": "angelo",
@@ -614,6 +602,18 @@
    ],
    "pagina": "forniture.html",
    "immagine": "images/for-aur-40x5-trasparente.webp"
+  },
+  {
+   "nome": "40 Coperchio Pioggia Angelo",
+   "linea": "Articoli Liturgici",
+   "categoria": "aure",
+   "famiglia": "Linea Aure",
+   "descrizione": "Candela con coperchio a pioggia · altezza 18 cm",
+   "varianti": [
+    "Rosso"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-ang-40cp-rosso.webp"
   },
   {
    "nome": "50/5 Aure",

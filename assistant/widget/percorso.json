@@ -1373,30 +1373,6 @@
        ]
       },
       {
-       "nome": "40 Coperchio Pioggia Angelo",
-       "descrizione": "Candela con coperchio a pioggia · altezza 18 cm",
-       "descrizione_en": "Candle with rain cover · height 18 cm",
-       "varianti_en": [
-        "Red"
-       ],
-       "misure_en": [],
-       "pagina": "forniture.html",
-       "immagine": "images/for-ang-40cp-rosso.webp",
-       "categoria": "angelo",
-       "varianti": [
-        "Rosso"
-       ],
-       "misure": [],
-       "varianti_immagini": [
-        {
-         "file": "images/for-ang-40cp-rosso.webp",
-         "parole": [
-          "rosso"
-         ]
-        }
-       ]
-      },
-      {
        "nome": "50 Angelo",
        "descrizione": "Candela liturgica · altezza 19 cm · Ø 65 mm",
        "descrizione_en": "Liturgical candle · height 19 cm · Ø 65 mm",
@@ -1566,6 +1542,30 @@
          "file": "images/for-aur-40x5-rossa.webp",
          "parole": [
           "rossa"
+         ]
+        }
+       ]
+      },
+      {
+       "nome": "40 Coperchio Pioggia Angelo",
+       "descrizione": "Candela con coperchio a pioggia · altezza 18 cm",
+       "descrizione_en": "Candle with rain cover · height 18 cm",
+       "varianti_en": [
+        "Red"
+       ],
+       "misure_en": [],
+       "pagina": "forniture.html",
+       "immagine": "images/for-ang-40cp-rosso.webp",
+       "categoria": "aure",
+       "varianti": [
+        "Rosso"
+       ],
+       "misure": [],
+       "varianti_immagini": [
+        {
+         "file": "images/for-ang-40cp-rosso.webp",
+         "parole": [
+          "rosso"
          ]
         }
        ]
