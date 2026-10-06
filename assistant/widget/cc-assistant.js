@@ -25,9 +25,18 @@
   var ENDPOINT = (inLocale && script && script.dataset.endpoint)
     || (window.CC_API ? window.CC_API + '/api/chat' : '/api/chat');
   /* L'albero delle domande sta accanto a questo file: il widget lo legge
-     da fermo, senza passare dal server e senza costare nulla. */
-  var PERCORSO_URL = (script && script.dataset.percorso)
-    || (script && script.src ? script.src.replace(/[^/]*$/, 'percorso.json') : 'percorso.json');
+     da fermo, senza passare dal server e senza costare nulla.
+     Si porta dietro il ?v=... del widget. Senza, il browser serviva per
+     sempre il percorso vecchio dalla cache: un prodotto aggiunto o una
+     foto corretta non arrivavano a chi aveva gia' visitato il sito, e
+     non c'era modo di forzarli se non svuotando la cache a mano. */
+  var PERCORSO_URL = 'percorso.json';
+  if (script && script.dataset.percorso) {
+    PERCORSO_URL = script.dataset.percorso;
+  } else if (script && script.src) {
+    var versione = (script.src.match(/\?.*$/) || [''])[0];
+    PERCORSO_URL = script.src.replace(/\?.*$/, '').replace(/[^/]*$/, 'percorso.json') + versione;
+  }
   var PRIVACY  = (script && script.dataset.privacy)  || '';
   var EMAIL    = (script && script.dataset.email)    || 'info@cerariacicogna.com';
 
