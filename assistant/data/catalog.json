@@ -493,7 +493,7 @@
    "linea": "Articoli Liturgici",
    "categoria": "angelo",
    "famiglia": "Linea Angelo",
-   "descrizione": "Candela con coperchio a pioggia · altezza 20 cm",
+   "descrizione": "Candela con coperchio a pioggia · altezza 11 cm",
    "varianti": [
     "Bianco",
     "Rosso",
@@ -508,7 +508,7 @@
    "linea": "Articoli Liturgici",
    "categoria": "angelo",
    "famiglia": "Linea Angelo",
-   "descrizione": "Candela liturgica · altezza 30 cm · Ø 65 mm",
+   "descrizione": "Candela liturgica · altezza 10 cm · Ø 65 mm",
    "varianti": [
     "Bianco",
     "Rosso",
@@ -523,7 +523,7 @@
    "linea": "Articoli Liturgici",
    "categoria": "angelo",
    "famiglia": "Linea Angelo",
-   "descrizione": "Candela liturgica · altezza 40 cm · Ø 65 mm",
+   "descrizione": "Candela liturgica · altezza 15 cm · Ø 65 mm",
    "varianti": [
     "Bianco",
     "Rosso",
@@ -538,7 +538,7 @@
    "linea": "Articoli Liturgici",
    "categoria": "angelo",
    "famiglia": "Linea Angelo",
-   "descrizione": "Candela in moplen · altezza 40 cm",
+   "descrizione": "Candela in moplen · altezza 15 cm",
    "varianti": [
     "Papa",
     "Arcangelo"
@@ -547,11 +547,23 @@
    "immagine": "images/for-ang-40m-papa.webp"
   },
   {
+   "nome": "40 Coperchio Pioggia Angelo",
+   "linea": "Articoli Liturgici",
+   "categoria": "angelo",
+   "famiglia": "Linea Angelo",
+   "descrizione": "Candela con coperchio a pioggia · altezza 18 cm",
+   "varianti": [
+    "Rosso"
+   ],
+   "pagina": "forniture.html",
+   "immagine": "images/for-ang-40cp-rosso.webp"
+  },
+  {
    "nome": "50 Angelo",
    "linea": "Articoli Liturgici",
    "categoria": "angelo",
    "famiglia": "Linea Angelo",
-   "descrizione": "Candela liturgica · altezza 50 cm · Ø 65 mm",
+   "descrizione": "Candela liturgica · altezza 19 cm · Ø 65 mm",
    "varianti": [
     "Bianco",
     "Rosso",
@@ -566,7 +578,7 @@
    "linea": "Articoli Liturgici",
    "categoria": "angelo",
    "famiglia": "Linea Angelo",
-   "descrizione": "Candela liturgica · altezza 60 cm · Ø 68 mm",
+   "descrizione": "Candela liturgica · altezza 22 cm · Ø 68 mm",
    "varianti": [
     "Bianco",
     "Rossa",
@@ -582,7 +594,7 @@
    "linea": "Articoli Liturgici",
    "categoria": "aure",
    "famiglia": "Linea Aure",
-   "descrizione": "Candela aure · altezza 30 cm · Ø 65 mm",
+   "descrizione": "Candela aure · altezza 10 cm · Ø 65 mm",
    "varianti": [
     "Trasparente",
     "Rossa"
@@ -595,7 +607,7 @@
    "linea": "Articoli Liturgici",
    "categoria": "aure",
    "famiglia": "Linea Aure",
-   "descrizione": "Candela aure · altezza 40 cm · Ø 65 mm",
+   "descrizione": "Candela aure · altezza 15 cm · Ø 65 mm",
    "varianti": [
     "Trasparente",
     "Rossa"
@@ -608,7 +620,7 @@
    "linea": "Articoli Liturgici",
    "categoria": "aure",
    "famiglia": "Linea Aure",
-   "descrizione": "Candela aure · altezza 50 cm · Ø 65 mm",
+   "descrizione": "Candela aure · altezza 19 cm · Ø 65 mm",
    "varianti": [
     "Trasparente",
     "Rossa"
@@ -621,7 +633,7 @@
    "linea": "Articoli Liturgici",
    "categoria": "aure",
    "famiglia": "Linea Aure",
-   "descrizione": "Candela aure · altezza 60 cm · Ø 65 mm",
+   "descrizione": "Candela aure · altezza 20 cm · Ø 65 mm",
    "varianti": [
     "Bianco",
     "Rosso"
@@ -634,7 +646,7 @@
    "linea": "Articoli Liturgici",
    "categoria": "aure",
    "famiglia": "Linea Aure",
-   "descrizione": "Candela aure · altezza 60 cm · Ø 68 mm",
+   "descrizione": "Candela aure · altezza 20 cm · Ø 68 mm",
    "varianti": [
     "Trasparente",
     "Rossa"
@@ -659,7 +671,7 @@
    "linea": "Articoli Liturgici",
    "categoria": "papa",
    "famiglia": "Linea Papa",
-   "descrizione": "Candela Papa · altezza 20 cm · Ø 58 mm",
+   "descrizione": "Candela Papa · altezza 9 cm · Ø 58 mm",
    "varianti": [
     "Bianco",
     "Rosso",
@@ -674,7 +686,7 @@
    "linea": "Articoli Liturgici",
    "categoria": "papa",
    "famiglia": "Linea Papa",
-   "descrizione": "Candela Papa · altezza 30 cm · Ø 58 mm",
+   "descrizione": "Candela Papa · altezza 10 cm · Ø 58 mm",
    "varianti": [
     "Bianco",
     "Rosso",
@@ -689,7 +701,7 @@
    "linea": "Articoli Liturgici",
    "categoria": "papa",
    "famiglia": "Linea Papa",
-   "descrizione": "Candela Papa · altezza 30 cm · Ø 54,5 mm",
+   "descrizione": "Candela Papa · Ø 54,5 mm",
    "varianti": [
     "Bianco"
    ],
@@ -701,7 +713,7 @@
    "linea": "Articoli Liturgici",
    "categoria": "papa",
    "famiglia": "Linea Papa",
-   "descrizione": "Candela Papa · altezza 50 cm · Ø 58 mm",
+   "descrizione": "Candela Papa · altezza 19 cm · Ø 58 mm",
    "varianti": [
     "Bianco",
     "Rossa",
@@ -716,7 +728,7 @@
    "linea": "Articoli Liturgici",
    "categoria": "papa",
    "famiglia": "Linea Papa",
-   "descrizione": "Candela Papa · altezza 50 cm · Ø 54,5 mm",
+   "descrizione": "Candela Papa · altezza 19 cm · Ø 54,5 mm",
    "varianti": [
     "Bianco"
    ],
@@ -728,7 +740,7 @@
    "linea": "Articoli Liturgici",
    "categoria": "papa",
    "famiglia": "Linea Papa",
-   "descrizione": "Candela Papa · altezza 60 cm · Ø 68 mm",
+   "descrizione": "Candela Papa · altezza 20 cm · Ø 68 mm",
    "varianti": [
     "Bianco",
     "Rosso",
@@ -743,7 +755,7 @@
    "linea": "Articoli Liturgici",
    "categoria": "papa",
    "famiglia": "Linea Papa",
-   "descrizione": "Candela Papa · altezza 70 cm · Ø 68 mm",
+   "descrizione": "Candela Papa · altezza 22 cm · Ø 68 mm",
    "varianti": [
     "Bianco"
    ],
@@ -755,7 +767,7 @@
    "linea": "Articoli Liturgici",
    "categoria": "papa",
    "famiglia": "Linea Papa",
-   "descrizione": "Candela Papa · altezza 80 cm · Ø 80 mm",
+   "descrizione": "Candela Papa · altezza 21 cm · Ø 80 mm",
    "varianti": [
     "Bianco",
     "Rosso",
@@ -770,7 +782,7 @@
    "linea": "Articoli Liturgici",
    "categoria": "papa",
    "famiglia": "Linea Papa",
-   "descrizione": "Candela Papa · altezza 100 cm · Ø 80 mm",
+   "descrizione": "Candela Papa · altezza 24 cm · Ø 80 mm",
    "varianti": [
     "Bianco",
     "Rosso",
