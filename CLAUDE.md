@@ -9,6 +9,32 @@ commenti compresi, e si spiega il *perché* prima del *come*. Quando una
 modifica va messa online, si prepara uno zip e si danno i passi di Plesk
 uno per uno, numerati.
 
+**Questo progetto non c'entra niente con FICO Procurement**, anche se il
+repository sta sotto l'organizzazione `FICO-azienda`. Non collegarli.
+
+Il dettaglio sta in `docs/`:
+
+- `docs/ARCHITETTURA.md` — file, rotte, dati, variabili, mappa di cosa si
+  rompe toccando cosa, versioni `?v=` attuali
+- `docs/STATO-DEL-PROGETTO.md` — funzioni attive, cosa è verificato e cosa
+  no, rischi e incongruenze trovati
+- `docs/PUBBLICAZIONE.md` — regole dei pacchetti, passi di Plesk, recupero
+  dello stato del server
+- `docs/STORICO.md` — la cronologia verificata e il **registro delle
+  sessioni**: ogni sessione che cambia qualcosa ci aggiunge una voce
+
+## Regole per ogni modifica
+
+1. Leggere la riga di `docs/ARCHITETTURA.md` §6 che riguarda quello che si
+   tocca, prima di toccarlo.
+2. Lavorare su un ramo, mai direttamente su `main`.
+3. `npm test` prima di ogni commit; vedere la modifica nel browser.
+4. Pubblicare solo con il consenso del committente, solo i file cambiati,
+   mai i file di dati (elenco in `docs/PUBBLICAZIONE.md` §1).
+5. Non rigenerare catalogo né percorso con gli script: oggi perdono i
+   collegamenti foto-colore (verificato, vedi sotto).
+6. Annotare la sessione in `docs/STORICO.md`.
+
 ---
 
 ## Come gira in produzione
@@ -41,6 +67,18 @@ non riscoperti:
 Le email partono con **Resend** (dominio verificato, regione Irlanda). I
 record DNS stanno su register.it, il cui accesso ce l'ha Libra.
 
+**GitHub non pubblica su Plesk.** Un push su `main` non cambia il sito
+vero; però **GitHub Pages risulta ancora acceso** (si ripubblica a ogni push,
+visto il 24/10/2026): c'è una seconda copia pubblica senza backend, da
+spegnere quando il committente decide. Viceversa, quello che si cambia su
+Plesk o dal pannello non torna su GitHub.
+
+Dall'ambiente cloud di Claude Code il sito **non è raggiungibile** (la rete
+della sessione blocca il dominio): il confronto con la produzione si fa con
+un archivio scaricato da Plesk, vedi `docs/PUBBLICAZIONE.md` §3. L'unico
+segnale dal vivo leggibile da qui sono le esecuzioni del workflow dei
+promemoria su GitHub Actions: se sono verdi, l'applicazione Node risponde.
+
 Sondare le rotte con molte richieste ravvicinate fa scattare il **fail2ban**
 del server e blocca l'IP di casa per qualche minuto, sito e pannello
 compresi. Le verifiche sul sito vero vanno distanziate.
@@ -55,6 +93,11 @@ chiamata**:
 - `locale.mjs` altrimenti — i file del server.
 
 Nessun altro file del backend deve sapere quale dei due sta rispondendo.
+
+**`regole-categorie.json` è un caso a parte**: sta nel repository, ma il
+pannello lo riscrive sul server ogni volta che si preme Salva nei
+promemoria. La copia buona è quella del server; non va dentro un pacchetto
+se non apposta.
 
 I file con dati personali (`clienti.json`, `richieste.jsonl`, `chat.log`,
 `riordini.json`, `stati-ordini-locali.json`, `promemoria-eventi.jsonl`) sono
@@ -76,6 +119,10 @@ La stessa descrizione di prodotto vive in:
 Toccarne uno solo lascia il sito incoerente. Esistono generatori
 (`npm run catalogo`, `npm run percorso`) ma il contenuto è stato modificato
 a mano più volte: prima di rigenerare, verificare che non si perda nulla.
+Verificato il 24/10/2026 su una copia: i generatori danno gli stessi 84
+prodotti con le stesse descrizioni, ma **cancellano tutti i
+`varianti_immagini`** (31 in `catalog.json`, 128 in `percorso.json`).
+Quindi oggi le modifiche al catalogo si fanno a mano, nei cinque posti.
 
 **Il numero nel nome di un prodotto liturgico è un codice, non una misura.**
 "30 Angelo" è alto 10 cm, "100 P" ne è alto 24. Il sito pubblicava per mesi
@@ -119,6 +166,11 @@ manderebbe la password del pannello a un server altrui.
 Per vedere davvero una modifica si usa il browser del pannello, non si
 chiede al committente di controllare.
 
+Quanto sopra vale per il Mac della vecchia sessione. Nell'ambiente cloud di
+Claude Code Node è già installato (Node 22, in `/opt/node22`, i 18 test
+passano), le porte 8787/8900 non esistono, e per vedere una pagina si usa
+Playwright con Chromium, già presente.
+
 ## Il pannello (`admin.html`)
 
 Tre schede — Ordini, Clienti, Promemoria — bianco e marrone, caratteri di
@@ -144,3 +196,20 @@ rifiuto esplicito blocca l'invio.
   ma fotografati in rosso; `10 Angelo` ha come foto una confezione da 4.
 - 18 varianti liturgiche segnate "bianco" che forse sono "trasparente".
 - `Cache-Control` nel `.htaccess`, vedi sopra.
+
+Aggiunte il 24/10/2026 (dettagli in `docs/STATO-DEL-PROGETTO.md` §5–6):
+
+- **Confronto con il server mai fatto**: non si sa se Plesk ha file diversi
+  dal repository. Va fatto prima della prossima pubblicazione.
+- Il ramo `feature/promemoria-riacquisto` ha **5 commit sull'intro video
+  mai uniti a `main`**; i loro tempi valgono per il vecchio `hero.mp4` e
+  non vanno uniti così come sono.
+- La privacy promette la cancellazione automatica di richieste e clienti
+  dopo 24 mesi: il codice che lo faceva è stato tolto e non rimesso.
+  Da rimettere entro settembre 2028.
+- GitHub Pages ancora acceso.
+- `js/cc-api.js` senza `?v=`; `riordino.html` con versioni vecchie di
+  `main.css` e `i18n-pages.js`.
+- `assistant/README.md` in parte superato (Vercel, Sheets, widget "non
+  installato"): fanno fede questo file e `docs/`.
+- `.gitignore` non conteneva `stati-ordini-locali.json`: aggiunto.
