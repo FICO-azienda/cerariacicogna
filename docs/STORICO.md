@@ -116,3 +116,12 @@ Una voce per ogni sessione che cambia qualcosa. Formato:
 - Pubblicato su Plesk: no (non c'era niente da pubblicare).
 - Da sapere: il confronto con il server è ancora da fare
   (`docs/PUBBLICAZIONE.md`, §3).
+
+### 2026-10-25 — Anteprima del sito
+- Cosa: `.claude/launch.json` ora avvia `app.js` sulla porta 8787 invece di
+  agganciarsi alla 8900, che esisteva solo sul Mac della vecchia sessione.
+- Perché: il committente vuole vedere il sito nel riquadro di anteprima.
+  Quel riquadro funziona solo nelle sessioni locali dell'app desktop; nelle
+  sessioni cloud si usano screenshot.
+- File del sito toccati: nessuno.
+- Ramo: `claude/brave-volta-tjoo76`. Pubblicato su Plesk: no (non serve).

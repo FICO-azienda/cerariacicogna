@@ -171,6 +171,12 @@ Claude Code Node è già installato (Node 22, in `/opt/node22`, i 18 test
 passano), le porte 8787/8900 non esistono, e per vedere una pagina si usa
 Playwright con Chromium, già presente.
 
+Il riquadro di anteprima a destra (`.claude/launch.json`) funziona solo nelle
+sessioni **locali** dell'app desktop, non in quelle cloud. Dal 25/10/2026
+`launch.json` avvia da solo `app.js` sulla 8787 (prima si agganciava alla
+8900 del vecchio Mac). Nelle sessioni cloud si mostrano le pagine con
+screenshot di Playwright.
+
 ## Il pannello (`admin.html`)
 
 Tre schede — Ordini, Clienti, Promemoria — bianco e marrone, caratteri di
