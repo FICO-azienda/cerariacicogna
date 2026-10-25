@@ -2,10 +2,13 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "//": "Si aggancia al server gia' in ascolto sulla 8900 invece di avviarne un altro: quello manda Cache-Control: no-store, indispensabile qui perche' il browser continuava a servire versioni vecchie di CSS e JS. La 8899 e' di un'altra sessione e non va toccata.",
-      "name": "ceraria-cicogna",
-      "url": "http://localhost:8900",
-      "port": 8900
+      "//": "Avvia il sito con app.js, lo stesso file che gira su Plesk: pagine e /api insieme. Porta 8787 perche' in locale js/cc-api.js e il widget cercano il backend proprio li': cosi' modulo contatti, pannello e assistente parlano con questo stesso processo. Senza ANTHROPIC_API_KEY l'assistente dice solo che non e' disponibile, il resto funziona. Prima si agganciava a un server gia' acceso sulla 8900, che esisteva solo sul Mac della vecchia sessione.",
+      "name": "cereria-cicogna",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["app.js"],
+      "env": { "PORT": "8787" },
+      "port": 8787,
+      "autoPort": false
     }
   ]
 }
